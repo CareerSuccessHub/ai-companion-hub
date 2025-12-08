@@ -72,6 +72,7 @@ export const metadata: Metadata = {
     // yandex: "your-yandex-verification-code",
   },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -87,5 +88,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-} );
 }

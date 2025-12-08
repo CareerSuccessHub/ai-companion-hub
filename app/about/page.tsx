@@ -65,7 +65,7 @@ export default function AboutPage() {
               Traditional career counseling is expensive and often unavailable when you need it most.
             </p>
             <p className="mb-4">
-              AI Student Success Hub was created to democratize access to quality career guidance. Whether you're 
+              AI Student Success Hub was created to democratize access to quality career guidance. Whether you&apos;re 
               looking for your first side hustle, planning your career path, or seeking scholarship opportunities, 
               our AI mentor is here to help—free, anytime, anywhere.
             </p>
@@ -92,7 +92,7 @@ export default function AboutPage() {
               </li>
             </ul>
             <p className="mt-4 text-sm text-gray-400">
-              We're committed to transparency. Every recommendation is based on genuine value, not just commission rates.
+              We&apos;re committed to transparency. Every recommendation is based on genuine value, not just commission rates.
             </p>
           </section>
 

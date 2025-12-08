@@ -1,21 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { useTheme } from "./providers/ThemeProvider";
 import { Send } from "lucide-react";
 
 interface Message {
   id: string;
   role: 'user' | 'assistant';
   content: string;
-  timestamp: Date;
 }
 
 export default function ChatInterface() {
-  const { currentTheme } = useTheme();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const colors = {
+    blue: 'bg-blue-600',
+  };
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -24,106 +26,103 @@ export default function ChatInterface() {
       id: Date.now().toString(),
       role: 'user',
       content: input,
-      timestamp: new Date(),
     };
 
     setMessages([...messages, userMessage]);
     setInput("");
     setIsLoading(true);
+    setError("");
 
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: input,
-          theme: currentTheme.id,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: input }),
       });
 
       const data = await response.json();
 
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to get response');
+      }
+
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: data.reply || "Sorry, I couldn't generate a response.",
-        timestamp: new Date(),
+        content: data.reply,
       };
       setMessages(prev => [...prev, aiMessage]);
-    } catch (error) {
-      console.error('Error:', error);
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        content: "Oops! Something went wrong. Please try again.",
-        timestamp: new Date(),
-      };
-      setMessages(prev => [...prev, errorMessage]);
+    } catch (err: any) {
+      setError(err.message);
+      console.error('Chat error:', err);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className={`${currentTheme.cardBg} rounded-lg shadow-lg flex flex-col h-[600px]`}>
-      <div className="p-4 border-b border-gray-300">
-        <h2 className="text-xl font-bold">Chat with Your Companion</h2>
+    <div className="bg-slate-900 rounded-lg border border-slate-800 flex flex-col h-[600px]">
+      {/* Header */}
+      <div className="p-4 border-b border-slate-800">
+        <h2 className="text-xl font-bold">Chat</h2>
       </div>
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.length === 0 ? (
-          <div className="text-center opacity-60 mt-8">
-            <p>Start a conversation with your companion!</p>
+          <div className="text-center mt-8 text-gray-500">
+            Start chatting with your companion!
           </div>
         ) : (
-          messages.map((message) => (
+          messages.map((msg) => (
             <div
-              key={message.id}
-              className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+              key={msg.id}
+              className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[70%] p-3 rounded-lg ${
-                  message.role === 'user'
-                    ? `${currentTheme.primary} text-white`
-                    : 'bg-gray-200 text-gray-900'
+                className={`max-w-[80%] p-3 rounded-lg ${
+                  msg.role === 'user'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-slate-800 text-gray-100'
                 }`}
               >
-                {message.content}
+                {msg.content}
               </div>
             </div>
           ))
         )}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-gray-200 text-gray-900 p-3 rounded-lg">
-              <span className="animate-pulse">Thinking...</span>
+            <div className="bg-slate-800 text-gray-100 p-3 rounded-lg animate-pulse">
+              Thinking...
             </div>
+          </div>
+        )}
+        {error && (
+          <div className="text-center text-red-400 text-sm">
+            Error: {error}
           </div>
         )}
       </div>
 
       {/* Input */}
-      <div className="p-4 border-t border-gray-300">
+      <div className="p-4 border-t border-slate-800">
         <div className="flex gap-2">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+            onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSend()}
             placeholder="Type your message..."
-            className="flex-1 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50"
-            style={{ color: 'black' }}
+            disabled={isLoading}
+            className="flex-1 px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:opacity-50"
           />
           <button
             onClick={handleSend}
             disabled={isLoading || !input.trim()}
-            className={`${currentTheme.primary} text-white px-4 py-2 rounded-lg hover:opacity-90 disabled:opacity-50 flex items-center gap-2`}
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:opacity-90 disabled:opacity-50 flex items-center gap-2"
           >
             <Send size={20} />
-            Send
           </button>
         </div>
       </div>

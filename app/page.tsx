@@ -3,6 +3,8 @@
 import CompanionDisplay from "@/components/CompanionDisplay";
 import ChatInterface from "@/components/ChatInterface";
 import SideHustleGenerator from "@/components/SideHustleGenerator";
+import KofiButton from "@/components/KofiButton";
+import AdPlaceholder from "@/components/AdPlaceholder";
 import Script from "next/script";
 
 export default function Home() {
@@ -44,19 +46,49 @@ export default function Home() {
             <p className="text-gray-400 text-lg">Your AI mentor for career growth, side income, and success</p>
           </header>
 
+          {/* Top Ad Banner */}
+          <div className="mb-6">
+            <AdPlaceholder size="banner" />
+          </div>
+
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* Left Sidebar - Companion */}
           <div className="lg:col-span-1">
             <CompanionDisplay />
+            
+            {/* Ko-fi Support Button */}
+            <div className="mt-6">
+              <KofiButton />
+            </div>
           </div>
+          
+          {/* Center - Chat */}
           <div className="lg:col-span-2">
             <ChatInterface />
+          </div>
+          
+          {/* Right Sidebar - Ads */}
+          <div className="lg:col-span-1 space-y-6">
+            <AdPlaceholder size="square" label="Sponsored" />
+            <AdPlaceholder size="square" label="Sponsored" />
           </div>
         </div>
 
         {/* Side Hustle Generator */}
         <div className="mt-8">
           <SideHustleGenerator />
+        </div>
+
+        {/* Affiliate Disclosure */}
+        <div className="mt-12 p-4 bg-slate-900 border border-slate-800 rounded-lg text-center">
+          <p className="text-xs text-gray-500">
+            <strong>Affiliate Disclosure:</strong> This site contains affiliate links. 
+            We may earn a commission when you click or make purchases through these links, 
+            at no additional cost to you. This helps keep our platform free for students. 
+            We only recommend services we believe in. Learn more in our{" "}
+            <a href="/privacy" className="text-blue-400 hover:underline">Privacy Policy</a>.
+          </p>
         </div>
 
         {/* Footer with SEO keywords */}

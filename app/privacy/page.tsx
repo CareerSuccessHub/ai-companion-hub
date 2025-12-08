@@ -38,7 +38,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-semibold text-blue-300 mb-3">3. Third-Party Services</h2>
             <p className="mb-2">We use the following third-party services:</p>
             <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Google Gemini AI:</strong> Powers our AI mentor conversations. Your chat data is processed by Google's AI services.</li>
+              <li><strong>Google Gemini AI:</strong> Powers our AI mentor conversations. Your chat data is processed by Google&apos;s AI services.</li>
               <li><strong>Google Analytics:</strong> Tracks anonymous usage statistics.</li>
               <li><strong>Google AdSense:</strong> Displays relevant advertisements.</li>
               <li><strong>Affiliate Partners:</strong> Fiverr, Skillshare, Upwork, and other platforms we recommend.</li>

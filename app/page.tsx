@@ -7,6 +7,7 @@ import ResumeReviewer from "@/components/ResumeReviewer";
 import KofiButton from "@/components/KofiButton";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import Script from "next/script";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -82,8 +83,32 @@ export default function Home() {
         </div>
 
         {/* Resume Reviewer */}
-        <div className="mt-8">
+        <div id="resume-reviewer" className="mt-8">
           <ResumeReviewer />
+        </div>
+
+        {/* Quick Links to Other Tools */}
+        <div className="mt-8 bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/50 rounded-lg p-8 text-center">
+          <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-4">
+            More Free Student Tools 🚀
+          </h2>
+          <p className="text-gray-300 mb-6">
+            Check out our other tools to level up your student life
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/scholarships"
+              className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg"
+            >
+              💰 Scholarship Finder
+            </Link>
+            <Link
+              href="/blog"
+              className="px-6 py-3 bg-slate-800 text-gray-100 font-semibold rounded-lg hover:bg-slate-700 transition-colors border border-slate-700"
+            >
+              📚 Student Success Blog
+            </Link>
+          </div>
         </div>
 
         {/* Affiliate Disclosure */}

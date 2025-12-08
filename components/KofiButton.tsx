@@ -16,7 +16,7 @@ export default function KofiButton() {
       </div>
       
       <a
-        href="https://ko-fi.com/YOUR_KOFI_USERNAME"
+        href="https://ko-fi.com/studentsuccesshub"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105"

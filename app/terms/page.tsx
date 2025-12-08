@@ -78,7 +78,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-semibold text-blue-300 mb-3">7. Limitation of Liability</h2>
             <p>
-              AI Student Success Hub is provided "as is" without warranties of any kind. We are not 
+              AI Student Success Hub is provided &quot;as is&quot; without warranties of any kind. We are not 
               liable for any damages resulting from your use of the service, including but not limited 
               to lost income, career decisions, or purchases made through affiliate links.
             </p>

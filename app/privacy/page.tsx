@@ -74,7 +74,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-blue-300 mb-3">7. Children's Privacy</h2>
+            <h2 className="text-2xl font-semibold text-blue-300 mb-3">7. Children&apos;s Privacy</h2>
             <p>
               Our service is intended for students 13 years and older. We do not knowingly collect 
               information from children under 13.
@@ -85,7 +85,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-semibold text-blue-300 mb-3">8. Changes to This Policy</h2>
             <p>
               We may update this Privacy Policy from time to time. We will notify users of any material 
-              changes by updating the "Last Updated" date.
+              changes by updating the &quot;Last Updated&quot; date.
             </p>
           </section>
 

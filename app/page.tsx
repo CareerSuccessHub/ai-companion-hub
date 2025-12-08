@@ -3,6 +3,7 @@
 import CompanionDisplay from "@/components/CompanionDisplay";
 import ChatInterface from "@/components/ChatInterface";
 import SideHustleGenerator from "@/components/SideHustleGenerator";
+import ResumeReviewer from "@/components/ResumeReviewer";
 import KofiButton from "@/components/KofiButton";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import Script from "next/script";
@@ -78,6 +79,11 @@ export default function Home() {
         {/* Side Hustle Generator */}
         <div className="mt-8">
           <SideHustleGenerator />
+        </div>
+
+        {/* Resume Reviewer */}
+        <div className="mt-8">
+          <ResumeReviewer />
         </div>
 
         {/* Affiliate Disclosure */}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: {
@@ -71,7 +72,6 @@ export const metadata: Metadata = {
     // yandex: "your-yandex-verification-code",
   },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -80,10 +80,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <GoogleAnalytics />
         <ThemeProvider>
           {children}
         </ThemeProvider>
       </body>
     </html>
   );
+} );
 }

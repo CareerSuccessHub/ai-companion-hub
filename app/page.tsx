@@ -96,6 +96,12 @@ export default function Home() {
           <p className="mb-4">
             Free AI career mentor for students • Side hustle ideas • Scholarship finder • Job opportunities • Freelance guidance
           </p>
+          <div className="mb-4 flex flex-wrap justify-center gap-4">
+            <a href="/about" className="hover:text-blue-400 transition-colors">About</a>
+            <a href="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</a>
+            <a href="/terms" className="hover:text-blue-400 transition-colors">Terms of Service</a>
+            <a href="https://ko-fi.com/studentsuccesshub" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Support Us</a>
+          </div>
           <p>© 2025 AI Student Success Hub. Empowering students to achieve financial freedom.</p>
         </footer>
       </div>

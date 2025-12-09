@@ -36,7 +36,7 @@ export default function ScholarshipsPage() {
               <span className="text-purple-400 font-bold">Weekly</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Main Content */}
         <ScholarshipDatabase />

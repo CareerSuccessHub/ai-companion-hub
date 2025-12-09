@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Send, BotMessageSquare } from "lucide-react";
 import GradientIcon from "./GradientIcon";
-import AnimatedSection from "./AnimatedSection";
 import { motion } from "framer-motion";
 
 interface Message {
@@ -64,8 +63,7 @@ export default function ChatInterface() {
   };
 
   return (
-    <AnimatedSection>
-      <div className="bg-slate-900 rounded-lg border border-slate-800 flex flex-col h-[600px] hover:border-blue-500/50 transition-all duration-300">
+    <div className="bg-slate-900 rounded-lg border border-slate-800 flex flex-col h-[600px] hover:border-blue-500/50 transition-all duration-300">
         {/* Header */}
         <div className="p-4 border-b border-slate-800 flex items-center gap-3">
           <GradientIcon icon={BotMessageSquare} gradient="from-blue-400 to-violet-500" size={20} animate={false} />
@@ -133,6 +131,5 @@ export default function ChatInterface() {
           </button>
         </div>
       </div>
-    </AnimatedSection>
   );
 }

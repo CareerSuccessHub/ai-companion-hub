@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { FileText, Upload, Sparkles, CheckCircle, XCircle } from "lucide-react";
 import GradientIcon from "./GradientIcon";
-import AnimatedSection from "./AnimatedSection";
 
 export default function ResumeReviewer() {
   const [resumeText, setResumeText] = useState("");
@@ -36,8 +35,7 @@ export default function ResumeReviewer() {
   };
 
   return (
-    <AnimatedSection delay={0.1}>
-      <div className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-cyan-500/50 transition-all duration-300">
+    <div className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-cyan-500/50 transition-all duration-300">
         <div className="flex items-center gap-4 mb-6">
           <GradientIcon icon={FileText} gradient="from-cyan-400 to-blue-500" />
           <div>
@@ -131,6 +129,5 @@ export default function ResumeReviewer() {
           Our AI will analyze formatting, content, keywords, and ATS compatibility to help you land more interviews.
         </p>
       </div>
-    </AnimatedSection>
   );
 }

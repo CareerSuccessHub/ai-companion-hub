@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Sparkles, TrendingUp, DollarSign, Rocket } from "lucide-react";
 import GradientIcon from "./GradientIcon";
-import AnimatedSection from "./AnimatedSection";
 
 export default function SideHustleGenerator() {
   const [skills, setSkills] = useState("");
@@ -35,8 +34,7 @@ export default function SideHustleGenerator() {
   };
 
   return (
-    <AnimatedSection delay={0.2}>
-      <div className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-pink-500/50 transition-all duration-300">
+    <div className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-pink-500/50 transition-all duration-300">
         <div className="flex items-center gap-4 mb-4">
           <GradientIcon icon={Rocket} gradient="from-pink-400 to-rose-500" />
           <div>
@@ -125,6 +123,5 @@ export default function SideHustleGenerator() {
           ))}
         </div>
       )}
-    </AnimatedSection>
   );
 }

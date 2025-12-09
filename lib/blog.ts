@@ -14,13 +14,17 @@ export interface BlogPost {
 
 export function getAllBlogPosts(): BlogPost[] {
   const blogDir = path.join(process.cwd(), 'app/blog');
-  const files = fs.readdirSync(blogDir);
+  const items = fs.readdirSync(blogDir);
   
-  const posts = files
-    .filter(file => file.endsWith('.mdx'))
-    .map(file => {
-      const filePath = path.join(blogDir, file);
-      const fileContents = fs.readFileSync(filePath, 'utf8');
+  const posts: BlogPost[] = [];
+  
+  for (const item of items) {
+    const itemPath = path.join(blogDir, item);
+    const stat = fs.statSync(itemPath);
+    
+    // Handle MDX files (new auto-generated posts)
+    if (item.endsWith('.mdx')) {
+      const fileContents = fs.readFileSync(itemPath, 'utf8');
       const { data, content } = matter(fileContents);
       
       // Extract first paragraph as excerpt
@@ -35,8 +39,8 @@ export function getAllBlogPosts(): BlogPost[] {
       const words = content.split(/\s+/).length;
       const readTime = `${Math.ceil(words / 200)} min read`;
       
-      return {
-        slug: file.replace('.mdx', ''),
+      posts.push({
+        slug: item.replace('.mdx', ''),
         title: data.title || 'Untitled',
         excerpt: data.description || excerpt,
         date: new Date(data.date).toLocaleDateString('en-US', { 
@@ -47,12 +51,40 @@ export function getAllBlogPosts(): BlogPost[] {
         readTime,
         category: data.tags?.[0] || 'Career',
         tags: data.tags,
-      };
-    })
-    .sort((a, b) => {
-      // Sort by date descending (newest first)
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
+      });
+    }
+    
+    // Handle folder-based blog posts (original posts with page.tsx)
+    else if (stat.isDirectory()) {
+      const pagePath = path.join(itemPath, 'page.tsx');
+      if (fs.existsSync(pagePath)) {
+        // Read the page.tsx file to extract metadata
+        const pageContents = fs.readFileSync(pagePath, 'utf8');
+        
+        // Extract title from h1 tag
+        const titleMatch = pageContents.match(/<h1[^>]*>(.*?)<\/h1>/);
+        const title = titleMatch ? titleMatch[1].replace(/<[^>]*>/g, '') : item.replace(/-/g, ' ');
+        
+        // Extract first paragraph
+        const excerptMatch = pageContents.match(/<p[^>]*className="[^"]*text-xl[^"]*"[^>]*>(.*?)<\/p>/);
+        const excerpt = excerptMatch ? excerptMatch[1].replace(/<[^>]*>/g, '').substring(0, 200) + '...' : '';
+        
+        posts.push({
+          slug: item,
+          title: title,
+          excerpt: excerpt,
+          date: 'November 20, 2024', // Default date for original posts
+          readTime: '8 min read',
+          category: 'Career',
+        });
+      }
+    }
+  }
+  
+  // Sort by date descending (newest first)
+  posts.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
   
   return posts;
 }

@@ -1,11 +1,13 @@
-"use client";
-
 import ModernHero from "@/components/ModernHero";
 import KofiButton from "@/components/KofiButton";
 import Link from "next/link";
 import Script from "next/script";
+import { getAllBlogPosts } from "@/lib/blog";
+import LatestBlogPosts from "@/components/LatestBlogPosts";
 
 export default function Home() {
+  const allPosts = getAllBlogPosts();
+  const latestPosts = allPosts.slice(0, 2); // Get 2 newest posts
   return (
     <>
       {/* Structured Data for SEO */}
@@ -55,32 +57,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               Latest Career Guides
             </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Link
-                href="/blog/salary-negotiation-script-15k-more"
-                className="bg-slate-900 border border-slate-800 rounded-lg p-6 hover:border-blue-500/50 transition-all group"
-              >
-                <h3 className="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">
-                  How to Negotiate Your Salary: The Script That Got Me $15K More
-                </h3>
-                <p className="text-gray-400 mb-4">
-                  Learn the exact script I used to negotiate $15,000 more...
-                </p>
-                <span className="text-blue-400 font-semibold">Read More →</span>
-              </Link>
-              <Link
-                href="/blog/10-side-hustles-for-students-2025"
-                className="bg-slate-900 border border-slate-800 rounded-lg p-6 hover:border-blue-500/50 transition-all group"
-              >
-                <h3 className="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">
-                  10 Best Side Hustles That Pay $1,000-5,000/Month in 2025
-                </h3>
-                <p className="text-gray-400 mb-4">
-                  Discover profitable side hustle ideas that fit your schedule...
-                </p>
-                <span className="text-blue-400 font-semibold">Read More →</span>
-              </Link>
-            </div>
+            <LatestBlogPosts posts={latestPosts} />
           </div>
 
           {/* Ko-fi Support */}

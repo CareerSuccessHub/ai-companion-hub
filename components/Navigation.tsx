@@ -110,6 +110,6 @@ export default function Navigation() {
           </div>
         )}
       </div>
-    </nav>
+    </motion.nav>
   );
 }

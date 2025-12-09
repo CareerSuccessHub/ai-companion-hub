@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { DollarSign, TrendingUp, Sparkles } from "lucide-react";
 import GradientIcon from "./GradientIcon";
+import { motion } from "framer-motion";
 
 export default function SalaryNegotiator() {
   const [jobTitle, setJobTitle] = useState("");
@@ -48,7 +49,13 @@ export default function SalaryNegotiator() {
   };
 
   return (
-    <div className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-emerald-500/50 transition-all duration-300">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+      className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-emerald-500/50 transition-all duration-300"
+    >
         <div className="flex items-center gap-4 mb-6">
           <GradientIcon icon={DollarSign} gradient="from-emerald-400 to-green-500" />
           <div>
@@ -155,6 +162,6 @@ export default function SalaryNegotiator() {
           <li>✅ Practice your script out loud 3-5 times before the call</li>
         </ul>
       </div>
-    </div>
+    </motion.div>
   );
 }

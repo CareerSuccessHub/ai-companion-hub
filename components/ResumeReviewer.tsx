@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FileText, Upload, Sparkles, CheckCircle, XCircle } from "lucide-react";
 import GradientIcon from "./GradientIcon";
+import { motion } from "framer-motion";
 
 export default function ResumeReviewer() {
   const [resumeText, setResumeText] = useState("");
@@ -35,7 +36,13 @@ export default function ResumeReviewer() {
   };
 
   return (
-    <div className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-cyan-500/50 transition-all duration-300">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+      className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-cyan-500/50 transition-all duration-300"
+    >
         <div className="flex items-center gap-4 mb-6">
           <GradientIcon icon={FileText} gradient="from-cyan-400 to-blue-500" />
           <div>
@@ -129,6 +136,6 @@ export default function ResumeReviewer() {
           Our AI will analyze formatting, content, keywords, and ATS compatibility to help you land more interviews.
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }

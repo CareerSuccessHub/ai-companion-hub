@@ -63,7 +63,13 @@ export default function ChatInterface() {
   };
 
   return (
-    <div className="bg-slate-900 rounded-lg border border-slate-800 flex flex-col h-[600px] hover:border-blue-500/50 transition-all duration-300">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="bg-slate-900 rounded-lg border border-slate-800 flex flex-col h-[600px] hover:border-blue-500/50 transition-all duration-300"
+    >
         {/* Header */}
         <div className="p-4 border-b border-slate-800 flex items-center gap-3">
           <GradientIcon icon={BotMessageSquare} gradient="from-blue-400 to-violet-500" size={20} animate={false} />
@@ -131,6 +137,6 @@ export default function ChatInterface() {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

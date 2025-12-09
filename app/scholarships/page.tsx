@@ -1,40 +1,21 @@
-import type { Metadata } from "next";
+"use client";
+
 import ScholarshipDatabase from "@/components/ScholarshipDatabase";
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "Scholarship Finder - Free Scholarship Database | AI Student Success Hub",
-  description: "Search thousands of scholarships for students. Find merit-based, need-based, and major-specific scholarships worth up to $55,000/year. Free scholarship search tool.",
-  keywords: [
-    "scholarship finder",
-    "college scholarships",
-    "student scholarships",
-    "free scholarship search",
-    "merit scholarships",
-    "need-based scholarships",
-    "STEM scholarships",
-    "scholarships for students",
-    "scholarship database",
-    "how to find scholarships",
-  ],
-  openGraph: {
-    title: "Scholarship Finder - Discover Free Money for College",
-    description: "Search curated scholarships worth thousands. Filter by major, category, and deadline. 100% free scholarship database.",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Scholarship Finder - Free Scholarship Database",
-    description: "Find scholarships worth up to $55,000/year. Filter by major, GPA, and category.",
-  },
-};
+import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function ScholarshipsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
           <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-4">
             Scholarship Finder 🎓
           </h1>

@@ -1,11 +1,8 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Blog - Career Advice, Salary Tips & Side Hustles",
-  description: "Free guides on salary negotiation, side hustles, resume tips, and career advice for job seekers and professionals",
-};
+import { motion } from "framer-motion";
 
 const blogPosts = [
   {
@@ -31,20 +28,30 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-gray-100">
       <div className="container mx-auto px-4 py-12 max-w-6xl">
-        <header className="mb-12 text-center">
+        <motion.header
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-12 text-center"
+        >
           <h1 className="text-5xl font-bold mb-4 text-blue-400">Career Success Blog</h1>
           <p className="text-xl text-gray-400">
             Actionable guides on salary negotiation, side hustles, career advancement, and professional growth
           </p>
-        </header>
+        </motion.header>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
-            <Link
+          {blogPosts.map((post, index) => (
+            <motion.div
               key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="group bg-slate-900 border border-slate-800 rounded-lg overflow-hidden hover:border-blue-500 transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
             >
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group bg-slate-900 border border-slate-800 rounded-lg overflow-hidden hover:border-blue-500 transition-colors block h-full"
+              >
               <div className="p-6">
                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
                   <Calendar className="w-4 h-4" />
@@ -57,11 +64,12 @@ export default function BlogPage() {
                   {post.category}
                 </span>
 
-                <h2 className="text-xl font-bold mb-3 text-gray-100 group-hover:text-blue-400 transition-colors">
-                  {post.title}
-                </h2>
-
-                <p className="text-gray-400 mb-4">
+                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+          ))}   <p className="text-gray-400 mb-4">
                   {post.excerpt}
                 </p>
 

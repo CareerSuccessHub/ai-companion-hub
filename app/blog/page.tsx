@@ -1,29 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-
-const blogPosts = [
-  {
-    slug: "salary-negotiation-script-15k-more",
-    title: "How to Negotiate Your Salary: The Script That Got Me $15K More",
-    excerpt: "Learn the exact script I used to negotiate $15,000 more. Proven strategies, word-for-word templates, and AI-powered negotiation tips.",
-    date: "December 9, 2025",
-    readTime: "10 min read",
-    category: "Salary Tips",
-  },
-  {
-    slug: "10-side-hustles-for-students-2025",
-    title: "10 Best Side Hustles That Pay $1,000-5,000/Month in 2025",
-    excerpt: "Discover profitable side hustle ideas that fit your schedule. From freelancing to online work, find the perfect income stream.",
-    date: "December 9, 2025",
-    readTime: "8 min read",
-    category: "Side Hustles",
-  },
-];
+import { getAllBlogPosts } from "@/lib/blog";
 
 export default function BlogPage() {
+  const blogPosts = getAllBlogPosts();
   return (
     <main className="min-h-screen bg-slate-950 text-gray-100">
       <div className="container mx-auto px-4 py-12 max-w-6xl">

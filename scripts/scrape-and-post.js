@@ -233,7 +233,17 @@ ${metadata.takeaways?.map(t => `- ${t}`).join('\n') || ''}
 
 ---
 
+## Recommended Resources
+
+Looking to level up your career? Check out these helpful resources:
+
+- **[LinkedIn Learning](https://linkedin-learning.pxf.io/c/your-id)** - Professional development courses (Free trial)
+- **[Coursera Career Certificates](https://coursera.pxf.io/c/your-id)** - Industry-recognized credentials
+- **[Grammarly](https://grammarly.go2cloud.org/aff_c?offer_id=3)** - Perfect your resume and cover letters (Affiliate link)
+
 *This article was researched and curated by our AI team. For personalized career advice, [chat with our AI Career Mentor](/).*
+
+*Disclosure: Some links above are affiliate links. We may earn a commission at no cost to you if you make a purchase.*
 `;
 
   fs.writeFileSync(filepath, frontmatter);

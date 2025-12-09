@@ -4,6 +4,8 @@ import SalaryNegotiator from "@/components/SalaryNegotiator";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import Link from "next/link";
 
+// SEO metadata is in metadata.ts for this route
+
 export default function SalaryNegotiatorPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-gray-100">

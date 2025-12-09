@@ -12,8 +12,8 @@ const getGeminiResponse = async (message: string): Promise<string> => {
   const prompt = `${systemPrompt}\n\nUser: ${message}\n\nRespond as the companion:`;
   
   const API_KEY = process.env.GEMINI_API_KEY!;
-  // Using gemini-2.5-flash which is available and fast
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+  // Using gemini-1.5-flash for higher quota and stability
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
   
   const response = await fetch(url, {
     method: 'POST',

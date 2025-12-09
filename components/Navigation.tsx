@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, BookOpen, GraduationCap, Menu, X, Sparkles } from "lucide-react";
+import { Home, BookOpen, GraduationCap, Menu, X, Sparkles, ChevronDown, Briefcase } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Navigation() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
 
   const navItems = [
     { href: "/", label: "Home", icon: Home },
@@ -16,13 +17,14 @@ export default function Navigation() {
     { href: "/scholarships", label: "Scholarships", icon: GraduationCap },
   ];
 
+  const toolsItems = [
+    { href: "/tools/salary-negotiator", label: "Salary Negotiator" },
+    { href: "/tools/resume-reviewer", label: "Resume Reviewer" },
+    { href: "/tools/side-hustle", label: "Side Hustle Generator" },
+  ];
+
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 backdrop-blur-sm bg-slate-900/95"
-    >
+    <nav className="bg-slate-900/95 border-b border-slate-800 sticky top-0 z-50 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo with gradient icon */}
@@ -34,13 +36,6 @@ export default function Navigation() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-400 opacity-20 blur-md rounded-full" />
               <Sparkles className="w-6 h-6 text-transparent bg-gradient-to-br from-blue-400 to-cyan-400 bg-clip-text relative" style={{ filter: "drop-shadow(0 0 8px rgba(59, 130, 246, 0.5))" }} />
-            </motion.div>
-            <span className="hidden sm:inline bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:to-cyan-300 transition-all">
-              AI Career Hub
-            </span>
-            <span className="sm:hidden bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Hub</span>
-          </Link>
-
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4">
             {navItems.map((item) => {
@@ -67,6 +62,46 @@ export default function Navigation() {
                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                       />
                     )}
+                    <Icon className="w-4 h-4 relative z-10" />
+                    <span className="relative z-10">{item.label}</span>
+                  </Link>
+                </motion.div>
+              );
+            })}
+            
+            {/* Tools Dropdown */}
+            <div className="relative">
+              <button
+                onMouseEnter={() => setToolsOpen(true)}
+                onMouseLeave={() => setToolsOpen(false)}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-slate-800/50 transition-all"
+              >
+                <Briefcase className="w-4 h-4" />
+                <span>Tools</span>
+                <ChevronDown className={`w-4 h-4 transition-transform ${toolsOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {toolsOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  onMouseEnter={() => setToolsOpen(true)}
+                  onMouseLeave={() => setToolsOpen(false)}
+                  className="absolute top-full left-0 mt-2 w-56 bg-slate-800 border border-slate-700 rounded-lg shadow-xl overflow-hidden"
+                >
+                  {toolsItems.map((tool) => (
+                    <Link
+                      key={tool.href}
+                      href={tool.href}
+                      className="block px-4 py-3 text-gray-300 hover:bg-slate-700 hover:text-white transition-colors border-b border-slate-700 last:border-0"
+                    >
+                      {tool.label}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </div>
+          </div>    )}
                     <Icon className="w-4 h-4 relative z-10" />
                     <span className="relative z-10">{item.label}</span>
                   </Link>
@@ -110,6 +145,6 @@ export default function Navigation() {
           </div>
         )}
       </div>
-    </motion.nav>
+    </nav>
   );
 }

@@ -1,14 +1,10 @@
 "use client";
 
-import ChatInterface from "@/components/ChatInterface";
-import SideHustleGenerator from "@/components/SideHustleGenerator";
-import ResumeReviewer from "@/components/ResumeReviewer";
-import SalaryNegotiator from "@/components/SalaryNegotiator";
-import KofiButton from "@/components/KofiButton";
-import AdPlaceholder from "@/components/AdPlaceholder";
 import ModernHero from "@/components/ModernHero";
-import Script from "next/script";
+import FloatingChat from "@/components/FloatingChat";
+import KofiButton from "@/components/KofiButton";
 import Link from "next/link";
+import Script from "next/script";
 
 export default function Home() {
   return (

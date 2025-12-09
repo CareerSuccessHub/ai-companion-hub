@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles, TrendingUp, DollarSign } from "lucide-react";
+import { Sparkles, TrendingUp, DollarSign, Rocket } from "lucide-react";
+import GradientIcon from "./GradientIcon";
+import AnimatedSection from "./AnimatedSection";
 
 export default function SideHustleGenerator() {
   const [skills, setSkills] = useState("");
@@ -33,14 +35,19 @@ export default function SideHustleGenerator() {
   };
 
   return (
-    <div className="bg-slate-900 rounded-lg border border-slate-800 p-6">
-      <div className="flex items-center gap-2 mb-4">
-        <Sparkles className="text-blue-400" size={24} />
-        <h2 className="text-2xl font-bold text-blue-400">Side Hustle Generator</h2>
-      </div>
-      <p className="text-gray-400 mb-6">
-        Get personalized side income ideas based on your skills and available time
-      </p>
+    <AnimatedSection delay={0.2}>
+      <div className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-pink-500/50 transition-all duration-300">
+        <div className="flex items-center gap-4 mb-4">
+          <GradientIcon icon={Rocket} gradient="from-pink-400 to-rose-500" />
+          <div>
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent">
+              Side Hustle Generator
+            </h2>
+          </div>
+        </div>
+        <p className="text-gray-400 mb-6">
+          Get personalized side income ideas based on your skills and available time
+        </p>
 
       <div className="space-y-4 mb-6">
         <div>
@@ -118,6 +125,6 @@ export default function SideHustleGenerator() {
           ))}
         </div>
       )}
-    </div>
+    </AnimatedSection>
   );
 }

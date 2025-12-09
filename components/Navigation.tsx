@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, BookOpen, GraduationCap, Menu, X } from "lucide-react";
+import { Home, BookOpen, GraduationCap, Menu, X, Sparkles } from "lucide-react";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -19,31 +20,52 @@ export default function Navigation() {
     <nav className="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-blue-400 hover:text-blue-300 transition-colors">
-            <span>🎯</span>
-            <span className="hidden sm:inline">AI Career Hub</span>
-            <span className="sm:hidden">Hub</span>
+          {/* Logo with gradient icon */}
+          <Link href="/" className="flex items-center gap-2 font-bold text-xl group">
+            <motion.div 
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-400 opacity-20 blur-md rounded-full" />
+              <Sparkles className="w-6 h-6 text-transparent bg-gradient-to-br from-blue-400 to-cyan-400 bg-clip-text relative" style={{ filter: "drop-shadow(0 0 8px rgba(59, 130, 246, 0.5))" }} />
+            </motion.div>
+            <span className="hidden sm:inline bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent group-hover:from-blue-300 group-hover:to-cyan-300 transition-all">
+              AI Career Hub
+            </span>
+            <span className="sm:hidden bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Hub</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-4">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
               return (
-                <Link
+                <motion.div
                   key={item.href}
-                  href={item.href}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-                    isActive
-                      ? "bg-blue-600 text-white"
-                      : "text-gray-300 hover:text-white hover:bg-slate-800"
-                  }`}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <Icon className="w-4 h-4" />
-                  <span>{item.label}</span>
-                </Link>
+                  <Link
+                    href={item.href}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all relative overflow-hidden ${
+                      isActive
+                        ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/30"
+                        : "text-gray-300 hover:text-white hover:bg-slate-800/50"
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeNav"
+                        className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <Icon className="w-4 h-4 relative z-10" />
+                    <span className="relative z-10">{item.label}</span>
+                  </Link>
+                </motion.div>
               );
             })}
           </div>

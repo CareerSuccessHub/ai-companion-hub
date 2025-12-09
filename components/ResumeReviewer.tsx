@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { FileText, Upload, Sparkles, CheckCircle, XCircle } from "lucide-react";
+import GradientIcon from "./GradientIcon";
+import AnimatedSection from "./AnimatedSection";
 
 export default function ResumeReviewer() {
   const [resumeText, setResumeText] = useState("");
@@ -34,14 +36,17 @@ export default function ResumeReviewer() {
   };
 
   return (
-    <div className="bg-slate-900 rounded-lg border border-slate-800 p-6">
-      <div className="flex items-center gap-3 mb-6">
-        <FileText className="w-6 h-6 text-blue-400" />
-        <div>
-          <h2 className="text-2xl font-bold text-blue-400">AI Resume Reviewer</h2>
-          <p className="text-sm text-gray-400">Get instant feedback on your resume from AI</p>
+    <AnimatedSection delay={0.1}>
+      <div className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-cyan-500/50 transition-all duration-300">
+        <div className="flex items-center gap-4 mb-6">
+          <GradientIcon icon={FileText} gradient="from-cyan-400 to-blue-500" />
+          <div>
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              AI Resume Reviewer
+            </h2>
+            <p className="text-sm text-gray-400">Get instant feedback on your resume from AI</p>
+          </div>
         </div>
-      </div>
 
       <div className="space-y-4">
         <div>
@@ -126,6 +131,6 @@ export default function ResumeReviewer() {
           Our AI will analyze formatting, content, keywords, and ATS compatibility to help you land more interviews.
         </p>
       </div>
-    </div>
+    </AnimatedSection>
   );
 }

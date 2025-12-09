@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, BotMessageSquare } from "lucide-react";
+import GradientIcon from "./GradientIcon";
+import AnimatedSection from "./AnimatedSection";
+import { motion } from "framer-motion";
 
 interface Message {
   id: string;
@@ -61,11 +64,15 @@ export default function ChatInterface() {
   };
 
   return (
-    <div className="bg-slate-900 rounded-lg border border-slate-800 flex flex-col h-[600px]">
-      {/* Header */}
-      <div className="p-4 border-b border-slate-800">
-        <h2 className="text-xl font-bold">Chat</h2>
-      </div>
+    <AnimatedSection>
+      <div className="bg-slate-900 rounded-lg border border-slate-800 flex flex-col h-[600px] hover:border-blue-500/50 transition-all duration-300">
+        {/* Header */}
+        <div className="p-4 border-b border-slate-800 flex items-center gap-3">
+          <GradientIcon icon={BotMessageSquare} gradient="from-blue-400 to-violet-500" size={20} animate={false} />
+          <h2 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-violet-500 bg-clip-text text-transparent">
+            AI Career Mentor
+          </h2>
+        </div>
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -126,6 +133,6 @@ export default function ChatInterface() {
           </button>
         </div>
       </div>
-    </div>
+    </AnimatedSection>
   );
 }

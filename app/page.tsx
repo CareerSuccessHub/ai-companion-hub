@@ -1,12 +1,12 @@
 "use client";
 
-import CompanionDisplay from "@/components/CompanionDisplay";
 import ChatInterface from "@/components/ChatInterface";
 import SideHustleGenerator from "@/components/SideHustleGenerator";
 import ResumeReviewer from "@/components/ResumeReviewer";
 import SalaryNegotiator from "@/components/SalaryNegotiator";
 import KofiButton from "@/components/KofiButton";
 import AdPlaceholder from "@/components/AdPlaceholder";
+import ModernHero from "@/components/ModernHero";
 import Script from "next/script";
 import Link from "next/link";
 
@@ -40,31 +40,20 @@ export default function Home() {
       />
       
       <main className="min-h-screen bg-slate-950 text-gray-100">
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
-          {/* Header */}
-          <header className="mb-8">
-            <h1 className="text-4xl font-bold mb-2 text-blue-400">
-              AI Career Success Hub
-            </h1>
-            <p className="text-gray-400 text-lg">Your AI mentor for career growth, side income, and professional success</p>
-            <p className="text-sm text-gray-500 mt-2">For students, job seekers, career changers, and freelancers</p>
-          </header>
+        {/* Modern Hero Section */}
+        <ModernHero />
 
+        <div className="container mx-auto px-4 py-8 max-w-7xl">
           {/* Top Ad Banner */}
           <div className="mb-6">
             <AdPlaceholder size="banner" />
           </div>
 
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* Left Sidebar - Companion */}
+        {/* Main Content Grid with AI Mentor */}
+        <div id="ai-mentor" className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
+          {/* Left Sidebar - Ko-fi */}
           <div className="lg:col-span-1">
-            <CompanionDisplay />
-            
-            {/* Ko-fi Support Button */}
-            <div className="mt-6">
-              <KofiButton />
-            </div>
+            <KofiButton />
           </div>
           
           {/* Center - Chat */}
@@ -80,7 +69,7 @@ export default function Home() {
         </div>
 
         {/* Side Hustle Generator */}
-        <div className="mt-8">
+        <div id="side-hustle" className="mt-8">
           <SideHustleGenerator />
         </div>
 

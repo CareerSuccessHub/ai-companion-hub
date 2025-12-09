@@ -144,10 +144,24 @@ async function callGeminiAPI(prompt) {
       return null;
     }
     
-    // Extract JSON from response
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
+    // Extract JSON from response (might be wrapped in markdown code blocks)
+    let jsonMatch = text.match(/\{[\s\S]*\}/);
+    
+    // If wrapped in ```json...```, extract the content
+    if (!jsonMatch && text.includes('```json')) {
+      const codeBlock = text.match(/```json\s*([\s\S]*?)\s*```/);
+      if (codeBlock) {
+        jsonMatch = [codeBlock[1]];
+      }
+    }
+    
     if (jsonMatch) {
-      return JSON.parse(jsonMatch[0]);
+      try {
+        return JSON.parse(jsonMatch[0]);
+      } catch (e) {
+        console.error('   ⚠️  JSON parse error:', e.message);
+        return null;
+      }
     }
     
     console.error('   ⚠️  No JSON found in response:', text.substring(0, 200));

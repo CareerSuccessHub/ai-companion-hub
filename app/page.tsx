@@ -1,7 +1,6 @@
 "use client";
 
 import ModernHero from "@/components/ModernHero";
-import FloatingChat from "@/components/FloatingChat";
 import KofiButton from "@/components/KofiButton";
 import Link from "next/link";
 import Script from "next/script";
@@ -99,9 +98,6 @@ export default function Home() {
             <p>© {new Date().getFullYear()} AI Career Hub. All rights reserved.</p>
           </footer>
         </div>
-
-        {/* Floating Chat Button */}
-        <FloatingChat />
       </main>
     </>
   );

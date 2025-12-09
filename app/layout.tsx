@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Navigation from "@/components/Navigation";
+import FloatingChat from "@/components/FloatingChat";
 
 export const metadata: Metadata = {
   title: {
@@ -88,6 +89,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navigation />
           {children}
+          <FloatingChat />
         </ThemeProvider>
       </body>
     </html>

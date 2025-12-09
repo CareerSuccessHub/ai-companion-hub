@@ -39,6 +39,9 @@ jobs:
           git add app/scholarships/ || true
           git diff --staged --quiet || git commit -m "🎓 Auto-update: Monthly scholarships refresh" || echo "No changes to commit"
       
+      - name: Pull latest changes
+        run: git pull --rebase origin main || true
+      
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:

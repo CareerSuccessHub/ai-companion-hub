@@ -16,11 +16,11 @@ import {
 } from "lucide-react"
 
 const tools = [
-  { icon: Wallet, name: "Salary Negotiator", color: "text-emerald-400", href: "#salary-negotiator" },
-  { icon: FileSearch, name: "Resume Reviewer", color: "text-cyan-400", href: "#resume-reviewer" },
-  { icon: BotMessageSquare, name: "AI Career Mentor", color: "text-blue-400", href: "#ai-mentor" },
+  { icon: Wallet, name: "Salary Negotiator", color: "text-emerald-400", href: "/tools/salary-negotiator" },
+  { icon: FileSearch, name: "Resume Reviewer", color: "text-cyan-400", href: "/tools/resume-reviewer" },
+  { icon: BotMessageSquare, name: "AI Career Mentor", color: "text-blue-400", href: "/" },
   { icon: GraduationCap, name: "Scholarship Finder", color: "text-violet-400", href: "/scholarships" },
-  { icon: Rocket, name: "Side Hustle Generator", color: "text-pink-400", href: "#side-hustle" },
+  { icon: Rocket, name: "Side Hustle Generator", color: "text-pink-400", href: "/tools/side-hustle" },
 ]
 
 const floatVariants = {

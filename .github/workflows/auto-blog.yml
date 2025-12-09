@@ -39,6 +39,9 @@ jobs:
           git add app/blog/ || true
           git diff --staged --quiet || git commit -m "🤖 Auto-post: Weekly blog content" || echo "No changes to commit"
       
+      - name: Pull latest changes
+        run: git pull --rebase origin main || true
+      
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:

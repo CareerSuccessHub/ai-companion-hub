@@ -6,21 +6,23 @@ import Navigation from "@/components/Navigation";
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Student Success Hub - Career Mentor, Side Hustles & Scholarships",
-    template: "%s | AI Student Success Hub"
+    default: "AI Career Success Hub - Free AI Career Mentor, Resume Review & Side Hustles",
+    template: "%s | AI Career Success Hub"
   },
-  description: "Free AI-powered career mentor for students. Get personalized side hustle ideas, scholarship opportunities, job alerts, and professional guidance. Build your future today.",
+  description: "Free AI-powered career mentor for job seekers, students, and professionals. Get AI resume reviews, side hustle ideas, scholarship opportunities, and career guidance. 100% free tools.",
   keywords: [
-    "student career advice",
-    "side hustle ideas",
     "AI career mentor",
-    "college scholarships",
-    "student jobs",
+    "free resume review",
+    "side hustle ideas",
+    "career advice",
+    "job search help",
+    "remote jobs",
     "freelance opportunities",
-    "career guidance",
-    "passive income for students",
-    "job search for students",
-    "student success"
+    "career change guidance",
+    "salary negotiation",
+    "professional development",
+    "scholarships",
+    "passive income ideas"
   ],
   authors: [{ name: "AI Student Success Hub" }],
   creator: "AI Student Success Hub",

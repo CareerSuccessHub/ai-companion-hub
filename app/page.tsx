@@ -4,6 +4,7 @@ import CompanionDisplay from "@/components/CompanionDisplay";
 import ChatInterface from "@/components/ChatInterface";
 import SideHustleGenerator from "@/components/SideHustleGenerator";
 import ResumeReviewer from "@/components/ResumeReviewer";
+import SalaryNegotiator from "@/components/SalaryNegotiator";
 import KofiButton from "@/components/KofiButton";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import Script from "next/script";
@@ -43,9 +44,10 @@ export default function Home() {
           {/* Header */}
           <header className="mb-8">
             <h1 className="text-4xl font-bold mb-2 text-blue-400">
-              AI Student Success Hub
+              AI Career Success Hub
             </h1>
-            <p className="text-gray-400 text-lg">Your AI mentor for career growth, side income, and success</p>
+            <p className="text-gray-400 text-lg">Your AI mentor for career growth, side income, and professional success</p>
+            <p className="text-sm text-gray-500 mt-2">For students, job seekers, career changers, and freelancers</p>
           </header>
 
           {/* Top Ad Banner */}
@@ -87,13 +89,18 @@ export default function Home() {
           <ResumeReviewer />
         </div>
 
+        {/* Salary Negotiator - NEW UNIQUE FEATURE */}
+        <div id="salary-negotiator" className="mt-8">
+          <SalaryNegotiator />
+        </div>
+
         {/* Quick Links to Other Tools */}
         <div className="mt-8 bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/50 rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-4">
-            More Free Student Tools 🚀
+            More Free Career Tools 🚀
           </h2>
           <p className="text-gray-300 mb-6">
-            Check out our other tools to level up your student life
+            Check out our other tools to level up your career
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

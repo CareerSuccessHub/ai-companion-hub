@@ -156,6 +156,14 @@ export default function ScholarshipDatabase() {
 
   return (
     <div className="space-y-6">
+      <div className="bg-blue-900/20 border border-blue-800/50 rounded-lg p-4 mb-6">
+        <p className="text-sm text-blue-200">
+          📅 <strong>Note:</strong> Most scholarships are recurring annual programs. 
+          Deadlines shown are for the 2025-2026 cycle. Always verify current deadlines on official websites. 
+          <span className="block mt-1 text-xs text-blue-300">Last Updated: December 2025</span>
+        </p>
+      </div>
+
       <div className="bg-slate-900 rounded-lg border border-slate-800 p-6">
         <div className="flex items-center gap-3 mb-6">
           <GraduationCap className="w-6 h-6 text-blue-400" />

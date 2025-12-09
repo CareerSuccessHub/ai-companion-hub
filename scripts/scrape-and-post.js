@@ -144,27 +144,29 @@ async function callGeminiAPI(prompt) {
       return null;
     }
     
-    // Extract JSON from response (might be wrapped in markdown code blocks)
-    let jsonMatch = text.match(/\{[\s\S]*\}/);
-    
-    // If wrapped in ```json...```, extract the content
-    if (!jsonMatch && text.includes('```json')) {
-      const codeBlock = text.match(/```json\s*([\s\S]*?)\s*```/);
-      if (codeBlock) {
-        jsonMatch = [codeBlock[1]];
-      }
+    // Remove markdown code fences if present
+    let cleanText = text.trim();
+    if (cleanText.startsWith('```')) {
+      // Remove opening fence (```json or just ```)
+      cleanText = cleanText.replace(/^```(?:json)?\s*\n?/i, '');
+      // Remove closing fence
+      cleanText = cleanText.replace(/\n?```\s*$/i, '');
     }
+    
+    // Extract JSON object
+    const jsonMatch = cleanText.match(/\{[\s\S]*\}/);
     
     if (jsonMatch) {
       try {
         return JSON.parse(jsonMatch[0]);
       } catch (e) {
         console.error('   ⚠️  JSON parse error:', e.message);
+        console.error('   Attempted to parse:', jsonMatch[0].substring(0, 100));
         return null;
       }
     }
     
-    console.error('   ⚠️  No JSON found in response:', text.substring(0, 200));
+    console.error('   ⚠️  No JSON found in response:', cleanText.substring(0, 200));
     return null;
   } catch (error) {
     console.error('AI call error:', error.message);

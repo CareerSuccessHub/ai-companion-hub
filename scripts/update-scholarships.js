@@ -102,16 +102,15 @@ Return as JSON array:
       return null;
     }
     
-    // Extract JSON from response (might be wrapped in markdown)
-    let jsonMatch = text.match(/\[[\s\S]*\]/);
-    
-    // If wrapped in ```json...```, extract the content
-    if (!jsonMatch && text.includes('```json')) {
-      const codeBlock = text.match(/```json\s*([\s\S]*?)\s*```/);
-      if (codeBlock) {
-        jsonMatch = [codeBlock[1]];
-      }
+    // Remove markdown code fences if present
+    let cleanText = text.trim();
+    if (cleanText.startsWith('```')) {
+      cleanText = cleanText.replace(/^```(?:json)?\s*\n?/i, '');
+      cleanText = cleanText.replace(/\n?```\s*$/i, '');
     }
+    
+    // Extract JSON array
+    const jsonMatch = cleanText.match(/\[[\s\S]*\]/);
     
     if (jsonMatch) {
       try {

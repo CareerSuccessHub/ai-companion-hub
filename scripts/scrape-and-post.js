@@ -1,34 +1,32 @@
 /**
  * Blog Content Scraper & Auto-Poster
- * Scrapes career advice from top blogs, rewrites with AI, and publishes
+ * Scrapes career blogs OR generates original AI content
  * Run: node scripts/scrape-and-post.js
  */
 
-const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-// Target blogs to scrape (more reliable sources)
+// Target blogs (Dev.to API - reliable JSON)
 const TARGET_BLOGS = [
-  // Dev.to career tags (JSON API - more reliable)
   'https://dev.to/api/articles?tag=career',
   'https://dev.to/api/articles?tag=jobsearch',
   'https://dev.to/api/articles?tag=interview',
 ];
 
-// Fallback: If scraping fails, generate these topics with AI
+// Fallback: Generate these topics if scraping fails
 const FALLBACK_TOPICS = [
-  'How to negotiate your first salary as a new graduate',
+  'How to negotiate your first salary as a new graduate in 2025',
   '5 resume mistakes that cost you job interviews',
   'Best side hustles for college students in 2025',
   'How to switch careers without going back to school',
   'Remote job interview tips that actually work',
   'How to ask for a raise (with email templates)',
-  'Freelancing vs full-time: Which pays more?',
+  'Freelancing vs full-time job: Which pays more in 2025?',
   'LinkedIn profile optimization for job seekers',
 ];
 
-// Topics we want to focus on (stay focused on career/income)
+// Filter for relevant content
 const RELEVANT_KEYWORDS = [
   'salary',
   'negotiation',
@@ -45,7 +43,7 @@ const RELEVANT_KEYWORDS = [
 ];
 
 /**
- * Fetch content from URL (supports both HTTP and HTTPS, JSON and XML)
+ * Fetch content from URL
  */
 async function fetchContent(url) {
   try {
@@ -57,10 +55,15 @@ async function fetchContent(url) {
     }
     return await response.text();
   } catch (error) {
+    console.error(`Fetch error for ${url}:`, error.message);
+    return null;
+  }
+}
+
 /**
- * Parse content (handles both RSS XML and JSON APIs)
+ * Parse content (handles JSON and RSS)
  */
-function parseContent(data, url) {
+function parseContent(data) {
   // Dev.to API returns JSON array
   if (Array.isArray(data)) {
     return data.map(article => ({
@@ -70,7 +73,7 @@ function parseContent(data, url) {
     }));
   }
   
-  // RSS XML format
+  // RSS XML format (fallback)
   if (typeof data === 'string') {
     const items = [];
     const itemRegex = /<item>([\s\S]*?)<\/item>/g;
@@ -89,34 +92,25 @@ function parseContent(data, url) {
       }
     }
     
+    return items;
+  }
+  
+  return [];
+}
+
 /**
- * Generate original content from scratch (fallback if scraping fails)
+ * Check if article is relevant
  */
-async function generateOriginalContent(topic) {
-  const prompt = `Write an in-depth, actionable career advice article for students and young professionals.
+function isRelevant(article) {
+  const text = `${article.title} ${article.description}`.toLowerCase();
+  return RELEVANT_KEYWORDS.some(keyword => text.includes(keyword));
+}
 
-Topic: ${topic}
-
-Requirements:
-- 800-1200 words
-- Practical, actionable advice
-- Include specific examples, numbers, templates
-- Write in a casual, engaging tone
-- Focus on income/career growth for 18-30 age group
-- Include step-by-step instructions where relevant
-
-Provide:
-1. An SEO-friendly title (include year 2025 if relevant)
-2. Article content in markdown format
-3. 3-5 key takeaways
-
-Format as JSON:
-{
-  "title": "article title",
-  "content": "markdown content with ## headings, bullet points, etc.",
-  "takeaways": ["point 1", "point 2", ...]
-}`;
-const apiKey = process.env.GEMINI_API_KEY;
+/**
+ * Call Gemini API
+ */
+async function callGeminiAPI(prompt) {
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     console.error('❌ GEMINI_API_KEY not found in environment');
     return null;
@@ -124,7 +118,7 @@ const apiKey = process.env.GEMINI_API_KEY;
 
   try {
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -145,117 +139,85 @@ const apiKey = process.env.GEMINI_API_KEY;
     const data = await response.json();
     const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
     
-    if (!text) return null;
+    if (!text) {
+      console.error('   ⚠️  No text in response:', JSON.stringify(data, null, 2));
+      return null;
+    }
     
-    // Extract JSON from response (might be wrapped in markdown)
+    // Extract JSON from response
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (jsonMatch) {
       return JSON.parse(jsonMatch[0]);
     }
     
+    console.error('   ⚠️  No JSON found in response:', text.substring(0, 200));
     return null;
   } catch (error) {
-    console.error('AI call error:', error);
+    console.error('AI call error:', error.message);
     return null;
   }
-}. A new catchy title (SEO-friendly)
-2. A rewritten article (800-1200 words, markdown format)
-3. 3-5 key takeaways
+}
 
-Format as JSON:
+/**
+ * Generate original content (fallback)
+ */
+async function generateOriginalContent(topic) {
+  const prompt = `Write an in-depth, actionable career advice article for students and young professionals (ages 18-30).
+
+Topic: ${topic}
+
+Requirements:
+- 800-1200 words
+- Practical, actionable advice with specific examples
+- Include numbers, templates, step-by-step instructions
+- Casual, engaging tone
+- Focus on income/career growth
+
+Provide response as JSON:
 {
-  "title": "new title",
-  "content": "markdown content",
-  "takeaways": ["point 1", "point 2", ...]
+  "title": "SEO-friendly title",
+  "content": "markdown content with ## headings and bullet points",
+  "takeaways": ["key point 1", "key point 2", "key point 3"]
 }`;
 
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    console.error('❌ GEMINI_API_KEY not found in environment');
-    return null;
-  }
+  return await callGeminiAPI(prompt);
+}
 
-  try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{ text: prompt }]
-          }],
-          generationConfig: {
-            temperature: 0.9,
-            topK: 40,
-            topP: 0.95,
-            maxOutputTokens: 2048,
-          }
-        })
-      }
-    );
+/**
+ * Rewrite scraped content
+ */
+async function rewriteWithAI(title, originalContent) {
+  const prompt = `Rewrite this career advice article in a completely unique way for students and young professionals (18-30). Keep the core advice but use totally different wording, examples, and structure.
 
-    const data = await response.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-    
-    if (!text) return null;
-    
-  // Fetch from all sources
-  for (const feedUrl of TARGET_BLOGS) {
-    try {
-      console.log(`Fetching: ${feedUrl}`);
-      const data = await fetchContent(feedUrl);
-      if (data) {
-        const articles = parseContent(data, feedUrl);
-        const relevant = articles.filter(isRelevant);
-        allArticles.push(...relevant);
-        console.log(`  Found ${articles.length} articles (${relevant.length} relevant)\n`);
-      }
-    } catch (error) {
-      console.error(`  ❌ Error: ${error.message}\n`);
-    }
-  }
+Original Title: ${title}
+Original Content: ${originalContent}
+
+Requirements:
+- 800-1200 words
+- Completely unique (avoid plagiarism)
+- Add actionable steps and specific examples
+- Casual, engaging tone
+- Include year 2025 in title if relevant
+
+Provide response as JSON:
+{
+  "title": "new SEO-friendly title",
+  "content": "markdown content",
+  "takeaways": ["key point 1", "key point 2", "key point 3"]
+}`;
+
+  return await callGeminiAPI(prompt);
+}
+
+/**
+ * Create blog post file
+ */
+function createBlogPost(slug, content, metadata) {
+  const date = new Date().toISOString().split('T')[0];
+  const filename = `${date}-${slug}.mdx`;
+  const filepath = path.join(__dirname, '../app/blog', filename);
   
-  console.log(`📰 Total relevant articles: ${allArticles.length}\n`);
-  
-  let topArticles = [];
-  
-  // If scraping failed, use AI to generate original content
-  if (allArticles.length === 0) {
-    console.log('⚠️  No articles scraped. Generating original AI content instead...\n');
-    
-    // Pick 2 random topics from fallback list
-    const shuffled = [...FALLBACK_TOPICS].sort(() => Math.random() - 0.5);
-    const selectedTopics = shuffled.slice(0, 2);
-    
-    for (const topic of selectedTopics) {
-      console.log(`📝 Generating: ${topic}`);
-      const generated = await generateOriginalContent(topic);
-      
-      if (generated) {
-        const slug = generated.title
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/(^-|-$)/g, '');
-        
-        createBlogPost(slug, generated.content, {
-          title: generated.title,
-          description: generated.content.substring(0, 150),
-          takeaways: generated.takeaways,
-          tags: ['career', 'advice', 'income'],
-        });
-      }
-      
-      // Rate limit
-      await new Promise(resolve => setTimeout(resolve, 5000));
-    }
-    
-    console.log('\n✨ Done! Generated 2 original articles.');
-    return;
-  }
-  
-  // Pick top 2 most relevant scraped articles
-  topArticles = allArticles.slice(0, 2);
+  const frontmatter = `---
 title: "${metadata.title}"
 date: "${date}"
 author: "AI Career Hub Team"
@@ -287,34 +249,67 @@ async function main() {
   
   const allArticles = [];
   
-  // Fetch from all RSS feeds
+  // Try scraping from Dev.to
   for (const feedUrl of TARGET_BLOGS) {
     try {
       console.log(`Fetching: ${feedUrl}`);
-      const xml = await fetchContent(feedUrl);
-      const articles = parseRSS(xml);
-      allArticles.push(...articles.filter(isRelevant));
-      console.log(`  Found ${articles.length} articles (${articles.filter(isRelevant).length} relevant)\n`);
+      const data = await fetchContent(feedUrl);
+      if (data) {
+        const articles = parseContent(data);
+        const relevant = articles.filter(isRelevant);
+        allArticles.push(...relevant);
+        console.log(`  Found ${articles.length} articles (${relevant.length} relevant)\n`);
+      }
     } catch (error) {
       console.error(`  ❌ Error: ${error.message}\n`);
     }
   }
   
-  console.log(`📰 Total relevant articles: ${allArticles.length}\n`);
+  console.log(`📰 Total relevant articles scraped: ${allArticles.length}\n`);
   
+  // If scraping failed, generate original AI content
   if (allArticles.length === 0) {
-    console.log('No articles found. Try again later.');
+    console.log('⚠️  No articles scraped. Generating original AI content instead...\n');
+    
+    // Pick 2 random topics
+    const shuffled = [...FALLBACK_TOPICS].sort(() => Math.random() - 0.5);
+    const selectedTopics = shuffled.slice(0, 2);
+    
+    for (const topic of selectedTopics) {
+      console.log(`📝 Generating: ${topic}`);
+      const generated = await generateOriginalContent(topic);
+      
+      if (generated) {
+        const slug = generated.title
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, '');
+        
+        createBlogPost(slug, generated.content, {
+          title: generated.title,
+          description: generated.content.substring(0, 150),
+          takeaways: generated.takeaways,
+          tags: ['career', 'advice', 'income'],
+        });
+      } else {
+        console.log('   ❌ Generation failed');
+      }
+      
+      // Rate limit
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+    
+    console.log('\n✨ Done! Generated 2 original articles.');
     return;
   }
   
-  // Pick top 2 most relevant articles
+  // Process scraped articles
   const topArticles = allArticles.slice(0, 2);
   
   for (const article of topArticles) {
     console.log(`\n📝 Processing: ${article.title}`);
-    console.log(`   URL: ${article.link}`);
+    console.log(`   Source: ${article.link}`);
     
-    // Rewrite with AI
     const rewritten = await rewriteWithAI(article.title, article.description);
     
     if (rewritten) {
@@ -330,10 +325,10 @@ async function main() {
         tags: ['career', 'advice', 'professional-development'],
       });
     } else {
-      console.log('   ⚠️  AI rewrite failed, skipping');
+      console.log('   ❌ Rewrite failed');
     }
     
-    // Rate limit (1 request per 5 seconds)
+    // Rate limit
     await new Promise(resolve => setTimeout(resolve, 5000));
   }
   

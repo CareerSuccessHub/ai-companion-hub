@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Calendar, Clock, ArrowLeft, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "10 Best Side Hustles for College Students in 2025 | AI Student Success Hub",
-  description: "Discover the top 10 profitable side hustles for college students. Learn how to earn $500-2000/month while balancing studies. Real income potential and getting started tips.",
-  keywords: ["side hustles for students", "college side jobs", "student income ideas", "make money in college", "freelance for students"],
+  title: "10 Best Side Hustles That Pay $1,000-5,000/Month in 2025 | AI Career Hub",
+  description: "Discover the top 10 profitable side hustles in 2025. Learn how to earn $500-5,000/month with flexible work. Perfect for students, professionals, and anyone seeking extra income.",
+  keywords: ["side hustles 2025", "make money online", "extra income ideas", "freelance opportunities", "remote side jobs", "passive income"],
 };
 
 export default function SideHustlesPost() {
@@ -35,23 +35,23 @@ export default function SideHustlesPost() {
           </h1>
 
           <p className="text-xl text-gray-300 leading-relaxed">
-            Balancing college and finances is tough. These proven side hustles can help you earn $500-2000/month 
-            without sacrificing your studies. Real opportunities, real income potential.
+            Looking for extra income? These proven side hustles can help you earn $500-5,000/month 
+            with flexible hours. Perfect for students, professionals, or anyone seeking financial freedom.
           </p>
         </header>
 
         <div className="prose prose-invert prose-blue max-w-none">
           
           <section className="mb-12">
-            <h2 className="text-3xl font-bold text-blue-300 mb-4">Why Side Hustles Matter for Students</h2>
+            <h2 className="text-3xl font-bold text-blue-300 mb-4">Why Side Hustles Are More Important Than Ever</h2>
             <p className="text-gray-300 leading-relaxed mb-4">
-              Student loans are piling up, tuition keeps rising, and ramen gets old fast. A side hustle isn&apos;t 
-              just about extra cash—it&apos;s about building skills, gaining experience, and creating financial freedom 
-              while you&apos;re still in school.
+              Whether you&apos;re paying off debt, saving for a goal, or building financial security, a side hustle 
+              can transform your income. It&apos;s not just about extra cash—it&apos;s about building skills, 
+              gaining experience, and creating opportunities on your own terms.
             </p>
             <p className="text-gray-300 leading-relaxed">
-              The best part? Many of these side hustles can turn into full-time careers after graduation. You&apos;re 
-              not just earning money; you&apos;re building your future.
+              The best part? Many of these side hustles can scale into full-time businesses or lucrative career paths. 
+              You&apos;re not just earning money; you&apos;re investing in your future.
             </p>
           </section>
 

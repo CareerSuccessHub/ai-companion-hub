@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
+import { MessageCircle, X, Send, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Message {
@@ -77,8 +77,16 @@ export default function FloatingChat() {
           >
             {/* Header */}
             <div className="p-4 border-b border-slate-800 bg-gradient-to-r from-blue-600 to-cyan-600">
-              <h3 className="text-white font-bold">AI Career Mentor 🤖</h3>
-              <p className="text-blue-100 text-sm">Ask me anything about your career!</p>
+              <div className="flex items-center gap-2">
+                <motion.div
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                >
+                  <Sparkles className="w-5 h-5 text-white" />
+                </motion.div>
+                <h3 className="text-white font-bold">AI Career Mentor</h3>
+              </div>
+              <p className="text-blue-100 text-sm mt-1">Ask me anything about your career!</p>
             </div>
 
             {/* Messages */}

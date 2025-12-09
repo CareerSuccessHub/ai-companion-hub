@@ -61,17 +61,21 @@ export function getAllBlogPosts(): BlogPost[] {
         // Read the page.tsx file to extract metadata
         const pageContents = fs.readFileSync(pagePath, 'utf8');
         
-        // Extract title from h1 tag
-        const titleMatch = pageContents.match(/<h1[^>]*>(.*?)<\/h1>/);
-        const title = titleMatch ? titleMatch[1].replace(/<[^>]*>/g, '') : item.replace(/-/g, ' ');
+        // Extract metadata description
+        const descriptionMatch = pageContents.match(/description:\s*["'](.*?)["']/);
+        const excerpt = descriptionMatch ? descriptionMatch[1] : '';
         
-        // Extract first paragraph
-        const excerptMatch = pageContents.match(/<p[^>]*className="[^"]*text-xl[^"]*"[^>]*>(.*?)<\/p>/);
-        const excerpt = excerptMatch ? excerptMatch[1].replace(/<[^>]*>/g, '').substring(0, 200) + '...' : '';
+        // Extract title from metadata
+        const titleMatch = pageContents.match(/title:\s*["'](.*?)["']/);
+        const metaTitle = titleMatch ? titleMatch[1].split('|')[0].trim() : '';
+        
+        // Fallback to h1 if no metadata title
+        const h1Match = pageContents.match(/<h1[^>]*>(.*?)<\/h1>/);
+        const h1Title = h1Match ? h1Match[1].replace(/<[^>]*>/g, '').replace(/&apos;/g, "'") : item.replace(/-/g, ' ');
         
         posts.push({
           slug: item,
-          title: title,
+          title: metaTitle || h1Title,
           excerpt: excerpt,
           date: 'November 20, 2024', // Default date for original posts
           readTime: '8 min read',

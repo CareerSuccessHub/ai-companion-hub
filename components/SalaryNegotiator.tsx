@@ -155,5 +155,6 @@ export default function SalaryNegotiator() {
           <li>✅ Practice your script out loud 3-5 times before the call</li>
         </ul>
       </div>
+    </div>
   );
 }

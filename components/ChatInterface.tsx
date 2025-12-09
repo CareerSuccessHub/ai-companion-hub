@@ -131,5 +131,6 @@ export default function ChatInterface() {
           </button>
         </div>
       </div>
+    </div>
   );
 }

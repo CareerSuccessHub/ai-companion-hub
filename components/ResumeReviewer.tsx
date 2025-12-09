@@ -129,5 +129,6 @@ export default function ResumeReviewer() {
           Our AI will analyze formatting, content, keywords, and ATS compatibility to help you land more interviews.
         </p>
       </div>
+    </div>
   );
 }

@@ -134,45 +134,20 @@ export default function ModernHero() {
               </motion.div>
             </motion.div>
 
-            {/* Social proof */}
+            {/* Trust badges - honest metrics */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.6 }}
-              className="flex items-center gap-6 pt-4"
+              className="flex items-center gap-6 pt-4 flex-wrap"
             >
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map((i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.8 + i * 0.1, type: "spring" }}
-                    className="w-10 h-10 rounded-full border-2 border-slate-950 bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center text-xs font-bold text-slate-950"
-                  >
-                    {String.fromCharCode(64 + i)}
-                  </motion.div>
-                ))}
+              <div className="flex items-center gap-2 px-4 py-2 bg-blue-600/20 border border-blue-500/30 rounded-lg">
+                <Sparkles className="w-4 h-4 text-blue-400" />
+                <span className="text-gray-100 font-semibold">Powered by Google Gemini AI</span>
               </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-1">
-                  <Users className="w-4 h-4 text-cyan-400" />
-                  <span className="text-gray-100 font-bold">10K+</span>
-                  <span className="text-gray-400">users</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <motion.div
-                      key={star}
-                      initial={{ scale: 0, rotate: -180 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: 1 + star * 0.1, type: "spring" }}
-                    >
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    </motion.div>
-                  ))}
-                  <span className="text-gray-400 text-sm ml-1">4.9/5</span>
-                </div>
+              <div className="flex items-center gap-2 px-4 py-2 bg-green-600/20 border border-green-500/30 rounded-lg">
+                <Zap className="w-4 h-4 text-green-400" />
+                <span className="text-gray-100 font-semibold">100% Free Forever</span>
               </div>
             </motion.div>
           </motion.div>

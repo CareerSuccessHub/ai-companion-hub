@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Blog - Career & Success Tips for Students",
-  description: "Free guides on side hustles, scholarships, resume tips, and career advice for college students",
+  title: "Blog - Career Advice, Salary Tips & Side Hustles",
+  description: "Free guides on salary negotiation, side hustles, resume tips, and career advice for job seekers and professionals",
 };
 
 const blogPosts = [
@@ -24,9 +24,9 @@ export default function BlogPage() {
     <main className="min-h-screen bg-slate-950 text-gray-100">
       <div className="container mx-auto px-4 py-12 max-w-6xl">
         <header className="mb-12 text-center">
-          <h1 className="text-5xl font-bold mb-4 text-blue-400">Student Success Blog</h1>
+          <h1 className="text-5xl font-bold mb-4 text-blue-400">Career Success Blog</h1>
           <p className="text-xl text-gray-400">
-            Actionable guides on earning money, advancing your career, and succeeding as a student
+            Actionable guides on salary negotiation, side hustles, career advancement, and professional growth
           </p>
         </header>
 

@@ -113,7 +113,7 @@ export default function Home() {
               href="/blog"
               className="px-6 py-3 bg-slate-800 text-gray-100 font-semibold rounded-lg hover:bg-slate-700 transition-colors border border-slate-700"
             >
-              📚 Student Success Blog
+              📚 Career Success Blog
             </Link>
           </div>
         </div>

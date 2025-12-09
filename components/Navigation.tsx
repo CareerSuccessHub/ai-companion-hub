@@ -21,8 +21,8 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 font-bold text-xl text-blue-400 hover:text-blue-300 transition-colors">
-            <span>🎓</span>
-            <span className="hidden sm:inline">AI Student Hub</span>
+            <span>🎯</span>
+            <span className="hidden sm:inline">AI Career Hub</span>
             <span className="sm:hidden">Hub</span>
           </Link>
 

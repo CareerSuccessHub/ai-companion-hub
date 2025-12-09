@@ -36,6 +36,12 @@ export default function Navigation() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-400 opacity-20 blur-md rounded-full" />
               <Sparkles className="w-6 h-6 text-transparent bg-gradient-to-br from-blue-400 to-cyan-400 bg-clip-text relative" style={{ filter: "drop-shadow(0 0 8px rgba(59, 130, 246, 0.5))" }} />
+            </motion.div>
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              AI Career Hub
+            </span>
+          </Link>
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4">
             {navItems.map((item) => {
@@ -70,10 +76,12 @@ export default function Navigation() {
             })}
             
             {/* Tools Dropdown */}
-            <div className="relative">
+            <div 
+              className="relative"
+              onMouseEnter={() => setToolsOpen(true)}
+              onMouseLeave={() => setToolsOpen(false)}
+            >
               <button
-                onMouseEnter={() => setToolsOpen(true)}
-                onMouseLeave={() => setToolsOpen(false)}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-slate-800/50 transition-all"
               >
                 <Briefcase className="w-4 h-4" />
@@ -85,8 +93,6 @@ export default function Navigation() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  onMouseEnter={() => setToolsOpen(true)}
-                  onMouseLeave={() => setToolsOpen(false)}
                   className="absolute top-full left-0 mt-2 w-56 bg-slate-800 border border-slate-700 rounded-lg shadow-xl overflow-hidden"
                 >
                   {toolsItems.map((tool) => (
@@ -101,13 +107,6 @@ export default function Navigation() {
                 </motion.div>
               )}
             </div>
-          </div>    )}
-                    <Icon className="w-4 h-4 relative z-10" />
-                    <span className="relative z-10">{item.label}</span>
-                  </Link>
-                </motion.div>
-              );
-            })}
           </div>
 
           {/* Mobile Menu Button */}
@@ -142,6 +141,21 @@ export default function Navigation() {
                 </Link>
               );
             })}
+            
+            {/* Mobile Tools Section */}
+            <div className="mt-2 pt-2 border-t border-slate-700">
+              <div className="px-4 py-2 text-sm font-semibold text-gray-400">Tools</div>
+              {toolsItems.map((tool) => (
+                <Link
+                  key={tool.href}
+                  href={tool.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-slate-800 transition-colors"
+                >
+                  {tool.label}
+                </Link>
+              ))}
+            </div>
           </div>
         )}
       </div>

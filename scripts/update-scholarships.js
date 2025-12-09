@@ -84,6 +84,17 @@ Return as JSON array:
     );
 
     const data = await response.json();
+    
+    // Check for quota/error
+    if (data.error) {
+      console.error('❌ API Error:', data.error.message);
+      if (data.error.code === 429) {
+        console.log('\n⏰ Quota exceeded. Wait 1 hour and try again.');
+        console.log('   Or run on 1st of month via GitHub Actions (auto-scheduled)');
+      }
+      return null;
+    }
+    
     const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
     
     if (!text) {

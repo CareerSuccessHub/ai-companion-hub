@@ -4,6 +4,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { getAllBlogPosts } from "@/lib/blog";
 import LatestBlogPosts from "@/components/LatestBlogPosts";
+import FadeInSection from "@/components/FadeInSection";
 
 export default function Home() {
   const allPosts = getAllBlogPosts();
@@ -37,33 +38,39 @@ export default function Home() {
 
         <div className="container mx-auto px-4 py-12 max-w-6xl">
           {/* Quick Stats - Honest Value Props */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-center">
-              <div className="text-3xl font-bold text-emerald-400 mb-2">5 Tools</div>
-              <p className="text-gray-400">Career & income boosters</p>
+          <FadeInSection>
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-center">
+                <div className="text-3xl font-bold text-emerald-400 mb-2">5 Tools</div>
+                <p className="text-gray-400">Career & income boosters</p>
+              </div>
+              <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-center">
+                <div className="text-3xl font-bold text-cyan-400 mb-2">AI-Powered</div>
+                <p className="text-gray-400">Google Gemini technology</p>
+              </div>
+              <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-center">
+                <div className="text-3xl font-bold text-pink-400 mb-2">100%</div>
+                <p className="text-gray-400">Free to use</p>
+              </div>
             </div>
-            <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-center">
-              <div className="text-3xl font-bold text-cyan-400 mb-2">AI-Powered</div>
-              <p className="text-gray-400">Google Gemini technology</p>
-            </div>
-            <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-center">
-              <div className="text-3xl font-bold text-pink-400 mb-2">100%</div>
-              <p className="text-gray-400">Free to use</p>
-            </div>
-          </div>
+          </FadeInSection>
 
           {/* Featured Blog Posts */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Latest Career Guides
-            </h2>
-            <LatestBlogPosts posts={latestPosts} />
-          </div>
+          <FadeInSection delay={0.2}>
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                Latest Career Guides
+              </h2>
+              <LatestBlogPosts posts={latestPosts} />
+            </div>
+          </FadeInSection>
 
           {/* Ko-fi Support */}
-          <div className="text-center mb-12">
-            <KofiButton />
-          </div>
+          <FadeInSection delay={0.3}>
+            <div className="text-center mb-12">
+              <KofiButton />
+            </div>
+          </FadeInSection>
 
           {/* Footer */}
           <footer className="pt-8 border-t border-slate-800 text-center text-gray-500">

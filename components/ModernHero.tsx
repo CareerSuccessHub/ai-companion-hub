@@ -115,7 +115,7 @@ export default function ModernHero() {
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                 <Link
-                  href="#salary-negotiator"
+                  href="/tools/salary-negotiator"
                   className="relative inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold px-8 py-4 text-lg rounded-lg shadow-lg shadow-blue-500/25 transition-all hover:shadow-2xl hover:shadow-blue-500/40 group overflow-hidden"
                 >
                   <Wallet className="w-5 h-5 mr-2" />
@@ -125,7 +125,7 @@ export default function ModernHero() {
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                 <Link
-                  href="#resume-reviewer"
+                  href="/tools/resume-reviewer"
                   className="inline-flex items-center justify-center border-2 border-cyan-500/50 bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 hover:text-cyan-300 hover:border-cyan-400 font-bold px-8 py-4 text-lg rounded-lg backdrop-blur-sm transition-all"
                 >
                   <FileSearch className="w-5 h-5 mr-2" />

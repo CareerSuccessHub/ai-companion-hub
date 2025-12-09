@@ -18,7 +18,6 @@ import {
 const tools = [
   { icon: Wallet, name: "Salary Negotiator", color: "text-emerald-400", href: "/tools/salary-negotiator" },
   { icon: FileSearch, name: "Resume Reviewer", color: "text-cyan-400", href: "/tools/resume-reviewer" },
-  { icon: BotMessageSquare, name: "AI Career Mentor", color: "text-blue-400", href: "/" },
   { icon: GraduationCap, name: "Scholarship Finder", color: "text-violet-400", href: "/scholarships" },
   { icon: Rocket, name: "Side Hustle Generator", color: "text-pink-400", href: "/tools/side-hustle" },
 ]
@@ -174,12 +173,10 @@ export default function ModernHero() {
                     animate={{ rotate: [0, 15, -15, 0] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    <Sparkles className="w-6 h-6 text-cyan-400" />
-                  </motion.div>
-                  5 Free Tools
-                </h3>
-
-                <div className="space-y-4">
+                  <Sparkles className="w-6 h-6 text-cyan-400" />
+                </motion.div>
+                  4 Free Tools
+                </h3>                <div className="space-y-4">
                   {tools.map((tool, index) => (
                     <motion.div
                       key={tool.name}

@@ -40,10 +40,10 @@ export default function Home() {
           {/* Quick Stats - Honest Value Props */}
           <FadeInSection>
             <div className="grid md:grid-cols-3 gap-6 mb-12">
-              <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-emerald-400 mb-2">5 Tools</div>
-                <p className="text-gray-400">Career & income boosters</p>
-              </div>
+            <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-center">
+              <div className="text-3xl font-bold text-emerald-400 mb-2">4 Tools</div>
+              <p className="text-gray-400">Career & income boosters</p>
+            </div>
               <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-center">
                 <div className="text-3xl font-bold text-cyan-400 mb-2">AI-Powered</div>
                 <p className="text-gray-400">Google Gemini technology</p>

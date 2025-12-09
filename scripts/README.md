@@ -10,6 +10,33 @@ Automatically scrapes career advice from top blogs, rewrites with AI, and publis
 4. **Auto-posts** as MDX files to `app/blog/`
 5. **Runs weekly** via GitHub Actions (every Monday 9 AM UTC)
 
+---
+
+# Scholarship Auto-Updater
+
+Automatically refreshes scholarship listings every month with fresh opportunities.
+
+## How It Works
+
+1. **Generates scholarship data** with AI (real, legitimate scholarships)
+2. **Updates** `app/scholarships/page.tsx` with new listings
+3. **Creates backup** before updating
+4. **Runs monthly** via GitHub Actions (1st of month, 10 AM UTC)
+
+## Test Locally
+
+```bash
+$env:GEMINI_API_KEY="your-key"
+node scripts/update-scholarships.js
+```
+
+## Manual Trigger
+
+- Go to: Actions → Update Scholarships → Run workflow
+- Or wait for 1st of next month
+
+---
+
 ## Setup
 
 ### 1. Add Gemini API Key to GitHub Secrets

@@ -1,0 +1,43 @@
+name: Update Scholarships
+
+on:
+  schedule:
+    # Run on 1st of every month at 10 AM UTC
+    - cron: '0 10 1 * *'
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  update-scholarships:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Update scholarships
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/update-scholarships.js
+      
+      - name: Commit updates
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add app/scholarships/page.tsx
+          git diff --staged --quiet || git commit -m "🎓 Auto-update: Monthly scholarships refresh"
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main

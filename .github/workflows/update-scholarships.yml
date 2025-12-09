@@ -33,8 +33,8 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add app/scholarships/page.tsx
-          git diff --staged --quiet || git commit -m "🎓 Auto-update: Monthly scholarships refresh"
+          git add app/scholarships/ || true
+          git diff --staged --quiet || git commit -m "🎓 Auto-update: Monthly scholarships refresh" || echo "No changes to commit"
       
       - name: Push changes
         uses: ad-m/github-push-action@master

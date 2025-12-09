@@ -33,8 +33,8 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add app/blog/*.mdx
-          git diff --staged --quiet || git commit -m "🤖 Auto-post: Weekly blog content"
+          git add app/blog/ || true
+          git diff --staged --quiet || git commit -m "🤖 Auto-post: Weekly blog content" || echo "No changes to commit"
       
       - name: Push changes
         uses: ad-m/github-push-action@master

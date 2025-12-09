@@ -144,24 +144,35 @@ async function callGeminiAPI(prompt) {
       return null;
     }
     
+    // Log first 500 chars to debug
+    console.log('   Raw response (first 500 chars):', text.substring(0, 500));
+    
     // Remove markdown code fences if present
     let cleanText = text.trim();
     if (cleanText.startsWith('```')) {
+      console.log('   Found code fence, removing...');
       cleanText = cleanText.replace(/^```(?:json)?\s*\n?/i, '');
       cleanText = cleanText.replace(/\n?```\s*$/i, '');
       cleanText = cleanText.trim();
     }
     
+    console.log('   Clean text (first 200 chars):', cleanText.substring(0, 200));
+    
     // Try to parse the entire cleaned text as JSON first
     try {
-      return JSON.parse(cleanText);
+      const parsed = JSON.parse(cleanText);
+      console.log('   ✅ Successfully parsed JSON!');
+      return parsed;
     } catch (e) {
+      console.log('   Failed to parse as complete JSON:', e.message);
       // If that fails, try to extract JSON object
       const jsonMatch = cleanText.match(/\{[\s\S]*\}/);
       
       if (jsonMatch) {
         try {
-          return JSON.parse(jsonMatch[0]);
+          const parsed = JSON.parse(jsonMatch[0]);
+          console.log('   ✅ Successfully parsed extracted JSON!');
+          return parsed;
         } catch (e2) {
           console.error('   ⚠️  JSON parse error:', e2.message);
           return null;

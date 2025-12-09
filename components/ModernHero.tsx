@@ -147,7 +147,7 @@ export default function ModernHero() {
               </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-green-600/20 border border-green-500/30 rounded-lg">
                 <Zap className="w-4 h-4 text-green-400" />
-                <span className="text-gray-100 font-semibold">100% Free Forever</span>
+                <span className="text-gray-100 font-semibold">100% Free</span>
               </div>
             </motion.div>
           </motion.div>

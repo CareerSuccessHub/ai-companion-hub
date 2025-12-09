@@ -48,7 +48,7 @@ export default function Home() {
             </div>
             <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-center">
               <div className="text-3xl font-bold text-pink-400 mb-2">100%</div>
-              <p className="text-gray-400">Free forever</p>
+              <p className="text-gray-400">Free to use</p>
             </div>
           </div>
 

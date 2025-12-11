@@ -100,6 +100,11 @@ export default function SideHustleGenerator() {
                 <DollarSign className="text-green-400 mt-1" size={20} />
                 <div className="flex-1">
                   <h4 className="font-semibold text-blue-300 mb-2">{suggestion.title}</h4>
+                  {suggestion.aiReason && (
+                    <p className="text-pink-300 text-xs mb-2 italic">
+                      ✨ Why this matches: {suggestion.aiReason}
+                    </p>
+                  )}
                   <p className="text-gray-300 text-sm mb-3">{suggestion.description}</p>
                   <div className="flex flex-wrap gap-2 mb-3">
                     <span className="text-xs bg-blue-900/30 text-blue-300 px-2 py-1 rounded">

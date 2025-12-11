@@ -15,6 +15,7 @@ export default function SideHustleGenerator() {
     if (!skills.trim()) return;
     
     setIsLoading(true);
+    console.log('🔍 Requesting suggestions for skills:', skills, 'Time:', timeAvailable);
     
     try {
       const response = await fetch('/api/side-hustle', {
@@ -23,12 +24,21 @@ export default function SideHustleGenerator() {
         body: JSON.stringify({ skills, timeAvailable }),
       });
       
+      console.log('📡 API Response status:', response.status);
+      
       const data = await response.json();
+      console.log('📦 API Response data:', data);
+      
       if (data.suggestions) {
+        console.log('✅ Got', data.suggestions.length, 'suggestions');
+        console.log('🔍 Source:', data.source || 'unknown');
+        console.log('📋 Suggestions:', data.suggestions);
         setSuggestions(data.suggestions);
+      } else if (data.error) {
+        console.error('❌ API returned error:', data.error);
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('❌ Fetch error:', error);
     } finally {
       setIsLoading(false);
     }

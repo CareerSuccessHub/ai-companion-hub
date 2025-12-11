@@ -10,28 +10,33 @@ export async function POST(req: NextRequest) {
     skills = body.skills;
     timeAvailable = body.timeAvailable;
 
+    console.log('🎯 Side hustle request - Skills:', skills, 'Time:', timeAvailable);
+
     if (!skills) {
       return NextResponse.json({ error: 'Skills are required' }, { status: 400 });
     }
 
     if (!process.env.GEMINI_API_KEY) {
       // Fallback to keyword matching if no API key
+      console.log('⚠️ No GEMINI_API_KEY found, using keyword matching');
       const suggestions = generateSuggestions(skills.toLowerCase(), timeAvailable);
-      return NextResponse.json({ suggestions });
+      return NextResponse.json({ suggestions, source: 'keyword' });
     }
 
     // Use AI to intelligently match skills to side hustles
+    console.log('🤖 Using AI-powered matching');
     const suggestions = await generateAISuggestions(skills, timeAvailable);
 
-    return NextResponse.json({ suggestions });
+    return NextResponse.json({ suggestions, source: 'ai' });
   } catch (error: any) {
-    console.error('Side hustle API error:', error);
+    console.error('❌ Side hustle API error:', error.message);
     
     // Fallback to keyword matching on error (if skills were parsed)
     if (skills) {
       try {
+        console.log('🔄 Falling back to keyword matching due to error');
         const suggestions = generateSuggestions(skills.toLowerCase(), timeAvailable);
-        return NextResponse.json({ suggestions });
+        return NextResponse.json({ suggestions, source: 'keyword-fallback' });
       } catch {
         return NextResponse.json({ error: error.message }, { status: 500 });
       }

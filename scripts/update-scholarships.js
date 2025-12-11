@@ -7,11 +7,11 @@
 const fs = require('fs');
 const path = require('path');
 
-// Gemini models with fallback
+// Gemini model for scholarship updates
+// Use ONLY best model - quality critical for scholarship content
+// Runs once per month so won't hit 500/day quota
 const GEMINI_MODELS = [
-  'gemini-2.5-flash',
-  'gemini-2.0-flash',
-  'gemini-2.5-flash-lite'
+  'gemini-2.5-flash'  // Best quality model - mandatory for scholarship accuracy
 ];
 
 // Scholarship APIs/Sources (free, public)

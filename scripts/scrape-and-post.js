@@ -42,6 +42,13 @@ const RELEVANT_KEYWORDS = [
   'promotion',
 ];
 
+// Gemini model for blog generation
+// Use ONLY best model - quality critical for blog content
+// Runs 2x per week so won't hit 500/day quota
+const GEMINI_MODELS = [
+  'gemini-2.5-flash'  // Best quality model - mandatory for blog quality
+];
+
 /**
  * Fetch content from URL
  */

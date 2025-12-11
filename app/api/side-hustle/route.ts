@@ -20,6 +20,17 @@ export async function POST(req: NextRequest) {
 }
 
 function generateSuggestions(skills: string, timeAvailable: string) {
+  // Parse time availability for filtering
+  const getMaxHours = (time: string): number => {
+    if (!time) return 999; // No filter if not specified
+    if (time.includes('1-5')) return 5;
+    if (time.includes('5-10')) return 10;
+    if (time.includes('10-20')) return 20;
+    return 999; // 20+ hours
+  };
+  
+  const maxHours = getMaxHours(timeAvailable);
+  
   const allSuggestions = [
     {
       keywords: ['code', 'coding', 'programming', 'developer', 'web', 'app'],
@@ -103,13 +114,24 @@ function generateSuggestions(skills: string, timeAvailable: string) {
     },
   ];
 
-  // Match skills to suggestions
-  const matched = allSuggestions.filter(suggestion =>
-    suggestion.keywords.some(keyword => skills.includes(keyword))
-  );
+  // Match skills to suggestions and filter by time availability
+  const matched = allSuggestions.filter(suggestion => {
+    // Check if skills match
+    const skillMatch = suggestion.keywords.some(keyword => skills.includes(keyword));
+    if (!skillMatch) return false;
+    
+    // Filter by time if specified
+    if (timeAvailable) {
+      const minHours = parseInt(suggestion.timeRequired.split('-')[0]);
+      return minHours <= maxHours;
+    }
+    
+    return true;
+  });
 
-  // If no match, return general suggestions
+  // If no match, return general suggestions (filtered by time)
   if (matched.length === 0) {
+    const generalSuggestions = [
     return [
       {
         title: 'Online Surveys & Micro Tasks',
@@ -131,7 +153,36 @@ function generateSuggestions(skills: string, timeAvailable: string) {
           { name: 'Etsy', url: 'https://etsy.com' },
         ],
       },
+      {
+        title: 'Resell Products Online',
+        description: 'Buy discounted items and resell them on eBay, Facebook Marketplace, or Amazon.',
+        potential: '$100-1000/month',
+        timeRequired: '5-15 hours/week',
+        platforms: [
+          { name: 'eBay', url: 'https://ebay.com' },
+          { name: 'Facebook Marketplace', url: 'https://facebook.com/marketplace' },
+        ],
+      },
     ];
+    
+    // Filter general suggestions by time
+    if (timeAvailable) {
+      return generalSuggestions.filter(s => {
+        const minHours = parseInt(s.timeRequired.split('-')[0]);
+        return minHours <= maxHours;
+      });
+    }
+    
+    return generalSuggestions;
+  }
+
+  // Sort matched by time requirement (lower time first if user has limited availability)
+  if (timeAvailable && maxHours < 20) {
+    matched.sort((a, b) => {
+      const aHours = parseInt(a.timeRequired.split('-')[0]);
+      const bHours = parseInt(b.timeRequired.split('-')[0]);
+      return aHours - bHours;
+    });
   }
 
   return matched.slice(0, 3); // Return top 3 matches

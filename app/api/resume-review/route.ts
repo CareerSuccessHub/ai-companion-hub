@@ -25,7 +25,7 @@ async function callGeminiModel(
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
             temperature: 0.7,
-            maxOutputTokens: 2048,
+            maxOutputTokens: 4096,
           },
         }),
       });
@@ -106,7 +106,7 @@ export async function POST(req: NextRequest) {
 }
 
 async function analyzeResume(resumeText: string, model: string, apiKey: string) {
-  const prompt = `You are an expert career counselor and resume reviewer. Analyze this resume and provide constructive feedback.
+  const prompt = `You are a senior career counselor and ATS (Applicant Tracking System) expert with 15+ years of experience reviewing resumes for Fortune 500 companies. Analyze this resume with extreme attention to detail.
 
 Resume:
 ${resumeText}
@@ -114,15 +114,27 @@ ${resumeText}
 Provide your analysis in this exact format:
 
 STRENGTHS:
-[List 3-4 specific things this resume does well - formatting, content, keywords, achievements, etc.]
+[List 4-5 SPECIFIC things this resume does exceptionally well. Be detailed:
+- Quote exact phrases or sections that are strong
+- Explain WHY each strength works (e.g., "The bullet point 'Increased sales by 47%' is quantified and impact-driven")
+- Highlight strong action verbs, quantifiable achievements, or impressive technical skills]
 
 IMPROVEMENTS:
-[List 3-5 specific areas that need improvement - missing sections, weak bullet points, formatting issues, etc.]
+[List 5-7 SPECIFIC areas that need improvement. For each, provide:
+- The exact problem (e.g., "Experience section lacks quantifiable metrics")
+- WHY it's problematic (e.g., "ATS systems prioritize measurable achievements")
+- What section/bullet point needs work
+- Missing critical elements (summary, skills section, certifications, etc.)]
 
 RECOMMENDATIONS:
-[Provide 4-5 specific, actionable recommendations to improve this resume - exact changes to make, keywords to add, sections to restructure, etc.]
+[Provide 6-8 ACTIONABLE, step-by-step recommendations. Each should include:
+- What to change/add (be specific: "Add a 'Key Achievements' section after your summary")
+- How to implement it (e.g., "Rewrite this bullet: 'Responsible for marketing' → 'Drove 35% increase in lead generation through targeted email campaigns'")
+- Industry-specific keywords to add for ATS optimization
+- Formatting improvements (fonts, spacing, section order)
+- Content enhancements (power verbs: 'spearheaded', 'orchestrated', 'optimized')]
 
-Keep your response professional, encouraging, and specific. Focus on making this resume ATS-friendly and interview-worthy.`;
+Be brutally honest but encouraging. Think like a recruiter who sees 200+ resumes daily. This resume should stand out and pass ATS scans. Provide SPECIFIC examples and rewrites, not vague advice like 'improve formatting'.`;
 
   const fullResponse = await callGeminiModel(model, prompt, apiKey);
 

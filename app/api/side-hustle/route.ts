@@ -124,7 +124,7 @@ Be specific and accurate. No extra text, just the JSON array.`;
     const categoryMap = getCategoryDetails();
     const suggestions = aiMatches
       .map((match: any) => {
-        const category = categoryMap[match.category];
+        const category = categoryMap[match.category as keyof typeof categoryMap];
         if (!category) return null;
         
         return {

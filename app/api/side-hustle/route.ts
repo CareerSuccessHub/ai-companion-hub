@@ -105,8 +105,15 @@ Be specific and accurate. No extra text, just the JSON array.`;
       }
     );
 
+    if (!response.ok) {
+      console.error('AI API error:', response.status, await response.text());
+      throw new Error('AI API failed');
+    }
+
     const data = await response.json();
     const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    
+    console.log('AI raw response:', text);
     
     // Parse AI response
     let aiMatches = [];
@@ -114,17 +121,41 @@ Be specific and accurate. No extra text, just the JSON array.`;
       const jsonMatch = text.match(/\[[\s\S]*\]/);
       if (jsonMatch) {
         aiMatches = JSON.parse(jsonMatch[0]);
+        console.log('AI matches:', aiMatches);
+      } else {
+        console.error('No JSON array found in AI response');
+        throw new Error('AI parsing failed');
       }
     } catch (e) {
-      console.error('Failed to parse AI response, falling back to keyword matching');
+      console.error('Failed to parse AI response:', e);
       throw new Error('AI parsing failed');
     }
 
     // Map AI matches to full suggestion objects
     const categoryMap = getCategoryDetails();
+    const categoryKeys = Object.keys(categoryMap);
+    
     const suggestions = aiMatches
       .map((match: any) => {
-        const category = categoryMap[match.category as keyof typeof categoryMap];
+        // Try exact match first
+        let category = categoryMap[match.category as keyof typeof categoryMap];
+        
+        // If no exact match, try flexible matching (case-insensitive, ignore punctuation)
+        if (!category) {
+          const normalizedInput = match.category.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+          const matchedKey = categoryKeys.find(key => {
+            const normalizedKey = key.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+            return normalizedKey === normalizedInput || normalizedKey.includes(normalizedInput) || normalizedInput.includes(normalizedKey);
+          });
+          
+          if (matchedKey) {
+            category = categoryMap[matchedKey as keyof typeof categoryMap];
+            console.log(`Fuzzy matched "${match.category}" to "${matchedKey}"`);
+          } else {
+            console.error(`No match found for category: "${match.category}"`);
+          }
+        }
+        
         if (!category) return null;
         
         return {
@@ -134,7 +165,13 @@ Be specific and accurate. No extra text, just the JSON array.`;
       })
       .filter(Boolean);
 
-    return suggestions.length > 0 ? suggestions : generateSuggestions(skills, timeAvailable);
+    if (suggestions.length === 0) {
+      console.error('No valid suggestions from AI, falling back to keyword matching');
+      throw new Error('AI returned no valid categories');
+    }
+    
+    console.log(`AI generated ${suggestions.length} suggestions`);
+    return suggestions;
   } catch (error) {
     console.error('AI suggestion error:', error);
     throw error; // Will trigger fallback in main function

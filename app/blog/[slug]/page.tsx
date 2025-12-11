@@ -81,22 +81,22 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
           <div className="prose prose-invert prose-blue prose-lg max-w-none
             prose-headings:font-bold prose-headings:tracking-tight
-            prose-h2:text-3xl prose-h2:text-blue-300 prose-h2:mb-6 prose-h2:mt-12 prose-h2:pb-2 prose-h2:border-b prose-h2:border-slate-800
-            prose-h3:text-2xl prose-h3:text-blue-300 prose-h3:mb-4 prose-h3:mt-8
-            prose-h4:text-xl prose-h4:text-cyan-300 prose-h4:mb-3 prose-h4:mt-6
+            prose-h2:text-4xl prose-h2:bg-gradient-to-r prose-h2:from-blue-400 prose-h2:to-cyan-400 prose-h2:bg-clip-text prose-h2:text-transparent prose-h2:mb-8 prose-h2:mt-16 prose-h2:pb-4 prose-h2:border-b-2 prose-h2:border-slate-800
+            prose-h3:text-2xl prose-h3:text-cyan-300 prose-h3:mb-6 prose-h3:mt-10
+            prose-h4:text-xl prose-h4:text-blue-300 prose-h4:mb-4 prose-h4:mt-6
             prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
-            prose-a:text-blue-400 prose-a:font-medium prose-a:no-underline hover:prose-a:underline hover:prose-a:text-blue-300
-            prose-strong:text-blue-200 prose-strong:font-bold
-            prose-em:text-cyan-300
-            prose-ul:text-gray-300 prose-ul:mb-6 prose-ul:space-y-2
-            prose-ol:text-gray-300 prose-ol:mb-6 prose-ol:space-y-2
+            prose-a:text-blue-400 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline hover:prose-a:text-cyan-300
+            prose-strong:text-cyan-400 prose-strong:font-bold
+            prose-em:text-blue-300
+            prose-ul:text-gray-300 prose-ul:mb-6 prose-ul:space-y-3
+            prose-ol:text-gray-300 prose-ol:mb-6 prose-ol:space-y-3
             prose-li:mb-2 prose-li:text-lg prose-li:leading-relaxed
-            prose-li:marker:text-blue-400
-            prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-slate-900/50 prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:italic prose-blockquote:text-gray-400
+            prose-li:marker:text-cyan-400 prose-li:marker:font-bold
+            prose-blockquote:border-l-4 prose-blockquote:border-cyan-500 prose-blockquote:bg-gradient-to-r prose-blockquote:from-blue-900/30 prose-blockquote:to-slate-900/30 prose-blockquote:pl-6 prose-blockquote:pr-4 prose-blockquote:py-4 prose-blockquote:rounded-r-lg prose-blockquote:text-blue-200 prose-blockquote:not-italic prose-blockquote:font-medium
             prose-code:text-cyan-400 prose-code:bg-slate-800 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono
             prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-pre:rounded-lg
             prose-img:rounded-lg prose-img:shadow-xl
-            prose-hr:border-slate-800 prose-hr:my-12
+            prose-hr:border-cyan-500/30 prose-hr:my-16
           ">
             <MDXRemote source={content} />
           </div>

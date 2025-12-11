@@ -1,153 +1,300 @@
-# AI Student Success Hub - Project Roadmap
+# AI Career Success Hub - Project Roadmap
 
 ## 🎯 Project Vision
-Build a passive income micro-startup for students featuring AI mentorship, side hustle suggestions, scholarships, and career tools. Revenue through Ko-fi donations, affiliate commissions, and Google AdSense.
+Build a multi-revenue AI platform helping students and young professionals land jobs, manage finances, and boost productivity. Revenue through Ko-fi donations, affiliate commissions, Google AdSense, and premium subscriptions.
 
-**Time Commitment:** 1 hour/day  
-**Business Model:** Donations + Ads + Affiliate Commissions  
-**Target Audience:** College students seeking career growth and side income  
-**Current Status:** ✅ LIVE at ai-companion-hub.vercel.app
+**Team:** 3 members (2 developers, 1 marketing specialist)  
+**Business Model:** Ads + Affiliate Commissions + Donations + Premium SaaS (future)  
+**Current Audience:** College students seeking career growth  
+**Expansion Plan:** Young professionals, freelancers, career changers (2026)  
+**Current Status:** ✅ LIVE at ai-companion-hub-self.vercel.app  
+**Launch Date:** December 9, 2025
 
 ---
 
-## ✅ Phase 1: Core Platform (COMPLETED ✓)
+## ✅ Phase 1: Core Platform (COMPLETED ✓) - Dec 1-8, 2025
 - [x] Next.js 14 setup with TypeScript & Tailwind CSS
 - [x] Professional single-theme design (blue/slate dark theme)
 - [x] Gemini AI integration (gemini-2.5-flash model)
-- [x] AI Career Mentor chat interface
+- [x] AI Career Mentor chat interface with floating chat button
 - [x] Side Hustle Generator with 7+ skill categories
+- [x] Salary Negotiation Script Generator (15K more blog tie-in)
 - [x] Affiliate platform links (Fiverr, Upwork, etc.)
 - [x] Clean, professional branding
 - [x] GitHub repository setup
 
+**Completed:** December 8, 2025  
 **Status:** ✅ Fully deployed and functional
 
 ---
 
-## ✅ Phase 2: Deployment & SEO (COMPLETED ✓)
+## ✅ Phase 2: Deployment & SEO (COMPLETED ✓) - Dec 9, 2025
 - [x] Deploy to Vercel (free hosting)
-- [x] Domain: ai-companion-hub.vercel.app
+- [x] Production domain: ai-companion-hub-self.vercel.app
 - [x] SEO optimization
   - [x] Meta tags (title, description, OG tags, Twitter cards)
   - [x] Structured data (JSON-LD for WebApplication)
-  - [x] Sitemap.xml
+  - [x] Sitemap.xml with auto-generated blog posts
   - [x] Robots.txt
-  - [x] Performance optimization
+  - [x] Google Search Console verification
+  - [x] Performance optimization (Lighthouse 90+)
 - [x] Analytics setup (Google Analytics 4 - G-1W1HNJGT2G)
 - [x] Legal pages (Privacy Policy, Terms of Service, About)
 
+**Completed:** December 9, 2025  
 **Status:** ✅ Fully indexed and tracking
 
 ---
 
-## 💰 Phase 3: Monetization Setup (IN PROGRESS 🔄)
-- [x] Ko-fi donation button (ko-fi.com/studentsuccesshub)
-- [x] AdSense-ready layout with placeholder zones
-- [x] Affiliate disclosure on all pages
-- [ ] Google AdSense integration (pending traffic: need 500-1K visitors)
-- [ ] Fiverr affiliate links (applied, pending approval 2-4 days)
-- [ ] Skillshare affiliate links (applied, pending approval 2-4 days)
-- [ ] Track affiliate conversions in GA4
+## ✅ Phase 3: Value-Add Features (COMPLETED ✓) - Dec 9-11, 2025
 
-**Current Revenue:** $0 (launched Dec 9, 2025)  
-**Revenue Goal:** $100/month in 3 months, $500/month in 6 months
-
----
-
-## ✅ Phase 4: Value-Add Features (70% COMPLETE)
 ### ✅ Resume Reviewer (LIVE)
 - [x] AI-powered resume analysis using Gemini
 - [x] Structured feedback (strengths, improvements, recommendations)
-- [x] Color-coded sections
-- [x] Copy-paste interface
+- [x] Color-coded sections with gradient styling
+- [x] Copy-paste interface, no file upload needed
 
 ### ✅ Scholarship Finder (LIVE)
 - [x] Curated database of 10+ scholarships ($200K+ total value)
-- [x] Search functionality
+- [x] Search functionality by name or keyword
 - [x] Filter by category (Merit, Need-Based, Major-Specific, Demographic)
-- [x] Filter by major
+- [x] Filter by major (CS, Engineering, Business, etc.)
+- [x] Auto-refresh monthly via GitHub Actions
 - [x] Display: amount, deadline, GPA requirement, eligibility
 - [x] Application tips section
 - [x] Direct "Apply Now" links
 
 ### ✅ Blog System (LIVE)
-- [x] Blog landing page with post grid
-- [x] First post: "10 Side Hustles for Students" (2,500+ words)
+- [x] Blog landing page with post grid layout
+- [x] Manual blogs: "10 Side Hustles" (2,500+ words), "Salary Negotiation Script" (3,000+ words)
+- [x] Auto-generated blogs: 2 posts/week via GitHub Actions (Mondays, Gemini API)
+- [x] Dynamic [slug] route for MDX rendering with gradient headings
 - [x] SEO optimization for high-volume keywords
 - [x] Internal linking to tools
-- [ ] Write 3 more blog posts this week (see content plan below)
+- [x] Ad space placeholders (728x90 leaderboard, above/below content)
 
 ### ✅ Navigation System (LIVE)
 - [x] Sticky navigation bar on all pages
 - [x] Mobile-responsive hamburger menu
 - [x] Active page highlighting
-- [x] Links: Home, Blog, Scholarships
+- [x] Links: Home, Blog, Scholarships, Resume Reviewer
 
-### 🔄 Planned Features (Next Phase)
-- [ ] Interview Prep AI Coach
-- [ ] GPA Calculator
-- [ ] Study Planner with AI suggestions
-- [ ] Student Deals aggregator
-- [ ] Job Board (entry-level + remote filter)
+**Completed:** December 11, 2025  
+**Status:** ✅ All features deployed and tested
 
 ---
 
-## 📊 Phase 5: Traffic & Growth (CURRENT FOCUS 🎯)
-**Goal:** 1,000 visitors in 30 days to qualify for AdSense
+## 💰 Phase 4: Monetization Setup (CURRENT - Dec 11-31, 2025)
+- [x] Ko-fi donation button (ko-fi.com/studentsuccesshub)
+- [x] AdSense-ready layout with placeholder zones
+- [x] Affiliate disclosure on all pages
+- [ ] Google AdSense integration (pending traffic: need 500-1K visitors)
+- [ ] Fiverr affiliate links (applied Dec 9, pending approval)
+- [ ] Skillshare affiliate links (applied Dec 9, pending approval)
+- [ ] Track affiliate conversions in GA4 custom events
+- [ ] Email capture (Mailchimp free tier, 500 subscribers)
 
-### Week 1 (Dec 9-15): Foundation
-- [ ] Email 20 friends/classmates with tool link (personal DMs, low pressure)
-- [ ] LinkedIn post: "Built a free AI tool for students..." 
-- [ ] Create Pinterest account + pin 3 graphics (scholarship DB, blog post, resume tool)
-- [ ] Join 5 student Facebook groups (engage genuinely)
-- [ ] Email university career center: "Would you share this with students?"
-- [ ] Set up Google My Business listing
-
-**Target:** 50-100 visitors
-
-### Week 2 (Dec 16-22): Content & SEO
-- [ ] Write 3 new blog posts (see content calendar below)
-- [ ] Answer 5 Quora questions (link to tools naturally)
-- [ ] Share blog posts on LinkedIn + Pinterest
-- [ ] Monitor Google Analytics (identify top traffic sources)
-- [ ] Optimize pages based on bounce rate
-
-**Target:** 150-250 total visitors
-
-### Week 3 (Dec 23-29): Expansion
-- [ ] Guest post on student blog/subreddit (if allowed)
-- [ ] Create 3 TikTok/YouTube Shorts (screen record using tools)
-- [ ] Share on student Discord servers (10+ servers)
-- [ ] Email 20 more classmates
-- [ ] Monitor affiliate link clicks in GA4
-
-**Target:** 300-500 total visitors
-
-### Week 4 (Dec 30-Jan 5): Scale
-- [ ] Launch on Product Hunt (prepare logo, screenshots, tagline)
-- [ ] Repurpose blog posts into Twitter threads
-- [ ] Create downloadable resource (scholarship checklist PDF)
-- [ ] Analyze which tools get most engagement
-- [ ] Double down on best-performing traffic sources
-
-**Target:** 500-1,000 total visitors (AdSense ready!)
+**Current Revenue:** $0 (launched Dec 9, 2025)  
+**Target:** First $1 by Dec 20, $50 by Dec 31  
+**Goal:** $100/month in 90 days, $500/month in 6 months, $2,000/month in 12 months
 
 ---
 
-## 📝 Content Calendar (Next 7 Days)
+## 📊 Phase 5: Traffic Generation (CURRENT FOCUS 🎯) - Dec 11-31, 2025
+**Goal:** 1,000 visitors by December 31 to qualify for AdSense  
+**Team:** 3 members (2 devs + 1 marketing specialist)
 
-### Blog Post Ideas (Write 3 this week):
-1. **"How to Get Your First Remote Job as a Student"** (2,000+ words)
-   - SEO: "remote jobs for students", "online jobs for college students"
-   - Volume: 15K+ monthly searches
-   - Link to: Side Hustle Generator, Resume Reviewer
+### Developer 1 (Lead) - Weekly Tasks:
+- [ ] Monitor site performance (Lighthouse, Core Web Vitals)
+- [ ] Fix bugs reported by users (GitHub Issues)
+- [ ] Add 2 new scholarships per week (manual curation)
+- [ ] Monitor Gemini API usage (daily limit: 1,500 requests)
+- [ ] Review auto-generated blog posts for quality
+- [ ] Code reviews for Developer 2
 
-2. **"Resume Mistakes That Cost Students Job Offers"** (1,500+ words)
-   - SEO: "student resume mistakes", "college resume tips"
-   - Volume: 8K+ monthly searches
-   - Link to: Resume Reviewer, AI Mentor
+### Developer 2 (Content/Backend) - Weekly Tasks:
+- [ ] Write 3 blog posts per week (SEO-optimized, 1,500+ words)
+- [ ] Optimize site speed (lazy loading, image compression)
+- [ ] Set up email capture system (Mailchimp integration)
+- [ ] Create downloadable resources (scholarship checklist PDF)
+- [ ] Implement A/B tests (Ko-fi button placement)
 
-3. **"How I Found $50,000 in Scholarships (Step-by-Step)"** (2,500+ words)
+### Marketing Specialist (Traffic Driver) - Daily Tasks:
+- [ ] Post on Reddit 3x/week (r/careerguidance, r/resumes, r/jobs)
+- [ ] LinkedIn content daily (career tips + tool screenshots)
+- [ ] Engage in 10 Facebook student groups
+- [ ] Answer 5 Quora questions per week (link to tools naturally)
+- [ ] Create/schedule social content calendar (30 days ahead)
+- [ ] Monitor GA4 analytics (identify top traffic sources)
+- [ ] Report weekly metrics to team (visitors, conversions, top pages)
+
+**Weekly Targets:**
+- Week 1 (Dec 11-17): 100 visitors
+- Week 2 (Dec 18-24): 250 visitors  
+- Week 3 (Dec 25-31): 500 visitors
+- **Total by Dec 31:** 850-1,000 visitors
+
+**Detailed strategy:** See TRAFFIC_STRATEGY.md and MARKET_TRENDS_2025.md
+
+---
+
+## 🚀 Phase 6: Writing Tools Expansion (PLANNED - Jan 2026)
+**Condition:** Only if Phase 5 hits 1,000+ monthly visitors  
+**Target Audience:** Students + Freelance writers  
+**Timeline:** 2-3 weeks development
+
+### Planned Tools:
+- [ ] AI Paraphrasing Tool (avoid plagiarism, improve clarity)
+- [ ] Citation Generator (MLA, APA, Chicago formats)
+- [ ] Essay Outliner (topic + thesis → structured outline)
+- [ ] Grammar Checker Lite (link to Grammarly Premium affiliate)
+
+**Monetization:**
+- Grammarly affiliate ($0.20-1 per click, $10-20 per premium signup)
+- Display ads (writing tools = $3-8 CPM vs $1-3 career)
+- Freemium: 5 uses/day free, unlimited for $4.99/month
+
+**Success Metrics:**
+- 2,000 monthly visitors in first 30 days
+- 10% use writing tools (200 users)
+- 5% click Grammarly affiliate (100 clicks = $20-100)
+
+---
+
+## 💰 Phase 7: Finance Tools (PLANNED - Feb 2026)
+**Condition:** Only if Phase 6 validated (2K+ visitors on writing tools)  
+**Target Audience:** Students + Recent graduates + Young professionals  
+**Timeline:** 3-4 weeks development
+
+### Planned Tools:
+- [ ] Student Loan Calculator (debt, interest → repayment strategy)
+- [ ] Budget Planner for Students (income, expenses → savings plan)
+- [ ] Textbook Price Finder (ISBN → cheapest vendor with affiliate links)
+- [ ] Cashback Comparison Tool (Rakuten vs Honey vs Capital One)
+
+**Monetization (HIGH POTENTIAL):**
+- Credit card affiliates: Discover It Student ($50-100 per approval)
+- Loan refinancing: SoFi, Earnest ($100-300 per referral)
+- Rakuten cashback: $25 per signup
+- Textbook affiliates: Amazon Associates (4-8% commission)
+- Display ads: Finance keywords pay $2-5 CPC (highest tier)
+
+**Success Metrics:**
+- 3,000 monthly visitors in first 30 days
+- $300-800/month from fintech affiliate commissions alone
+- 50+ email signups (finance newsletter)
+
+---
+
+## 🎯 Phase 8: Productivity Suite (PLANNED - Mar 2026)
+**Condition:** Only if traffic hits 5,000+ monthly visitors  
+**Target Audience:** Students + Remote workers + Freelancers  
+**Timeline:** 4 weeks development (needs more complex features)
+
+### Planned Tools:
+- [ ] AI Study Planner (exams, assignments → personalized schedule)
+- [ ] Pomodoro Focus Timer (25/5 intervals + Spotify integration)
+- [ ] Habit Tracker (daily goals → streak tracking)
+- [ ] Goal Setting Assistant (SMART goals → action steps)
+
+**Monetization:**
+- Premium themes: $1.99/month (unlock custom colors, sounds)
+- Statistics dashboard: $2.99/month (track productivity over time)
+- Spotify Premium affiliate: $5-10 per trial signup
+- Sponsorships: Partner with Notion ($500-1K/month), Todoist, RescueTime
+
+**Success Metrics:**
+- Daily active users (DAUs) = 20%+ of MAUs (recurring use)
+- Premium conversion: 3-5% (150-250 users @ $2.99 = $450-750/month)
+- Retention: 60%+ return within 7 days
+
+---
+
+## 🛠️ Planned Features (Phase 6-8 Expansions)
+- [ ] Interview Prep AI Coach (generates questions, evaluates answers)
+- [ ] GPA Calculator (course grades → cumulative GPA)
+- [ ] Cover Letter Generator (job description → personalized letter)
+- [ ] Student Deals Aggregator (Amazon Prime Student, Spotify, Apple Music)
+- [ ] Job Board (entry-level + remote filter, affiliate with Indeed/ZipRecruiter)
+
+---
+
+## 📝 Content Calendar (December 2025)
+
+### Blog Posts (Developer 2 - 3 posts/week):
+
+**Week 1 (Dec 11-17):**
+1. "How to Get Your First Remote Job as a Student" (2,000+ words, SEO: "remote jobs for students")
+2. "Resume Mistakes That Cost Students Job Offers" (1,500+ words, SEO: "student resume mistakes")
+3. "How I Found $50,000 in Scholarships (Step-by-Step)" (2,500+ words, SEO: "scholarship search tips")
+
+**Week 2 (Dec 18-24):**
+4. "AI vs Human Resume Reviews: Which is Better?" (1,800+ words, SEO: "AI resume reviewer")
+5. "Side Hustles That Actually Pay in 2025" (2,000+ words, SEO: "best side hustles 2025")
+6. "Salary Negotiation Scripts That Got Students $10K+ More" (2,200+ words, SEO: "salary negotiation examples")
+
+**Week 3 (Dec 25-31):**
+7. "Landing Your First Internship: Complete Guide" (2,500+ words, SEO: "how to get internship")
+8. "Student Loan Repayment Strategies" (1,800+ words, SEO: "student loan payment calculator")
+9. "Free Career Resources Every Student Should Know" (1,500+ words, SEO: "free career tools")
+
+**Auto-Generated (GitHub Actions - Mondays 9 AM UTC):**
+- 2 blog posts per week (career advice topics, Gemini API)
+- Topics from trending searches: interview tips, career changes, job search strategies
+
+### Social Media Posts (Marketing Specialist - Daily):
+
+**LinkedIn (Daily):**
+- Career tips (Monday, Wednesday, Friday)
+- Tool screenshots with testimonials (Tuesday, Thursday)
+- Blog post shares (Saturday, Sunday)
+
+**Reddit (3x/week - Tuesday, Thursday, Saturday):**
+- r/careerguidance: Share personal career journey + tool
+- r/resumes: Offer free AI resume reviews
+- r/jobs: Share salary negotiation blog post
+
+**Quora (5 answers/week):**
+- "Best resume review tools?" → Link to Resume Reviewer
+- "How to find scholarships?" → Link to Scholarship Finder
+- "Salary negotiation tips?" → Link to blog post + tool
+
+**Facebook Groups (Daily engagement):**
+- Join 10 student groups (university-specific + general)
+- Answer questions genuinely, mention tools when relevant
+
+---
+
+## 📈 Success Metrics & KPIs
+
+### Weekly Tracking (Marketing Specialist Reports):
+| Metric | Week 1 | Week 2 | Week 3 | Week 4 | Target |
+|--------|--------|--------|--------|--------|--------|
+| Total Visitors | - | - | - | - | 1,000 |
+| Blog Traffic % | - | - | - | - | 30% |
+| Tool Usage (Resume) | - | - | - | - | 50+ |
+| Tool Usage (Scholarship) | - | - | - | - | 100+ |
+| Ko-fi Button Clicks | - | - | - | - | 10+ |
+| Avg Session Duration | - | - | - | - | 2:30+ |
+| Bounce Rate | - | - | - | - | <65% |
+
+### 90-Day Revenue Projections:
+| Month | Visitors | Revenue | Breakdown |
+|-------|----------|---------|-----------|
+| Dec 2025 | 500-1,000 | $10-30 | Ko-fi donations only |
+| Jan 2026 | 2,000-3,000 | $100-200 | AdSense ($50), Affiliates ($30), Ko-fi ($20) |
+| Feb 2026 | 5,000-8,000 | $300-500 | AdSense ($200), Affiliates ($80), Ko-fi ($50) |
+| Mar 2026 | 10,000+ | $500-800 | AdSense ($400), Affiliates ($150), Ko-fi ($100) |
+
+### 12-Month Platform Growth:
+| Metric | 3 Months | 6 Months | 12 Months |
+|--------|----------|----------|-----------|
+| Monthly Visitors | 5,000 | 15,000 | 50,000 |
+| Revenue/Month | $300 | $1,000 | $3,000 |
+| Blog Posts | 20 | 40 | 80 |
+| Email Subscribers | 100 | 500 | 2,000 |
+| Premium Users | 0 | 10 | 150 |
+| Tool Categories | 1 (Career) | 2 (Career + Writing) | 3 (Career + Writing + Finance) |
    - SEO: "how to find scholarships", "scholarship search tips"
    - Volume: 20K+ monthly searches
    - Link to: Scholarship Finder
@@ -316,9 +463,80 @@ Build a passive income micro-startup for students featuring AI mentorship, side 
 
 ---
 
-**Last Updated:** December 9, 2025 (Post-Launch)  
-**Next Review:** December 16, 2025  
-**Current Phase:** Traffic Generation & Content Creation
+## 🔄 Current Sprint (Week of Dec 11-17, 2025)
+
+### Team Assignments:
+
+**Developer 1 (Lead):**
+- [ ] Review auto-generated blog posts (Dec 16, 9 AM UTC)
+- [ ] Fix any reported bugs (GitHub Issues)
+- [ ] Monitor Gemini API usage (check daily)
+- [ ] Add 2 new scholarships to database
+
+**Developer 2 (Content/Backend):**
+- [ ] Write "Remote Job" blog post (Mon)
+- [ ] Write "Resume Mistakes" blog post (Wed)
+- [ ] Write "Scholarships" blog post (Fri)
+- [ ] Optimize images (lazy loading, WebP format)
+- [ ] Set up Mailchimp email capture
+
+**Marketing Specialist:**
+- [ ] Post on r/careerguidance (Tue, Thu, Sat)
+- [ ] LinkedIn daily posts (career tips + tool demos)
+- [ ] Join 10 Facebook student groups (Mon-Tue)
+- [ ] Answer 5 Quora questions (throughout week)
+- [ ] Weekly metrics report (Sun evening)
+
+**Target:** 100 visitors by Dec 17
+
+---
+
+## 🚨 Risk Management
+
+### Technical Risks:
+- **Gemini API Limit:** 1,500 requests/day resets midnight PT (4 PM Philippine Time)
+  - **Mitigation:** Cache responses, implement rate limiting
+- **Vercel Build Time:** Free tier = 100 hours/month
+  - **Mitigation:** Optimize build process, use ISR for blog posts
+- **Database:** Currently using static JSON files
+  - **Mitigation:** Scale to Vercel KV or Supabase when >10K visitors
+
+### Business Risks:
+- **Seasonal Traffic:** Students leave in summer (June-Aug = -40% traffic)
+  - **Mitigation:** Expand to young professionals (Phase 7)
+- **Affiliate Delays:** Fiverr/Skillshare still pending approval
+  - **Mitigation:** Add more affiliate programs (Coursera, Udemy, Amazon)
+- **Single Revenue Stream:** Currently only Ko-fi donations
+  - **Mitigation:** Prioritize AdSense application (need 500 visitors)
+
+### Competition Risks:
+- **AI Resume Tools:** VMock, Rezi, Jobscan (paid competitors)
+  - **Advantage:** We're free + multi-tool platform
+- **Career Advice Blogs:** Indeed, Glassdoor, The Muse
+  - **Advantage:** AI-powered tools, not just articles
+
+---
+
+## 💡 Future Expansion Ideas (Phase 9-10 - 2026)
+
+### Phase 9: Mobile App (Q3 2026)
+- React Native app (iOS + Android)
+- Push notifications for scholarship deadlines
+- Offline access to saved resumes, career advice
+- In-app purchases ($4.99/month premium)
+
+### Phase 10: B2B SaaS (Q4 2026)
+- University career centers (bulk licenses)
+- Corporate recruitment tools (candidate screening)
+- Pricing: $500-2,000/month per institution
+
+---
+
+**Last Updated:** December 11, 2025  
+**Next Review:** December 18, 2025 (weekly team sync)  
+**Current Phase:** Phase 5 - Traffic Generation  
+**Team:** 3 members (2 developers, 1 marketing specialist)  
+**Live Site:** https://ai-companion-hub-self.vercel.app
 
 ---
 

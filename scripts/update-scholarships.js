@@ -7,6 +7,13 @@
 const fs = require('fs');
 const path = require('path');
 
+// Gemini models with fallback
+const GEMINI_MODELS = [
+  'gemini-2.5-flash',
+  'gemini-2.0-flash',
+  'gemini-2.5-flash-lite'
+];
+
 // Scholarship APIs/Sources (free, public)
 const SCHOLARSHIP_SOURCES = [
   // ScholarshipOwl API (if available) or scrape these sites:
@@ -27,16 +34,21 @@ const CATEGORIES = [
 ];
 
 /**
- * Generate scholarship data with AI
- * Since most scholarship sites don't have free APIs, we'll generate
- * real scholarship info from research + AI enhancement
+ * Generate scholarship data with AI using specific model
  */
-async function generateScholarshipData() {
+async function generateScholarshipData(model, retries = 2) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     console.error('❌ GEMINI_API_KEY not found');
     return null;
   }
+
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    if (attempt > 0) {
+      const delay = Math.pow(2, attempt - 1) * 1000; // 1s, 2s
+      console.log(`   ⏳ Retry attempt ${attempt} after ${delay}ms...`);
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
 
   const prompt = `Generate 20 real, legitimate college scholarships for US students in 2025. Mix of different types (merit, need-based, STEM, minority, etc.).
 
@@ -65,67 +77,106 @@ Return as JSON array:
   ...
 ]`;
 
-  try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{ text: prompt }]
-          }],
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 8000,
-          }
-        })
-      }
-    );
+    try {
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{
+              parts: [{ text: prompt }]
+            }],
+            generationConfig: {
+              temperature: 0.7,
+              maxOutputTokens: 8000,
+            }
+          })
+        }
+      );
 
-    const data = await response.json();
-    
-    // Check for quota/error
-    if (data.error) {
-      console.error('❌ API Error:', data.error.message);
-      if (data.error.code === 429) {
-        console.log('\n⏰ Quota exceeded. Wait 1 hour and try again.');
-        console.log('   Or run on 1st of month via GitHub Actions (auto-scheduled)');
+      if (!response.ok) {
+        const errorData = await response.json();
+        const errorMsg = errorData.error?.message || 'Unknown error';
+        
+        if (response.status === 503 || response.status === 429) {
+          console.error(`   ⚠️  ${model} overloaded (${response.status}): ${errorMsg}`);
+          if (attempt === retries) {
+            throw new Error(`${model} failed after ${retries + 1} attempts: ${errorMsg}`);
+          }
+          continue; // Retry
+        }
+        
+        throw new Error(`API error ${response.status}: ${errorMsg}`);
       }
-      return null;
-    }
+
+      const data = await response.json();
     
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-    
-    if (!text) {
-      console.error('No response from AI');
-      return null;
-    }
-    
-    // Remove markdown code fences if present
-    let cleanText = text.trim();
-    if (cleanText.startsWith('```')) {
-      cleanText = cleanText.replace(/^```(?:json)?\s*\n?/i, '');
-      cleanText = cleanText.replace(/\n?```\s*$/i, '');
-    }
-    
-    // Extract JSON array
-    const jsonMatch = cleanText.match(/\[[\s\S]*\]/);
-    
-    if (jsonMatch) {
-      try {
-        return JSON.parse(jsonMatch[0]);
-      } catch (e) {
-        console.error('JSON parse error:', e.message);
-        return null;
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      
+      if (!text) {
+        console.error('   ⚠️  No text in response');
+        if (attempt === retries) return null;
+        continue; // Retry
+      }
+      
+      // Remove markdown code fences if present
+      let cleanText = text.trim();
+      if (cleanText.startsWith('```')) {
+        cleanText = cleanText.replace(/^```(?:json)?\s*\n?/i, '');
+        cleanText = cleanText.replace(/\n?```\s*$/i, '');
+      }
+      
+      // Extract JSON array
+      const jsonMatch = cleanText.match(/\[[\s\S]*\]/);
+      
+      if (jsonMatch) {
+        try {
+          return JSON.parse(jsonMatch[0]);
+        } catch (e) {
+          console.error(`   ⚠️  JSON parse error (attempt ${attempt + 1}):`, e.message);
+          if (attempt === retries) return null;
+          continue; // Retry
+        }
+      }
+      
+      console.error('   ⚠️  No JSON array found in response');
+      if (attempt === retries) return null;
+      continue; // Retry
+    } catch (error) {
+      console.error(`   ❌ ${model} error (attempt ${attempt + 1}):`, error.message);
+      if (attempt === retries) {
+        throw error; // Final attempt failed
       }
     }
-    
-    return null;
-  } catch (error) {
-    console.error('AI error:', error.message);
-    return null;
   }
+  
+  return null; // All retries exhausted
+}
+
+/**
+ * Generate scholarships with model fallback
+ */
+async function generateScholarshipsWithFallback() {
+  for (const model of GEMINI_MODELS) {
+    try {
+      console.log(`🤖 Attempting with ${model}...`);
+      const result = await generateScholarshipData(model);
+      if (result && result.length > 0) {
+        console.log(`✅ Success with ${model} - Generated ${result.length} scholarships`);
+        return result;
+      }
+    } catch (error) {
+      console.error(`✗ ${model} failed:`, error.message);
+      const isLastModel = GEMINI_MODELS.indexOf(model) === GEMINI_MODELS.length - 1;
+      if (isLastModel) {
+        throw new Error(`All models failed. Last error: ${error.message}`);
+      }
+      console.log(`⏭️  Trying next model...`);
+    }
+  }
+  
+  throw new Error('All models exhausted with no result');
 }
 
 /**
@@ -176,8 +227,8 @@ async function main() {
   backupCurrentData();
   
   // Generate fresh scholarship data
-  console.log('🤖 Generating scholarship data with AI...');
-  const scholarships = await generateScholarshipData();
+  console.log('🤖 Generating scholarship data with AI...\n');
+  const scholarships = await generateScholarshipsWithFallback();
   
   if (!scholarships || scholarships.length === 0) {
     console.error('❌ Failed to generate scholarships');

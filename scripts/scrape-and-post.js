@@ -107,56 +107,79 @@ function isRelevant(article) {
 }
 
 /**
- * Call Gemini API
+ * Call Gemini API with specific model
  */
-async function callGeminiAPI(prompt) {
+async function callGeminiAPI(prompt, model, retries = 2) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     console.error('❌ GEMINI_API_KEY not found in environment');
     return null;
   }
 
-  try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{ text: prompt }]
-          }],
-          generationConfig: {
-            temperature: 0.9,
-            topK: 40,
-            topP: 0.95,
-            maxOutputTokens: 8000,
-          }
-        })
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      if (attempt > 0) {
+        const delay = Math.pow(2, attempt - 1) * 1000; // 1s, 2s
+        console.log(`   ⏳ Retry attempt ${attempt} after ${delay}ms...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
       }
-    );
 
-    const data = await response.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{
+              parts: [{ text: prompt }]
+            }],
+            generationConfig: {
+              temperature: 0.9,
+              topK: 40,
+              topP: 0.95,
+              maxOutputTokens: 8000,
+            }
+          })
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        const errorMsg = errorData.error?.message || 'Unknown error';
+        
+        if (response.status === 503 || response.status === 429) {
+          console.error(`   ⚠️  ${model} overloaded (${response.status}): ${errorMsg}`);
+          if (attempt === retries) {
+            throw new Error(`${model} failed after ${retries + 1} attempts: ${errorMsg}`);
+          }
+          continue; // Retry
+        }
+        
+        throw new Error(`API error ${response.status}: ${errorMsg}`);
+      }
+
+      const data = await response.json();
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      
+      if (!text) {
+        console.error('   ⚠️  No text in response:', JSON.stringify(data, null, 2));
+        if (attempt === retries) return null;
+        continue; // Retry
+      }
     
-    if (!text) {
-      console.error('   ⚠️  No text in response:', JSON.stringify(data, null, 2));
-      return null;
-    }
-    
-    // Log first 500 chars to debug
-    console.log('   Raw response (first 500 chars):', text.substring(0, 500));
-    
-    // Remove markdown code fences if present
-    let cleanText = text.trim();
-    if (cleanText.startsWith('```')) {
-      console.log('   Found code fence, removing...');
-      cleanText = cleanText.replace(/^```(?:json)?\s*\n?/i, '');
-      cleanText = cleanText.replace(/\n?```\s*$/i, '');
-      cleanText = cleanText.trim();
-    }
-    
-    console.log('   Clean text (first 200 chars):', cleanText.substring(0, 200));
+      // Log first 500 chars to debug
+      console.log('   Raw response (first 500 chars):', text.substring(0, 500));
+      
+      // Remove markdown code fences if present
+      let cleanText = text.trim();
+      if (cleanText.startsWith('```')) {
+        console.log('   Found code fence, removing...');
+        cleanText = cleanText.replace(/^```(?:json)?\s*\n?/i, '');
+        cleanText = cleanText.replace(/\n?```\s*$/i, '');
+        cleanText = cleanText.trim();
+      }
+      
+      console.log('   Clean text (first 200 chars):', cleanText.substring(0, 200));
     
     // Try to parse the entire cleaned text as JSON first
     try {
@@ -180,12 +203,42 @@ async function callGeminiAPI(prompt) {
       }
     }
     
-    console.error('   ⚠️  No valid JSON found');
-    return null;
-  } catch (error) {
-    console.error('AI call error:', error.message);
-    return null;
+      console.error('   ⚠️  No valid JSON found');
+      return null;
+    } catch (error) {
+      console.error(`   ❌ ${model} error (attempt ${attempt + 1}):`, error.message);
+      if (attempt === retries) {
+        throw error; // Final attempt failed
+      }
+    }
   }
+  
+  return null; // All retries exhausted
+}
+
+/**
+ * Call Gemini with model fallback
+ */
+async function callGeminiWithFallback(prompt) {
+  for (const model of GEMINI_MODELS) {
+    try {
+      console.log(`   🤖 Attempting with ${model}...`);
+      const result = await callGeminiAPI(prompt, model);
+      if (result) {
+        console.log(`   ✅ Success with ${model}`);
+        return result;
+      }
+    } catch (error) {
+      console.error(`   ✗ ${model} failed:`, error.message);
+      const isLastModel = GEMINI_MODELS.indexOf(model) === GEMINI_MODELS.length - 1;
+      if (isLastModel) {
+        throw new Error(`All models failed. Last error: ${error.message}`);
+      }
+      console.log(`   ⏭️  Trying next model...`);
+    }
+  }
+  
+  throw new Error('All models exhausted with no result');
 }
 
 /**
@@ -221,7 +274,7 @@ Provide response as JSON:
   "takeaways": ["key point 1", "key point 2", "key point 3"]
 }`;
 
-  return await callGeminiAPI(prompt);
+  return await callGeminiWithFallback(prompt);
 }
 
 /**
@@ -258,7 +311,7 @@ Provide response as JSON:
   "takeaways": ["key point 1", "key point 2", "key point 3"]
 }`;
 
-  return await callGeminiAPI(prompt);
+  return await callGeminiWithFallback(prompt);
 }
 
 /**

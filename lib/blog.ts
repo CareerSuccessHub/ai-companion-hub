@@ -55,7 +55,7 @@ export function getAllBlogPosts(): BlogPost[] {
     }
     
     // Handle folder-based blog posts (original posts with page.tsx)
-    else if (stat.isDirectory()) {
+    else if (stat.isDirectory() && !item.startsWith('[')) {
       const pagePath = path.join(itemPath, 'page.tsx');
       if (fs.existsSync(pagePath)) {
         // Read the page.tsx file to extract metadata

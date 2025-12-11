@@ -200,13 +200,24 @@ Requirements:
 - 800-1200 words
 - Practical, actionable advice with specific examples
 - Include numbers, templates, step-by-step instructions
-- Casual, engaging tone
+- Casual, engaging tone (conversational but professional)
 - Focus on income/career growth
+
+FORMATTING REQUIREMENTS (CRITICAL):
+- Use ## for main section headings (4-6 sections)
+- Use ### for subsections if needed
+- Use **bold text** for key terms and important points
+- Use bullet points with * for lists
+- Use numbered lists (1. 2. 3.) for sequential steps
+- Include > blockquotes for important tips or warnings
+- Add visual breaks with --- between major sections
+- Use *italics* for emphasis on phrases
+- Make it visually engaging with varied formatting
 
 Provide response as JSON:
 {
   "title": "SEO-friendly title",
-  "content": "markdown content with ## headings and bullet points",
+  "content": "markdown content with rich formatting (##headings, **bold**, *italic*, bullet points, blockquotes)",
   "takeaways": ["key point 1", "key point 2", "key point 3"]
 }`;
 
@@ -226,13 +237,24 @@ Requirements:
 - 800-1200 words
 - Completely unique (avoid plagiarism)
 - Add actionable steps and specific examples
-- Casual, engaging tone
+- Casual, engaging tone (conversational but professional)
 - Include year 2025 in title if relevant
+
+FORMATTING REQUIREMENTS (CRITICAL):
+- Use ## for main section headings (4-6 sections)
+- Use ### for subsections if needed
+- Use **bold text** for key terms, numbers, and important points
+- Use bullet points with * for lists
+- Use numbered lists (1. 2. 3.) for sequential steps
+- Include > blockquotes for pro tips, warnings, or key insights
+- Add visual breaks with --- between major sections
+- Use *italics* for emphasis on phrases
+- Make it visually engaging with varied formatting
 
 Provide response as JSON:
 {
   "title": "new SEO-friendly title",
-  "content": "markdown content",
+  "content": "markdown content with rich formatting (##headings, **bold**, *italic*, bullet points, blockquotes, horizontal rules)",
   "takeaways": ["key point 1", "key point 2", "key point 3"]
 }`;
 

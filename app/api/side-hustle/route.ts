@@ -116,8 +116,9 @@ Be specific and accurate. No extra text, just the JSON array.`;
     );
 
     if (!response.ok) {
-      console.error('AI API error:', response.status, await response.text());
-      throw new Error('AI API failed');
+      const errorText = await response.text();
+      console.error('AI API error - Status:', response.status, 'Response:', errorText);
+      throw new Error(`AI API failed: ${response.status} - ${errorText.substring(0, 200)}`);
     }
 
     const data = await response.json();

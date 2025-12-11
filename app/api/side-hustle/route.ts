@@ -33,7 +33,7 @@ function generateSuggestions(skills: string, timeAvailable: string) {
   
   const allSuggestions = [
     {
-      keywords: ['code', 'coding', 'programming', 'developer', 'web', 'app'],
+      keywords: ['code', 'coding', 'programming', 'developer', 'dev', 'web', 'app', 'software', 'javascript', 'python', 'react', 'node'],
       title: 'Freelance Web Development',
       description: 'Build websites and web applications for clients. Perfect for students with coding skills.',
       potential: '$20-100/hour',
@@ -45,7 +45,7 @@ function generateSuggestions(skills: string, timeAvailable: string) {
       ],
     },
     {
-      keywords: ['design', 'graphic', 'logo', 'ui', 'ux', 'photoshop', 'figma'],
+      keywords: ['design', 'designer', 'graphic', 'logo', 'ui', 'ux', 'photoshop', 'figma', 'illustrator', 'canva', 'branding'],
       title: 'Graphic Design Services',
       description: 'Create logos, social media graphics, and branding materials for businesses.',
       potential: '$15-80/hour',
@@ -57,7 +57,7 @@ function generateSuggestions(skills: string, timeAvailable: string) {
       ],
     },
     {
-      keywords: ['write', 'writing', 'content', 'blog', 'article', 'copywriting'],
+      keywords: ['write', 'writer', 'writing', 'content', 'blog', 'blogger', 'article', 'copywriting', 'copywriter', 'journalism', 'author'],
       title: 'Freelance Writing & Content Creation',
       description: 'Write blog posts, articles, and website copy for businesses and publications.',
       potential: '$10-50/hour',
@@ -69,7 +69,7 @@ function generateSuggestions(skills: string, timeAvailable: string) {
       ],
     },
     {
-      keywords: ['video', 'editing', 'youtube', 'premiere', 'davinci'],
+      keywords: ['video', 'editor', 'editing', 'edit', 'youtube', 'premiere', 'davinci', 'final cut', 'filmmaking', 'videography', 'filmmaker'],
       title: 'Video Editing Services',
       description: 'Edit videos for YouTubers, businesses, and content creators.',
       potential: '$20-60/hour',
@@ -80,7 +80,18 @@ function generateSuggestions(skills: string, timeAvailable: string) {
       ],
     },
     {
-      keywords: ['tutor', 'teach', 'teaching', 'math', 'science', 'english'],
+      keywords: ['photo', 'photography', 'photographer', 'photos', 'camera', 'lightroom', 'photo editing', 'portrait', 'photography'],
+      title: 'Photography & Photo Editing',
+      description: 'Offer photography services or edit photos for clients, events, and businesses.',
+      potential: '$25-100/hour',
+      timeRequired: '5-15 hours/week',
+      platforms: [
+        { name: 'Fiverr', url: 'https://fiverr.com' },
+        { name: 'Upwork', url: 'https://upwork.com' },
+      ],
+    },
+    {
+      keywords: ['tutor', 'tutoring', 'teach', 'teacher', 'teaching', 'math', 'science', 'english', 'education', 'mentor'],
       title: 'Online Tutoring',
       description: 'Teach students in subjects you excel at through online platforms.',
       potential: '$15-40/hour',
@@ -91,7 +102,7 @@ function generateSuggestions(skills: string, timeAvailable: string) {
       ],
     },
     {
-      keywords: ['social', 'media', 'instagram', 'tiktok', 'marketing'],
+      keywords: ['social', 'media', 'instagram', 'tiktok', 'facebook', 'twitter', 'linkedin', 'marketing', 'smm', 'community manager'],
       title: 'Social Media Management',
       description: 'Manage social media accounts for small businesses and influencers.',
       potential: '$300-1000/month per client',
@@ -102,11 +113,33 @@ function generateSuggestions(skills: string, timeAvailable: string) {
       ],
     },
     {
-      keywords: ['data', 'entry', 'excel', 'spreadsheet', 'admin'],
+      keywords: ['data', 'entry', 'excel', 'spreadsheet', 'admin', 'assistant', 'organization', 'virtual assistant', 'va'],
       title: 'Virtual Assistant / Data Entry',
       description: 'Help businesses with administrative tasks, data entry, and organization.',
       potential: '$10-25/hour',
       timeRequired: '5-20 hours/week',
+      platforms: [
+        { name: 'Fiverr', url: 'https://fiverr.com' },
+        { name: 'Upwork', url: 'https://upwork.com' },
+      ],
+    },
+    {
+      keywords: ['voice', 'voiceover', 'narration', 'audio', 'podcast', 'speaking', 'announcer', 'voice acting'],
+      title: 'Voiceover & Audio Services',
+      description: 'Provide voiceovers for videos, audiobooks, podcasts, and commercials.',
+      potential: '$20-100/project',
+      timeRequired: '3-10 hours/week',
+      platforms: [
+        { name: 'Fiverr', url: 'https://fiverr.com' },
+        { name: 'Voices.com', url: 'https://voices.com' },
+      ],
+    },
+    {
+      keywords: ['translate', 'translation', 'translator', 'language', 'bilingual', 'spanish', 'french', 'german', 'chinese', 'interpreter'],
+      title: 'Translation Services',
+      description: 'Translate documents, websites, and content for international clients.',
+      potential: '$15-50/hour',
+      timeRequired: '5-15 hours/week',
       platforms: [
         { name: 'Fiverr', url: 'https://fiverr.com' },
         { name: 'Upwork', url: 'https://upwork.com' },

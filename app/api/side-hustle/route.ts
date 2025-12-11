@@ -132,7 +132,6 @@ function generateSuggestions(skills: string, timeAvailable: string) {
   // If no match, return general suggestions (filtered by time)
   if (matched.length === 0) {
     const generalSuggestions = [
-    return [
       {
         title: 'Online Surveys & Micro Tasks',
         description: 'Complete simple tasks and surveys for quick money. Great for beginners.',

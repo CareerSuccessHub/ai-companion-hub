@@ -1,5 +1,59 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// Model fallback strategy: try these in order if one fails
+const GEMINI_MODELS = [
+  "gemini-2.5-flash",       // Primary: best quality, most features
+  "gemini-2.0-flash",       // Fallback 1: stable, good performance
+  "gemini-2.5-flash-lite",  // Fallback 2: lighter, more capacity
+];
+
+// Helper function to call Gemini API with retry logic
+async function callGeminiModel(
+  model: string,
+  prompt: string,
+  apiKey: string,
+  maxRetries: number = 2
+): Promise<string> {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 2048,
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+
+        // Retry on 503 overload or 429 rate limit
+        if ((errorData.error?.code === 503 || errorData.error?.code === 429) && attempt < maxRetries - 1) {
+          const waitTime = Math.pow(2, attempt) * 1000; // 1s, 2s
+          console.log(`${model} busy, retrying in ${waitTime}ms... (attempt ${attempt + 1}/${maxRetries})`);
+          await new Promise(resolve => setTimeout(resolve, waitTime));
+          continue;
+        }
+
+        throw errorData;
+      }
+
+      const data = await response.json();
+      return data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+    } catch (error) {
+      if (attempt === maxRetries - 1) throw error;
+    }
+  }
+
+  throw new Error("Max retries exceeded");
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { resumeText } = await req.json();
@@ -14,19 +68,44 @@ export async function POST(req: NextRequest) {
       }, { status: 500 });
     }
 
-    // Call Gemini AI for resume analysis
-    const feedback = await analyzeResume(resumeText);
-    return NextResponse.json({ feedback });
+    // Try each model in fallback order
+    const API_KEY = process.env.GEMINI_API_KEY!;
+    let lastError: any;
+    
+    for (const model of GEMINI_MODELS) {
+      try {
+        console.log(`Attempting to analyze resume with ${model}...`);
+        const feedback = await analyzeResume(resumeText, model, API_KEY);
+        
+        if (feedback) {
+          console.log(`✓ Successfully analyzed resume using ${model}`);
+          return NextResponse.json({ feedback });
+        }
+      } catch (error: any) {
+        console.error(`✗ ${model} failed:`, error?.error?.message || error.message);
+        lastError = error;
+        // Continue to next model
+      }
+    }
+
+    // All models failed
+    throw lastError || new Error("All models failed to analyze resume");
     
   } catch (error: any) {
     console.error('Resume review API error:', error);
+    
+    // User-friendly error message for 503 overload
+    const errorMessage = error?.error?.code === 503 || error.message?.includes('503')
+      ? "The AI service is experiencing high traffic. Please try again in a moment."
+      : error.message || 'Failed to analyze resume';
+    
     return NextResponse.json({ 
-      error: error.message || 'Failed to analyze resume' 
+      error: errorMessage 
     }, { status: 500 });
   }
 }
 
-async function analyzeResume(resumeText: string) {
+async function analyzeResume(resumeText: string, model: string, apiKey: string) {
   const prompt = `You are an expert career counselor and resume reviewer. Analyze this resume and provide constructive feedback.
 
 Resume:
@@ -45,26 +124,7 @@ RECOMMENDATIONS:
 
 Keep your response professional, encouraging, and specific. Focus on making this resume ATS-friendly and interview-worthy.`;
 
-  const API_KEY = process.env.GEMINI_API_KEY!;
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
-  
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [{
-        parts: [{ text: prompt }]
-      }]
-    })
-  });
-
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`Gemini API error: ${error}`);
-  }
-
-  const data = await response.json();
-  const fullResponse = data.candidates[0].content.parts[0].text;
+  const fullResponse = await callGeminiModel(model, prompt, apiKey);
 
   // Parse the structured response
   const strengthsMatch = fullResponse.match(/STRENGTHS:\s*([\s\S]*?)(?=IMPROVEMENTS:|$)/i);

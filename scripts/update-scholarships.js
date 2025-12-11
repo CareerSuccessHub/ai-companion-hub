@@ -132,26 +132,26 @@ Return as JSON array:
  * Update scholarships component file
  */
 function updateScholarshipsFile(scholarships) {
-  const componentPath = path.join(__dirname, '../app/scholarships/page.tsx');
+  const componentPath = path.join(__dirname, '../components/ScholarshipDatabase.tsx');
   
   // Read existing file
   let content = fs.readFileSync(componentPath, 'utf-8');
   
-  // Find the scholarshipData array and replace it
-  const dataStart = content.indexOf('const scholarshipData = [');
+  // Find the scholarships array and replace it
+  const dataStart = content.indexOf('const scholarships = [');
   const dataEnd = content.indexOf('];', dataStart) + 2;
   
   if (dataStart === -1) {
-    console.error('❌ Could not find scholarshipData in file');
+    console.error('❌ Could not find scholarships array in file');
     return false;
   }
   
-  const newDataString = `const scholarshipData = ${JSON.stringify(scholarships, null, 2)};`;
+  const newDataString = `const scholarships = ${JSON.stringify(scholarships, null, 2)};`;
   
   content = content.substring(0, dataStart) + newDataString + content.substring(dataEnd);
   
   fs.writeFileSync(componentPath, content);
-  console.log('✅ Updated scholarships page');
+  console.log('✅ Updated ScholarshipDatabase component');
   return true;
 }
 
@@ -159,11 +159,11 @@ function updateScholarshipsFile(scholarships) {
  * Create backup
  */
 function backupCurrentData() {
-  const componentPath = path.join(__dirname, '../app/scholarships/page.tsx');
-  const backupPath = path.join(__dirname, '../app/scholarships/page.backup.tsx');
+  const componentPath = path.join(__dirname, '../components/ScholarshipDatabase.tsx');
+  const backupPath = path.join(__dirname, '../components/ScholarshipDatabase.backup.tsx');
   
   fs.copyFileSync(componentPath, backupPath);
-  console.log('📦 Created backup: page.backup.tsx');
+  console.log('📦 Created backup: ScholarshipDatabase.backup.tsx');
 }
 
 /**

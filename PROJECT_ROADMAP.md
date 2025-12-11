@@ -84,19 +84,49 @@ Build a multi-revenue AI platform helping students and young professionals land 
 
 ---
 
-## 💰 Phase 4: Monetization Setup (CURRENT - Dec 11-31, 2025)
+## 💰 Phase 4: Monetization Setup (COMPLETED - Dec 11-12, 2025)
 - [x] Ko-fi donation button (ko-fi.com/studentsuccesshub)
 - [x] AdSense-ready layout with placeholder zones
 - [x] Affiliate disclosure on all pages
-- [ ] Google AdSense integration (pending traffic: need 500-1K visitors)
-- [ ] Fiverr affiliate links (applied Dec 9, pending approval)
-- [ ] Skillshare affiliate links (applied Dec 9, pending approval)
-- [ ] Track affiliate conversions in GA4 custom events
-- [ ] Email capture (Mailchimp free tier, 500 subscribers)
+- [x] Gemini API model fallback (3-tier: gemini-2.5-flash → 2.0-flash → 2.5-flash-lite)
+- [x] Automation scripts fallback for reliability
+- [x] GitHub Actions scheduled workflows (optimized for API quota reset)
+
+**Monetization Status (Dec 12):**
+- ❌ Google AdSense: BLOCKED (requires custom domain)
+- ❌ Fiverr Affiliate: Rejected Dec 12 (site too new, reapply Feb 2026)
+- ✅ Ko-fi: Active, $0 revenue so far
+- ⏳ Other affiliates: Placeholder links (not implemented yet)
 
 **Current Revenue:** $0 (launched Dec 9, 2025)  
-**Target:** First $1 by Dec 20, $50 by Dec 31  
-**Goal:** $100/month in 90 days, $500/month in 6 months, $2,000/month in 12 months
+**Blocker:** Free subdomain prevents AdSense and reduces affiliate trust  
+**Critical Path:** Need $12-13 for custom domain to unlock revenue streams
+
+---
+
+## 🚨 Phase 4.5: Domain Acquisition (URGENT - Dec 15-20, 2025)
+
+**Problem:** Chicken-and-egg - Need domain for revenue, need revenue for domain ($12-13)
+
+**Funding Options:**
+1. Team investment: 3 members × $4 = $12 ✅ Fastest
+2. Ko-fi campaign: "Help us buy our domain!" banner ✅ 1-2 days
+3. Wait until Jan: Save $3-4/week ⚠️ Delays revenue by 6+ weeks
+
+**Action Plan:**
+- [ ] Decide funding source by Dec 15
+- [ ] Purchase domain: aicareersuccesshub.com or studentcareerhub.com ($12-13/year)
+- [ ] Configure Vercel custom domain (1 hour)
+- [ ] Update all SEO, sitemaps, GA4, Search Console (2 hours)
+- [ ] Domain age starts accumulating (critical for AdSense)
+
+**Timeline:**
+- Domain purchase: Dec 15-20
+- AdSense application: Jan 5-10 (domain 2-3 weeks old)
+- Approval: Jan 20-30 (1-2 week review)
+- First revenue: Late January 2026
+
+**Status:** ⏳ BLOCKED on funding decision
 
 ---
 
@@ -104,20 +134,34 @@ Build a multi-revenue AI platform helping students and young professionals land 
 **Goal:** 1,000 visitors by December 31 to qualify for AdSense  
 **Team:** 3 members (2 devs + 1 marketing specialist)
 
+**Content Production (Actual):**
+- Automated blogs: 2 posts/week via GitHub Actions (Mondays)
+- Manual blogs: 0 posts/week (Developer 2 not writing)
+- **Total:** 2 posts/week
+
+**Blog Post Projections:**
+- Current: 4 posts (Dec 12)
+- By Dec 31: 10 posts (4 + 3 weeks × 2)
+- By Jan 31: 18 posts (10 + 4 weeks × 2)
+- **15-20 posts milestone:** Late January 2026
+
 ### Developer 1 (Lead) - Weekly Tasks:
-- [ ] Monitor site performance (Lighthouse, Core Web Vitals)
-- [ ] Fix bugs reported by users (GitHub Issues)
-- [ ] Add 2 new scholarships per week (manual curation)
-- [ ] Monitor Gemini API usage (daily limit: 1,500 requests)
+- [x] Monitor site performance (Lighthouse, Core Web Vitals)
+- [x] Fix bugs reported by users (GitHub Issues)
+- [x] Add AI model fallback for reliability (3-tier system)
+- [x] Optimize automation schedules for API quota
+- [x] Monitor Gemini API usage (daily limit: 1,500 requests, resets 4 PM Philippine Time)
 - [ ] Review auto-generated blog posts for quality
-- [ ] Code reviews for Developer 2
+- [ ] Add 2 new scholarships per week (manual curation)
 
 ### Developer 2 (Content/Backend) - Weekly Tasks:
-- [ ] Write 3 blog posts per week (SEO-optimized, 1,500+ words)
+- [ ] Write 3 blog posts per week (SEO-optimized, 1,500+ words) ⚠️ NOT HAPPENING
 - [ ] Optimize site speed (lazy loading, image compression)
 - [ ] Set up email capture system (Mailchimp integration)
 - [ ] Create downloadable resources (scholarship checklist PDF)
 - [ ] Implement A/B tests (Ko-fi button placement)
+
+**Note:** Manual blog production stalled. Relying on 2 automated posts/week only.
 
 ### Marketing Specialist (Traffic Driver) - Daily Tasks:
 - [ ] Post on Reddit 3x/week (r/careerguidance, r/resumes, r/jobs)
@@ -161,13 +205,12 @@ Build a multi-revenue AI platform helping students and young professionals land 
 
 ---
 
-### Phase 6.5: Custom Domain (Feb 2026)
-**Cost:** $12-13 from February revenue  
-**Setup Time:** 5 minutes (point DNS to Vercel)  
-**Benefits:**
-- Professional branding
-- Easier marketing (short, memorable URL)
-- Better SEO (custom domains rank higher)
+### ~~Phase 6.5: Custom Domain (Feb 2026)~~ → **MOVED TO PHASE 4.5 (Dec 2025)**
+**Original plan:** Buy from Feb revenue  
+**Reality:** Can't get revenue without domain (AdSense blocked, affiliate trust low)  
+**New timeline:** Buy Dec 15-20 with team/Ko-fi funding ($12-13)  
+
+**See Phase 4.5 above for details**
 - +15-20% conversion rate boost
 - Domain appreciates in value
 
@@ -552,11 +595,13 @@ Build a multi-revenue AI platform helping students and young professionals land 
 
 ---
 
-**Last Updated:** December 11, 2025  
+**Last Updated:** December 12, 2025  
 **Next Review:** December 18, 2025 (weekly team sync)  
-**Current Phase:** Phase 5 - Traffic Generation  
+**Current Phase:** Phase 4.5 (Domain Funding) + Phase 5 (Traffic Generation)  
 **Team:** 3 members (2 developers, 1 marketing specialist)  
-**Live Site:** https://ai-companion-hub-self.vercel.app
+**Live Site:** https://ai-companion-hub-self.vercel.app (temporary subdomain)
+
+**🚨 URGENT ACTION REQUIRED:** Domain funding decision needed by Dec 15 to unlock revenue streams
 
 ---
 
@@ -570,14 +615,18 @@ Build a multi-revenue AI platform helping students and young professionals land 
 
 ---
 
-## 📈 Success Metrics
-| Metric | 1 Month | 3 Months | 6 Months |
-|--------|---------|----------|----------|
-| Monthly Users | 100 | 1,000 | 5,000 |
-| Revenue/Month | $10 | $100 | $500 |
-| Ad Revenue | $5 | $50 | $200 |
-| Affiliate Commissions | $5 | $30 | $150 |
-| Premium Subscribers | 0 | 5 | 30 |
+## 📈 Revised Revenue Projections (Updated Dec 12, 2025)
+
+| Month | Visitors | Blog Posts | Domain | Revenue Sources | Monthly Revenue |
+|-------|----------|------------|--------|-----------------|-----------------|
+| **Dec 2025** | 100-300 | 10 | ❌ Vercel subdomain | Ko-fi only | $0-20 |
+| **Jan 2026** | 1,000-2,000 | 18 | ✅ Custom (if funded) | AdSense pending, Ko-fi | $20-80 |
+| **Feb 2026** | 2,000-3,000 | 26 | ✅ Custom | AdSense approved, affiliates | $100-200 |
+| **Mar 2026** | 3,000-4,000 | 34 | ✅ Custom | Ads + Affiliates optimized | $200-350 |
+| **Jun 2026** | 5,000-7,000 | 50+ | ✅ Custom | Multi-revenue streams | $500-800 |
+
+**Critical Milestone:** Domain purchase by Dec 20 unlocks revenue timeline above.  
+**Alternative:** No domain = $0-50/month Ko-fi only until February (6-8 week delay)
 
 ---
 

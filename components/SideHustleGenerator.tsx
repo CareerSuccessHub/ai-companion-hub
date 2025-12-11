@@ -32,6 +32,9 @@ export default function SideHustleGenerator() {
       if (data.suggestions) {
         console.log('✅ Got', data.suggestions.length, 'suggestions');
         console.log('🔍 Source:', data.source || 'unknown');
+        if (data.aiError) {
+          console.error('⚠️ AI failed with error:', data.aiError);
+        }
         console.log('📋 Suggestions:', data.suggestions);
         setSuggestions(data.suggestions);
       } else if (data.error) {

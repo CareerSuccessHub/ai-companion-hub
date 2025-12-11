@@ -30,13 +30,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ suggestions, source: 'ai' });
   } catch (error: any) {
     console.error('❌ Side hustle API error:', error.message);
+    console.error('Error stack:', error.stack);
     
     // Fallback to keyword matching on error (if skills were parsed)
     if (skills) {
       try {
         console.log('🔄 Falling back to keyword matching due to error');
         const suggestions = generateSuggestions(skills.toLowerCase(), timeAvailable);
-        return NextResponse.json({ suggestions, source: 'keyword-fallback' });
+        return NextResponse.json({ 
+          suggestions, 
+          source: 'keyword-fallback',
+          aiError: error.message // Include error reason for debugging
+        });
       } catch {
         return NextResponse.json({ error: error.message }, { status: 500 });
       }

@@ -79,56 +79,17 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             </div>
           </div>
 
-          <style jsx global>{`
-            .blog-content h2 {
-              font-size: 2.25rem;
-              font-weight: bold;
-              background: linear-gradient(to right, rgb(96, 165, 250), rgb(34, 211, 238));
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              background-clip: text;
-              margin-top: 3rem;
-              margin-bottom: 1.5rem;
-              padding-bottom: 0.75rem;
-              border-bottom: 2px solid rgb(30, 41, 59);
-            }
-            .blog-content h3 {
-              font-size: 1.5rem;
-              font-weight: bold;
-              color: rgb(103, 232, 249);
-              margin-top: 2rem;
-              margin-bottom: 1rem;
-            }
-            .blog-content strong {
-              color: rgb(103, 232, 249);
-              font-weight: bold;
-            }
-            .blog-content blockquote {
-              border-left: 4px solid rgb(34, 211, 238);
-              background: linear-gradient(to right, rgba(30, 58, 138, 0.3), rgba(15, 23, 42, 0.3));
-              padding: 1.5rem;
-              border-radius: 0 0.5rem 0.5rem 0;
-              color: rgb(191, 219, 254);
-              font-weight: 500;
-              margin: 1.5rem 0;
-            }
-            .blog-content a {
-              color: rgb(96, 165, 250);
-              font-weight: 600;
-              text-decoration: none;
-            }
-            .blog-content a:hover {
-              color: rgb(34, 211, 238);
-              text-decoration: underline;
-            }
-          `}</style>
-
-          <div className="blog-content prose prose-invert prose-lg max-w-none
+          <div className="prose prose-invert prose-lg max-w-none
+            [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:bg-gradient-to-r [&_h2]:from-blue-400 [&_h2]:to-cyan-400 [&_h2]:bg-clip-text [&_h2]:text-transparent [&_h2]:mt-12 [&_h2]:mb-6 [&_h2]:pb-3 [&_h2]:border-b-2 [&_h2]:border-slate-800
+            [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:text-cyan-300 [&_h3]:mt-8 [&_h3]:mb-4
+            [&_strong]:text-cyan-400 [&_strong]:font-bold
+            [&_blockquote]:border-l-4 [&_blockquote]:border-cyan-500 [&_blockquote]:bg-gradient-to-r [&_blockquote]:from-blue-900/30 [&_blockquote]:to-slate-900/30 [&_blockquote]:pl-6 [&_blockquote]:pr-4 [&_blockquote]:py-4 [&_blockquote]:my-6 [&_blockquote]:rounded-r-lg [&_blockquote]:text-blue-200 [&_blockquote]:font-medium
+            [&_a]:text-blue-400 [&_a]:font-semibold [&_a]:no-underline hover:[&_a]:text-cyan-300 hover:[&_a]:underline
             prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6
-            prose-ul:text-gray-300 prose-ul:mb-6
-            prose-ol:text-gray-300 prose-ol:mb-6
-            prose-li:mb-2
-            prose-li:marker:text-cyan-400
+            prose-ul:text-gray-300 prose-ul:mb-6 prose-ul:space-y-2
+            prose-ol:text-gray-300 prose-ol:mb-6 prose-ol:space-y-2
+            prose-li:mb-2 prose-li:text-lg
+            prose-li:marker:text-cyan-400 prose-li:marker:font-bold
             prose-code:text-cyan-400 prose-code:bg-slate-800 prose-code:px-2 prose-code:py-1 prose-code:rounded
             prose-hr:border-slate-700 prose-hr:my-12
           ">

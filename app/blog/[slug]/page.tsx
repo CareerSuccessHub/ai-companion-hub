@@ -60,7 +60,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
               )}
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
               {data.title}
             </h1>
 
@@ -79,24 +79,58 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             </div>
           </div>
 
-          <div className="prose prose-invert prose-blue prose-lg max-w-none
-            prose-headings:font-bold prose-headings:tracking-tight
-            prose-h2:text-4xl prose-h2:bg-gradient-to-r prose-h2:from-blue-400 prose-h2:to-cyan-400 prose-h2:bg-clip-text prose-h2:text-transparent prose-h2:mb-8 prose-h2:mt-16 prose-h2:pb-4 prose-h2:border-b-2 prose-h2:border-slate-800
-            prose-h3:text-2xl prose-h3:text-cyan-300 prose-h3:mb-6 prose-h3:mt-10
-            prose-h4:text-xl prose-h4:text-blue-300 prose-h4:mb-4 prose-h4:mt-6
-            prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
-            prose-a:text-blue-400 prose-a:font-semibold prose-a:no-underline hover:prose-a:underline hover:prose-a:text-cyan-300
-            prose-strong:text-cyan-400 prose-strong:font-bold
-            prose-em:text-blue-300
-            prose-ul:text-gray-300 prose-ul:mb-6 prose-ul:space-y-3
-            prose-ol:text-gray-300 prose-ol:mb-6 prose-ol:space-y-3
-            prose-li:mb-2 prose-li:text-lg prose-li:leading-relaxed
-            prose-li:marker:text-cyan-400 prose-li:marker:font-bold
-            prose-blockquote:border-l-4 prose-blockquote:border-cyan-500 prose-blockquote:bg-gradient-to-r prose-blockquote:from-blue-900/30 prose-blockquote:to-slate-900/30 prose-blockquote:pl-6 prose-blockquote:pr-4 prose-blockquote:py-4 prose-blockquote:rounded-r-lg prose-blockquote:text-blue-200 prose-blockquote:not-italic prose-blockquote:font-medium
-            prose-code:text-cyan-400 prose-code:bg-slate-800 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono
-            prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-pre:rounded-lg
-            prose-img:rounded-lg prose-img:shadow-xl
-            prose-hr:border-cyan-500/30 prose-hr:my-16
+          <style jsx global>{`
+            .blog-content h2 {
+              font-size: 2.25rem;
+              font-weight: bold;
+              background: linear-gradient(to right, rgb(96, 165, 250), rgb(34, 211, 238));
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              margin-top: 3rem;
+              margin-bottom: 1.5rem;
+              padding-bottom: 0.75rem;
+              border-bottom: 2px solid rgb(30, 41, 59);
+            }
+            .blog-content h3 {
+              font-size: 1.5rem;
+              font-weight: bold;
+              color: rgb(103, 232, 249);
+              margin-top: 2rem;
+              margin-bottom: 1rem;
+            }
+            .blog-content strong {
+              color: rgb(103, 232, 249);
+              font-weight: bold;
+            }
+            .blog-content blockquote {
+              border-left: 4px solid rgb(34, 211, 238);
+              background: linear-gradient(to right, rgba(30, 58, 138, 0.3), rgba(15, 23, 42, 0.3));
+              padding: 1.5rem;
+              border-radius: 0 0.5rem 0.5rem 0;
+              color: rgb(191, 219, 254);
+              font-weight: 500;
+              margin: 1.5rem 0;
+            }
+            .blog-content a {
+              color: rgb(96, 165, 250);
+              font-weight: 600;
+              text-decoration: none;
+            }
+            .blog-content a:hover {
+              color: rgb(34, 211, 238);
+              text-decoration: underline;
+            }
+          `}</style>
+
+          <div className="blog-content prose prose-invert prose-lg max-w-none
+            prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6
+            prose-ul:text-gray-300 prose-ul:mb-6
+            prose-ol:text-gray-300 prose-ol:mb-6
+            prose-li:mb-2
+            prose-li:marker:text-cyan-400
+            prose-code:text-cyan-400 prose-code:bg-slate-800 prose-code:px-2 prose-code:py-1 prose-code:rounded
+            prose-hr:border-slate-700 prose-hr:my-12
           ">
             <MDXRemote source={content} />
           </div>

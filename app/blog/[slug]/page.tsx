@@ -9,9 +9,12 @@ import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 
 export async function generateStaticParams() {
   const posts = getAllBlogPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  // Only generate params for MDX files (not folder-based routes)
+  return posts
+    .filter(post => !post.slug.includes('/') && post.slug.includes('2025-12-09'))
+    .map((post) => ({
+      slug: post.slug,
+    }));
 }
 
 export default function BlogPost({ params }: { params: { slug: string } }) {

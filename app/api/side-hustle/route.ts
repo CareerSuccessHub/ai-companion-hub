@@ -2,8 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 
 // Side hustle suggestion logic with AI-powered matching
 export async function POST(req: NextRequest) {
+  let skills = '';
+  let timeAvailable = '';
+  
   try {
-    const { skills, timeAvailable } = await req.json();
+    const body = await req.json();
+    skills = body.skills;
+    timeAvailable = body.timeAvailable;
 
     if (!skills) {
       return NextResponse.json({ error: 'Skills are required' }, { status: 400 });
@@ -22,13 +27,17 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error('Side hustle API error:', error);
     
-    // Fallback to keyword matching on error
-    try {
-      const suggestions = generateSuggestions(skills.toLowerCase(), timeAvailable);
-      return NextResponse.json({ suggestions });
-    } catch {
-      return NextResponse.json({ error: error.message }, { status: 500 });
+    // Fallback to keyword matching on error (if skills were parsed)
+    if (skills) {
+      try {
+        const suggestions = generateSuggestions(skills.toLowerCase(), timeAvailable);
+        return NextResponse.json({ suggestions });
+      } catch {
+        return NextResponse.json({ error: error.message }, { status: 500 });
+      }
     }
+    
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 

@@ -11,27 +11,49 @@ export default function ResumeReviewer() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleAnalyze = async () => {
-    if (!resumeText.trim()) return;
+    if (!resumeText.trim()) {
+      console.log('No resume text provided');
+      return;
+    }
     
+    console.log('Starting resume analysis...');
     setIsLoading(true);
     setFeedback(null);
     
     try {
+      console.log('Sending request to API...');
       const response = await fetch('/api/resume-review', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ resumeText }),
       });
       
+      console.log('Response status:', response.status);
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('API error response:', errorData);
+        throw new Error(errorData.error || 'Failed to analyze resume');
+      }
+      
       const data = await response.json();
+      console.log('API response data:', data);
+      
       if (data.feedback) {
         setFeedback(data.feedback);
+      } else if (data.error) {
+        setFeedback({ error: data.error });
+      } else {
+        setFeedback({ error: "Unexpected response format" });
       }
-    } catch (error) {
-      console.error('Error:', error);
-      setFeedback({ error: "Failed to analyze resume. Please try again." });
+    } catch (error: any) {
+      console.error('Error analyzing resume:', error);
+      setFeedback({ 
+        error: error.message || "Failed to analyze resume. Please try again." 
+      });
     } finally {
       setIsLoading(false);
+      console.log('Analysis complete');
     }
   };
 

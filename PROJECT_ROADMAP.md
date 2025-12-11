@@ -161,7 +161,24 @@ Build a multi-revenue AI platform helping students and young professionals land 
 
 ---
 
-## 💰 Phase 7: Finance Tools (PLANNED - Feb 2026)
+### Phase 6.5: Custom Domain (Feb 2026)
+**Cost:** $12-13 from February revenue  
+**Setup Time:** 5 minutes (point DNS to Vercel)  
+**Benefits:**
+- Professional branding
+- Easier marketing (short, memorable URL)
+- Better SEO (custom domains rank higher)
+- +15-20% conversion rate boost
+- Domain appreciates in value
+
+**Domain Options:**
+- `aicareertools.com` ($13/year)
+- `studentcareerhelp.com` ($12/year)
+- `careersuccess.ai` ($15/year premium)
+
+---
+
+### Phase 7: Finance Tools (PLANNED - Feb 2026)
 **Condition:** Only if Phase 6 validated (2K+ visitors on writing tools)  
 **Target Audience:** Students + Recent graduates + Young professionals  
 **Timeline:** 3-4 weeks development
@@ -453,7 +470,10 @@ Build a multi-revenue AI platform helping students and young professionals land 
 - [ ] AdSense approved + ads live
 - [ ] Add GPA calculator + study timer
 - [ ] 5,000 monthly visitors
-- [ ] $50-100 monthly revenue
+- [ ] $150-200 monthly revenue
+- [ ] **BUY CUSTOM DOMAIN** ($12-13 from Feb revenue)
+- [ ] Point domain to Vercel (5-min setup)
+- [ ] Update all marketing with new domain
 
 **March 2026:**
 - [ ] 10,000 monthly visitors

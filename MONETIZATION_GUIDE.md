@@ -108,15 +108,68 @@
 
 ---
 
-## 📊 Revenue Projections
+## 🌐 Custom Domain Purchase Plan
 
-| Month | Users | Ko-fi | Affiliate | AdSense | Premium | **Total** |
-|-------|-------|-------|-----------|---------|---------|-----------|
-| 1 | 100 | $10 | $5 | $0 | $0 | **$15** |
-| 2 | 500 | $25 | $30 | $0 | $0 | **$55** |
-| 3 | 2,000 | $50 | $100 | $50 | $0 | **$200** |
-| 6 | 10,000 | $100 | $300 | $300 | $150 | **$850** |
-| 12 | 50,000 | $200 | $800 | $1,200 | $800 | **$3,000/mo** |
+### When to Buy a Domain:
+
+**Option 1: Buy Early (Month 2-3) - RECOMMENDED**
+- **Cost:** $12-15/year (.com domain)
+- **When:** After first $50-100 revenue
+- **Why:** Better branding, professional look, easier to market
+- **Domain ideas:** 
+  - `aicareertools.com` ($13/year on Namecheap)
+  - `studentcareerhelp.com` ($12/year)
+  - `careersuccess.ai` ($15/year premium)
+
+**Option 2: Wait Until Profitable (Month 6)**
+- **Cost:** Still $12-15/year
+- **When:** After consistent $200+/month revenue
+- **Why:** Validate product-market fit first
+- **Risk:** Good domain names may be taken
+
+### Recommended Timeline:
+
+**February 2026 (Month 3):**
+- ✅ Revenue hits $100-200/month
+- ✅ Use $13 from revenue to buy `.com` domain
+- ✅ Point domain to Vercel (free, 5-minute setup)
+- ✅ Update all marketing materials with new domain
+
+**Why Month 3?**
+- You'll have proven the platform works (traffic + revenue)
+- $13 is <10% of monthly revenue (affordable)
+- Professional domain boosts conversion rates (+15-20%)
+- Easier to remember than `ai-companion-hub-self.vercel.app`
+
+**Where to Buy:**
+1. **Namecheap** ($12-13/year) - Best prices, easy DNS
+2. **Porkbun** ($9-11/year) - Cheapest, good support
+3. **Google Domains** ($12/year) - Simple, integrated with Google services
+
+**Setup Cost Breakdown:**
+- Domain: $12-13/year (paid once from Feb revenue)
+- Hosting: $0 (Vercel free tier continues)
+- SSL: $0 (Vercel provides free HTTPS)
+- Total: **$13 one-time, then $13/year renewal**
+
+**ROI Calculation:**
+- Professional domain = +15% conversion rate boost
+- If Feb revenue = $150/month
+- Boost = +$22.50/month extra revenue
+- Domain pays for itself in <1 month
+
+---
+
+## 📊 Revenue Projections (Updated with Domain Purchase)
+
+| Month | Users | Ko-fi | Affiliate | AdSense | Premium | **Total** | **Expenses** | **Net** |
+|-------|-------|-------|-----------|---------|---------|-----------|--------------|--------|
+| 1 (Dec) | 100 | $10 | $5 | $0 | $0 | **$15** | $0 | **$15** |
+| 2 (Jan) | 500 | $25 | $30 | $0 | $0 | **$55** | $0 | **$55** |
+| 3 (Feb) | 2,000 | $50 | $100 | $50 | $0 | **$200** | -$13 (domain) | **$187** |
+| 6 (May) | 10,000 | $100 | $300 | $300 | $150 | **$850** | $0 | **$850** |
+| 12 (Dec 2026) | 50,000 | $200 | $800 | $1,200 | $800 | **$3,000** | $0 | **$3,000** |
+| 13 (Jan 2027) | 60,000 | $250 | $1,000 | $1,500 | $1,000 | **$3,750** | -$13 (renewal) | **$3,737** |
 
 ---
 

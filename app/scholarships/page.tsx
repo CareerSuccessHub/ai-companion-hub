@@ -50,16 +50,16 @@ export default function ScholarshipsPage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href="/#resume-reviewer"
+              href="/tools/resume-reviewer"
               className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
               AI Resume Reviewer
             </Link>
             <Link
-              href="/#ai-mentor"
+              href="/tools/salary-negotiator"
               className="px-6 py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors border-2 border-white"
             >
-              Chat With AI Mentor
+              Salary Negotiator Tool
             </Link>
           </div>
         </div>

@@ -234,11 +234,15 @@ export default function SideHustlesPost() {
               this week to getting set up, and land your first client. In 3 months, you could be earning an 
               extra $500-1500/month.
             </p>
-            <p className="text-gray-300 leading-relaxed">
-              Need personalized guidance on which side hustle fits your situation? Try our free AI Career Mentor 
-              for customized advice based on your skills, schedule, and goals.
-            </p>
           </section>
+
+          {/* Ad Space */}
+          <div className="mt-12 p-6 bg-slate-900 border border-slate-800 rounded-lg text-center">
+            <p className="text-gray-500 text-sm mb-2">Advertisement</p>
+            <div className="bg-slate-800 h-24 flex items-center justify-center text-gray-600">
+              Ad Space (728x90)
+            </div>
+          </div>
 
         </div>
 
@@ -248,7 +252,7 @@ export default function SideHustlesPost() {
             Our AI-powered tool analyzes your skills and available time to suggest the best side hustles for you
           </p>
           <Link
-            href="/"
+            href="/tools/side-hustle"
             className="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
           >
             Try Side Hustle Generator →

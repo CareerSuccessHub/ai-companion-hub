@@ -339,6 +339,14 @@ export default function SalaryNegotiationPost() {
             </div>
           </section>
 
+          {/* Ad Space */}
+          <div className="my-12 p-6 bg-slate-900 border border-slate-800 rounded-lg text-center">
+            <p className="text-gray-500 text-sm mb-2">Advertisement</p>
+            <div className="bg-slate-800 h-24 flex items-center justify-center text-gray-600">
+              Ad Space (728x90)
+            </div>
+          </div>
+
           <div className="my-12 p-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
               Get Your Personalized Negotiation Script in 30 Seconds
@@ -347,7 +355,7 @@ export default function SalaryNegotiationPost() {
               Our AI analyzes your situation and generates a custom script with specific dollar amounts to ask for.
             </p>
             <Link
-              href="/#salary-negotiator"
+              href="/tools/salary-negotiator"
               className="inline-block px-8 py-4 bg-white text-green-600 font-bold text-lg rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
               Try the Free AI Salary Negotiator →

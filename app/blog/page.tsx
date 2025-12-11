@@ -21,19 +21,6 @@ export default function BlogPage() {
           ))}
         </div>
 
-        <div className="mt-16 p-8 bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-800/50 rounded-lg text-center">
-          <h3 className="text-2xl font-bold mb-3 text-blue-300">Want personalized advice?</h3>
-          <p className="text-gray-400 mb-6">
-            Chat with our AI career mentor for free, customized guidance on your specific situation
-          </p>
-          <Link
-            href="/"
-            className="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
-          >
-            Try AI Mentor Now →
-          </Link>
-        </div>
-
         <div className="mt-12 pt-8 border-t border-slate-800">
           <Link href="/" className="text-blue-400 hover:underline">← Back to Home</Link>
         </div>

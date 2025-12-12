@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { MessageCircle, X, Send, Sparkles } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-
+import { motion, AnimatePresence } from "framer-motion";import MarkdownRenderer from "./MarkdownRenderer";
 interface Message {
   id: string;
   role: 'user' | 'assistant';
@@ -131,7 +130,11 @@ export default function FloatingChat() {
                           : 'bg-slate-800 text-gray-100'
                       }`}
                     >
-                      {msg.content}
+                      {msg.role === 'assistant' ? (
+                        <MarkdownRenderer content={msg.content} className="prose-sm" />
+                      ) : (
+                        msg.content
+                      )}
                     </div>
                   </div>
                 ))

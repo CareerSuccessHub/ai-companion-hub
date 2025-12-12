@@ -4,6 +4,7 @@ import { useState } from "react";
 import { DollarSign, TrendingUp, Sparkles } from "lucide-react";
 import GradientIcon from "./GradientIcon";
 import { motion } from "framer-motion";
+import MarkdownRenderer from "./MarkdownRenderer";
 
 export default function SalaryNegotiator() {
   const [jobTitle, setJobTitle] = useState("");
@@ -144,11 +145,7 @@ export default function SalaryNegotiator() {
             <DollarSign className="w-5 h-5" />
             Your Personalized Negotiation Script
           </h3>
-          <div className="prose prose-invert max-w-none">
-            <div className="whitespace-pre-wrap text-gray-200 leading-relaxed">
-              {script}
-            </div>
-          </div>
+          <MarkdownRenderer content={script} />
         </div>
       )}
 

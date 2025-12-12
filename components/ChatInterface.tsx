@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Send, BotMessageSquare } from "lucide-react";
 import GradientIcon from "./GradientIcon";
 import { motion } from "framer-motion";
+import MarkdownRenderer from "./MarkdownRenderer";
 
 interface Message {
   id: string;
@@ -97,7 +98,11 @@ export default function ChatInterface() {
                     : 'bg-slate-800 text-gray-100'
                 }`}
               >
-                {msg.content}
+                {msg.role === 'assistant' ? (
+                  <MarkdownRenderer content={msg.content} className="prose-sm" />
+                ) : (
+                  msg.content
+                )}
               </div>
             </div>
           ))

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FileText, Upload, Sparkles, CheckCircle, XCircle } from "lucide-react";
 import GradientIcon from "./GradientIcon";
 import { motion } from "framer-motion";
-
+import MarkdownRenderer from "./MarkdownRenderer";
 export default function ResumeReviewer() {
   const [resumeText, setResumeText] = useState("");
   const [feedback, setFeedback] = useState<any>(null);
@@ -122,7 +122,7 @@ export default function ResumeReviewer() {
                     <CheckCircle className="w-4 h-4" />
                     Strengths
                   </h4>
-                  <p className="text-gray-300 whitespace-pre-line">{feedback.strengths}</p>
+                  <MarkdownRenderer content={feedback.strengths} className="prose-sm" />
                 </div>
 
                 <div>
@@ -130,7 +130,7 @@ export default function ResumeReviewer() {
                     <XCircle className="w-4 h-4" />
                     Areas for Improvement
                   </h4>
-                  <p className="text-gray-300 whitespace-pre-line">{feedback.improvements}</p>
+                  <MarkdownRenderer content={feedback.improvements} className="prose-sm" />
                 </div>
 
                 <div>
@@ -138,7 +138,7 @@ export default function ResumeReviewer() {
                     <Sparkles className="w-4 h-4" />
                     Specific Recommendations
                   </h4>
-                  <p className="text-gray-300 whitespace-pre-line">{feedback.recommendations}</p>
+                  <MarkdownRenderer content={feedback.recommendations} className="prose-sm" />
                 </div>
 
                 <div className="pt-4 border-t border-slate-700">

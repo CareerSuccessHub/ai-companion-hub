@@ -11,6 +11,11 @@ export const metadata: Metadata = {
     template: "%s | AI Career Success Hub"
   },
   description: "Free AI-powered career mentor for job seekers, students, and professionals. Get AI resume reviews, side hustle ideas, scholarship opportunities, and career guidance. 100% free tools.",
+  icons: {
+    icon: "/logo-2.svg",
+    shortcut: "/logo-2.svg",
+    apple: "/logo-2.svg",
+  },
   keywords: [
     "AI career mentor",
     "free resume review",

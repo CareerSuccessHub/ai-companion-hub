@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Home, BookOpen, GraduationCap, Menu, X, Sparkles, ChevronDown, Briefcase } from "lucide-react";
+import { Home, BookOpen, GraduationCap, Menu, X, ChevronDown, Briefcase } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -27,15 +28,18 @@ export default function Navigation() {
     <nav className="bg-slate-900/95 border-b border-slate-800 sticky top-0 z-50 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo with gradient icon */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl group">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-1.5 font-bold text-xl group">
             <motion.div 
-              whileHover={{ rotate: 360, scale: 1.1 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="relative"
+              className="relative w-12 h-12"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-cyan-400 opacity-20 blur-md rounded-full" />
-              <Sparkles className="w-6 h-6 text-transparent bg-gradient-to-br from-blue-400 to-cyan-400 bg-clip-text relative" style={{ filter: "drop-shadow(0 0 8px rgba(59, 130, 246, 0.5))" }} />
+              <Image
+                src="/logo-2.svg"
+                alt="AI Career Hub Logo"
+                width={48}
+                height={48}
+                className="w-full h-full object-contain"
+              />
             </motion.div>
             <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               AI Career Hub

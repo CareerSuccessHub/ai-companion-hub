@@ -3,12 +3,45 @@
 ## 🎯 Project Vision
 Build a multi-revenue AI platform helping students and young professionals land jobs, manage finances, and boost productivity. Revenue through Ko-fi donations, affiliate commissions, Google AdSense, and premium subscriptions.
 
-**Team:** 3 members (2 developers, 1 marketing specialist)  
+**Team:** 3 members (2 developers, 1 marketing specialist) - **All involved in QA/testing**  
 **Business Model:** Ads + Affiliate Commissions + Donations + Premium SaaS (future)  
 **Current Audience:** College students seeking career growth  
 **Expansion Plan:** Young professionals, freelancers, career changers (2026)  
 **Current Status:** ✅ LIVE at ai-companion-hub-self.vercel.app  
-**Launch Date:** December 9, 2025
+**Launch Date:** December 9, 2025  
+**Last Updated:** December 15, 2025
+
+---
+
+## 📊 CURRENT METRICS (as of Dec 15, 2025)
+
+**Google Analytics (Dec 9-15):**
+- **Active Users:** 33 total (27 Philippines, 2 India, 1 Indonesia, 1 USA)
+- **Total Sessions:** 87
+- **Page Views:** 844
+- **Top Pages:**
+  - Homepage: 700 views
+  - Salary Negotiation Blog: 16 views
+  - Side Hustles Blog: 15 views
+  - Scholarship Finder: 14 views
+  - Blog Index: 12 views
+- **Traffic Sources:**
+  - Direct: 39 sessions (45%)
+  - Referral: 23 sessions (26%)
+  - Organic Search: 14 sessions (16%)
+  - Organic Social: 11 sessions (13%)
+
+**Revenue Status:**
+- Ko-fi Donations: $0 (button active, no donations yet)
+- Fiverr Affiliate: REJECTED (Dec 12, reapply Feb 2026)
+- Skillshare Affiliate: PENDING (no update yet)
+- Google AdSense: NOT APPLIED (requires custom domain)
+- **Total Revenue:** $0
+
+**Content Status:**
+- Blog posts: 8 live (5 auto-generated, 3 manual)
+- Scholarships: 20 active ($320K+ total value)
+- Tools: 4 live (AI Mentor, Resume Reviewer, Salary Negotiator, Side Hustle Generator)
 
 ---
 
@@ -104,29 +137,41 @@ Build a multi-revenue AI platform helping students and young professionals land 
 
 ---
 
-## 🚨 Phase 4.5: Domain Acquisition (URGENT - Dec 15-20, 2025)
+## 🚨 Phase 4.5: Domain Acquisition (DECISION NEEDED - Dec 15-20, 2025)
 
-**Problem:** Chicken-and-egg - Need domain for revenue, need revenue for domain ($12-13)
+**Problem:** Need custom domain for AdSense approval + affiliate trust
+
+**Current Traffic:** 33 users organic, no marketing started yet
+
+**Domain Advice Needed:**
+- **NameCheap**: Domain + Hosting combo? OR just domain?
+- **Vercel**: Continue using for hosting? (current setup works great, auto-deployment)
+- **Recommendation**: Buy domain-only from NameCheap ($12-13/year), point DNS to Vercel (free hosting + auto-deploy)
 
 **Funding Options:**
 1. Team investment: 3 members × $4 = $12 ✅ Fastest
-2. Ko-fi campaign: "Help us buy our domain!" banner ✅ 1-2 days
-3. Wait until Jan: Save $3-4/week ⚠️ Delays revenue by 6+ weeks
+2. Wait for validation: Prove 500-1K visitors first ⏳ Conservative
+3. Ko-fi donations: $0 so far, unlikely to fund domain
 
-**Action Plan:**
-- [ ] Decide funding source by Dec 15
-- [ ] Purchase domain: aicareersuccesshub.com or studentcareerhub.com ($12-13/year)
-- [ ] Configure Vercel custom domain (1 hour)
+**Decision Framework:**
+- **Buy now IF:** Team believes in project, willing to invest $4 each
+- **Wait for validation IF:** Want to see 500-1K organic visitors first (proves market fit)
+- **Middle ground:** Buy in January after seeing 2-3 weeks of traffic trends
+
+**Action Plan (if buying now):**
+- [ ] Purchase domain from NameCheap: aicareersuccesshub.com ($12-13/year, domain only)
+- [ ] Configure Vercel custom domain (free, 1 hour setup)
+- [ ] Keep using Vercel hosting (free tier, unlimited bandwidth, auto-deploy from GitHub)
 - [ ] Update all SEO, sitemaps, GA4, Search Console (2 hours)
-- [ ] Domain age starts accumulating (critical for AdSense)
+- [ ] Domain age starts accumulating (critical for AdSense in Jan/Feb)
 
 **Timeline:**
-- Domain purchase: Dec 15-20
-- AdSense application: Jan 5-10 (domain 2-3 weeks old)
-- Approval: Jan 20-30 (1-2 week review)
-- First revenue: Late January 2026
+- Domain purchase: Dec 15-20 (if decided) OR Jan 2026 (after validation)
+- AdSense application: 2-3 weeks after domain purchase
+- Approval: 1-2 weeks after application
+- First revenue: 4-6 weeks after domain purchase
 
-**Status:** ⏳ BLOCKED on funding decision
+**Status:** ⏳ WAITING FOR TEAM DECISION (buy now vs wait for validation)
 
 ---
 
@@ -134,51 +179,69 @@ Build a multi-revenue AI platform helping students and young professionals land 
 **Goal:** 1,000 visitors by December 31 to qualify for AdSense  
 **Team:** 3 members (2 devs + 1 marketing specialist)
 
-**Content Production (Actual):**
-- Automated blogs: 2 posts/week via GitHub Actions (Mondays)
-- Manual blogs: 0 posts/week (Developer 2 not writing)
-- **Total:** 2 posts/week
+**Content Production (Actual as of Dec 15):**
+- Automated blogs: 3-4 posts/week via GitHub Actions (Mon/Tue/Thu/Sat with 25% skip)
+- Manual blogs: 0 posts/week (Developer 2 not writing yet)
+- **Total:** 3-4 auto-generated posts/week
 
 **Blog Post Projections:**
-- Current: 4 posts (Dec 12)
-- By Dec 31: 10 posts (4 + 3 weeks × 2)
-- By Jan 31: 18 posts (10 + 4 weeks × 2)
-- **15-20 posts milestone:** Late January 2026
+- Current: 8 posts (Dec 15)
+- By Dec 31: 16 posts (8 + 2 weeks × 4)
+- By Jan 31: 32 posts (16 + 4 weeks × 4)
+- **15-20 posts milestone:** Already hit (Dec 19-20)
 
 ### Developer 1 (Lead) - Weekly Tasks:
 - [x] Monitor site performance (Lighthouse, Core Web Vitals)
-- [x] Fix bugs reported by users (GitHub Issues)
+- [x] Fix bugs (scholarship deadline tracking, blog pagination, scrollbar UX)
 - [x] Add AI model fallback for reliability (3-tier system)
-- [x] Optimize automation schedules for API quota
-- [x] Monitor Gemini API usage (daily limit: 1,500 requests, resets 4 PM Philippine Time)
-- [ ] Review auto-generated blog posts for quality
-- [ ] Add 2 new scholarships per week (manual curation)
+- [x] Optimize automation schedules for API quota (4x/week smart skip)
+- [x] Monitor Gemini API usage (1,500/day limit, resets 4 PM Philippine Time)
+- [x] Review auto-generated blog posts for quality
+- [x] Update scholarship database with 2026 deadlines (20 active, bi-monthly refresh)
+- [x] Implement real-time deadline tracking with urgency badges
+- [x] Add blog scalability features (search, filters, pagination, month/year grouping)
+- [x] Custom scrollbar designs (blue gradient global, gray thin for lists)
+- [ ] **QA testing with team** (all 3 members test new features)
 
 ### Developer 2 (Content/Backend) - Weekly Tasks:
-- [ ] Write 3 blog posts per week (SEO-optimized, 1,500+ words) ⚠️ NOT HAPPENING
+- [ ] Write 3 blog posts per week (SEO-optimized, 1,500+ words) ⚠️ NOT STARTED
 - [ ] Optimize site speed (lazy loading, image compression)
 - [ ] Set up email capture system (Mailchimp integration)
 - [ ] Create downloadable resources (scholarship checklist PDF)
 - [ ] Implement A/B tests (Ko-fi button placement)
+- [ ] **QA testing with team** (all 3 members test new features)
 
-**Note:** Manual blog production stalled. Relying on 2 automated posts/week only.
+**Note:** Manual blog production NOT started. Fully automated system running 3-4 posts/week.
 
 ### Marketing Specialist (Traffic Driver) - Daily Tasks:
-- [ ] Post on Reddit 3x/week (r/careerguidance, r/resumes, r/jobs)
-- [ ] LinkedIn content daily (career tips + tool screenshots)
-- [ ] Engage in 10 Facebook student groups
-- [ ] Answer 5 Quora questions per week (link to tools naturally)
-- [ ] Create/schedule social content calendar (30 days ahead)
-- [ ] Monitor GA4 analytics (identify top traffic sources)
-- [ ] Report weekly metrics to team (visitors, conversions, top pages)
+- [ ] Post on Reddit 3x/week (r/careerguidance, r/resumes, r/jobs) ⚠️ NOT STARTED
+- [ ] LinkedIn content daily (career tips + tool screenshots) ⚠️ NOT STARTED
+- [ ] Engage in 10 Facebook student groups ⚠️ NOT STARTED
+- [ ] Answer 5 Quora questions per week (link to tools naturally) ⚠️ NOT STARTED
+- [ ] Create/schedule social content calendar (30 days ahead) ⚠️ NOT STARTED
+- [x] Monitor GA4 analytics (identify top traffic sources)
+- [x] Report metrics to team (visitors, conversions, top pages)
+- [ ] **QA testing with team** (all 3 members test new features)
 
-**Weekly Targets:**
-- Week 1 (Dec 11-17): 100 visitors
-- Week 2 (Dec 18-24): 250 visitors  
-- Week 3 (Dec 25-31): 500 visitors
-- **Total by Dec 31:** 850-1,000 visitors
+**REALITY CHECK (Dec 15):**
+- **Marketing/posting:** NOT STARTED (no Reddit, LinkedIn, Quora, Facebook activity yet)
+- **Current traffic:** 100% organic/direct (33 users total, 27 from Philippines)
+- **Ko-fi donations:** $0 (button active but no donations)
+- **Fiverr affiliate:** REJECTED Dec 12 (site too new, reapply Feb 2026)
+- **Skillshare affiliate:** PENDING (no update yet)
 
-**Detailed strategy:** See TRAFFIC_STRATEGY.md and MARKET_TRENDS_2025.md
+**Weekly Targets (REVISED - Dec 15):**
+- Week 1 (Dec 11-17): 33 visitors ✅ (organic only, NO marketing)
+- Week 2 (Dec 18-24): ? visitors (depends if marketing starts)
+- Week 3 (Dec 25-31): ? visitors (depends if marketing starts)
+- **Realistic by Dec 31:** 100-200 visitors (if NO marketing push launched)
+
+**Next Steps:**
+1. Start marketing activities (Reddit, LinkedIn, Quora) OR
+2. Wait for validation (500-1K organic visitors prove market fit) OR
+3. Focus on product improvements (UX, features) before marketing push
+
+**Detailed strategy:** See TRAFFIC_STRATEGY.md (needs update to reflect reality)
 
 ---
 

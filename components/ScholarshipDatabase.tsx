@@ -268,10 +268,14 @@ export default function ScholarshipDatabase() {
 
   const activeCount = scholarships.filter(s => !isExpired(s.deadline)).length;
   const expiredCount = scholarships.length - activeCount;
-  const totalValue = filteredScholarships.reduce((sum, s) => {
-    const amount = parseInt(s.amount.replace(/[^0-9]/g, '')) || 0;
-    return sum + amount;
-  }, 0);
+  
+  // Count scholarships closing this month
+  const today = new Date();
+  const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+  const closingThisMonth = scholarships.filter(s => {
+    const deadline = parseDeadline(s.deadline);
+    return deadline >= today && deadline <= endOfMonth;
+  }).length;
 
   return (
     <div className="space-y-6">
@@ -288,10 +292,10 @@ export default function ScholarshipDatabase() {
         </div>
         <div className="bg-gradient-to-br from-purple-900/40 to-purple-800/20 border border-purple-700/50 rounded-lg p-4">
           <div className="flex items-center gap-3">
-            <TrendingUp className="w-8 h-8 text-purple-400" />
+            <Calendar className="w-8 h-8 text-purple-400" />
             <div>
-              <p className="text-2xl font-bold text-gray-100">${(totalValue / 1000).toFixed(0)}K+</p>
-              <p className="text-sm text-gray-400">Total Value Available</p>
+              <p className="text-2xl font-bold text-gray-100">{closingThisMonth}</p>
+              <p className="text-sm text-gray-400">Closing This Month</p>
             </div>
           </div>
         </div>

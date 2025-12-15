@@ -14,17 +14,61 @@ const TARGET_BLOGS = [
   'https://dev.to/api/articles?tag=interview',
 ];
 
-// Fallback: Generate these topics if scraping fails
-const FALLBACK_TOPICS = [
-  'How to negotiate your first salary as a new graduate in 2025',
-  '5 resume mistakes that cost you job interviews',
-  'Best side hustles for college students in 2025',
-  'How to switch careers without going back to school',
-  'Remote job interview tips that actually work',
-  'How to ask for a raise (with email templates)',
-  'Freelancing vs full-time job: Which pays more in 2025?',
-  'LinkedIn profile optimization for job seekers',
+// Tech news APIs (career-relevant trending topics)
+const NEWS_SOURCES = [
+  'https://dev.to/api/articles?tag=tech&top=7', // Trending tech (past week)
+  'https://dev.to/api/articles?tag=ai&top=7',
+  'https://dev.to/api/articles?tag=startup&top=7',
 ];
+
+// Topic categories for rotation
+const TOPIC_CATEGORIES = {
+  salary: [
+    'How to negotiate your first salary as a new graduate in 2025',
+    'How to ask for a raise (with email templates)',
+    'Salary negotiation mistakes that cost you thousands',
+    'How to research salary data before your next job offer',
+  ],
+  resume: [
+    '5 resume mistakes that cost you job interviews',
+    'LinkedIn profile optimization for job seekers',
+    'How to write a resume that beats AI screening systems',
+    'Resume keywords that get you hired in 2025',
+  ],
+  sideHustle: [
+    'Best side hustles for college students in 2025',
+    'Freelancing vs full-time job: Which pays more in 2025?',
+    'How to start a profitable side hustle with $100 or less',
+    '7 remote side hustles that pay $50+ per hour',
+  ],
+  careerChange: [
+    'How to switch careers without going back to school',
+    'Career pivot: From [X] to tech without a CS degree',
+    'How to change industries in your 20s or 30s',
+    'Breaking into tech: A realistic 6-month roadmap',
+  ],
+  interview: [
+    'Remote job interview tips that actually work',
+    'How to answer "What\'s your expected salary?" without losing leverage',
+    'Behavioral interview questions and winning answers for 2025',
+    'How to negotiate after getting a job offer',
+  ],
+  trending: [
+    'AI replacing jobs in 2025: Skills that future-proof your career',
+    'Remote work vs office mandates: How to negotiate your arrangement',
+    'Tech layoffs 2025: What it means for your career trajectory',
+    'The 4-day workweek: Companies hiring and how to land these jobs',
+    'ChatGPT for job seekers: 10 prompts that land interviews',
+    'Quiet quitting vs career growth: Finding your balance in 2025',
+  ],
+};
+
+// Flatten all topics for random selection
+const FALLBACK_TOPICS = Object.values(TOPIC_CATEGORIES).flat();
+
+// Topic memory file to avoid duplicates
+const TOPIC_MEMORY_FILE = path.join(__dirname, '.blog-topics-memory.json');
+const MAX_MEMORY = 20; // Remember last 20 topics
 
 // Filter for relevant content
 const RELEVANT_KEYWORDS = [
@@ -40,6 +84,14 @@ const RELEVANT_KEYWORDS = [
   'income',
   'raise',
   'promotion',
+  'layoff',
+  'hiring',
+  'ai impact',
+  'automation',
+  'startup',
+  'tech industry',
+  'work from home',
+  'professional development',
 ];
 
 // Gemini model for blog generation
@@ -323,6 +375,72 @@ Provide response as JSON:
 }
 
 /**
+ * Load topic memory (avoid duplicates)
+ */
+function loadTopicMemory() {
+  try {
+    if (fs.existsSync(TOPIC_MEMORY_FILE)) {
+      const data = fs.readFileSync(TOPIC_MEMORY_FILE, 'utf8');
+      return JSON.parse(data);
+    }
+  } catch (error) {
+    console.warn('⚠️  Failed to load topic memory:', error.message);
+  }
+  return [];
+}
+
+/**
+ * Save topic to memory
+ */
+function saveTopicMemory(topic) {
+  try {
+    let memory = loadTopicMemory();
+    memory.push({ topic, date: new Date().toISOString() });
+    
+    // Keep only last MAX_MEMORY topics
+    if (memory.length > MAX_MEMORY) {
+      memory = memory.slice(-MAX_MEMORY);
+    }
+    
+    fs.writeFileSync(TOPIC_MEMORY_FILE, JSON.stringify(memory, null, 2));
+  } catch (error) {
+    console.warn('⚠️  Failed to save topic memory:', error.message);
+  }
+}
+
+/**
+ * Select unique topics avoiding recent duplicates
+ */
+function selectUniqueTopics(count, source = 'fallback') {
+  const memory = loadTopicMemory();
+  const recentTopics = new Set(memory.map(m => m.topic.toLowerCase()));
+  
+  let availableTopics;
+  if (source === 'fallback') {
+    availableTopics = FALLBACK_TOPICS.filter(t => !recentTopics.has(t.toLowerCase()));
+  } else {
+    availableTopics = source.filter(t => !recentTopics.has(t.title?.toLowerCase() || ''));
+  }
+  
+  // If all topics used, reset and use all
+  if (availableTopics.length < count) {
+    console.log('   ℹ️  Topic memory full, allowing repeats');
+    availableTopics = source === 'fallback' ? FALLBACK_TOPICS : source;
+  }
+  
+  // Shuffle and pick
+  const shuffled = [...availableTopics].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+}
+
+/**
+ * Determine if should skip this run (random 25% chance for 3-4 posts/week variety)
+ */
+function shouldSkipRun() {
+  return Math.random() < 0.25; // 25% chance to skip
+}
+
+/**
  * Create blog post file
  */
 function createBlogPost(slug, content, metadata) {
@@ -368,70 +486,114 @@ Looking to level up your career? Check out these helpful resources:
  * Main execution
  */
 async function main() {
-  console.log('🔍 Scraping career blogs...\n');
+  console.log('� AI Career Blog Auto-Poster v2.0\n');
+  
+  // Random skip for 3-4 posts/week variety
+  if (shouldSkipRun()) {
+    console.log('🎲 Random skip activated (creates 3-4 posts/week variety)');
+    console.log('✨ Skipping this run. See you next time!');
+    return;
+  }
+  
+  console.log('📰 Fetching trending career content...\n');
   
   const allArticles = [];
+  const newsArticles = [];
   
-  // Try scraping from Dev.to
+  // Fetch career blog content
   for (const feedUrl of TARGET_BLOGS) {
     try {
-      console.log(`Fetching: ${feedUrl}`);
+      console.log(`📥 Fetching: ${feedUrl}`);
       const data = await fetchContent(feedUrl);
       if (data) {
         const articles = parseContent(data);
         const relevant = articles.filter(isRelevant);
         allArticles.push(...relevant);
-        console.log(`  Found ${articles.length} articles (${relevant.length} relevant)\n`);
+        console.log(`   ✓ Found ${articles.length} articles (${relevant.length} career-relevant)\n`);
       }
     } catch (error) {
-      console.error(`  ❌ Error: ${error.message}\n`);
+      console.error(`   ❌ Error: ${error.message}\n`);
     }
   }
   
-  console.log(`📰 Total relevant articles scraped: ${allArticles.length}\n`);
+  // Fetch trending news for career impact topics
+  for (const newsUrl of NEWS_SOURCES) {
+    try {
+      console.log(`📡 Fetching trending: ${newsUrl}`);
+      const data = await fetchContent(newsUrl);
+      if (data) {
+        const articles = parseContent(data);
+        const relevant = articles.filter(isRelevant);
+        newsArticles.push(...relevant);
+        console.log(`   ✓ Found ${articles.length} articles (${relevant.length} trending)\n`);
+      }
+    } catch (error) {
+      console.error(`   ❌ Error: ${error.message}\n`);
+    }
+  }
   
-  // If scraping failed, generate original AI content
-  if (allArticles.length === 0) {
-    console.log('⚠️  No articles scraped. Generating original AI content instead...\n');
+  console.log(`📊 Total content found: ${allArticles.length} career + ${newsArticles.length} trending\n`);
+  
+  // Decide content mix: 50% scraped, 50% original
+  const shouldGenerateOriginal = Math.random() > 0.5 || allArticles.length === 0;
+  
+  if (shouldGenerateOriginal) {
+    console.log('🎨 Generating original AI content...\n');
     
-    // Pick 2 random topics
-    const shuffled = [...FALLBACK_TOPICS].sort(() => Math.random() - 0.5);
-    const selectedTopics = shuffled.slice(0, 2);
+    // Select 1 unique topic (avoid duplicates)
+    const selectedTopics = selectUniqueTopics(1, 'fallback');
     
-    for (const topic of selectedTopics) {
-      console.log(`📝 Generating: ${topic}`);
-      const generated = await generateOriginalContent(topic);
+    if (selectedTopics.length === 0) {
+      console.log('❌ No unique topics available');
+      return;
+    }
+    
+    const topic = selectedTopics[0];
+    console.log(`📝 Topic: ${topic}`);
+    
+    const generated = await generateOriginalContent(topic);
+    
+    if (generated) {
+      const slug = generated.title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
       
-      if (generated) {
-        const slug = generated.title
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/(^-|-$)/g, '');
-        
-        createBlogPost(slug, generated.content, {
-          title: generated.title,
-          description: generated.content.substring(0, 150),
-          takeaways: generated.takeaways,
-          tags: ['career', 'advice', 'income'],
-        });
-      } else {
-        console.log('   ❌ Generation failed');
+      // Determine category from topic
+      let category = 'career';
+      for (const [cat, topics] of Object.entries(TOPIC_CATEGORIES)) {
+        if (topics.includes(topic)) {
+          category = cat;
+          break;
+        }
       }
       
-      // Rate limit
-      await new Promise(resolve => setTimeout(resolve, 5000));
+      createBlogPost(slug, generated.content, {
+        title: generated.title,
+        description: generated.content.substring(0, 150),
+        takeaways: generated.takeaways,
+        tags: [category, 'career-advice', 'professional-growth'],
+      });
+      
+      saveTopicMemory(topic);
+    } else {
+      console.log('   ❌ Generation failed');
+    }
+  } else {
+    console.log('✍️  Rewriting scraped content...\n');
+    
+    // Mix: prefer news articles if available for trending content
+    const sourcePool = newsArticles.length > 0 ? newsArticles : allArticles;
+    const selectedArticles = selectUniqueTopics(1, sourcePool);
+    
+    if (selectedArticles.length === 0) {
+      console.log('❌ No unique articles available');
+      return;
     }
     
-    console.log('\n✨ Done! Generated 2 original articles.');
-    return;
-  }
-  
-  // Process scraped articles
-  const topArticles = allArticles.slice(0, 2);
-  
-  for (const article of topArticles) {
-    console.log(`\n📝 Processing: ${article.title}`);
-    console.log(`   Source: ${article.link}`);
+    const article = selectedArticles[0];
+    console.log(`📝 Rewriting: ${article.title}`);
+    console.log(`   Source: ${article.link}\n`);
     
     const rewritten = await rewriteWithAI(article.title, article.description);
     
@@ -441,21 +603,26 @@ async function main() {
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)/g, '');
       
+      const isNews = newsArticles.includes(article);
+      const tags = isNews 
+        ? ['trending', 'career-news', 'industry-insights']
+        : ['career', 'advice', 'professional-development'];
+      
       createBlogPost(slug, rewritten.content, {
         title: rewritten.title,
         description: rewritten.content.substring(0, 150),
         takeaways: rewritten.takeaways,
-        tags: ['career', 'advice', 'professional-development'],
+        tags,
       });
+      
+      saveTopicMemory(article.title);
     } else {
       console.log('   ❌ Rewrite failed');
     }
-    
-    // Rate limit
-    await new Promise(resolve => setTimeout(resolve, 5000));
   }
   
   console.log('\n✨ Done! Check app/blog/ for new posts.');
+  console.log('📅 Next run: See schedule (Mon/Tue/Thu/Sat at varied times)');
 }
 
 main().catch(console.error);

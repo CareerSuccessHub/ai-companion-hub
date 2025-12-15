@@ -2,8 +2,8 @@ name: Auto Blog Posts
 
 on:
   schedule:
-    # Run every Monday at 8:05 AM UTC (5 min after midnight PT quota reset)
-    - cron: '5 8 * * 1'
+    # Run every Monday at 3:00 AM UTC (11:00 AM Philippine Time)
+    - cron: '0 3 * * 1'
   workflow_dispatch: # Allow manual trigger
 
 permissions:

@@ -144,7 +144,8 @@ async function callGeminiAPI(prompt, model, retries = 2) {
               temperature: 0.9,
               topK: 40,
               topP: 0.95,
-              maxOutputTokens: 8000,
+              maxOutputTokens: 8192,
+              responseMimeType: "application/json"
             }
           })
         }

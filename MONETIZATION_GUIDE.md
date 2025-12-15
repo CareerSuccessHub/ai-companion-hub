@@ -20,7 +20,9 @@
    - Replace `YOUR_KOFI_USERNAME` with your actual username
    - Commit and push
 
-**Earnings Potential:** $10-100/month from grateful users
+**Earnings Potential:** $10-100/month (₱500-5,000) from grateful users
+
+**Payment Setup:** Ko-fi uses PayPal/Stripe for payouts (USD). Minimum payout $20 (₱1,100). Accepts donations in USD from international users and converts PHP to USD automatically.
 
 ---
 
@@ -42,14 +44,18 @@
 1. Check if Upwork has affiliate program (they come and go)
 2. Alternative: Use direct links (no commission but builds trust)
 
-#### Other Affiliate Programs for Students:
-- **Skillshare:** https://skillshare.com/affiliates (40% commission!)
-- **Coursera:** https://www.coursera.org/about/partners/affiliates
-- **Grammarly:** https://www.grammarly.com/affiliates
-- **Bluehost** (for bloggers): https://www.bluehost.com/affiliates
-- **Amazon Associates:** https://affiliate-program.amazon.com
+#### Other Affiliate Programs (Philippines-Friendly):
+- **Skillshare:** https://skillshare.com/affiliates (40% commission, ₱2,000-8,000/month)
+- **Coursera:** https://www.coursera.org/about/partners/affiliates (₱1,500-6,000/month)
+- **Grammarly:** https://www.grammarly.com/affiliates (₱800-4,000/month)
+- **Shopee Affiliate:** https://shopee.ph/m/shopee-affiliate (Local, ₱500-10,000/month)
+- **Lazada Affiliate:** https://www.lazada.com.ph/helpcenter/affiliate (Local e-commerce)
+- **GCash Partnership:** https://www.gcash.com/partners (Fintech referrals)
+- **Canva Affiliate:** https://www.canva.com/affiliates (₱600-5,000/month)
 
-**Earnings Potential:** $50-500/month with traffic
+**Earnings Potential:** $50-500/month (₱2,500-25,000) with traffic
+
+**Note:** Most affiliate programs pay in USD. Shopee/Lazada pay in PHP.
 
 ---
 
@@ -78,9 +84,11 @@
 **Ad Placements (already coded):**
 - Top banner (728x90 or responsive)
 - 2x sidebar squares (300x250)
-- Auto ads (Google places them)
+- Auto ads (Google place$100-1,000/month (₱5,000-50,000) with 10k-50k visitors
 
-**Earnings Potential:** $100-1000/month with 10k-50k visitors
+**Note:** AdSense pays in USD, converted to PHP for Philippine bank accounts.
+
+**Earnings Potential:** ₱5,000-50,000/month with 10k-50k visitors
 
 ---
 
@@ -94,32 +102,40 @@
 - 📈 Interview prep sessions
 - 🎓 Course recommendations
 
-**Pricing Strategy:**
+**Pricing Strategy (Dual Currency - Accept Both USD & PHP):**
 - Free tier: Current features
-- Premium: $4.99/month or $49/year
-- Student discount: $2.99/month with .edu email
+- Premium: **$3.99/month** or **₱199/month** | **$39/year** or **₱1,999/year** (Save 17%)
+- Student discount: **$2.99/month** or **₱149/month** with .edu/.edu.ph email
+- Quarterly plan: **$9.99** or **₱499** (₱166/month - best value)
 
-**Payment Options:**
-- Stripe (2.9% + 30¢ per transaction)
-- PayPal (similar fees)
-- Crypto (for international students)
+**Payment Options (Accept Both USD & PHP):**
+- **GCash** (₱ only, lowest fees, most popular in PH)
+- **PayMaya/Maya** (₱ only, 0.99% + ₱5 per transaction)
+- **PayPal** (USD/PHP, 4.4% + ₱15 per transaction)
+- **Stripe** (USD/PHP, 3.2% + ₱15 per transaction)
+- **Coins.ph** (crypto-friendly, PHP)
+- **Bank transfer** (₱ only, InstaPay/PESONet - no fees)
+- **International cards** (USD via Stripe/PayPal)
 
-**Earnings Potential:** $150-2000/month with 30-400 subscribers
+**Earnings Potential:** $150-2,000/month (₱7,500-100,000) with 30-400 subscribers
+
+**Note:** Mix of international (USD) and local (PHP) subscribers. ~60% PHP, ~40% USD expected.
 
 ---
 
 ## 🌐 Custom Domain Purchase Plan
-
-### When to Buy a Domain:
-
-**Option 1: Buy Early (Month 2-3) - RECOMMENDED**
-- **Cost:** $12-15/year (.com domain)
-- **When:** After first $50-100 revenue
+₱600-750/year (.com domain)
+- **When:** After first ₱2,500-5,000 revenue
 - **Why:** Better branding, professional look, easier to market
 - **Domain ideas:** 
-  - `aicareertools.com` ($13/year on Namecheap)
-  - `studentcareerhelp.com` ($12/year)
-  - `careersuccess.ai` ($15/year premium)
+  - `aicareertools.com` (₱650/year on Namecheap)
+  - `studentcareerhelp.com` (₱600/year)
+  - `careersuccess.ph` (₱800/year premium local domain)
+  - `pinoystudent.tools` (₱550/year)
+
+**Option 2: Wait Until Profitable (Month 6)**
+- **Cost:** Still ₱600-750/year
+- **When:** After consistent ₱10,0r premium)
 
 **Option 2: Wait Until Profitable (Month 6)**
 - **Cost:** Still $12-15/year
@@ -129,46 +145,49 @@
 
 ### Recommended Timeline:
 
-**February 2026 (Month 3):**
-- ✅ Revenue hits $100-200/month
-- ✅ Use $13 from revenue to buy `.com` domain
+**February 2026 (₱5,000-10,000/month
+- ✅ Use ₱650 from revenue to buy `.com` domain
 - ✅ Point domain to Vercel (free, 5-minute setup)
 - ✅ Update all marketing materials with new domain
 
 **Why Month 3?**
 - You'll have proven the platform works (traffic + revenue)
-- $13 is <10% of monthly revenue (affordable)
+- ₱650 is <10% of monthly revenue (affordable)
 - Professional domain boosts conversion rates (+15-20%)
 - Easier to remember than `ai-companion-hub-self.vercel.app`
 
-**Where to Buy:**
-1. **Namecheap** ($12-13/year) - Best prices, easy DNS
-2. **Porkbun** ($9-11/year) - Cheapest, good support
-3. **Google Domains** ($12/year) - Simple, integrated with Google services
+**Where to Buy (Philippines Payment Options):**
+1. **Namecheap** (₱600-650/year) - GCash/PayPal accepted, best prices
+2. **Porkbun** (₱450-550/year) - Cheapest, accepts PayPal
+3. **Hostinger.ph** (₱499/year) - Local payment (GCash, bank transfer)
+4. **Domain.com.ph** (₱800/year) - Local registrar, peso pricing
 
 **Setup Cost Breakdown:**
-- Domain: $12-13/year (paid once from Feb revenue)
-- Hosting: $0 (Vercel free tier continues)
-- SSL: $0 (Vercel provides free HTTPS)
-- Total: **$13 one-time, then $13/year renewal**
+- Domain: ₱600-650/year (paid once from Feb revenue)
+- Hosting: ₱0 (Vercel free tier continues)
+- SSL: ₱0 (Vercel provides free HTTPS)
+- Total: **₱650 one-time, then ₱650/year renewal**
 
 **ROI Calculation:**
 - Professional domain = +15% conversion rate boost
-- If Feb revenue = $150/month
-- Boost = +$22.50/month extra revenue
-- Domain pays for itself in <1 month
-
----
-
-## 📊 Revenue Projections (Updated with Domain Purchase)
+- If Feb revenue = ₱7,500/month
+- Boost = +₱1,125= $150/month
+## 📊 Revenue Projections - Dual Currency (Updated with Domain Purchase)
 
 | Month | Users | Ko-fi | Affiliate | AdSense | Premium | **Total** | **Expenses** | **Net** |
-|-------|-------|-------|-----------|---------|---------|-----------|--------------|--------|
-| 1 (Dec) | 100 | $10 | $5 | $0 | $0 | **$15** | $0 | **$15** |
-| 2 (Jan) | 500 | $25 | $30 | $0 | $0 | **$55** | $0 | **$55** |
-| 3 (Feb) | 2,000 | $50 | $100 | $50 | $0 | **$200** | -$13 (domain) | **$187** |
-| 6 (May) | 10,000 | $100 | $300 | $300 | $150 | **$850** | $0 | **$850** |
-| 12 (Dec 2026) | 50,000 | $200 | $800 | $1,200 | $800 | **$3,000** | $0 | **$3,000** |
+|-------|-------|-------|-----------|---------|---------|-----------|--------------|---------|  
+| 1 (Dec) | 100 | $10 (₱500) | $5 (₱250) | $0 | $0 | **$15 (₱750)** | $0 | **$15 (₱750)** |
+| 2 (Jan) | 500 | $25 (₱1,250) | $30 (₱1,500) | $0 | $0 | **$55 (₱2,750)** | $0 | **$55 (₱2,750)** |
+| 3 (Feb) | 2,000 | $50 (₱2,500) | $100 (₱5,000) | $50 (₱2,500) | $0 | **$200 (₱10,000)** | -$13 (-₱650) | **$187 (₱9,350)** |
+| 6 (May) | 10,000 | $100 (₱5,000) | $300 (₱15,000) | $300 (₱15,000) | $150 (₱7,500) | **$850 (₱42,500)** | $0 | **$850 (₱42,500)** |
+| 12 (Dec 2026) | 50,000 | $200 (₱10,000) | $800 (₱40,000) | $1,200 (₱60,000) | $800 (₱40,000) | **$3,000 (₱150,000)** | $0 | **$3,000 (₱150,000)** |
+| 13 (Jan 2027) | 60,000 | $250 (₱12,500) | $1,000 (₱50,000) | $1,500 (₱75,000) | $1,000 (₱50,000) | **$3,750 (₱187,500)** | -$13 (-₱650) | **$3,737 (₱186,850)** |
+
+**Currency Note:** Using $1 = ₱50 PHP exchange rate (Dec 2025). All earnings are NET after payment processor fees. ~60% of revenue from Philippine users (₱), ~40% from international users ($).
+| 12 (Dec 2026) | 50,000 | ₱10,000 | ₱40,000 | ₱60,000 | ₱40,000 | **₱150,000** | ₱0 | **₱150,000** |
+| 13 (Jan 2027) | 60,000 | ₱12,500 | ₱50,000 | ₱75,000 | ₱50,000 | **₱187,500** | -₱650 (renewal) | **₱186,850** |
+
+**Currency Note:** Using ₱1 = $0.018 USD exchange rate (Dec 2025). All earnings are NET after payment processor fees.
 | 13 (Jan 2027) | 60,000 | $250 | $1,000 | $1,500 | $1,000 | **$3,750** | -$13 (renewal) | **$3,737** |
 
 ---

@@ -50,13 +50,15 @@ async function generateScholarshipData(model, retries = 2) {
       await new Promise(resolve => setTimeout(resolve, delay));
     }
 
-  const prompt = `Generate 20 real, legitimate college scholarships for US students in 2025. Mix of different types (merit, need-based, STEM, minority, etc.).
+  const prompt = `Generate 20 real, legitimate college scholarships for US students for the 2025-2026 academic cycle. Mix of different types (merit, need-based, STEM, minority, etc.).
+
+IMPORTANT: Use deadlines between January 2026 and December 2026, spread throughout the year. Examples: "March 15, 2026", "June 30, 2026", "October 1, 2026". Do NOT use 2025 dates.
 
 For each scholarship provide:
 - name: Official scholarship name
 - provider: Organization/company offering it
 - amount: Dollar amount or range
-- deadline: Application deadline (use realistic 2025 dates)
+- deadline: Application deadline (MUST be 2026 dates, spread across all months)
 - category: One of: merit-based, need-based, stem, business, arts, athletics, minority, international
 - eligibility: Brief requirements (GPA, major, demographics, etc.)
 - description: 2-3 sentences about the scholarship

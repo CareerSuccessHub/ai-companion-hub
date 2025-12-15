@@ -6,204 +6,204 @@ import { Search, GraduationCap, DollarSign, Calendar, ExternalLink, Filter, Cloc
 // Curated scholarship database
 const scholarships = [
   {
-    "name": "The Gates Scholarship",
+    "name": "National Merit Scholarship Program",
+    "provider": "National Merit Scholarship Corporation",
+    "amount": "$2,500 - Full Tuition",
+    "deadline": "January 15, 2026",
+    "category": "merit-based",
+    "eligibility": "High school seniors, PSAT/NMSQT scores, US Citizen or permanent resident",
+    "description": "Recognizes academically talented high school students across the nation. Finalists compete for various scholarship awards sponsored by corporations, colleges, and the NMSC itself.",
+    "link": "https://www.scholarships.com/national-merit-scholarship-program"
+  },
+  {
+    "name": "Society of Women Engineers (SWE) Scholarship",
+    "provider": "Society of Women Engineers",
+    "amount": "$1,000 - $15,000",
+    "deadline": "February 1, 2026",
+    "category": "stem",
+    "eligibility": "Female students pursuing an ABET-accredited baccalaureate or graduate degree in engineering or computer science",
+    "description": "Supports women pursuing degrees in engineering and technology fields. Applicants are evaluated based on academic achievement, leadership, and participation in engineering activities.",
+    "link": "https://www.scholarships.com/society-of-women-engineers-scholarship"
+  },
+  {
+    "name": "Jackie Robinson Foundation Scholarship",
+    "provider": "Jackie Robinson Foundation",
+    "amount": "Up to $35,000 over four years",
+    "deadline": "February 28, 2026",
+    "category": "minority",
+    "eligibility": "Minority high school seniors, US Citizen, demonstrate financial need, leadership potential",
+    "description": "Provides a comprehensive scholarship program for minority students attending four-year accredited colleges and universities. Scholars receive financial assistance, extensive mentoring, and leadership development opportunities.",
+    "link": "https://www.scholarships.com/jackie-robinson-foundation-scholarship"
+  },
+  {
+    "name": "Gates Millennium Scholarship Program",
     "provider": "Bill & Melinda Gates Foundation",
     "amount": "Full Cost of Attendance",
-    "deadline": "September 15, 2025",
+    "deadline": "March 10, 2026",
     "category": "need-based",
-    "eligibility": "High school seniors, Pell Grant eligible, minimum 3.3 GPA, minority groups preferred.",
-    "description": "A highly selective, full-tuition scholarship for outstanding minority high school seniors from low-income backgrounds. It aims to help students achieve their maximum potential.",
-    "link": "https://www.scholarships.com/the-gates-scholarship"
+    "eligibility": "High school seniors from diverse backgrounds, Pell Grant eligible, minimum 3.3 GPA, US Citizen or permanent resident",
+    "description": "A highly selective scholarship for outstanding minority students with significant financial need. It covers the full cost of attendance not met by other financial aid for undergraduate and graduate studies.",
+    "link": "https://www.scholarships.com/gates-millennium-scholarship-program"
+  },
+  {
+    "name": "America's Farmers Grow Ag Leaders Scholarship",
+    "provider": "Monsanto Fund",
+    "amount": "$1,500 - $2,500",
+    "deadline": "March 31, 2026",
+    "category": "stem",
+    "eligibility": "High school seniors pursuing an agriculture-related field of study at a two- or four-year college",
+    "description": "Supports students passionate about agriculture and rural communities. Scholarships are sponsored by local farmers and aim to develop the next generation of agricultural leaders.",
+    "link": "https://www.scholarships.com/americas-farmers-grow-ag-leaders-scholarship"
+  },
+  {
+    "name": "Hispanic Scholarship Fund (HSF) Scholarship",
+    "provider": "Hispanic Scholarship Fund",
+    "amount": "$500 - $5,000",
+    "deadline": "April 15, 2026",
+    "category": "minority",
+    "eligibility": "Hispanic heritage, minimum 2.5 GPA, plan to enroll full-time in an accredited US institution",
+    "description": "Empowers Latino students and their families to pursue higher education. Scholarships are available for high school seniors, undergraduate, and graduate students across all majors and academic years.",
+    "link": "https://www.scholarships.com/hispanic-scholarship-fund-scholarship"
+  },
+  {
+    "name": "Ayn Rand Institute Essay Contest",
+    "provider": "Ayn Rand Institute",
+    "amount": "$50 - $10,000",
+    "deadline": "April 30, 2026",
+    "category": "merit-based",
+    "eligibility": "High school students (grades 8-12) based on specific novel, US or international",
+    "description": "Encourages students to read and engage with Ayn Rand's novels like 'The Fountainhead' and 'Atlas Shrugged'. Participants submit essays analyzing themes and characters from the selected book.",
+    "link": "https://www.scholarships.com/ayn-rand-institute-essay-contest"
+  },
+  {
+    "name": "Future Business Leaders of America (FBLA) Scholarship",
+    "provider": "Future Business Leaders of America",
+    "amount": "$500 - $2,000",
+    "deadline": "May 1, 2026",
+    "category": "business",
+    "eligibility": "Active FBLA members, high school seniors, pursuing a business-related degree",
+    "description": "Recognizes outstanding FBLA members who demonstrate leadership and commitment to business education. Scholarships are awarded based on academic performance, FBLA involvement, and future career goals.",
+    "link": "https://www.scholarships.com/future-business-leaders-of-america-scholarship"
+  },
+  {
+    "name": "Doodle for Google Scholarship",
+    "provider": "Google",
+    "amount": "$30,000 college scholarship",
+    "deadline": "May 15, 2026",
+    "category": "arts",
+    "eligibility": "K-12 students in the US, submit an original doodle based on a theme",
+    "description": "An annual competition where students create their own Google Doodle. The national winner receives a college scholarship, a technology package, and their artwork featured on the Google homepage.",
+    "link": "https://www.scholarships.com/doodle-for-google-scholarship"
+  },
+  {
+    "name": "United Negro College Fund (UNCF) Scholarships",
+    "provider": "United Negro College Fund",
+    "amount": "$500 - Full Tuition",
+    "deadline": "June 1, 2026",
+    "category": "minority",
+    "eligibility": "African American students, various GPA requirements, enrolled in a UNCF-member institution or other accredited college",
+    "description": "UNCF offers a wide range of scholarships to help minority students attend college. Eligibility varies greatly by specific scholarship, covering different majors, regions, and academic levels.",
+    "link": "https://www.scholarships.com/united-negro-college-fund-scholarships"
+  },
+  {
+    "name": "Point Foundation Scholarship",
+    "provider": "Point Foundation",
+    "amount": "Full Cost of Attendance",
+    "deadline": "June 30, 2026",
+    "category": "need-based",
+    "eligibility": "LGBTQ students, enrolled or planning to enroll in an accredited higher education institution, demonstrate financial need and academic merit",
+    "description": "Empowers LGBTQ students to achieve their full academic and leadership potential. The scholarship provides financial support, mentorship, and leadership development for scholars.",
+    "link": "https://www.scholarships.com/point-foundation-scholarship"
+  },
+  {
+    "name": "Davidson Fellows Scholarship",
+    "provider": "Davidson Institute for Talent Development",
+    "amount": "$10,000 - $50,000",
+    "deadline": "July 15, 2026",
+    "category": "merit-based",
+    "eligibility": "Under 18, US Citizen, demonstrate extraordinary accomplishment in a specific field (e.g., science, literature, music)",
+    "description": "Recognizes young people who have completed a significant piece of work that has the potential to make a positive contribution to society. It's one of the largest scholarships in the U.S. for young people.",
+    "link": "https://www.scholarships.com/davidson-fellows-scholarship"
+  },
+  {
+    "name": "American Heart Association (AHA) Undergraduate Research Fellowship",
+    "provider": "American Heart Association",
+    "amount": "$4,000 - $6,000",
+    "deadline": "August 1, 2026",
+    "category": "stem",
+    "eligibility": "Undergraduate students, US Citizen or permanent resident, interested in cardiovascular or cerebrovascular research",
+    "description": "Provides financial support for students to conduct research under the supervision of an experienced mentor. This program aims to inspire future careers in cardiovascular science.",
+    "link": "https://www.scholarships.com/american-heart-association-scholarship"
   },
   {
     "name": "Coca-Cola Scholars Program Scholarship",
-    "provider": "The Coca-Cola Scholars Foundation",
+    "provider": "The Coca-Cola Foundation",
     "amount": "$20,000",
-    "deadline": "October 31, 2025",
+    "deadline": "August 31, 2026",
     "category": "merit-based",
-    "eligibility": "High school seniors, minimum 3.0 GPA, demonstrated leadership and community service.",
-    "description": "This scholarship recognizes students who have a proven track record of leadership, academic achievement, and commitment to their communities. It's one of the most prestigious merit-based scholarships.",
+    "eligibility": "High school seniors, US Citizen, minimum 3.0 GPA, demonstrate leadership and community service",
+    "description": "Recognizes students who exemplify leadership, service, and commitment to their communities. It is one of the most prestigious and competitive scholarships available to high school students.",
     "link": "https://www.scholarships.com/coca-cola-scholars-program-scholarship"
   },
   {
-    "name": "Ron Brown Scholars Program",
-    "provider": "Ron Brown Scholar Program",
-    "amount": "$40,000 ($10,000 annually)",
-    "deadline": "January 9, 2025",
-    "category": "minority",
-    "eligibility": "African American high school seniors, demonstrated leadership, community service, academic achievement, and financial need.",
-    "description": "The Ron Brown Scholar Program provides academic scholarships, service opportunities, and leadership experiences for young African Americans of outstanding promise. Scholars are chosen based on academic achievement, leadership, and community service.",
-    "link": "https://www.scholarships.com/ron-brown-scholars-program"
-  },
-  {
-    "name": "Jack Kent Cooke Foundation Undergraduate Transfer Scholarship",
-    "provider": "Jack Kent Cooke Foundation",
-    "amount": "Up to $55,000 per year",
-    "deadline": "October 20, 2025",
-    "category": "merit-based",
-    "eligibility": "Current community college students, minimum 3.5 GPA, plan to transfer to a four-year institution, significant financial need.",
-    "description": "This scholarship supports top community college students seeking to complete their bachelor's degrees at four-year colleges or universities. It offers substantial financial aid and comprehensive advising.",
-    "link": "https://www.scholarships.com/jack-kent-cooke-foundation-undergraduate-transfer-scholarship"
-  },
-  {
-    "name": "QuestBridge National College Match",
-    "provider": "QuestBridge",
-    "amount": "Full four-year scholarship (full tuition, room & board, books, travel)",
-    "deadline": "September 27, 2025",
+    "name": "Horatio Alger Association Scholarship",
+    "provider": "Horatio Alger Association of Distinguished Americans",
+    "amount": "$10,000 - $25,000",
+    "deadline": "September 15, 2026",
     "category": "need-based",
-    "eligibility": "High school seniors, typically in the top 5-10% of their class, from low-income households (income under $65,000 for a family of four).",
-    "description": "A program that connects high-achieving, low-income students with leading colleges and universities. Matched students receive a full scholarship to a QuestBridge partner institution.",
-    "link": "https://www.scholarships.com/questbridge-national-college-match"
+    "eligibility": "High school seniors, US Citizen, demonstrate critical financial need, minimum 2.0 GPA, strong commitment to community service",
+    "description": "Assists students who have faced and overcome great obstacles in their lives. Scholars are selected based on their commitment to pursuing higher education and their ability to persevere through adversity.",
+    "link": "https://www.scholarships.com/horatio-alger-association-scholarship"
   },
   {
     "name": "Dell Scholars Program",
     "provider": "Michael & Susan Dell Foundation",
     "amount": "$20,000",
-    "deadline": "December 1, 2025",
+    "deadline": "September 30, 2026",
     "category": "need-based",
-    "eligibility": "High school seniors, participate in a college readiness program, minimum 2.5 GPA, demonstrate financial need and academic potential.",
-    "description": "This program supports students who are often the first in their family to attend college and are committed to obtaining a bachelor's degree. It provides financial assistance, resources, and support services.",
+    "eligibility": "High school seniors participating in approved college readiness programs, minimum 2.4 GPA, demonstrate financial need",
+    "description": "Supports low-income, highly motivated students who are often the first in their family to attend college. Beyond financial aid, the program provides personalized support services to help scholars succeed.",
     "link": "https://www.scholarships.com/dell-scholars-program"
   },
   {
-    "name": "Horatio Alger National Scholarship",
-    "provider": "Horatio Alger Association of Distinguished Americans",
-    "amount": "$25,000",
-    "deadline": "October 15, 2025",
+    "name": "Prudential Spirit of Community Awards",
+    "provider": "Prudential Financial, Inc.",
+    "amount": "$1,000 - $5,000",
+    "deadline": "October 15, 2026",
+    "category": "merit-based",
+    "eligibility": "Students in grades 5-12, US Citizen, demonstrate outstanding volunteer service",
+    "description": "Honors middle and high school students across the United States for their volunteer work. State Honorees receive a monetary award and an all-expenses-paid trip to Washington, D.C.",
+    "link": "https://www.scholarships.com/prudential-spirit-of-community-awards"
+  },
+  {
+    "name": "QuestBridge National College Match",
+    "provider": "QuestBridge",
+    "amount": "Full Four-Year Scholarship",
+    "deadline": "October 31, 2026",
     "category": "need-based",
-    "eligibility": "High school seniors, critical financial need (adjusted gross income of $65,000 or less per family), minimum 2.0 GPA, demonstrate integrity and perseverance in overcoming adversity.",
-    "description": "This scholarship program assists students who have overcome significant personal challenges to pursue higher education. It seeks to reward students who have demonstrated resilience and a strong commitment to their education.",
-    "link": "https://www.scholarships.com/horatio-alger-national-scholarship"
+    "eligibility": "High school seniors from low-income backgrounds, strong academic record, US Citizen or permanent resident",
+    "description": "Connects high-achieving low-income students with top colleges and universities. Matched students receive a full four-year scholarship covering tuition, room and board, books, and travel expenses.",
+    "link": "https://www.scholarships.com/questbridge-national-college-match"
   },
   {
-    "name": "National Merit Scholarship Program",
-    "provider": "National Merit Scholarship Corporation (NMSC)",
-    "amount": "$2,500 (one-time scholarship)",
-    "deadline": "April 1, 2025",
+    "name": "Army ROTC Scholarship Program",
+    "provider": "U.S. Army",
+    "amount": "Full Tuition & Fees or Room & Board",
+    "deadline": "November 15, 2026",
     "category": "merit-based",
-    "eligibility": "High school students who take the PSAT/NMSQT in their junior year, achieve high scores, and meet specific academic requirements.",
-    "description": "A prestigious academic competition for recognition and scholarships. Students qualify based on their PSAT/NMSQT scores and can become Finalists to compete for various scholarships.",
-    "link": "https://www.scholarships.com/national-merit-scholarship-program"
+    "eligibility": "High school juniors/seniors, US Citizen, minimum 2.5 GPA, physically fit, pursue a commission as an Army Officer",
+    "description": "Provides financial assistance for students attending college while training to become Army Officers. Scholarships cover tuition, fees, and a book allowance, plus a monthly stipend.",
+    "link": "https://www.scholarships.com/army-rotc-scholarship-program"
   },
   {
-    "name": "Regeneron Science Talent Search",
-    "provider": "Society for Science & the Public / Regeneron",
-    "amount": "Up to $250,000",
-    "deadline": "November 12, 2025",
-    "category": "stem",
-    "eligibility": "High school seniors who have completed independent scientific research projects.",
-    "description": "The nation's oldest and most prestigious science competition for high school seniors. It recognizes and rewards students who demonstrate exceptional promise in STEM fields through original research.",
-    "link": "https://www.scholarships.com/regeneron-science-talent-search"
-  },
-  {
-    "name": "Society of Women Engineers (SWE) Scholarships",
-    "provider": "Society of Women Engineers (SWE)",
-    "amount": "$1,000 - $15,000",
-    "deadline": "May 1, 2025",
-    "category": "stem",
-    "eligibility": "Female students pursuing a bachelor's or graduate degree in engineering or computer science at an ABET-accredited program.",
-    "description": "SWE offers a variety of scholarships for women in engineering and technology fields. These scholarships support aspiring engineers at various stages of their academic careers.",
-    "link": "https://www.scholarships.com/society-of-women-engineers-swe-scholarships"
-  },
-  {
-    "name": "AICPA Scholarships for Accounting Students",
-    "provider": "American Institute of Certified Public Accountants (AICPA)",
-    "amount": "$2,500 - $10,000",
-    "deadline": "March 1, 2025",
-    "category": "business",
-    "eligibility": "Undergraduate or graduate students pursuing an accounting major, minimum 3.0 GPA, AICPA student affiliate member.",
-    "description": "The AICPA offers multiple scholarships to support the next generation of accounting professionals. These scholarships help students reduce the financial burden of their education and pursue careers in accounting.",
-    "link": "https://www.scholarships.com/aicpa-scholarships-for-accounting-students"
-  },
-  {
-    "name": "NCAA Postgraduate Scholarship Program",
-    "provider": "National Collegiate Athletic Association (NCAA)",
-    "amount": "$10,000",
-    "deadline": "January 17, 2025",
-    "category": "athletics",
-    "eligibility": "Student-athletes in their final year of intercollegiate athletics eligibility, minimum 3.2 GPA, plan to pursue graduate studies.",
-    "description": "This scholarship recognizes student-athletes who excel academically and athletically and are committed to continuing their education. It supports graduate study in various fields.",
-    "link": "https://www.scholarships.com/ncaa-postgraduate-scholarship-program"
-  },
-  {
-    "name": "Hispanic Scholarship Fund (HSF) General Scholarships",
-    "provider": "Hispanic Scholarship Fund (HSF)",
-    "amount": "$500 - $5,000",
-    "deadline": "February 15, 2025",
-    "category": "minority",
-    "eligibility": "Hispanic heritage, minimum 2.5 GPA, plan to enroll full-time at a 2- or 4-year accredited institution.",
-    "description": "HSF provides scholarships to Latino students for their higher education. It supports students across all majors and academic years, helping them achieve their college and career goals.",
-    "link": "https://www.scholarships.com/hispanic-scholarship-fund-hsf-general-scholarships"
-  },
-  {
-    "name": "UNCF General Scholarship Program",
-    "provider": "United Negro College Fund (UNCF)",
-    "amount": "Varies, typically $1,000 - $5,000",
-    "deadline": "March 31, 2025",
-    "category": "minority",
-    "eligibility": "African American students, minimum 2.5 GPA, demonstrated financial need, enrolled at a UNCF member institution or other accredited college.",
-    "description": "UNCF offers a wide range of scholarships to support African American students pursuing higher education. These scholarships aim to empower students to reach their full potential.",
-    "link": "https://www.scholarships.com/uncf-general-scholarship-program"
-  },
-  {
-    "name": "Asian & Pacific Islander American Scholars (APIA Scholars)",
-    "provider": "APIA Scholars",
-    "amount": "$2,500 - $20,000",
-    "deadline": "January 23, 2025",
-    "category": "minority",
-    "eligibility": "Asian and/or Pacific Islander ethnicity, minimum 2.7 GPA, demonstrated financial need, community service, enrolled at an accredited U.S. college or university.",
-    "description": "APIA Scholars provides scholarships to underserved Asian and Pacific Islander American students. The program aims to empower students to complete their college education and become leaders.",
-    "link": "https://www.scholarships.com/apia-scholars"
-  },
-  {
-    "name": "American Indian College Fund (AICF) Full Circle Scholarship",
-    "provider": "American Indian College Fund",
-    "amount": "Varies, typically $1,000 - $5,000",
-    "deadline": "May 31, 2025",
-    "category": "minority",
-    "eligibility": "Enrolled member of a federally recognized American Indian tribe or Alaska Native group, minimum 2.0 GPA, enrolled full-time at an accredited college or university.",
-    "description": "This scholarship supports Native American and Alaska Native students pursuing higher education. It aims to provide opportunities for academic success and cultural preservation.",
-    "link": "https://www.scholarships.com/american-indian-college-fund-full-circle-scholarship"
-  },
-  {
-    "name": "Davidson Fellows Scholarship",
-    "provider": "Davidson Institute for Talent Development",
-    "amount": "$10,000, $25,000, or $50,000",
-    "deadline": "February 12, 2025",
+    "name": "Burger King Scholars Program",
+    "provider": "Burger King McLamore Foundation",
+    "amount": "$1,000 - $50,000",
+    "deadline": "December 1, 2026",
     "category": "merit-based",
-    "eligibility": "Young people under 18, who have completed a significant piece of work in STEM, Literature, Music, Philosophy, or other fields, demonstrating profound depth and expertise.",
-    "description": "This scholarship recognizes extraordinary young people who have completed significant projects that have the potential to make a positive contribution to society. It's one of the highest honors for young innovators.",
-    "link": "https://www.scholarships.com/davidson-fellows-scholarship"
-  },
-  {
-    "name": "Google Lime Scholarship Program",
-    "provider": "Google / Lime Connect",
-    "amount": "$10,000 for undergraduates, $10,000 for graduate students",
-    "deadline": "December 8, 2025",
-    "category": "stem",
-    "eligibility": "Current undergraduate, graduate, or Ph.D. students with disabilities, pursuing a degree in computer science, computer engineering, or related technical fields.",
-    "description": "This scholarship supports students with disabilities who are pursuing degrees in computer science or related fields. It aims to encourage and empower future technology leaders.",
-    "link": "https://www.scholarships.com/google-lime-scholarship-program"
-  },
-  {
-    "name": "VFW Voice of Democracy Scholarship",
-    "provider": "Veterans of Foreign Wars (VFW)",
-    "amount": "$1,000 - $30,000",
-    "deadline": "October 31, 2025",
-    "category": "merit-based",
-    "eligibility": "Students in grades 9-12, U.S. citizens, submit an original audio-essay on a patriotic theme.",
-    "description": "This scholarship competition encourages students to express their opinions on a democratic and patriotic theme. It promotes critical thinking and public speaking skills among young people.",
-    "link": "https://www.scholarships.com/vfw-voice-of-democracy-scholarship"
-  },
-  {
-    "name": "Scholastic Art & Writing Awards Scholarships",
-    "provider": "Alliance for Young Artists & Writers",
-    "amount": "Up to $10,000",
-    "deadline": "December 1, 2025",
-    "category": "arts",
-    "eligibility": "Students in grades 7-12, submit original works of art or writing. Various categories available.",
-    "description": "This program identifies and celebrates the vision, ingenuity, and voices of the nation’s most talented teens. It provides opportunities for students to earn scholarships and have their work recognized nationally.",
-    "link": "https://www.scholarships.com/scholastic-art-and-writing-awards-scholarships"
+    "eligibility": "High school seniors, US Citizen, minimum 2.5 GPA, demonstrate financial need, community service",
+    "description": "Assists students who are outstanding in their academic achievements and community involvement. Scholarships are awarded based on academic performance, leadership, and work experience.",
+    "link": "https://www.scholarships.com/burger-king-scholars-program"
   }
 ];
 
@@ -404,7 +404,7 @@ export default function ScholarshipDatabase() {
         </div>
 
         {/* Scholarship List */}
-        <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+        <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800 hover:scrollbar-thumb-slate-500">
           {filteredScholarships.map((scholarship, index) => {
             const urgency = getUrgencyLevel(scholarship.deadline);
             const daysLeft = getDaysUntilDeadline(scholarship.deadline);

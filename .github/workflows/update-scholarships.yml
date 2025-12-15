@@ -2,8 +2,10 @@ name: Update Scholarships
 
 on:
   schedule:
-    # Run on 1st of every month at 9:00 AM UTC (5:00 PM Philippines, after API reset)
+    # Run on 1st of every month at 9:00 AM UTC (5:00 PM Philippines)
     - cron: '0 9 1 * *'
+    # Run on 15th of every month at 9:00 AM UTC (5:00 PM Philippines) for mid-month refresh
+    - cron: '0 9 15 * *'
   workflow_dispatch: # Manual trigger
 
 permissions:

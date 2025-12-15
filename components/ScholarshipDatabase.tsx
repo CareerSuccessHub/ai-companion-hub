@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search, GraduationCap, DollarSign, Calendar, ExternalLink, Filter } from "lucide-react";
+import { Search, GraduationCap, DollarSign, Calendar, ExternalLink, Filter, Clock, CheckCircle, XCircle, TrendingUp, AlertCircle } from "lucide-react";
 
 // Curated scholarship database
 const scholarships = [
@@ -207,37 +207,121 @@ const scholarships = [
   }
 ];
 
+// Utility functions
+function parseDeadline(deadline: string): Date {
+  return new Date(deadline);
+}
+
+function isExpired(deadline: string): boolean {
+  const deadlineDate = parseDeadline(deadline);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return deadlineDate < today;
+}
+
+function getDaysUntilDeadline(deadline: string): number {
+  const deadlineDate = parseDeadline(deadline);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const diff = deadlineDate.getTime() - today.getTime();
+  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+}
+
+function getUrgencyLevel(deadline: string): 'expired' | 'urgent' | 'soon' | 'upcoming' {
+  if (isExpired(deadline)) return 'expired';
+  const days = getDaysUntilDeadline(deadline);
+  if (days <= 30) return 'urgent';
+  if (days <= 60) return 'soon';
+  return 'upcoming';
+}
+
 export default function ScholarshipDatabase() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [showExpired, setShowExpired] = useState(false);
+  const [sortBy, setSortBy] = useState<'deadline' | 'amount'>('deadline');
 
   const categories = ["All", "merit-based", "need-based", "stem", "business", "arts", "athletics", "minority", "international"];
 
-  const filteredScholarships = scholarships.filter((scholarship) => {
+  // Filter and sort scholarships
+  let filteredScholarships = scholarships.filter((scholarship) => {
     const matchesSearch = scholarship.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          scholarship.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          scholarship.eligibility.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === "All" || scholarship.category === selectedCategory;
+    const matchesExpired = showExpired || !isExpired(scholarship.deadline);
     
-    return matchesSearch && matchesCategory;
+    return matchesSearch && matchesCategory && matchesExpired;
   });
+
+  // Sort scholarships
+  filteredScholarships = [...filteredScholarships].sort((a, b) => {
+    if (sortBy === 'deadline') {
+      return parseDeadline(a.deadline).getTime() - parseDeadline(b.deadline).getTime();
+    } else {
+      // Sort by amount (extract first number from amount string)
+      const amountA = parseInt(a.amount.replace(/[^0-9]/g, '')) || 0;
+      const amountB = parseInt(b.amount.replace(/[^0-9]/g, '')) || 0;
+      return amountB - amountA;
+    }
+  });
+
+  const activeCount = scholarships.filter(s => !isExpired(s.deadline)).length;
+  const expiredCount = scholarships.length - activeCount;
+  const totalValue = filteredScholarships.reduce((sum, s) => {
+    const amount = parseInt(s.amount.replace(/[^0-9]/g, '')) || 0;
+    return sum + amount;
+  }, 0);
 
   return (
     <div className="space-y-6">
-      <div className="bg-blue-900/20 border border-blue-800/50 rounded-lg p-4 mb-6">
+      {/* Stats Banner */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-gradient-to-br from-blue-900/40 to-blue-800/20 border border-blue-700/50 rounded-lg p-4">
+          <div className="flex items-center gap-3">
+            <CheckCircle className="w-8 h-8 text-green-400" />
+            <div>
+              <p className="text-2xl font-bold text-gray-100">{activeCount}</p>
+              <p className="text-sm text-gray-400">Active Scholarships</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-gradient-to-br from-purple-900/40 to-purple-800/20 border border-purple-700/50 rounded-lg p-4">
+          <div className="flex items-center gap-3">
+            <TrendingUp className="w-8 h-8 text-purple-400" />
+            <div>
+              <p className="text-2xl font-bold text-gray-100">${(totalValue / 1000).toFixed(0)}K+</p>
+              <p className="text-sm text-gray-400">Total Value Available</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-gradient-to-br from-orange-900/40 to-orange-800/20 border border-orange-700/50 rounded-lg p-4">
+          <div className="flex items-center gap-3">
+            <AlertCircle className="w-8 h-8 text-orange-400" />
+            <div>
+              <p className="text-2xl font-bold text-gray-100">{scholarships.filter(s => getUrgencyLevel(s.deadline) === 'urgent').length}</p>
+              <p className="text-sm text-gray-400">Deadlines in 30 Days</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-blue-900/20 border border-blue-800/50 rounded-lg p-4">
         <p className="text-sm text-blue-200">
-          📅 <strong>Note:</strong> Most scholarships are recurring annual programs. 
+          📅 <strong>Tip:</strong> Most scholarships are recurring annual programs. 
           Deadlines shown are for the 2025-2026 cycle. Always verify current deadlines on official websites. 
-          <span className="block mt-1 text-xs text-blue-300">Last Updated: December 2025</span>
+          <span className="block mt-1 text-xs text-blue-300">✨ Updated monthly with fresh opportunities</span>
         </p>
       </div>
 
       <div className="bg-slate-900 rounded-lg border border-slate-800 p-6">
-        <div className="flex items-center gap-3 mb-6">
-          <GraduationCap className="w-6 h-6 text-blue-400" />
-          <div>
-            <h2 className="text-2xl font-bold text-blue-400">Scholarship Finder</h2>
-            <p className="text-sm text-gray-400">Discover scholarships worth thousands of dollars</p>
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-3">
+            <GraduationCap className="w-6 h-6 text-blue-400" />
+            <div>
+              <h2 className="text-2xl font-bold text-blue-400">Scholarship Finder</h2>
+              <p className="text-sm text-gray-400">Discover scholarships worth thousands of dollars</p>
+            </div>
           </div>
         </div>
 
@@ -254,7 +338,7 @@ export default function ScholarshipDatabase() {
             />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
                 <Filter className="w-4 h-4" />
@@ -263,69 +347,165 @@ export default function ScholarshipDatabase() {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize"
               >
                 {categories.map((cat) => (
-                  <option key={cat} value={cat}>{cat}</option>
+                  <option key={cat} value={cat} className="capitalize">{cat}</option>
                 ))}
               </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
+                <TrendingUp className="w-4 h-4" />
+                Sort By
+              </label>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as 'deadline' | 'amount')}
+                className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="deadline">Deadline (Soonest First)</option>
+                <option value="amount">Amount (Highest First)</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                Show Expired
+              </label>
+              <button
+                onClick={() => setShowExpired(!showExpired)}
+                className={`w-full px-4 py-2 rounded-lg font-medium transition-colors ${
+                  showExpired 
+                    ? 'bg-orange-600 hover:bg-orange-700 text-white' 
+                    : 'bg-slate-800 hover:bg-slate-700 text-gray-300 border border-slate-700'
+                }`}
+              >
+                {showExpired ? `Showing All (${expiredCount} expired)` : 'Active Only'}
+              </button>
             </div>
           </div>
         </div>
 
-        <p className="text-sm text-gray-400 mb-4">
-          Found <strong className="text-blue-400">{filteredScholarships.length}</strong> scholarships
-        </p>
+        <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
+          <p>
+            Found <strong className="text-blue-400">{filteredScholarships.length}</strong> scholarships
+          </p>
+          {!showExpired && expiredCount > 0 && (
+            <button
+              onClick={() => setShowExpired(true)}
+              className="text-blue-400 hover:text-blue-300 underline"
+            >
+              + {expiredCount} expired (show all)
+            </button>
+          )}
+        </div>
 
         {/* Scholarship List */}
         <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
-          {filteredScholarships.map((scholarship, index) => (
-            <div
-              key={`${scholarship.name}-${index}`}
-              className="bg-slate-800 border border-slate-700 rounded-lg p-5 hover:border-blue-500 transition-colors"
-            >
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <h3 className="text-lg font-bold text-gray-100 mb-1">{scholarship.name}</h3>
-                  <span className="inline-block px-3 py-1 bg-blue-600/20 text-blue-400 text-xs font-semibold rounded-full">
-                    {scholarship.category}
-                  </span>
+          {filteredScholarships.map((scholarship, index) => {
+            const urgency = getUrgencyLevel(scholarship.deadline);
+            const daysLeft = getDaysUntilDeadline(scholarship.deadline);
+            
+            return (
+              <div
+                key={`${scholarship.name}-${index}`}
+                className={`bg-slate-800 border rounded-lg p-5 transition-all ${
+                  urgency === 'expired' 
+                    ? 'border-slate-700/50 opacity-60' 
+                    : urgency === 'urgent'
+                    ? 'border-red-500/50 shadow-lg shadow-red-500/10'
+                    : urgency === 'soon'
+                    ? 'border-orange-500/50'
+                    : 'border-slate-700 hover:border-blue-500'
+                }`}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h3 className="text-lg font-bold text-gray-100">{scholarship.name}</h3>
+                      {urgency === 'expired' && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-600/20 text-gray-400 text-xs font-semibold rounded">
+                          <XCircle className="w-3 h-3" />
+                          Expired
+                        </span>
+                      )}
+                      {urgency === 'urgent' && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-red-600/20 text-red-400 text-xs font-semibold rounded animate-pulse">
+                          <AlertCircle className="w-3 h-3" />
+                          {daysLeft} days left!
+                        </span>
+                      )}
+                      {urgency === 'soon' && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-orange-600/20 text-orange-400 text-xs font-semibold rounded">
+                          <Clock className="w-3 h-3" />
+                          {daysLeft} days left
+                        </span>
+                      )}
+                    </div>
+                    <span className="inline-block px-3 py-1 bg-blue-600/20 text-blue-400 text-xs font-semibold rounded-full capitalize">
+                      {scholarship.category}
+                    </span>
+                  </div>
+                  <div className="text-right ml-4">
+                    <p className="text-xl font-bold text-green-400 flex items-center gap-1 justify-end">
+                      <DollarSign className="w-5 h-5" />
+                      {scholarship.amount}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <p className="text-xl font-bold text-green-400 flex items-center gap-1">
-                    <DollarSign className="w-5 h-5" />
-                    {scholarship.amount}
-                  </p>
-                </div>
-              </div>
 
-              <p className="text-gray-300 text-sm mb-4">{scholarship.description}</p>
+                <p className="text-gray-300 text-sm mb-4">{scholarship.description}</p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4 text-sm">
-                <div>
-                  <p className="text-gray-500 text-xs">Deadline</p>
-                  <p className="text-gray-300 flex items-center gap-1">
-                    <Calendar className="w-3 h-3" />
-                    {scholarship.deadline}
-                  </p>
+                <div className="grid grid-cols-2 gap-3 mb-4 text-sm">
+                  <div>
+                    <p className="text-gray-500 text-xs flex items-center gap-1">
+                      <Calendar className="w-3 h-3" />
+                      Deadline
+                    </p>
+                    <p className={`font-semibold ${
+                      urgency === 'expired' ? 'text-gray-500 line-through' : 
+                      urgency === 'urgent' ? 'text-red-400' : 
+                      urgency === 'soon' ? 'text-orange-400' : 'text-gray-300'
+                    }`}>
+                      {scholarship.deadline}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-gray-500 text-xs">Provider</p>
+                    <p className="text-gray-300 text-sm font-medium">{scholarship.provider}</p>
+                  </div>
                 </div>
-                <div className="col-span-2">
-                  <p className="text-gray-500 text-xs">Eligibility</p>
+
+                <div className="mb-4">
+                  <p className="text-gray-500 text-xs mb-1">Eligibility</p>
                   <p className="text-gray-300 text-sm">{scholarship.eligibility}</p>
                 </div>
-              </div>
 
-              <a
-                href={scholarship.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors"
-              >
-                Apply Now
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
-          ))}
+                <a
+                  href={scholarship.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg transition-colors ${
+                    urgency === 'expired'
+                      ? 'bg-gray-600 hover:bg-gray-700 text-gray-300 cursor-not-allowed'
+                      : 'bg-blue-600 hover:bg-blue-700 text-white'
+                  }`}
+                  onClick={(e) => {
+                    if (urgency === 'expired') {
+                      e.preventDefault();
+                      alert('This deadline has passed. Check back next year or explore other opportunities!');
+                    }
+                  }}
+                >
+                  {urgency === 'expired' ? 'Deadline Passed' : 'Learn More & Apply'}
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            );
+          })}
         </div>
       </div>
 

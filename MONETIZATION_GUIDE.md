@@ -67,27 +67,24 @@
 
 ---
 
-### 3. Google AdSense (NOT APPLIED - BLOCKED)
+### 3. Google AdSense (✅ READY TO APPLY)
 
-**Status:** ❌ CANNOT APPLY (requires custom domain)
+**Status:** ✅ CAN APPLY (custom domain ai-career-hub.com added Dec 16, 2025)
 
 **Requirements Checklist:**
-- ❌ **Custom Domain** (have Vercel subdomain ai-companion-hub-self.vercel.app, AdSense rejects subdomains)
-- ✅ Quality content (8 blog posts, 20 scholarships, 4 tools = 22+ pages)
-- ❌ Traffic (33 users, need ~500-1000 visitors/month)
+- ✅ **Custom Domain** (ai-career-hub.com via Namecheap $12/year)
+- ✅ Quality content (10+ blog posts, 20 scholarships, 4 tools = 30+ pages)
+- ⚠️ Traffic (34 users as of Dec 16, need ~300-500 visitors/month for approval)
 - ✅ Original content (all AI-generated + original tools)
 - ✅ 18+ years old
 
-**Blocker:** Must buy custom domain first (e.g., aicareersuccesshub.com from NameCheap $12-13/year)
+**Next Steps:**
+1. Wait for traffic to reach 300-500 visitors/month (Est: late Dec/early Jan)
+2. Apply at adsense.google.com with ai-career-hub.com
+3. Wait 1-2 weeks for approval
+4. Add ad units to site
 
-**Timeline (IF domain purchased Dec 15-20):**
-- Week 1: Buy domain + configure Vercel DNS
-- Week 2-3: Let domain age (AdSense prefers 2-3 week old domains)
-- Week 4: Apply for AdSense (if traffic hits 500+ visitors)
-- Week 5-6: Wait for approval (1-2 weeks)
-- Week 7: First revenue (if approved)
-
-**Timeline (IF waiting for validation first):**
+**Timeline:**
 - Jan 2026: Grow traffic to 500-1K organic visitors (prove market fit)
 - Feb 2026: Buy domain after validation
 - Mar 2026: Apply for AdSense
@@ -145,55 +142,36 @@
 
 ---
 
-## 🌐 Custom Domain Purchase Plan
-₱600-750/year (.com domain)
-- **When:** After first ₱2,500-5,000 revenue
-- **Why:** Better branding, professional look, easier to market
-- **Domain ideas:** 
-  - `aicareertools.com` (₱650/year on Namecheap)
-  - `studentcareerhelp.com` (₱600/year)
-  - `careersuccess.ph` (₱800/year premium local domain)
-  - `pinoystudent.tools` (₱550/year)
+## 🌐 Custom Domain (✅ COMPLETE - Dec 16, 2025)
 
-**Option 2: Wait Until Profitable (Month 6)**
-- **Cost:** Still ₱600-750/year
-- **When:** After consistent ₱10,0r premium)
+**Status:** ✅ PURCHASED & ACTIVE  
+**Domain:** ai-career-hub.com  
+**Registrar:** Namecheap  
+**Cost:** $12/year (₱650/year)  
+**Purchase Date:** December 16, 2025  
+**Renewal:** December 2026
 
-**Option 2: Wait Until Profitable (Month 6)**
-- **Cost:** Still $12-15/year
-- **When:** After consistent $200+/month revenue
-- **Why:** Validate product-market fit first
-- **Risk:** Good domain names may be taken
+### Benefits Unlocked:
+- ✅ Google AdSense eligibility (was blocked without custom domain)
+- ✅ Professional branding for marketing campaigns
+- ✅ Better SEO rankings (custom domains favored by Google)
+- ✅ Easier to share on social media/Reddit
+- ✅ Increased trust for affiliate program applications
+- ✅ Memorable URL vs. ai-companion-hub-self.vercel.app
 
-### Recommended Timeline:
+### Technical Setup:
+- ✅ DNS configured (Namecheap → Vercel)
+- ✅ Vercel domain connected
+- ✅ SSL certificate (free via Vercel)
+- ✅ Sitemap updated (ai-career-hub.com/sitemap.xml)
+- ✅ Google Search Console added
+- ✅ Environment variables updated (NEXT_PUBLIC_BASE_URL)
 
-**February 2026 (₱5,000-10,000/month
-- ✅ Use ₱650 from revenue to buy `.com` domain
-- ✅ Point domain to Vercel (free, 5-minute setup)
-- ✅ Update all marketing materials with new domain
-
-**Why Month 3?**
-- You'll have proven the platform works (traffic + revenue)
-- ₱650 is <10% of monthly revenue (affordable)
-- Professional domain boosts conversion rates (+15-20%)
-- Easier to remember than `ai-companion-hub-self.vercel.app`
-
-**Where to Buy (Philippines Payment Options):**
-1. **Namecheap** (₱600-650/year) - GCash/PayPal accepted, best prices
-2. **Porkbun** (₱450-550/year) - Cheapest, accepts PayPal
-3. **Hostinger.ph** (₱499/year) - Local payment (GCash, bank transfer)
-4. **Domain.com.ph** (₱800/year) - Local registrar, peso pricing
-
-**Setup Cost Breakdown:**
-- Domain: ₱600-650/year (paid once from Feb revenue)
-- Hosting: ₱0 (Vercel free tier continues)
-- SSL: ₱0 (Vercel provides free HTTPS)
-- Total: **₱650 one-time, then ₱650/year renewal**
-
-**ROI Calculation:**
-- Professional domain = +15% conversion rate boost
-- If Feb revenue = ₱7,500/month
-- Boost = +₱1,125= $150/month
+### Annual Cost:
+- Domain renewal: $12/year (₱650/year)
+- Hosting: $0 (Vercel free tier)
+- SSL: $0 (Vercel provides free HTTPS)
+- **Total:** $12/year (₱650/year)
 ## 📊 Revenue Projections - Dual Currency (Updated with Domain Purchase)
 
 | Month | Users | Ko-fi | Affiliate | AdSense | Premium | **Total** | **Expenses** | **Net** |

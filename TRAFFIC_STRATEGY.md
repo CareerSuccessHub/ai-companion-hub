@@ -381,7 +381,7 @@
 **Immediate Actions:**
 - Dev 2: Publish remaining 2 blog posts ASAP (boost content)
 - Marketing: Post on Reddit DAILY (increase frequency)
-- Dev 1: Check if site is actually indexed (Google "site:ai-companion-hub-self.vercel.app")
+- Dev 1: Check if site is indexed (Google "site:ai-career-hub.com")
 - Team: Email 50 friends/classmates (personal outreach)
 
 ### If Week 2 < 150 Visitors:

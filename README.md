@@ -190,21 +190,18 @@ ai-companion-hub/
 
 ## 💰 Monetization Strategy
 
-**Current Status (Dec 15, 2025):**
+**Current Status (Dec 16, 2025):**
 - **Total Revenue:** $0
-- **Ko-fi Donations:** $0 (button active, no donations yet) - [ko-fi.com/studentsuccesshub](https://ko-fi.com/studentsuccesshub)
+- **Custom Domain:** ✅ ai-career-hub.com (purchased Dec 16 via Namecheap $12/year)
+- **Ko-fi Donations:** $0 (button active) - [ko-fi.com/studentsuccesshub](https://ko-fi.com/studentsuccesshub)
 - **Fiverr Affiliate:** REJECTED Dec 12 (site too new, reapply Feb 2026)
 - **Skillshare Affiliate:** PENDING (no response yet)
-- **Google AdSense:** NOT APPLIED (requires custom domain purchase)
+- **Google AdSense:** ✅ READY TO APPLY (waiting for 300-500 visitors/month)
 
-**Blockers:**
-- Need custom domain for AdSense ($12-13/year from NameCheap)
-- Need 500-1K visitors/month for affiliate approvals
-- Marketing/posting not started yet (all traffic is organic)
-
-**Decision Needed:**
-- Buy domain now ($4 per team member) OR wait for validation (500-1K organic visitors)
-- NameCheap advice: Domain-only or domain+hosting? Continue using Vercel for hosting?
+**Next Milestones:**
+- Hit 300-500 visitors/month → Apply for AdSense
+- Reapply to Fiverr affiliate (Feb 2026)
+- Launch marketing campaign (Reddit, LinkedIn, Quora)
 
 **Revenue Goals (REVISED):**
 - Month 1 (Dec 2025): $0 (realistic)
@@ -253,9 +250,10 @@ This is currently a private project. If you're interested in contributing:
 
 ## 📊 Key Metrics (Updated Weekly)
 
-- **Live Site:** [ai-companion-hub-self.vercel.app](https://ai-companion-hub-self.vercel.app)
+- **Live Site:** [ai-career-hub.com](https://ai-career-hub.com)
+- **Old URL:** ai-companion-hub-self.vercel.app (redirects to custom domain)
 - **Analytics:** Google Analytics 4 (G-1W1HNJGT2G)
-- **Current Visitors:** Tracking since Dec 9, 2025
+- **Current Visitors:** 34 users (as of Dec 16, 2025)
 - **Revenue:** $0 (launched Dec 9, targeting $100/month in 90 days)
 
 ---

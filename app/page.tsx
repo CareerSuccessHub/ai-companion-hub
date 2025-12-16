@@ -50,8 +50,8 @@ export default function Home() {
                 <p className="text-gray-400">Google Gemini technology</p>
               </div>
               <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-pink-400 mb-2">100%</div>
-                <p className="text-gray-400">Free to use</p>
+                <div className="text-3xl font-bold text-pink-400 mb-2">Free + Pro</div>
+                <p className="text-gray-400">Choose your plan</p>
               </div>
             </div>
           </FadeInSection>

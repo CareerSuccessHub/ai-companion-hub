@@ -1,40 +1,42 @@
-# Monetization Setup Guide
+# Monetization Setup Guide - Affiliate + AdSense Model
 
 **Last Updated:** December 16, 2025  
-**Current Revenue:** $0 (no donations, affiliates rejected/pending)  
-**Custom Domain:** ✅ ai-career-hub.com (purchased Dec 16)  
+**Business Model:** 100% FREE platform monetized via affiliates + AdSense  
+**Strategic Pivot:** Dropped freemium model (Dec 16) - focusing on affiliate conversions  
+**Current Revenue:** $0 (setup phase)  
+**Custom Domain:** ✅ ai-career-hub.com  
 **Google Analytics:** ✅ GA4 active (G-1W1HNJGT2G)
 
-## 💰 Revenue Streams
-
-### 1. Ko-fi Donations (ACTIVE - $0 RAISED)
-
-**Status:** ✅ Button live on site, ❌ NO donations yet
-
-**Setup:** ✅ COMPLETED
-- Ko-fi page: ko-fi.com/studentsuccesshub
-- Button integrated in all pages
-- Profile pic/banner customized
-- Description: "Supporting free AI tools for students"
-
-**Current Results (as of Dec 16):**
-- Impressions: 844+ page views (34 users)
-- Donations: $0
-- Issues: Low traffic volume (need 300-500 users for meaningful donations)
-- Custom domain added Dec 16 (more professional for donations)
-
-**Next Steps:**
-- Wait for more traffic (100+ users) before expecting donations
-- Add "Support Us" page explaining where money goes
-- Consider Ko-fi banner during peak traffic hours
-
-**Earnings Potential:** $10-100/month (₱500-5,000) IF traffic reaches 1K+ users
-
-**Payment Setup:** Ko-fi uses PayPal/Stripe for payouts (USD). Minimum payout $20 (₱1,100).
+**See detailed affiliate strategy:** [AFFILIATE_STRATEGY.md](./AFFILIATE_STRATEGY.md)
 
 ---
 
-### 2. Affiliate Links (MIXED STATUS)
+## 💰 Revenue Streams (Priority Order)
+
+### 1. Affiliate Marketing (PRIMARY FOCUS)
+
+**Programs to Apply:**
+- **Resume Builders:** Resume.io ($30-100/sale), Zety, NovoResume
+- **Courses:** Udemy (20-45%), Coursera, Skillshare (PENDING)
+- **Tools:** Grammarly ($20-25/signup), LinkedIn Premium
+- **Freelance:** Fiverr (REJECTED - reapply Feb 2026), Upwork (direct links)
+
+**Current Status (Dec 16):**
+- ❌ Fiverr: Rejected (need 500 visitors, reapply Feb 2026)
+- ⏳ Skillshare: Pending approval
+- ⏳ Others: Not applied yet (applying this week)
+
+**Action This Week:**
+1. Apply to Resume.io, Zety, Udemy, Grammarly, Coursera
+2. Write "Best Resume Builders 2025" affiliate blog post
+3. Add affiliate CTAs to Resume Reviewer tool
+4. Track clicks with GA4 events
+
+**Earnings Potential:** $200-800/mo at 1K visitors/day (see AFFILIATE_STRATEGY.md)
+
+---
+
+### 2. Google AdSense (READY TO APPLY - JAN 2026)
 
 **Current Status (as of Dec 16):**
 - **Fiverr:** ❌ REJECTED (Dec 12, 2025)
@@ -115,34 +117,17 @@
 
 ---
 
-### 4. Premium Subscription (FUTURE - MONTH 3)
+### 3. Ko-fi Donations (OPTIONAL - SECONDARY)
 
-**What to offer:**
-- 🎯 Advanced AI features (longer conversations, resume review)
-- 📊 Personalized career roadmaps
-- 🔔 Premium scholarship alerts (before they're public)
-- 💼 Job application tracker
-- 📈 Interview prep sessions
-- 🎓 Course recommendations
+**Status:** ✅ Button live (ko-fi.com/careersuccesshub)  
+**Purpose:** Optional support from users who love the free tools  
+**Messaging:** "100% optional - help us cover AI API costs"
 
-**Pricing Strategy (Dual Currency - Accept Both USD & PHP):**
-- Free tier: Current features
-- Premium: **$3.99/month** or **₱199/month** | **$39/year** or **₱1,999/year** (Save 17%)
-- Student discount: **$2.99/month** or **₱149/month** with .edu/.edu.ph email
-- Quarterly plan: **$9.99** or **₱499** (₱166/month - best value)
+**Current Results:**
+- Live but no donations yet (low traffic)
+- Not a focus (affiliate revenue is primary)
 
-**Payment Options (Accept Both USD & PHP):**
-- **GCash** (₱ only, lowest fees, most popular in PH)
-- **PayMaya/Maya** (₱ only, 0.99% + ₱5 per transaction)
-- **PayPal** (USD/PHP, 4.4% + ₱15 per transaction)
-- **Stripe** (USD/PHP, 3.2% + ₱15 per transaction)
-- **Coins.ph** (crypto-friendly, PHP)
-- **Bank transfer** (₱ only, InstaPay/PESONet - no fees)
-- **International cards** (USD via Stripe/PayPal)
-
-**Earnings Potential:** $150-2,000/month (₱7,500-100,000) with 30-400 subscribers
-
-**Note:** Mix of international (USD) and local (PHP) subscribers. ~60% PHP, ~40% USD expected.
+**Earnings Potential:** $10-50/mo (nice-to-have, not relied upon)
 
 ---
 
@@ -176,23 +161,29 @@
 - Hosting: $0 (Vercel free tier)
 - SSL: $0 (Vercel provides free HTTPS)
 - **Total:** $12/year (₱650/year)
-## 📊 Revenue Projections - Dual Currency (Updated with Domain Purchase)
+## 📊 Revenue Projections - Affiliate + AdSense Model
 
-| Month | Users | Ko-fi | Affiliate | AdSense | Premium | **Total** | **Expenses** | **Net** |
-|-------|-------|-------|-----------|---------|---------|-----------|--------------|---------|  
-| 1 (Dec) | 100 | $10 (₱500) | $5 (₱250) | $0 | $0 | **$15 (₱750)** | $0 | **$15 (₱750)** |
-| 2 (Jan) | 500 | $25 (₱1,250) | $30 (₱1,500) | $0 | $0 | **$55 (₱2,750)** | $0 | **$55 (₱2,750)** |
-| 3 (Feb) | 2,000 | $50 (₱2,500) | $100 (₱5,000) | $50 (₱2,500) | $0 | **$200 (₱10,000)** | -$13 (-₱650) | **$187 (₱9,350)** |
-| 6 (May) | 10,000 | $100 (₱5,000) | $300 (₱15,000) | $300 (₱15,000) | $150 (₱7,500) | **$850 (₱42,500)** | $0 | **$850 (₱42,500)** |
-| 12 (Dec 2026) | 50,000 | $200 (₱10,000) | $800 (₱40,000) | $1,200 (₱60,000) | $800 (₱40,000) | **$3,000 (₱150,000)** | $0 | **$3,000 (₱150,000)** |
-| 13 (Jan 2027) | 60,000 | $250 (₱12,500) | $1,000 (₱50,000) | $1,500 (₱75,000) | $1,000 (₱50,000) | **$3,750 (₱187,500)** | -$13 (-₱650) | **$3,737 (₱186,850)** |
+**Conservative Scenario (2% affiliate conversion rate):**
 
-**Currency Note:** Using $1 = ₱50 PHP exchange rate (Dec 2025). All earnings are NET after payment processor fees. ~60% of revenue from Philippine users (₱), ~40% from international users ($).
-| 12 (Dec 2026) | 50,000 | ₱10,000 | ₱40,000 | ₱60,000 | ₱40,000 | **₱150,000** | ₱0 | **₱150,000** |
-| 13 (Jan 2027) | 60,000 | ₱12,500 | ₱50,000 | ₱75,000 | ₱50,000 | **₱187,500** | -₱650 (renewal) | **₱186,850** |
+| Month | Visitors/Day | Affiliate | AdSense | Ko-fi | **Total** | **Expenses** | **Net** |
+|-------|--------------|-----------|---------|-------|-----------|--------------|---------|  
+| 1 (Dec) | 50 | $0 | $0 | $10 | **$10** | $0 | **$10** |
+| 2 (Jan) | 200 | $30 | $0 | $20 | **$50** | $0 | **$50** |
+| 3 (Feb) | 500 | $130 | $45 | $30 | **$205** | $0 | **$205** |
+| 4 (Mar) | 1,000 | $400 | $120 | $50 | **$570** | $0 | **$570** |
+| 6 (May) | 3,000 | $850 | $360 | $100 | **$1,310** | $0 | **$1,310** |
+| 12 (Dec 2026) | 10,000 | $2,000 | $1,200 | $200 | **$3,400** | -$13 (domain renewal) | **$3,387** |
 
-**Currency Note:** Using ₱1 = $0.018 USD exchange rate (Dec 2025). All earnings are NET after payment processor fees.
-| 13 (Jan 2027) | 60,000 | $250 | $1,000 | $1,500 | $1,000 | **$3,750** | -$13 (renewal) | **$3,737** |
+**Optimistic Scenario (5% affiliate conversion rate):**
+
+| Month | Visitors/Day | Affiliate | AdSense | Ko-fi | **Total** | **Net** |
+|-------|--------------|-----------|---------|-------|-----------|---------|
+| 3 (Feb) | 500 | $370 | $45 | $30 | **$445** | **$445** |
+| 4 (Mar) | 1,000 | $1,000 | $120 | $50 | **$1,170** | **$1,170** |
+| 6 (May) | 3,000 | $2,125 | $360 | $100 | **$2,585** | **$2,585** |
+| 12 (Dec 2026) | 10,000 | $5,000 | $1,200 | $200 | **$6,400** | **$6,387** |
+
+**Key Insight:** Hit $570/mo by Month 4 with ZERO operational costs (free AI tier + caching). See [AFFILIATE_STRATEGY.md](./AFFILIATE_STRATEGY.md) for breakdown.
 
 ---
 

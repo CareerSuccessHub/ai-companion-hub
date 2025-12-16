@@ -8,10 +8,10 @@ export default function KofiButton() {
       <div className="text-center">
         <h3 className="text-lg font-semibold text-blue-400 mb-2 flex items-center justify-center gap-2">
           <Heart className="w-5 h-5 text-red-400" />
-          Unlock Premium AI Tools
+          Support This Project
         </h3>
         <p className="text-sm text-gray-400 mb-4">
-          Get unlimited access to AI Career Mentor, Resume Reviewer & Salary Negotiator for just $5/month.
+          Help us cover AI API costs and keep everything free for students!
         </p>
       </div>
       
@@ -22,11 +22,11 @@ export default function KofiButton() {
         className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
       >
         <Coffee className="w-5 h-5" />
-        Become a Supporter - $5/mo
+        Buy Me a Coffee
       </a>
       
       <p className="text-xs text-gray-500 text-center">
-        Free tools stay free forever. Premium unlocks unlimited AI features ✨
+        100% optional - every donation helps us improve and add new tools ❤️
       </p>
     </div>
   );

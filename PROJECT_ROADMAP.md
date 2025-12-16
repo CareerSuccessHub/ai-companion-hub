@@ -1,15 +1,18 @@
 # AI Career Success Hub - Project Roadmap
 
 ## 🎯 Project Vision
-Build a multi-revenue AI platform helping students and young professionals land jobs, manage finances, and boost productivity. Revenue through Ko-fi donations, affiliate commissions, Google AdSense, and premium subscriptions.
+Build a **100% free** AI-powered career platform for students. Monetize through affiliate partnerships and AdSense - NO paid subscriptions.
 
-**Team:** 3 members (2 developers, 1 marketing specialist) - **All involved in QA/testing**  
-**Business Model:** Ads + Affiliate Commissions + Donations + Premium SaaS (future)  
+**Team:** 3 members (2 developers, 1 marketing specialist)  
+**Business Model:** Affiliate Marketing + Google AdSense (pure traffic monetization)  
+**Strategic Pivot:** Dropped freemium model Dec 16 - free AI can't compete with paid AI subscriptions  
 **Current Audience:** College students seeking career growth  
-**Expansion Plan:** Young professionals, freelancers, career changers (2026)  
-**Current Status:** ✅ LIVE at ai-companion-hub-self.vercel.app  
+**Expansion Plan:** Young professionals, freelancers (2026)  
+**Current Status:** ✅ LIVE at ai-career-hub.com  
 **Launch Date:** December 9, 2025  
-**Last Updated:** December 15, 2025
+**Last Updated:** December 16, 2025
+
+**See monetization details:** [AFFILIATE_STRATEGY.md](./AFFILIATE_STRATEGY.md)
 
 ---
 

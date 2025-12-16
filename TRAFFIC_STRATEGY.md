@@ -222,15 +222,14 @@
 - [ ] Weekly report: Traffic sources, top pages, bounce rate (Sun)
 
 **Developer 2:**
-- [ ] Write "Remote Job" blog (Mon)
-- [ ] Write "Resume Mistakes" blog (Wed)
-- [ ] Write "Scholarships" blog (Fri)
+- [x] Blog posts generated via AI automation (10+ posts published via GitHub Actions)
+- [ ] Manual blog writing (not started - relying on automation)
 - [ ] Create 9 social graphics for marketing (3 per blog)
 
 **Developer 1:**
-- [ ] Submit sitemap to Google Search Console (Mon)
-- [ ] Monitor site performance (daily check)
-- [ ] Add 2 new scholarships (Wed, Fri)
+- [x] Submit sitemap to Google Search Console (completed Dec 16)
+- [x] Monitor site performance (daily check - ongoing)
+- [x] Add scholarships (20 active scholarships with auto-update script via GitHub Actions)
 
 **Week 1 Target:** 100 visitors
 
@@ -247,15 +246,15 @@
 - [ ] Weekly report (Sun)
 
 **Developer 2:**
-- [ ] Write "AI Resume Reviews" blog (Mon)
-- [ ] Write "Side Hustles 2025" blog (Wed)
-- [ ] Write "Salary Negotiation" blog (Fri)
+- [x] "Side Hustles 2025" blog (manual, published)
+- [x] "Salary Negotiation" blog (manual, published)
+- [x] AI-generated blogs (6+ posts via automation)
 - [ ] Create email capture popup (Mailchimp)
 
 **Developer 1:**
-- [ ] Optimize images (lazy loading, WebP)
-- [ ] Fix any reported bugs
-- [ ] Add 2 scholarships
+- [x] Optimize images (lazy loading, WebP)
+- [x] Fix reported bugs (scholarship deadlines, blog pagination, scrollbar UX)
+- [x] Scholarship management (20 active scholarships with auto-update script)
 
 **Week 2 Target:** 250 cumulative visitors (150 new)
 
@@ -273,15 +272,14 @@
 - [ ] Weekly report + Month summary (Dec 31)
 
 **Developer 2:**
-- [ ] Write "Internship Guide" blog (Mon)
-- [ ] Write "Student Loans" blog (Wed)
-- [ ] Write "Free Career Resources" blog (Fri)
+- [x] AI-generated blogs covering various topics (10+ posts)
+- [ ] Manual strategic blogs (not started)
 - [ ] Create scholarship checklist PDF (lead magnet)
 
 **Developer 1:**
-- [ ] Apply for AdSense when hit 300-500 visitors (custom domain ready Dec 16)
+- [ ] Apply for AdSense when hit 300-500 visitors (custom domain ready Dec 16 ✅)
 - [ ] Monitor PH launch traffic (scale server if needed)
-- [ ] Add 2 scholarships
+- [x] Scholarship database (20 active scholarships with monthly auto-update)
 
 **Week 3 Target:** 850-1,000 cumulative visitors (600 new)
 

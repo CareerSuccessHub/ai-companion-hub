@@ -1,7 +1,12 @@
 /**
  * Scholarship Auto-Updater
- * Scrapes scholarship databases and updates scholarships page
+ * 
+ * IMPORTANT: This script PRESERVES manually curated scholarships!
+ * - Scholarships WITH 'country' field = PRESERVED (international/Filipino scholarships)
+ * - Scholarships WITHOUT 'country' field = REGENERATED (US scholarships only)
+ * 
  * Run: node scripts/update-scholarships.js
+ * Frequency: Monthly (not bi-monthly, runs once per month)
  */
 
 const fs = require('fs');
@@ -62,7 +67,7 @@ For each scholarship provide:
 - category: One of: merit-based, need-based, stem, business, arts, athletics, minority, international
 - eligibility: Brief requirements (GPA, major, demographics, etc.)
 - description: 2-3 sentences about the scholarship
-- link: Use format "https://www.scholarships.com/[scholarship-name]" (generic placeholder)
+- link: Use OFFICIAL organization website ONLY. Never use scholarships.com or scholarship aggregators. Examples: https://www.nationalmerit.org/, https://www.thegatesscholarship.org/, https://www.coca-colascholarsfoundation.org/
 
 Return as JSON array:
 [
@@ -221,6 +226,41 @@ function backupCurrentData() {
 }
 
 /**
+ * Extract manually curated scholarships (those with country field or specific providers)
+ */
+function getManualScholarships() {
+  const componentPath = path.join(__dirname, '../components/ScholarshipDatabase.tsx');
+  const content = fs.readFileSync(componentPath, 'utf-8');
+  
+  // Extract current scholarships array
+  const dataStart = content.indexOf('const scholarships = [');
+  const dataEnd = content.indexOf('];', dataStart) + 2;
+  
+  if (dataStart === -1) return [];
+  
+  const arrayString = content.substring(dataStart + 'const scholarships = '.length, dataEnd - 1);
+  
+  try {
+    const currentScholarships = eval(arrayString); // Parse the array
+    
+    // Filter for manually curated scholarships
+    // These have 'country' field (international/Filipino scholarships)
+    const manualScholarships = currentScholarships.filter(s => s.country);
+    
+    console.log(`📌 Found ${manualScholarships.length} manually curated scholarships to preserve:`);
+    manualScholarships.forEach(s => {
+      console.log(`   - ${s.name} (${s.country})`);
+    });
+    console.log('');
+    
+    return manualScholarships;
+  } catch (error) {
+    console.error('❌ Error parsing current scholarships:', error.message);
+    return [];
+  }
+}
+
+/**
  * Main execution
  */
 async function main() {
@@ -229,27 +269,37 @@ async function main() {
   // Backup current data
   backupCurrentData();
   
-  // Generate fresh scholarship data
-  console.log('🤖 Generating scholarship data with AI...\n');
-  const scholarships = await generateScholarshipsWithFallback();
+  // Get manually curated scholarships to preserve
+  const manualScholarships = getManualScholarships();
   
-  if (!scholarships || scholarships.length === 0) {
+  // Generate fresh scholarship data (US-based only)
+  console.log('🤖 Generating US scholarship data with AI...\n');
+  const generatedScholarships = await generateScholarshipsWithFallback();
+  
+  if (!generatedScholarships || generatedScholarships.length === 0) {
     console.error('❌ Failed to generate scholarships');
     return;
   }
   
-  console.log(`✅ Generated ${scholarships.length} scholarships\n`);
+  console.log(`✅ Generated ${generatedScholarships.length} US scholarships\n`);
+  
+  // Combine: Manual (international/Filipino) scholarships FIRST, then generated (US) scholarships
+  const allScholarships = [...manualScholarships, ...generatedScholarships];
+  
+  console.log(`📊 Total scholarships: ${allScholarships.length} (${manualScholarships.length} manual + ${generatedScholarships.length} generated)\n`);
   
   // Show preview
-  console.log('Preview (first 3):');
-  scholarships.slice(0, 3).forEach(s => {
-    console.log(`  - ${s.name} (${s.amount})`);
+  console.log('Preview (first 5):');
+  allScholarships.slice(0, 5).forEach(s => {
+    console.log(`  - ${s.name} (${s.amount}) ${s.country ? `[${s.country}]` : '[USA]'}`);
   });
   console.log('');
   
   // Update file
-  if (updateScholarshipsFile(scholarships)) {
+  if (updateScholarshipsFile(allScholarships)) {
     console.log('\n✨ Done! Scholarships updated successfully.');
+    console.log(`   ✅ Preserved ${manualScholarships.length} manually curated scholarships`);
+    console.log(`   ✅ Added ${generatedScholarships.length} fresh US scholarships`);
     console.log('   Run `npm run dev` to see changes locally.');
   }
 }

@@ -5,6 +5,7 @@ import Script from "next/script";
 import { getAllBlogPosts } from "@/lib/blog";
 import LatestBlogPosts from "@/components/LatestBlogPosts";
 import FadeInSection from "@/components/FadeInSection";
+import FeatureAnnouncement from "@/components/FeatureAnnouncement";
 
 export default function Home() {
   const allPosts = getAllBlogPosts();
@@ -82,6 +83,15 @@ export default function Home() {
             <p>© {new Date().getFullYear()} AI Career Hub. All rights reserved.</p>
           </footer>
         </div>
+
+        {/* Feature Announcement for returning users */}
+        <FeatureAnnouncement
+          announcementId="v1.2.0-december-2025"
+          title="🌍 New: Global Scholarships + Smarter Side Hustles"
+          description="We've added international scholarships from 160+ countries and completely redesigned the Side Hustle Generator with AI-powered personalization!"
+          ctaText="See what's new"
+          ctaHref="/updates"
+        />
       </main>
     </>
   );

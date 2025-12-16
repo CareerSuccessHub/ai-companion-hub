@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 
 export default function SideHustleGenerator() {
   const [skills, setSkills] = useState("");
-  const [timeAvailable, setTimeAvailable] = useState("");
   const [suggestions, setSuggestions] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -15,13 +14,13 @@ export default function SideHustleGenerator() {
     if (!skills.trim()) return;
     
     setIsLoading(true);
-    console.log('🔍 Requesting suggestions for skills:', skills, 'Time:', timeAvailable);
+    console.log('🔍 Requesting suggestions for skills:', skills);
     
     try {
       const response = await fetch('/api/side-hustle', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ skills, timeAvailable }),
+        body: JSON.stringify({ skills }),
       });
       
       console.log('📡 API Response status:', response.status);
@@ -69,29 +68,15 @@ export default function SideHustleGenerator() {
 
       <div className="space-y-4 mb-6">
         <div>
-          <label className="block text-sm font-medium mb-2">Your Skills</label>
+          <label className="block text-sm font-medium mb-2">Your Skills or Interests</label>
           <input
             type="text"
             value={skills}
             onChange={(e) => setSkills(e.target.value)}
-            placeholder="e.g., coding, design, writing, video editing..."
+            placeholder="e.g., video editing, graphic design, programming, photography, writing..."
             className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium mb-2">Time Available Per Week</label>
-          <select
-            value={timeAvailable}
-            onChange={(e) => setTimeAvailable(e.target.value)}
-            className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">Select time...</option>
-            <option value="1-5 hours">1-5 hours</option>
-            <option value="5-10 hours">5-10 hours</option>
-            <option value="10-20 hours">10-20 hours</option>
-            <option value="20+ hours">20+ hours</option>
-          </select>
+          <p className="text-xs text-gray-500 mt-1">Be specific! The more detail you provide, the better the AI suggestions.</p>
         </div>
 
         <button
@@ -100,7 +85,7 @@ export default function SideHustleGenerator() {
           className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-500 disabled:opacity-50 font-medium flex items-center justify-center gap-2"
         >
           <TrendingUp size={20} />
-          {isLoading ? 'Generating...' : 'Generate Side Hustle Ideas'}
+          {isLoading ? 'Generating Custom Ideas...' : 'Generate Side Hustle Ideas'}
         </button>
       </div>
 
@@ -108,14 +93,14 @@ export default function SideHustleGenerator() {
         <div className="space-y-4">
           <h3 className="text-lg font-semibold mb-3">Your Personalized Opportunities:</h3>
           {suggestions.map((suggestion, index) => (
-            <div key={index} className="bg-slate-800 rounded-lg p-4 border border-slate-700">
+            <div key={index} className="bg-slate-800 rounded-lg p-4 border border-slate-700 hover:border-blue-500/50 transition-all">
               <div className="flex items-start gap-3">
-                <DollarSign className="text-green-400 mt-1" size={20} />
+                <DollarSign className="text-green-400 mt-1 flex-shrink-0" size={20} />
                 <div className="flex-1">
                   <h4 className="font-semibold text-blue-300 mb-2">{suggestion.title}</h4>
                   {suggestion.aiReason && (
                     <p className="text-pink-300 text-xs mb-2 italic">
-                      ✨ Why this matches: {suggestion.aiReason}
+                      ✨ {suggestion.aiReason}
                     </p>
                   )}
                   <p className="text-gray-300 text-sm mb-3">{suggestion.description}</p>
@@ -127,6 +112,11 @@ export default function SideHustleGenerator() {
                       ⏱️ {suggestion.timeRequired}
                     </span>
                   </div>
+                  {suggestion.startingSteps && (
+                    <div className="mb-3 p-2 bg-blue-900/20 border border-blue-800/50 rounded text-xs text-blue-200">
+                      <strong>Quick Start:</strong> {suggestion.startingSteps}
+                    </div>
+                  )}
                   {suggestion.platforms && (
                     <div className="flex flex-wrap gap-2">
                       {suggestion.platforms.map((platform: any, i: number) => (
@@ -135,7 +125,7 @@ export default function SideHustleGenerator() {
                           href={platform.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs bg-green-900/30 text-green-300 px-3 py-1 rounded hover:bg-green-900/50 transition"
+                          className="text-xs bg-green-900/30 text-green-300 px-3 py-1 rounded hover:bg-green-900/50 transition flex items-center gap-1"
                         >
                           Start on {platform.name} →
                         </a>

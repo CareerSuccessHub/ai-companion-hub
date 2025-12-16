@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Navigation from "@/components/Navigation";
 import FloatingChat from "@/components/FloatingChat";
+import FeatureAnnouncement from "@/components/FeatureAnnouncement";
 
 export const metadata: Metadata = {
   title: {
@@ -95,6 +96,13 @@ export default function RootLayout({
           <Navigation />
           {children}
           <FloatingChat />
+          <FeatureAnnouncement 
+            announcementId="v1.2.0-global-expansion"
+            title="🌍 New: Global Scholarships + Smarter Side Hustles!"
+            description="We've added international scholarships from 11+ countries and upgraded our AI to generate truly custom side hustle ideas."
+            ctaText="See What's New"
+            ctaHref="/updates"
+          />
         </ThemeProvider>
       </body>
     </html>

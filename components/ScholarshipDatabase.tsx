@@ -13,7 +13,7 @@ const scholarships = [
     "category": "merit-based",
     "eligibility": "High school seniors, PSAT/NMSQT scores, US Citizen or permanent resident",
     "description": "Recognizes academically talented high school students across the nation. Finalists compete for various scholarship awards sponsored by corporations, colleges, and the NMSC itself.",
-    "link": "https://www.scholarships.com/national-merit-scholarship-program"
+    "link": "https://www.nationalmerit.org/s/1758/interior.aspx?sid=1758&gid=2&pgid=424"
   },
   {
     "name": "Society of Women Engineers (SWE) Scholarship",
@@ -23,7 +23,7 @@ const scholarships = [
     "category": "stem",
     "eligibility": "Female students pursuing an ABET-accredited baccalaureate or graduate degree in engineering or computer science",
     "description": "Supports women pursuing degrees in engineering and technology fields. Applicants are evaluated based on academic achievement, leadership, and participation in engineering activities.",
-    "link": "https://www.scholarships.com/society-of-women-engineers-scholarship"
+    "link": "https://swe.org/scholarships/"
   },
   {
     "name": "Jackie Robinson Foundation Scholarship",
@@ -33,7 +33,7 @@ const scholarships = [
     "category": "minority",
     "eligibility": "Minority high school seniors, US Citizen, demonstrate financial need, leadership potential",
     "description": "Provides a comprehensive scholarship program for minority students attending four-year accredited colleges and universities. Scholars receive financial assistance, extensive mentoring, and leadership development opportunities.",
-    "link": "https://www.scholarships.com/jackie-robinson-foundation-scholarship"
+    "link": "https://www.jackierobinson.org/apply/"
   },
   {
     "name": "Gates Millennium Scholarship Program",
@@ -43,7 +43,7 @@ const scholarships = [
     "category": "need-based",
     "eligibility": "High school seniors from diverse backgrounds, Pell Grant eligible, minimum 3.3 GPA, US Citizen or permanent resident",
     "description": "A highly selective scholarship for outstanding minority students with significant financial need. It covers the full cost of attendance not met by other financial aid for undergraduate and graduate studies.",
-    "link": "https://www.scholarships.com/gates-millennium-scholarship-program"
+    "link": "https://www.thegatesscholarship.org/scholarship"
   },
   {
     "name": "America's Farmers Grow Ag Leaders Scholarship",
@@ -53,7 +53,7 @@ const scholarships = [
     "category": "stem",
     "eligibility": "High school seniors pursuing an agriculture-related field of study at a two- or four-year college",
     "description": "Supports students passionate about agriculture and rural communities. Scholarships are sponsored by local farmers and aim to develop the next generation of agricultural leaders.",
-    "link": "https://www.scholarships.com/americas-farmers-grow-ag-leaders-scholarship"
+    "link": "https://www.americasfarmers.com/"
   },
   {
     "name": "Hispanic Scholarship Fund (HSF) Scholarship",
@@ -63,7 +63,7 @@ const scholarships = [
     "category": "minority",
     "eligibility": "Hispanic heritage, minimum 2.5 GPA, plan to enroll full-time in an accredited US institution",
     "description": "Empowers Latino students and their families to pursue higher education. Scholarships are available for high school seniors, undergraduate, and graduate students across all majors and academic years.",
-    "link": "https://www.scholarships.com/hispanic-scholarship-fund-scholarship"
+    "link": "https://www.hsf.net/scholarship"
   },
   {
     "name": "Ayn Rand Institute Essay Contest",
@@ -73,7 +73,7 @@ const scholarships = [
     "category": "merit-based",
     "eligibility": "High school students (grades 8-12) based on specific novel, US or international",
     "description": "Encourages students to read and engage with Ayn Rand's novels like 'The Fountainhead' and 'Atlas Shrugged'. Participants submit essays analyzing themes and characters from the selected book.",
-    "link": "https://www.scholarships.com/ayn-rand-institute-essay-contest"
+    "link": "https://aynrand.org/students/essay-contests/"
   },
   {
     "name": "Future Business Leaders of America (FBLA) Scholarship",
@@ -83,7 +83,7 @@ const scholarships = [
     "category": "business",
     "eligibility": "Active FBLA members, high school seniors, pursuing a business-related degree",
     "description": "Recognizes outstanding FBLA members who demonstrate leadership and commitment to business education. Scholarships are awarded based on academic performance, FBLA involvement, and future career goals.",
-    "link": "https://www.scholarships.com/future-business-leaders-of-america-scholarship"
+    "link": "https://www.fbla.org/"
   },
   {
     "name": "Doodle for Google Scholarship",
@@ -93,7 +93,7 @@ const scholarships = [
     "category": "arts",
     "eligibility": "K-12 students in the US, submit an original doodle based on a theme",
     "description": "An annual competition where students create their own Google Doodle. The national winner receives a college scholarship, a technology package, and their artwork featured on the Google homepage.",
-    "link": "https://www.scholarships.com/doodle-for-google-scholarship"
+    "link": "https://doodles.google.com/d4g/"
   },
   {
     "name": "United Negro College Fund (UNCF) Scholarships",
@@ -103,7 +103,7 @@ const scholarships = [
     "category": "minority",
     "eligibility": "African American students, various GPA requirements, enrolled in a UNCF-member institution or other accredited college",
     "description": "UNCF offers a wide range of scholarships to help minority students attend college. Eligibility varies greatly by specific scholarship, covering different majors, regions, and academic levels.",
-    "link": "https://www.scholarships.com/united-negro-college-fund-scholarships"
+    "link": "https://uncf.org/scholarships"
   },
   {
     "name": "Point Foundation Scholarship",
@@ -113,7 +113,7 @@ const scholarships = [
     "category": "need-based",
     "eligibility": "LGBTQ students, enrolled or planning to enroll in an accredited higher education institution, demonstrate financial need and academic merit",
     "description": "Empowers LGBTQ students to achieve their full academic and leadership potential. The scholarship provides financial support, mentorship, and leadership development for scholars.",
-    "link": "https://www.scholarships.com/point-foundation-scholarship"
+    "link": "https://pointfoundation.org/scholarship/"
   },
   {
     "name": "Davidson Fellows Scholarship",
@@ -123,7 +123,7 @@ const scholarships = [
     "category": "merit-based",
     "eligibility": "Under 18, US Citizen, demonstrate extraordinary accomplishment in a specific field (e.g., science, literature, music)",
     "description": "Recognizes young people who have completed a significant piece of work that has the potential to make a positive contribution to society. It's one of the largest scholarships in the U.S. for young people.",
-    "link": "https://www.scholarships.com/davidson-fellows-scholarship"
+    "link": "https://www.davidsongifted.org/gifted-programs/fellows-scholarship/"
   },
   {
     "name": "American Heart Association (AHA) Undergraduate Research Fellowship",
@@ -133,7 +133,7 @@ const scholarships = [
     "category": "stem",
     "eligibility": "Undergraduate students, US Citizen or permanent resident, interested in cardiovascular or cerebrovascular research",
     "description": "Provides financial support for students to conduct research under the supervision of an experienced mentor. This program aims to inspire future careers in cardiovascular science.",
-    "link": "https://www.scholarships.com/american-heart-association-scholarship"
+    "link": "https://www.heart.org/en/about-us/aha-financial-information"
   },
   {
     "name": "Coca-Cola Scholars Program Scholarship",
@@ -143,7 +143,7 @@ const scholarships = [
     "category": "merit-based",
     "eligibility": "High school seniors, US Citizen, minimum 3.0 GPA, demonstrate leadership and community service",
     "description": "Recognizes students who exemplify leadership, service, and commitment to their communities. It is one of the most prestigious and competitive scholarships available to high school students.",
-    "link": "https://www.scholarships.com/coca-cola-scholars-program-scholarship"
+    "link": "https://www.coca-colascholarsfoundation.org/apply/"
   },
   {
     "name": "Horatio Alger Association Scholarship",
@@ -153,7 +153,7 @@ const scholarships = [
     "category": "need-based",
     "eligibility": "High school seniors, US Citizen, demonstrate critical financial need, minimum 2.0 GPA, strong commitment to community service",
     "description": "Assists students who have faced and overcome great obstacles in their lives. Scholars are selected based on their commitment to pursuing higher education and their ability to persevere through adversity.",
-    "link": "https://www.scholarships.com/horatio-alger-association-scholarship"
+    "link": "https://scholars.horatioalger.org/"
   },
   {
     "name": "Dell Scholars Program",
@@ -163,7 +163,7 @@ const scholarships = [
     "category": "need-based",
     "eligibility": "High school seniors participating in approved college readiness programs, minimum 2.4 GPA, demonstrate financial need",
     "description": "Supports low-income, highly motivated students who are often the first in their family to attend college. Beyond financial aid, the program provides personalized support services to help scholars succeed.",
-    "link": "https://www.scholarships.com/dell-scholars-program"
+    "link": "https://www.msdf.org/dell-scholars/"
   },
   {
     "name": "Prudential Spirit of Community Awards",
@@ -173,7 +173,172 @@ const scholarships = [
     "category": "merit-based",
     "eligibility": "Students in grades 5-12, US Citizen, demonstrate outstanding volunteer service",
     "description": "Honors middle and high school students across the United States for their volunteer work. State Honorees receive a monetary award and an all-expenses-paid trip to Washington, D.C.",
-    "link": "https://www.scholarships.com/prudential-spirit-of-community-awards"
+    "link": "https://www.prudential.com/about/corporate-social-responsibility/spirit-of-community"
+  },
+  {
+    "name": "DOST Scholarship Program",
+    "provider": "Philippine Department of Science and Technology",
+    "amount": "Full Tuition + Monthly Allowance",
+    "deadline": "October 2025 (annually)",
+    "category": "stem",
+    "country": "Philippines",
+    "eligibility": "Filipino citizens, incoming college freshmen, must pursue STEM degrees, maintain high GPA",
+    "description": "Provides full scholarship for Filipino students pursuing science, technology, engineering, and mathematics degrees at approved Philippine universities. Includes tuition, book allowance, and monthly stipend.",
+    "link": "https://www.dost.gov.ph/programs-services/scholarships-and-grants.html"
+  },
+  {
+    "name": "CHED Scholarship (UniFAST)",
+    "provider": "Commission on Higher Education (Philippines)",
+    "amount": "Full Tuition + Allowances",
+    "deadline": "Varies by program",
+    "category": "merit-based",
+    "country": "Philippines",
+    "eligibility": "Filipino citizens, incoming freshmen or current students, demonstrate academic excellence and financial need",
+    "description": "Multiple scholarship programs under UniFAST including Free Higher Education, Tertiary Education Subsidy (TES), and merit-based scholarships. Covers tuition and various allowances.",
+    "link": "https://unifast.gov.ph/"
+  },
+  {
+    "name": "SM Foundation Scholarship",
+    "provider": "SM Foundation",
+    "amount": "Varies (tuition assistance)",
+    "deadline": "August 2025 (annually)",
+    "category": "need-based",
+    "country": "Philippines",
+    "eligibility": "Filipino citizens, financially challenged students, good academic standing",
+    "description": "Provides educational assistance to deserving Filipino students who lack financial means. Covers tuition fees and in some cases, allowances for books and school supplies.",
+    "link": "https://www.sm-foundation.org/scholarships/"
+  },
+  {
+    "name": "Gokongwei Brothers Foundation Scholarship",
+    "provider": "Gokongwei Brothers Foundation",
+    "amount": "Full Tuition + Allowances",
+    "deadline": "March 2026",
+    "category": "merit-based",
+    "country": "Philippines",
+    "eligibility": "Filipino incoming college freshmen, strong academic record, demonstrated leadership, financial need",
+    "description": "Comprehensive scholarship for Filipino youth including full tuition, stipend, leadership training, and mentorship. Focuses on STEM and business programs to develop future leaders.",
+    "link": "https://www.facebook.com/GokongweiBrothersFoundation/"
+  },
+  {
+    "name": "MEXT Scholarship (Japanese Government)",
+    "provider": "Ministry of Education, Culture, Sports, Science and Technology",
+    "amount": "Full Tuition + ¥117,000/month",
+    "deadline": "Varies (typically April-June)",
+    "category": "merit-based",
+    "country": "Japan (International)",
+    "eligibility": "International students from any country, bachelor's degree for graduate programs, under 35 years old, Japanese language proficiency helpful",
+    "description": "Prestigious scholarship from Japanese government for international students to study in Japan. Covers tuition, airfare, and monthly stipend for undergraduate or graduate studies.",
+    "link": "https://www.studyinjapan.go.jp/en/planning/scholarship/"
+  },
+  {
+    "name": "Korean Government Scholarship (GKS)",
+    "provider": "National Institute for International Education (South Korea)",
+    "amount": "Full Tuition + ₩1,000,000/month",
+    "deadline": "Varies (typically September-October)",
+    "category": "merit-based",
+    "country": "South Korea (International)",
+    "eligibility": "International students from eligible countries, bachelor's degree for graduate programs, under 40 years old, good health",
+    "description": "Comprehensive scholarship for international students including Korean language training, tuition, airfare, settlement allowance, and monthly living expenses.",
+    "link": "https://www.studyinkorea.go.kr/en/sub/gks/allnew_invite.do"
+  },
+  {
+    "name": "Singapore International Graduate Award (SINGA)",
+    "provider": "Agency for Science, Technology and Research (A*STAR)",
+    "amount": "Full Tuition + S$2,000-2,500/month",
+    "deadline": "January 2026 (annually)",
+    "category": "stem",
+    "country": "Singapore (International)",
+    "eligibility": "International students, excellent academic record in science/engineering, seeking PhD in Singapore",
+    "description": "Prestigious PhD scholarship for international students to conduct research at top Singapore universities (NUS, NTU, SUTD). Includes tuition, stipend, and airfare.",
+    "link": "https://www.a-star.edu.sg/"
+  },
+  {
+    "name": "Fulbright Foreign Student Program",
+    "provider": "U.S. Department of State",
+    "amount": "Full Tuition + Living Stipend",
+    "deadline": "Varies by country (typically Oct-Dec)",
+    "category": "merit-based",
+    "country": "USA (International - 160+ countries)",
+    "eligibility": "International students from 160+ countries, bachelor's degree or equivalent, strong academic record, English proficiency",
+    "description": "Enables graduate students, young professionals, and artists from around the world to study and conduct research in the United States. Covers tuition, airfare, living stipend, and health insurance.",
+    "link": "https://foreign.fulbrightonline.org/"
+  },
+  {
+    "name": "Chevening Scholarships",
+    "provider": "UK Government",
+    "amount": "Full Tuition + Living Allowance",
+    "deadline": "November 5, 2025 (annually)",
+    "category": "merit-based",
+    "country": "UK (International - 160+ countries)",
+    "eligibility": "Students from 160+ Chevening-eligible countries, bachelor's degree, 2+ years work experience, leadership potential",
+    "description": "Prestigious UK government scholarship for outstanding emerging leaders to pursue one-year master's degrees at any UK university. Covers tuition, travel costs, and monthly stipend.",
+    "link": "https://www.chevening.org/"
+  },
+  {
+    "name": "DAAD Scholarships",
+    "provider": "German Academic Exchange Service",
+    "amount": "€934-€1,200/month + tuition waiver",
+    "deadline": "Varies by program (typically Aug-Oct)",
+    "category": "merit-based",
+    "country": "Germany (International)",
+    "eligibility": "International students from any country, bachelor's degree for master's programs, academic excellence, German language proficiency (varies by program)",
+    "description": "Offers numerous scholarship programs for international students to study in Germany at all academic levels. Most German public universities charge no tuition fees.",
+    "link": "https://www.daad.de/en/"
+  },
+  {
+    "name": "Erasmus Mundus Joint Master Degrees",
+    "provider": "European Union",
+    "amount": "€1,400/month + tuition + travel",
+    "deadline": "Varies by program (typically Oct-Jan)",
+    "category": "merit-based",
+    "country": "European Union (International)",
+    "eligibility": "Students from any country worldwide, bachelor's degree, English proficiency, varies by specific program",
+    "description": "Prestigious international study programs jointly delivered by consortia of European universities. Students study in at least 2 different EU countries and receive full scholarship covering all costs.",
+    "link": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"
+  },
+  {
+    "name": "Australia Awards Scholarships",
+    "provider": "Australian Government",
+    "amount": "Full Tuition + Living Allowance",
+    "deadline": "April 30, 2026 (varies by country)",
+    "category": "need-based",
+    "country": "Australia (International - Asia-Pacific focus)",
+    "eligibility": "Students from Asia-Pacific, Middle East, Africa (varies by country), demonstrate leadership potential, commit to returning home after studies",
+    "description": "Long-term development scholarships for future leaders from eligible countries to undertake full-time undergraduate or postgraduate study at participating Australian universities.",
+    "link": "https://www.dfat.gov.au/people-to-people/australia-awards"
+  },
+  {
+    "name": "Commonwealth Scholarships",
+    "provider": "Commonwealth Scholarship Commission",
+    "amount": "Full Tuition + Airfare + Stipend",
+    "deadline": "Varies by country (typically Dec-Mar)",
+    "category": "merit-based",
+    "country": "UK (Commonwealth countries - 54 nations)",
+    "eligibility": "Citizens of Commonwealth countries (54 countries), bachelor's degree for master's, demonstrate academic merit and development impact",
+    "description": "Funded by UK government for students from low and middle-income Commonwealth countries to pursue master's or PhD degrees in the UK. Aimed at those who could not otherwise afford to study in the UK.",
+    "link": "https://cscuk.fcdo.gov.uk/"
+  },
+  {
+    "name": "Swedish Institute Scholarships",
+    "provider": "Swedish Institute",
+    "amount": "Full Tuition + SEK 10,000/month",
+    "deadline": "February 20, 2026 (annually)",
+    "category": "merit-based",
+    "country": "Sweden (International)",
+    "eligibility": "Students from selected countries (Africa, Asia, Latin America, Middle East), bachelor's degree, demonstrated leadership experience",
+    "description": "Covers tuition fees, living expenses, insurance, and travel grant for master's level studies at Swedish universities. Aimed at future global leaders committed to making a positive impact.",
+    "link": "https://si.se/en/apply/scholarships/"
+  },
+  {
+    "name": "New Zealand Excellence Awards",
+    "provider": "Education New Zealand",
+    "amount": "Full Tuition + NZ$10,000 stipend",
+    "deadline": "July 31, 2026 (varies by institution)",
+    "category": "merit-based",
+    "country": "New Zealand (International)",
+    "eligibility": "International students from any country, bachelor's degree for postgraduate programs, academic excellence, leadership potential",
+    "description": "Prestigious scholarships for outstanding international students to study postgraduate degrees at participating New Zealand universities. Recognizes academic achievement and leadership.",
+    "link": "https://www.studyinnewzealand.govt.nz/study-options/scholarships"
   },
   {
     "name": "QuestBridge National College Match",
@@ -183,7 +348,7 @@ const scholarships = [
     "category": "need-based",
     "eligibility": "High school seniors from low-income backgrounds, strong academic record, US Citizen or permanent resident",
     "description": "Connects high-achieving low-income students with top colleges and universities. Matched students receive a full four-year scholarship covering tuition, room and board, books, and travel expenses.",
-    "link": "https://www.scholarships.com/questbridge-national-college-match"
+    "link": "https://www.questbridge.org/"
   },
   {
     "name": "Army ROTC Scholarship Program",
@@ -193,7 +358,7 @@ const scholarships = [
     "category": "merit-based",
     "eligibility": "High school juniors/seniors, US Citizen, minimum 2.5 GPA, physically fit, pursue a commission as an Army Officer",
     "description": "Provides financial assistance for students attending college while training to become Army Officers. Scholarships cover tuition, fees, and a book allowance, plus a monthly stipend.",
-    "link": "https://www.scholarships.com/army-rotc-scholarship-program"
+    "link": "https://www.goarmy.com/careers-and-jobs/find-your-path/army-officers/rotc"
   },
   {
     "name": "Burger King Scholars Program",
@@ -203,7 +368,7 @@ const scholarships = [
     "category": "merit-based",
     "eligibility": "High school seniors, US Citizen, minimum 2.5 GPA, demonstrate financial need, community service",
     "description": "Assists students who are outstanding in their academic achievements and community involvement. Scholarships are awarded based on academic performance, leadership, and work experience.",
-    "link": "https://www.scholarships.com/burger-king-scholars-program"
+    "link": "https://burgerking.scholarsapply.org/"
   }
 ];
 
@@ -238,20 +403,46 @@ function getUrgencyLevel(deadline: string): 'expired' | 'urgent' | 'soon' | 'upc
 export default function ScholarshipDatabase() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCountry, setSelectedCountry] = useState("All");
   const [showExpired, setShowExpired] = useState(false);
   const [sortBy, setSortBy] = useState<'deadline' | 'amount'>('deadline');
 
   const categories = ["All", "merit-based", "need-based", "stem", "business", "arts", "athletics", "minority", "international"];
+  const countries = [
+    "All",
+    "Australia",
+    "European Union",
+    "Germany",
+    "International (Multiple Countries)",
+    "Japan",
+    "New Zealand",
+    "Philippines",
+    "Singapore",
+    "South Korea",
+    "Sweden",
+    "UK",
+    "USA"
+  ];
 
   // Filter and sort scholarships
-  let filteredScholarships = scholarships.filter((scholarship) => {
+  let filteredScholarships = scholarships.filter((scholarship: any) => {
     const matchesSearch = scholarship.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          scholarship.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          scholarship.eligibility.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === "All" || scholarship.category === selectedCategory;
+    
+    // Country filter logic - scholarships without country field are assumed to be USA-based
+    let matchesCountry = selectedCountry === "All";
+    if (!matchesCountry && scholarship.country) {
+      matchesCountry = scholarship.country.includes(selectedCountry) ||
+                      (selectedCountry === "International (Multiple Countries)" && scholarship.country.includes("International"));
+    } else if (!matchesCountry && !scholarship.country && selectedCountry === "USA") {
+      matchesCountry = true; // Legacy scholarships without country field are USA-based
+    }
+    
     const matchesExpired = showExpired || !isExpired(scholarship.deadline);
     
-    return matchesSearch && matchesCategory && matchesExpired;
+    return matchesSearch && matchesCategory && matchesCountry && matchesExpired;
   });
 
   // Sort scholarships
@@ -340,7 +531,7 @@ export default function ScholarshipDatabase() {
             />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-4 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
                 <Filter className="w-4 h-4" />
@@ -353,6 +544,22 @@ export default function ScholarshipDatabase() {
               >
                 {categories.map((cat) => (
                   <option key={cat} value={cat} className="capitalize">{cat}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
+                <GraduationCap className="w-4 h-4" />
+                Country/Region
+              </label>
+              <select
+                value={selectedCountry}
+                onChange={(e) => setSelectedCountry(e.target.value)}
+                className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                {countries.map((country) => (
+                  <option key={country} value={country}>{country}</option>
                 ))}
               </select>
             </div>

@@ -14,12 +14,13 @@ import {
   Users,
   Star,
 } from "lucide-react"
+import NewBadge from "./NewBadge"
 
 const tools = [
-  { icon: Wallet, name: "Salary Negotiator", color: "text-emerald-400", href: "/tools/salary-negotiator" },
-  { icon: FileSearch, name: "Resume Reviewer", color: "text-cyan-400", href: "/tools/resume-reviewer" },
-  { icon: GraduationCap, name: "Scholarship Finder", color: "text-violet-400", href: "/scholarships" },
-  { icon: Rocket, name: "Side Hustle Generator", color: "text-pink-400", href: "/tools/side-hustle" },
+  { icon: Wallet, name: "Salary Negotiator", color: "text-emerald-400", href: "/tools/salary-negotiator", isNew: false },
+  { icon: FileSearch, name: "Resume Reviewer", color: "text-cyan-400", href: "/tools/resume-reviewer", isNew: false },
+  { icon: GraduationCap, name: "Scholarship Finder", color: "text-violet-400", href: "/scholarships", isNew: true, addedDate: "2025-12-16" },
+  { icon: Rocket, name: "Side Hustle Generator", color: "text-pink-400", href: "/tools/side-hustle", isNew: true, addedDate: "2025-12-16" },
 ]
 
 const floatVariants = {
@@ -196,9 +197,14 @@ export default function ModernHero() {
                           <tool.icon className="w-6 h-6" />
                         </motion.div>
                         <div className="flex-1">
-                          <span className="text-gray-100 font-semibold group-hover:text-cyan-400 transition-colors">
-                            {tool.name}
-                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-gray-100 font-semibold group-hover:text-cyan-400 transition-colors">
+                              {tool.name}
+                            </span>
+                            {tool.isNew && tool.addedDate && (
+                              <NewBadge addedDate={tool.addedDate} size="sm" />
+                            )}
+                          </div>
                         </div>
                         <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" />
                       </Link>

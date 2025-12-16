@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Model fallback strategy: try these in order if one fails
-// Quotas: 2.5-flash (500/day), 2.0-flash-lite (1000/day), 2.0-flash-exp (1000/day)
-// Total capacity: ~2500 req/day combined across independent quotas
+// Model strategy: Only use gemini-2.5-flash (other models show limit:0 in quota)
+// Quota: 500 requests/day, resets 4 PM Philippine Time
+// Shared across chat, resume, salary tools
 const GEMINI_MODELS = [
-  "gemini-2.5-flash",        // Primary: best quality - 500 req/day
-  "gemini-2.0-flash-lite",   // Fallback 1: 1000 req/day separate quota
-  "gemini-2.0-flash-exp",    // Fallback 2: 1000 req/day separate quota
+  "gemini-2.5-flash",        // Only enabled model - 500 req/day
 ];
 
 // Helper function to call Gemini API with retry logic

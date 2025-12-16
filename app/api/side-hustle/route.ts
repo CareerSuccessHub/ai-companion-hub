@@ -1,33 +1,80 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Side hustle suggestion logic with AI-powered matching
+// Model strategy: Only use gemini-2.5-flash (API key has limit:0 for other models)
+// Quota: 500 requests/day, resets 4 PM Philippine Time
+// CACHING: Cache AI responses for 24h to save quota (1 API call per unique skill/day)
+const GEMINI_MODELS = [
+  "gemini-2.5-flash",        // Only enabled model - 500 req/day
+];
+
+// In-memory cache for AI suggestions (resets on server restart)
+// Key: normalized skills string, Value: {suggestions, timestamp}
+const suggestionCache = new Map<string, { suggestions: any[], timestamp: number }>();
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+
+// Normalize skills for cache key (lowercase, trim, sort words alphabetically)
+function getCacheKey(skills: string): string {
+  return skills
+    .toLowerCase()
+    .trim()
+    .split(/\s+/)
+    .filter(w => w.length > 0)
+    .sort()
+    .join(' ');
+}
+
+// Side hustle suggestion logic with AI-powered matching + caching
 export async function POST(req: NextRequest) {
   let skills = '';
-  let timeAvailable = '';
   
   try {
     const body = await req.json();
     skills = body.skills;
-    timeAvailable = body.timeAvailable;
 
-    console.log('🎯 Side hustle request - Skills:', skills, 'Time:', timeAvailable);
+    console.log('🎯 Side hustle request - Skills:', skills);
 
     if (!skills) {
       return NextResponse.json({ error: 'Skills are required' }, { status: 400 });
     }
 
+    // TEMPORARY: Use keyword matching only to save API quota for critical tools
+    // Chat, Resume, and Salary Negotiator all share the same 500/day gemini-2.5-flash quota
+    // Side hustle has excellent fallback, so prioritizing other tools
+    // TODO: Re-enable AI when traffic is stable or when we get paid API plan
+    console.log('💡 Using keyword-based matching (AI disabled to prioritize quota for chat/resume/salary tools)');
+    const suggestions = generateSuggestions(skills.toLowerCase());
+    return NextResponse.json({ suggestions, source: 'keyword' });
+
+    /* 
+    // AI GENERATION CODE (Disabled to save quota)
+    // Uncomment when: (1) traffic stabilizes, (2) get paid plan, or (3) 2.0 models are enabled
+    
     if (!process.env.GEMINI_API_KEY) {
-      // Fallback to keyword matching if no API key
       console.log('⚠️ No GEMINI_API_KEY found, using keyword matching');
-      const suggestions = generateSuggestions(skills.toLowerCase(), timeAvailable);
+      const suggestions = generateSuggestions(skills.toLowerCase());
       return NextResponse.json({ suggestions, source: 'keyword' });
     }
 
-    // Use AI to intelligently match skills to side hustles
-    console.log('🤖 Using AI-powered matching');
-    const suggestions = await generateAISuggestions(skills, timeAvailable);
+    // Check cache first
+    const cacheKey = getCacheKey(skills);
+    const cached = suggestionCache.get(cacheKey);
+    const now = Date.now();
+    
+    if (cached && (now - cached.timestamp) < CACHE_DURATION) {
+      console.log('💾 Cache hit for:', cacheKey, '(age:', Math.round((now - cached.timestamp) / 60000), 'minutes)');
+      return NextResponse.json({ suggestions: cached.suggestions, source: 'ai-cached' });
+    }
+
+    // Try AI generation (cache miss or expired)
+    console.log('🤖 Using AI-powered dynamic generation (cache miss)');
+    const suggestions = await generateAISuggestions(skills);
+    
+    // Store in cache
+    suggestionCache.set(cacheKey, { suggestions, timestamp: now });
+    console.log('💾 Cached suggestions for:', cacheKey);
 
     return NextResponse.json({ suggestions, source: 'ai' });
+    */
   } catch (error: any) {
     console.error('❌ Side hustle API error:', error.message);
     console.error('Error stack:', error.stack);
@@ -36,7 +83,7 @@ export async function POST(req: NextRequest) {
     if (skills) {
       try {
         console.log('🔄 Falling back to keyword matching due to error');
-        const suggestions = generateSuggestions(skills.toLowerCase(), timeAvailable);
+        const suggestions = generateSuggestions(skills.toLowerCase());
         return NextResponse.json({ 
           suggestions, 
           source: 'keyword-fallback',
@@ -51,142 +98,164 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// AI-powered skill matching
-async function generateAISuggestions(skills: string, timeAvailable: string) {
-  const sidehustleCategories = `
-1. Freelance Web Development - Build websites/apps (needs: coding, programming, web dev skills)
-2. Graphic Design Services - Create logos, graphics (needs: design, visual, creative skills)
-3. Freelance Writing & Content Creation - Write blogs, articles (needs: writing, content, communication skills)
-4. Video Editing Services - Edit videos for creators (needs: video editing, filmmaking, multimedia skills)
-5. Photography & Photo Editing - Take/edit photos (needs: photography, camera, visual skills)
-6. Online Tutoring - Teach subjects online (needs: teaching, academic, subject expertise)
-7. Social Media Management - Manage social accounts (needs: social media, marketing, content skills)
-8. Virtual Assistant / Data Entry - Admin tasks (needs: organization, data entry, admin skills)
-9. Voiceover & Audio Services - Voice work for videos/podcasts (needs: voice, speaking, audio skills)
-10. Translation Services - Translate documents/content (needs: bilingual, language skills)
-11. SEO & Digital Marketing - Help businesses with online visibility (needs: marketing, SEO, analytics skills)
-12. Custom Crafts & Products - Sell handmade items (needs: crafting, DIY, art skills)
-13. Online Surveys & Micro Tasks - Simple tasks for beginners (needs: no specific skills)
-14. Reselling Products - Buy low, sell high online (needs: business sense, no specific skills)
-`;
+// Helper function to call Gemini API with a specific model
+async function callGeminiModel(model: string, prompt: string, apiKey: string): Promise<any> {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+  
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.3,
+        maxOutputTokens: 3072,
+      },
+    }),
+  });
 
-  const timeContext = timeAvailable 
-    ? `User has ${timeAvailable} available per week. Prioritize side hustles matching their time commitment.`
-    : '';
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`${model} failed: ${response.status} - ${errorText}`);
+  }
 
-  const prompt = `You are a career advisor. Based on these skills: "${skills}"
+  return await response.json();
+}
 
-${timeContext}
+// AI-powered dynamic side hustle generation with model fallback
+async function generateAISuggestions(skills: string) {
+  const prompt = `You are a creative career advisor specializing in side hustles and freelancing.
 
-Available side hustle categories:
-${sidehustleCategories}
+User's skills/interests: "${skills}"
 
-Analyze the skills and select the TOP 3 most relevant side hustle categories that match their skills. Consider:
-- Direct skill matches (e.g., "video editor" → Video Editing)
-- Related skills (e.g., "storytelling" → Writing or Video Editing)
-- Transferable skills (e.g., "organized" → Virtual Assistant)
-- If time is limited (1-5 hours), prefer lower-commitment options
-- If skills are vague/general, suggest beginner-friendly options
+Generate 3 CUSTOM, SPECIFIC side hustle ideas that perfectly match their skills. DO NOT use generic categories - create unique, actionable opportunities.
 
-Return ONLY a JSON array with exactly 3 suggestions in this format:
+Guidelines:
+- Be SPECIFIC: Instead of "Freelance Writing", suggest "Technical Documentation for SaaS Companies" or "LinkedIn Ghostwriting for Executives"
+- Match their EXACT skills: If they say "drone pilot", suggest drone-specific hustles, not generic video editing
+- Include REAL platforms where they can start
+- Estimate realistic income potential (hourly or monthly)
+- Make it feel personalized, not templated
+- Assume they have flexible time (5-15 hours/week typical for side hustles)
+
+Return ONLY a JSON array with exactly 3 suggestions:
 [
   {
-    "category": "Category Name",
-    "reason": "Brief 1-sentence explanation why this matches their skills"
+    "title": "Specific side hustle name (NOT a generic category)",
+    "description": "2-3 sentence description of what they'll do and why it fits their skills",
+    "potential": "Realistic monthly income range (e.g., '$200-800/month' or '$30-60/hour')",
+    "timeRequired": "Hours needed per week (e.g., '3-8 hours/week')",
+    "platforms": [
+      {"name": "Platform Name", "url": "https://platform.com"},
+      {"name": "Platform Name 2", "url": "https://platform2.com"}
+    ],
+    "startingSteps": "Quick 1-sentence action they can take today to start"
   }
 ]
 
-Be specific and accurate. No extra text, just the JSON array.`;
+IMPORTANT: 
+- Use real, working platform URLs (Fiverr, Upwork, Etsy, YouTube, etc.)
+- If skills are vague, suggest versatile opportunities
+- Make each idea DISTINCT from the others
+- Focus on 2025-relevant opportunities (AI tools, remote work, digital products)
 
-  try {
-    const apiKey = process.env.GEMINI_API_KEY!;
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: {
-            temperature: 0.3, // Lower temp for consistent matching
-            maxOutputTokens: 1024,
-          },
-        }),
-      }
-    );
+No extra text, just the JSON array.`;
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('AI API error - Status:', response.status, 'Response:', errorText);
-      throw new Error(`AI API failed: ${response.status} - ${errorText.substring(0, 200)}`);
-    }
+  const apiKey = process.env.GEMINI_API_KEY!;
+  let lastError = null;
 
-    const data = await response.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    
-    console.log('AI raw response:', text);
-    
-    // Parse AI response
-    let aiMatches = [];
+  // Try each model in fallback chain
+  for (const model of GEMINI_MODELS) {
     try {
-      const jsonMatch = text.match(/\[[\s\S]*\]/);
-      if (jsonMatch) {
-        aiMatches = JSON.parse(jsonMatch[0]);
-        console.log('AI matches:', aiMatches);
-      } else {
-        console.error('No JSON array found in AI response');
-        throw new Error('AI parsing failed');
+      console.log(`🤖 Trying ${model}...`);
+      const data = await callGeminiModel(model, prompt, apiKey);
+      
+      // Check for API quota errors
+      if (data.error) {
+        console.log(`❌ ${model} returned error: ${data.error.message}`);
+        lastError = new Error(`${model}: ${data.error.message}`);
+        continue; // Try next model
       }
-    } catch (e) {
-      console.error('Failed to parse AI response:', e);
-      throw new Error('AI parsing failed');
-    }
-
-    // Map AI matches to full suggestion objects
-    const categoryMap = getCategoryDetails();
-    const categoryKeys = Object.keys(categoryMap);
-    
-    const suggestions = aiMatches
-      .map((match: any) => {
-        // Try exact match first
-        let category = categoryMap[match.category as keyof typeof categoryMap];
+      
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
         
-        // If no exact match, try flexible matching (case-insensitive, ignore punctuation)
-        if (!category) {
-          const normalizedInput = match.category.toLowerCase().replace(/[^a-z0-9\s]/g, '');
-          const matchedKey = categoryKeys.find(key => {
-            const normalizedKey = key.toLowerCase().replace(/[^a-z0-9\s]/g, '');
-            return normalizedKey === normalizedInput || normalizedKey.includes(normalizedInput) || normalizedInput.includes(normalizedKey);
-          });
-          
-          if (matchedKey) {
-            category = categoryMap[matchedKey as keyof typeof categoryMap];
-            console.log(`Fuzzy matched "${match.category}" to "${matchedKey}"`);
-          } else {
-            console.error(`No match found for category: "${match.category}"`);
-          }
+      if (!text) {
+        console.error('❌ Empty response from Gemini API. Full response:', JSON.stringify(data, null, 2));
+        throw new Error('Empty response from AI');
+      }
+      
+      console.log('✅ AI raw response (first 500 chars):', text.substring(0, 500));
+      
+      // Parse AI response - handle markdown code blocks
+      let suggestions = [];
+      
+      // Remove markdown code blocks if present (```json ... ``` or ``` ... ```)
+      let cleanedText = text.trim();
+      
+      // Remove opening markdown
+      if (cleanedText.startsWith('```json')) {
+        cleanedText = cleanedText.replace(/^```json\s*/i, '');
+      } else if (cleanedText.startsWith('```')) {
+        cleanedText = cleanedText.replace(/^```\s*/, '');
+      }
+      
+      // Remove closing markdown
+      if (cleanedText.endsWith('```')) {
+        cleanedText = cleanedText.replace(/```\s*$/, '');
+      }
+      
+      cleanedText = cleanedText.trim();
+      
+      console.log('🧹 Cleaned text (first 300 chars):', cleanedText.substring(0, 300));
+      
+      // Extract JSON array - look for complete array only
+      const jsonMatch = cleanedText.match(/\[[\s\S]*\]/);
+      if (jsonMatch) {
+        console.log('🔍 Found JSON array, attempting to parse...');
+        const jsonText = jsonMatch[0];
+        
+        // Check if JSON looks truncated (missing closing brace)
+        const openBraces = (jsonText.match(/\{/g) || []).length;
+        const closeBraces = (jsonText.match(/\}/g) || []).length;
+        if (openBraces !== closeBraces) {
+          console.error(`❌ Truncated JSON detected: ${openBraces} opening braces, ${closeBraces} closing braces`);
+          console.error('Last 200 chars:', jsonText.slice(-200));
+          throw new Error('AI response truncated - increase token limit');
         }
         
-        if (!category) return null;
-        
-        return {
-          ...category,
-          aiReason: match.reason, // Add AI's reasoning
-        };
-      })
-      .filter(Boolean);
+        suggestions = JSON.parse(jsonText);
+        console.log('✅ Successfully parsed', suggestions.length, 'suggestions');
+      } else {
+        console.error('❌ No JSON array found in cleaned text');
+        console.error('Full cleaned text:', cleanedText);
+        throw new Error('AI parsing failed: No JSON array found');
+      }
 
-    if (suggestions.length === 0) {
-      console.error('No valid suggestions from AI, falling back to keyword matching');
-      throw new Error('AI returned no valid categories');
+      // Validate that we got proper suggestions
+      if (!Array.isArray(suggestions) || suggestions.length === 0) {
+        console.error('AI returned invalid suggestions format');
+        throw new Error('AI returned no valid suggestions');
+      }
+      
+      // Add aiReason field for consistency
+      const formattedSuggestions = suggestions.map((sug: any) => ({
+        ...sug,
+        aiReason: `Custom match for your skills: ${skills.split(',')[0].trim()}`,
+      }));
+  
+      console.log(`✅ ${model} generated ${formattedSuggestions.length} custom suggestions`);
+      return formattedSuggestions; // Success! Return immediately
+        
+    } catch (modelError: any) {
+      console.log(`❌ ${model} failed: ${modelError.message}`);
+      lastError = modelError;
+      // Continue to next model
     }
-    
-    console.log(`AI generated ${suggestions.length} suggestions`);
-    return suggestions;
-  } catch (error) {
-    console.error('AI suggestion error:', error);
-    throw error; // Will trigger fallback in main function
   }
+  
+  // All models failed
+  console.error('❌ All models failed, last error:', lastError);
+  throw lastError || new Error('All AI models failed');
 }
 
 // Category details for AI matching
@@ -339,17 +408,7 @@ function getCategoryDetails() {
 }
 
 // Fallback keyword-based matching (kept for reliability)
-function generateSuggestions(skills: string, timeAvailable: string) {
-  // Parse time availability for filtering
-  const getMaxHours = (time: string): number => {
-    if (!time) return 999; // No filter if not specified
-    if (time.includes('1-5')) return 5;
-    if (time.includes('5-10')) return 10;
-    if (time.includes('10-20')) return 20;
-    return 999; // 20+ hours
-  };
-  
-  const maxHours = getMaxHours(timeAvailable);
+function generateSuggestions(skills: string) {
   
   const allSuggestions = [
     {
@@ -467,24 +526,15 @@ function generateSuggestions(skills: string, timeAvailable: string) {
     },
   ];
 
-  // Match skills to suggestions and filter by time availability
+  // Match skills to suggestions
   const matched = allSuggestions.filter(suggestion => {
     // Check if skills match
-    const skillMatch = suggestion.keywords.some(keyword => skills.includes(keyword));
-    if (!skillMatch) return false;
-    
-    // Filter by time if specified
-    if (timeAvailable) {
-      const minHours = parseInt(suggestion.timeRequired.split('-')[0]);
-      return minHours <= maxHours;
-    }
-    
-    return true;
+    return suggestion.keywords.some(keyword => skills.includes(keyword));
   });
 
-  // If no match, return general suggestions (filtered by time)
+  // If no match, return general suggestions
   if (matched.length === 0) {
-    const generalSuggestions = [
+    return [
       {
         title: 'Online Surveys & Micro Tasks',
         description: 'Complete simple tasks and surveys for quick money. Great for beginners.',
@@ -516,25 +566,6 @@ function generateSuggestions(skills: string, timeAvailable: string) {
         ],
       },
     ];
-    
-    // Filter general suggestions by time
-    if (timeAvailable) {
-      return generalSuggestions.filter(s => {
-        const minHours = parseInt(s.timeRequired.split('-')[0]);
-        return minHours <= maxHours;
-      });
-    }
-    
-    return generalSuggestions;
-  }
-
-  // Sort matched by time requirement (lower time first if user has limited availability)
-  if (timeAvailable && maxHours < 20) {
-    matched.sort((a, b) => {
-      const aHours = parseInt(a.timeRequired.split('-')[0]);
-      const bHours = parseInt(b.timeRequired.split('-')[0]);
-      return aHours - bHours;
-    });
   }
 
   return matched.slice(0, 3); // Return top 3 matches

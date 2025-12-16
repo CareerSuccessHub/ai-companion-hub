@@ -16,6 +16,7 @@ export default function Navigation() {
     { href: "/", label: "Home", icon: Home },
     { href: "/blog", label: "Blog", icon: BookOpen },
     { href: "/scholarships", label: "Scholarships", icon: GraduationCap },
+    { href: "/updates", label: "Updates", icon: Briefcase },
   ];
 
   const toolsItems = [
@@ -97,7 +98,7 @@ export default function Navigation() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="absolute top-full left-0 -mt-2 w-56 bg-slate-800 border border-slate-700 rounded-lg shadow-xl overflow-hidden"
+                  className="absolute top-full right-0 -mt-2 w-56 bg-slate-800 border border-slate-700 rounded-lg shadow-xl overflow-hidden z-50"
                 >
                   {toolsItems.map((tool) => (
                     <Link

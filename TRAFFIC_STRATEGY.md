@@ -279,7 +279,7 @@
 - [ ] Create scholarship checklist PDF (lead magnet)
 
 **Developer 1:**
-- [ ] Apply for AdSense if hit 500 visitors
+- [ ] Apply for AdSense when hit 300-500 visitors (custom domain ready Dec 16)
 - [ ] Monitor PH launch traffic (scale server if needed)
 - [ ] Add 2 scholarships
 

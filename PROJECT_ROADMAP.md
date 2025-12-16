@@ -195,7 +195,7 @@ Build a multi-revenue AI platform helping students and young professionals land 
 - [x] Fix bugs (scholarship deadline tracking, blog pagination, scrollbar UX)
 - [x] Add AI model fallback for reliability (3-tier system)
 - [x] Optimize automation schedules for API quota (4x/week smart skip)
-- [x] Monitor Gemini API usage (1,500/day limit, resets 4 PM Philippine Time)
+- [x] Monitor Gemini API usage (500/day primary + 2000/day fallbacks = 2500 total, resets 4 PM Philippine Time)
 - [x] Review auto-generated blog posts for quality
 - [x] Update scholarship database with 2026 deadlines (20 active, bi-monthly refresh)
 - [x] Implement real-time deadline tracking with urgency badges
@@ -230,11 +230,12 @@ Build a multi-revenue AI platform helping students and young professionals land 
 - **Fiverr affiliate:** REJECTED Dec 12 (site too new, reapply Feb 2026)
 - **Skillshare affiliate:** PENDING (no update yet)
 
-**Weekly Targets (REVISED - Dec 15):**
-- Week 1 (Dec 11-17): 33 visitors ✅ (organic only, NO marketing)
-- Week 2 (Dec 18-24): ? visitors (depends if marketing starts)
-- Week 3 (Dec 25-31): ? visitors (depends if marketing starts)
-- **Realistic by Dec 31:** 100-200 visitors (if NO marketing push launched)
+**Weekly Targets (REVISED - Dec 16):**
+- Week 1 (Dec 11-17): 34 visitors ✅ (organic only, custom domain added)
+- Week 2 (Dec 18-24): Target 150 cumulative (116 new)
+- Week 3 (Dec 25-31): Target 300 cumulative (150 new)
+- Week 4-7 (Jan 1-31): Target 1,000 cumulative (700 new, ~25/day)
+- **Milestone:** 300-400 visitors by Dec 31, 1,000 by Jan 31
 
 **Next Steps:**
 1. Start marketing activities (Reddit, LinkedIn, Quora) OR
@@ -620,8 +621,10 @@ Build a multi-revenue AI platform helping students and young professionals land 
 ## 🚨 Risk Management
 
 ### Technical Risks:
-- **Gemini API Limit:** 1,500 requests/day resets midnight PT (4 PM Philippine Time)
-  - **Mitigation:** Cache responses, implement rate limiting
+- **Gemini API Limit:** gemini-2.5-flash (500/day) + fallbacks (2000/day combined) = 2500 total capacity
+  - Resets midnight PT (4 PM Philippine Time)
+  - **Mitigation:** 3-tier fallback system, cache responses, rate limiting
+  - **Capacity:** Can handle 1,000+ daily visitors (10-20% use AI = 100-200 requests)
 - **Vercel Build Time:** Free tier = 100 hours/month
   - **Mitigation:** Optimize build process, use ISR for blog posts
 - **Database:** Currently using static JSON files

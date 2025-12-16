@@ -64,10 +64,10 @@ A multi-revenue AI platform helping students and young professionals land jobs, 
 - **Framework:** Next.js 14 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
-- **AI:** Google Gemini API (gemini-2.5-flash) - 1,500 requests/day free tier
+- **AI:** Google Gemini API (gemini-2.5-flash: 500/day + fallbacks: 2000/day = 2500 total)
 - **Hosting:** Vercel (auto-deploy from GitHub main branch)
 - **Analytics:** Google Analytics 4 (G-1W1HNJGT2G)
-- **Monetization:** Ko-fi (active, $0 revenue), AdSense (not applied, needs custom domain), Fiverr affiliate (rejected Dec 12), Skillshare (pending)
+- **Monetization:** Ko-fi (active, $0 revenue), AdSense (ready to apply - custom domain ai-career-hub.com added Dec 16), Fiverr affiliate (rejected Dec 12), Skillshare (pending)
 - **State Management:** Zustand (chat) + React Context (theme)
 - **Icons:** Lucide React
 - **Blog:** MDX with dynamic routing + automated posting (3-4 posts/week via GitHub Actions)
@@ -182,7 +182,7 @@ ai-companion-hub/
 **QA Process:**
 - All 3 members involved in testing new features before deployment
 - Test on desktop + mobile (60%+ users on mobile)
-- Verify all tools work with Gemini API (1,500 requests/day limit)
+- Verify all tools work with Gemini API (500/day primary + 2000/day fallbacks = 2500 total)
 - Check blog posts render correctly (MDX + folder-based)
 - Monitor GA4 analytics for issues (G-1W1HNJGT2G)
 
@@ -263,9 +263,9 @@ This is currently a private project. If you're interested in contributing:
 ## 🔧 Technical Notes
 
 ### Gemini API Limits:
-- Free tier: 1,500 requests/day
+- Free tier: gemini-2.5-flash (500/day) + 2 fallback models (1000/day each) = 2500 total
 - Resets: Midnight Pacific Time (4 PM Philippine Time)
-- Model: gemini-2.5-flash (fastest, best for chat)
+- Primary: gemini-2.5-flash (best quality) → Fallback 1: gemini-2.0-flash-lite → Fallback 2: gemini-2.0-flash-exp
 
 ### Vercel Deployment:
 - Auto-deploys from GitHub main branch

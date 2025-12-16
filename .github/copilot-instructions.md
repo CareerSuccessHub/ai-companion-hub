@@ -28,7 +28,7 @@
 - **Framework:** Next.js 14 App Router (no Pages Router)
 - **Styling:** Tailwind CSS only (no inline styles or CSS modules)
 - **Components:** Server components by default, client only when needed ("use client")
-- **API:** Gemini API (1,500 requests/day limit, resets midnight PT = 4 PM Philippine Time)
+- **API:** Gemini API (500/day primary + 2000/day fallbacks = 2500 total, resets midnight PT = 4 PM Philippine Time)
 - **State Management:** React Context for theme, Zustand for chat state
 - **Icons:** Lucide React icons
 - **Formatting:** Prettier with 2-space indent, single quotes

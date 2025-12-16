@@ -1,6 +1,6 @@
 # AI Career Success Hub 🚀
 
-**Live Site:** [ai-companion-hub-self.vercel.app](https://ai-companion-hub-self.vercel.app)  
+**Live Site:** [ai-career-hub.com](https://ai-career-hub.com)  
 **Launch Date:** December 9, 2025  
 **Last Updated:** December 15, 2025  
 **Team:** 3 members (all involved in QA, 2 developers, 1 marketing specialist)

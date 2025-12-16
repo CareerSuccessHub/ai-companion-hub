@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getAllBlogPosts } from '@/lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://ai-companion-hub-self.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://ai-career-hub.com';
   
   // Get all blog posts dynamically
   const blogPosts = getAllBlogPosts();

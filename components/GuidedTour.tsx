@@ -85,8 +85,38 @@ export default function GuidedTour({
       targetElement.style.borderRadius = "8px";
       targetElement.style.transition = "all 0.3s ease";
 
-      // On mobile or if position is center, center the modal
-      if (isMobile || preferredPosition === "center") {
+      // On mobile, position modal above or below target (not centered)
+      if (isMobile) {
+        const targetCenterY = targetRect.top + targetRect.height / 2;
+        const isTargetInUpperHalf = targetCenterY < viewportHeight / 2;
+        
+        // Position modal opposite to where target is to avoid overlap
+        if (isTargetInUpperHalf) {
+          // Target in upper half, show modal below
+          top = targetRect.bottom + spacing;
+          arrow = "top";
+        } else {
+          // Target in lower half, show modal above
+          top = targetRect.top - modalRect.height - spacing;
+          arrow = "bottom";
+        }
+        
+        // Center horizontally with padding
+        left = Math.max(16, Math.min(
+          viewportWidth / 2 - modalRect.width / 2,
+          viewportWidth - modalRect.width - 16
+        ));
+        
+        // Keep modal in viewport vertically
+        if (top < 16) top = 16;
+        if (top + modalRect.height > viewportHeight - 16) {
+          top = viewportHeight - modalRect.height - 16;
+        }
+        
+        // Scroll to keep target visible
+        targetElement.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      } else if (preferredPosition === "center") {
+        // Desktop center mode
         top = viewportHeight / 2 - modalRect.height / 2;
         left = viewportWidth / 2 - modalRect.width / 2;
         arrow = "none";
@@ -294,13 +324,13 @@ export default function GuidedTour({
                 left: modalPosition.left,
                 zIndex: 10001,
               }}
-              className="w-96 max-w-[calc(100vw-2rem)]"
+              className="w-96 max-w-[calc(100vw-2rem)] md:w-96"
             >
               {/* Arrow */}
               {renderArrow()}
 
               {/* Modal Content */}
-              <div className="bg-slate-800 border-2 border-slate-700 rounded-xl shadow-2xl p-6 relative">
+              <div className="bg-slate-800 border-2 border-slate-700 rounded-xl shadow-2xl p-4 md:p-6 relative">
                 {/* Close Button */}
                 <button
                   onClick={handleClose}
@@ -332,12 +362,12 @@ export default function GuidedTour({
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-blue-400 mb-2 pr-6">
+                <h3 className="text-lg md:text-xl font-bold text-blue-400 mb-2 pr-6">
                   {currentStepData.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-300 text-sm leading-relaxed mb-5">
+                <p className="text-gray-300 text-xs md:text-sm leading-relaxed mb-4 md:mb-5">
                   {currentStepData.description}
                 </p>
 
@@ -377,8 +407,8 @@ export default function GuidedTour({
                   </button>
                 </div>
 
-                {/* Keyboard Hints */}
-                <div className="mt-4 pt-3 border-t border-slate-700">
+                {/* Keyboard Hints - Desktop only */}
+                <div className="hidden md:block mt-4 pt-3 border-t border-slate-700">
                   <p className="text-xs text-gray-500 text-center">
                     Use ← → or Enter to navigate • Press Esc to close
                   </p>

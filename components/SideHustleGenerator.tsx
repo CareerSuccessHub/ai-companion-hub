@@ -131,7 +131,13 @@ export default function SideHustleGenerator() {
             placeholder="e.g., video editing, graphic design, programming, photography, writing..."
             className="w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <p className="text-xs text-gray-500 mt-1">Be specific! The more detail you provide, the better the AI suggestions.</p>
+          <div className="mt-1.5 space-y-1">
+            <p className="text-xs text-gray-500">Be specific! The more detail you provide, the better the AI suggestions.</p>
+            <p className="text-xs text-gray-500 flex items-center gap-1">
+              <span>🔒</span>
+              <span>Your info stays private — safe with us!</span>
+            </p>
+          </div>
         </div>
 
         <button

@@ -143,6 +143,10 @@ export default function ResumeReviewer() {
             placeholder="Copy and paste your resume content here..."
             className="w-full h-48 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
           />
+          <p className="mt-1.5 text-xs text-gray-500 flex items-center gap-1">
+            <span>🔒</span>
+            <span>We don't store your resume or personal data — your info stays private!</span>
+          </p>
         </div>
 
         <button

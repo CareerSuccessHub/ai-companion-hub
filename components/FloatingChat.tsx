@@ -254,7 +254,7 @@ export default function FloatingChat() {
 
             {/* Input */}
             <div className="p-4 border-t border-slate-800">
-              <div className="flex gap-2">
+              <div className="flex gap-2 mb-1.5">
                 <input
                   type="text"
                   value={input}
@@ -271,6 +271,10 @@ export default function FloatingChat() {
                   <Send size={20} />
                 </button>
               </div>
+              <p className="text-xs text-gray-500 flex items-center gap-1">
+                <span>🔒</span>
+                <span>Your conversations stay private!</span>
+              </p>
             </div>
           </motion.div>
         )}

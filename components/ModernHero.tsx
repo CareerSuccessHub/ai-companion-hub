@@ -70,10 +70,26 @@ export default function ModernHero() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm rounded-full"
+              className="inline-flex items-center gap-2 px-4 py-2 border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm rounded-full"
             >
-              <Sparkles className="w-4 h-4 animate-pulse" />
-              Powered by Advanced AI
+              <Zap className="w-4 h-4" />
+              100% Free • No Signups • No Paywalls
+            </motion.div>
+
+            {/* Brand name overline */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.6 }}
+              className="mb-3"
+            >
+              <motion.span
+                animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+                transition={{ duration: 5, repeat: Infinity }}
+                className="text-lg sm:text-xl font-semibold bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-[length:200%_auto] bg-clip-text text-transparent"
+              >
+                AI Career Success Hub
+              </motion.span>
             </motion.div>
 
             {/* Heading with gradient */}
@@ -83,15 +99,9 @@ export default function ModernHero() {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
             >
-              <motion.span
-                animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-                transition={{ duration: 5, repeat: Infinity }}
-                className="bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-[length:200%_auto] bg-clip-text text-transparent"
-              >
-                AI Career
-              </motion.span>
+              <span className="text-gray-100">Free Career Tools</span>
               <br />
-              <span className="text-gray-100">Success Hub</span>
+              <span className="text-gray-100">That Actually Help</span>
             </motion.h1>
 
             {/* Subheading */}
@@ -101,9 +111,8 @@ export default function ModernHero() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg sm:text-xl text-gray-400 max-w-xl leading-relaxed"
             >
-              Supercharge your career with our suite of{" "}
-              <span className="text-cyan-400 font-semibold">free AI-powered tools</span>. From salary negotiation to
-              resume optimization — we&apos;ve got you covered.
+              For college students and early-career professionals. No fluff, no paywalls—just{" "}
+              <span className="text-cyan-400 font-semibold">AI-powered tools</span> to boost your resume, negotiate salary, find scholarships, and discover side hustles.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -115,21 +124,21 @@ export default function ModernHero() {
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                 <Link
-                  href="/tools/salary-negotiator"
+                  href="/tools/resume-reviewer"
                   className="relative inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold px-8 py-4 text-lg rounded-lg shadow-lg shadow-blue-500/25 transition-all hover:shadow-2xl hover:shadow-blue-500/40 group overflow-hidden"
                 >
-                  <Wallet className="w-5 h-5 mr-2" />
-                  Try Salary Negotiator
+                  <FileSearch className="w-5 h-5 mr-2" />
+                  Review My Resume
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                 <Link
-                  href="/tools/resume-reviewer"
-                  className="inline-flex items-center justify-center border-2 border-cyan-500/50 bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 hover:text-cyan-300 hover:border-cyan-400 font-bold px-8 py-4 text-lg rounded-lg backdrop-blur-sm transition-all"
+                  href="/scholarships"
+                  className="inline-flex items-center justify-center border-2 border-violet-500/50 bg-violet-500/10 text-violet-400 hover:bg-violet-500/20 hover:text-violet-300 hover:border-violet-400 font-bold px-8 py-4 text-lg rounded-lg backdrop-blur-sm transition-all"
                 >
-                  <FileSearch className="w-5 h-5 mr-2" />
-                  Review My Resume
+                  <GraduationCap className="w-5 h-5 mr-2" />
+                  Find Scholarships
                 </Link>
               </motion.div>
             </motion.div>

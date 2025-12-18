@@ -6,10 +6,14 @@ import GradientIcon from "./GradientIcon";
 import { motion } from "framer-motion";
 import MarkdownRenderer from "./MarkdownRenderer";
 import GuidedTour, { TourStep } from "./GuidedTour";
+import ToolCapabilities from "./ToolCapabilities";
+import ApiQuotaModal from "./ApiQuotaModal";
+
 export default function ResumeReviewer() {
   const [resumeText, setResumeText] = useState("");
   const [feedback, setFeedback] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showQuotaModal, setShowQuotaModal] = useState(false);
 
   const tourSteps: TourStep[] = [
     {
@@ -58,6 +62,13 @@ export default function ResumeReviewer() {
       if (!response.ok) {
         const errorData = await response.json();
         console.error('API error response:', errorData);
+        
+        // Check if it's a quota error (429 or specific error message)
+        if (response.status === 429 || errorData.error?.includes('quota') || errorData.error?.includes('limit')) {
+          setShowQuotaModal(true);
+          return;
+        }
+        
         throw new Error(errorData.error || 'Failed to analyze resume');
       }
       
@@ -106,6 +117,20 @@ export default function ResumeReviewer() {
             autoShowOnFirstVisit={true}
           />
         </div>
+
+      <ToolCapabilities
+        canDo={[
+          "Analyze resume format, content, and ATS compatibility",
+          "Identify missing keywords and suggest improvements",
+          "Provide specific recommendations to stand out",
+          "Give feedback on strengths and areas to improve"
+        ]}
+        cantDo={[
+          "Guarantee you'll get the job or interview",
+          "Replace professional resume writers or career coaches",
+          "Provide legal advice on employment contracts"
+        ]}
+      />
 
       <div className="space-y-4">
         <div data-tour-target="resume-input">
@@ -199,6 +224,12 @@ export default function ResumeReviewer() {
           Our AI will analyze formatting, content, keywords, and ATS compatibility to help you land more interviews.
         </p>
       </div>
+
+      <ApiQuotaModal
+        isOpen={showQuotaModal}
+        onClose={() => setShowQuotaModal(false)}
+        toolName="Resume Reviewer"
+      />
     </motion.div>
   );
 }

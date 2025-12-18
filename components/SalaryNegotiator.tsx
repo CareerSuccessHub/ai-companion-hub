@@ -6,6 +6,8 @@ import GradientIcon from "./GradientIcon";
 import { motion } from "framer-motion";
 import MarkdownRenderer from "./MarkdownRenderer";
 import GuidedTour, { TourStep } from "./GuidedTour";
+import ToolCapabilities from "./ToolCapabilities";
+import ApiQuotaModal from "./ApiQuotaModal";
 
 export default function SalaryNegotiator() {
   const [jobTitle, setJobTitle] = useState("");
@@ -14,6 +16,7 @@ export default function SalaryNegotiator() {
   const [location, setLocation] = useState("");
   const [script, setScript] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showQuotaModal, setShowQuotaModal] = useState(false);
 
   const tourSteps: TourStep[] = [
     {
@@ -62,6 +65,12 @@ export default function SalaryNegotiator() {
 
       const data = await response.json();
       
+      // Check for quota errors
+      if (!response.ok && (response.status === 429 || data.error?.includes('quota') || data.error?.includes('limit'))) {
+        setShowQuotaModal(true);
+        return;
+      }
+      
       if (data.error) {
         setScript("Error generating script. Please try again.");
       } else {
@@ -98,6 +107,20 @@ export default function SalaryNegotiator() {
             autoShowOnFirstVisit={true}
           />
         </div>
+
+      <ToolCapabilities
+        canDo={[
+          "Generate personalized negotiation scripts with talking points",
+          "Help you confidently ask for $5K-20K more",
+          "Provide market rate references and data points",
+          "Give professional phrasing for tricky conversations"
+        ]}
+        cantDo={[
+          "Guarantee you'll get the higher salary you request",
+          "Replace professional salary negotiation coaches",
+          "Provide legal or financial advice on contracts"
+        ]}
+      />
 
       <div data-tour-target="salary-inputs" className="grid md:grid-cols-2 gap-4 mb-6">
         <div>
@@ -200,6 +223,12 @@ export default function SalaryNegotiator() {
           <li>✅ Practice your script out loud 3-5 times before the call</li>
         </ul>
       </div>
+
+      <ApiQuotaModal
+        isOpen={showQuotaModal}
+        onClose={() => setShowQuotaModal(false)}
+        toolName="Salary Negotiation Coach"
+      />
     </motion.div>
   );
 }

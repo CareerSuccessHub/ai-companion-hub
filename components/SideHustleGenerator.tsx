@@ -5,11 +5,14 @@ import { Sparkles, TrendingUp, DollarSign, Rocket } from "lucide-react";
 import GradientIcon from "./GradientIcon";
 import { motion } from "framer-motion";
 import GuidedTour, { TourStep } from "./GuidedTour";
+import ToolCapabilities from "./ToolCapabilities";
+import ApiQuotaModal from "./ApiQuotaModal";
 
 export default function SideHustleGenerator() {
   const [skills, setSkills] = useState("");
   const [suggestions, setSuggestions] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [showQuotaModal, setShowQuotaModal] = useState(false);
 
   const tourSteps: TourStep[] = [
     {
@@ -52,6 +55,12 @@ export default function SideHustleGenerator() {
       
       const data = await response.json();
       console.log('📦 API Response data:', data);
+      
+      // Check for quota errors
+      if (!response.ok && (response.status === 429 || data.error?.includes('quota') || data.error?.includes('limit'))) {
+        setShowQuotaModal(true);
+        return;
+      }
       
       if (data.suggestions) {
         console.log('✅ Got', data.suggestions.length, 'suggestions');
@@ -97,6 +106,20 @@ export default function SideHustleGenerator() {
         <p className="text-gray-400 mb-6">
           Get personalized side income ideas based on your skills and available time
         </p>
+
+      <ToolCapabilities
+        canDo={[
+          "Generate personalized side hustle ideas based on your skills",
+          "Provide earning potential estimates and time requirements",
+          "Suggest specific platforms to get started immediately",
+          "Give actionable steps to launch your side income"
+        ]}
+        cantDo={[
+          "Guarantee specific earnings or income levels",
+          "Replace professional business advisors or accountants",
+          "Provide legal or tax advice on side businesses"
+        ]}
+      />
 
       <div className="space-y-4 mb-6">
         <div data-tour-target="skills-input">
@@ -179,6 +202,12 @@ export default function SideHustleGenerator() {
           <p>Your personalized side hustle ideas will appear here</p>
         )}
       </div>
+
+      <ApiQuotaModal
+        isOpen={showQuotaModal}
+        onClose={() => setShowQuotaModal(false)}
+        toolName="Side Hustle Generator"
+      />
     </motion.div>
   );
 }

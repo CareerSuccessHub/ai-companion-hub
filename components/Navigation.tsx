@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Home, BookOpen, GraduationCap, Menu, X, ChevronDown, Briefcase } from "lucide-react";
+import { Home, BookOpen, GraduationCap, Menu, X, ChevronDown, Briefcase, Megaphone } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -16,7 +16,7 @@ export default function Navigation() {
     { href: "/", label: "Home", icon: Home },
     { href: "/blog", label: "Blog", icon: BookOpen },
     { href: "/scholarships", label: "Scholarships", icon: GraduationCap },
-    { href: "/updates", label: "Updates", icon: Briefcase },
+    { href: "/updates", label: "Updates", icon: Megaphone },
   ];
 
   const toolsItems = [

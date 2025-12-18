@@ -97,9 +97,9 @@ export default function RootLayout({
           {children}
           <FloatingChat />
           <FeatureAnnouncement 
-            announcementId="v1.2.0-global-expansion"
-            title="🌍 New: Global Scholarships + Smarter Side Hustles!"
-            description="We've added international scholarships from 11+ countries and upgraded our AI to generate truly custom side hustle ideas."
+            announcementId="v1.3.0-ux-improvements"
+            title="✨ New: Enhanced UX & Sample Data!"
+            description="We've added sample data buttons, privacy notes, and improved tool guidance to make your experience smoother."
             ctaText="See What's New"
             ctaHref="/updates"
           />

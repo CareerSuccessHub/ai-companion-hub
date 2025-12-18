@@ -57,6 +57,18 @@ export default function FloatingChat() {
 
       const data = await response.json();
       
+      // Handle quota error with friendly message
+      if (!response.ok && (response.status === 429 || data.error === 'quota_exceeded')) {
+        const quotaMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          role: 'assistant',
+          content: data.message || "Hey there! 😅 Our AI tools have hit the daily limit (we share the same quota to keep everything free). I'll be back tomorrow at 4 PM Philippine Time. Thanks for understanding! 💙",
+        };
+        setMessages(prev => [...prev, quotaMessage]);
+        setIsLoading(false);
+        return;
+      }
+      
       if (data.reply) {
         const aiMessage: Message = {
           id: (Date.now() + 1).toString(),
@@ -64,9 +76,23 @@ export default function FloatingChat() {
           content: data.reply,
         };
         setMessages(prev => [...prev, aiMessage]);
+      } else if (data.error) {
+        // Handle other errors
+        const errorMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          role: 'assistant',
+          content: `Oops! ${data.error} 🤔`,
+        };
+        setMessages(prev => [...prev, errorMessage]);
       }
     } catch (err) {
       console.error('Chat error:', err);
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: "Sorry, something went wrong! Please try again. 🙏",
+      };
+      setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }

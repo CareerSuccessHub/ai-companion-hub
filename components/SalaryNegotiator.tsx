@@ -5,6 +5,7 @@ import { DollarSign, TrendingUp, Sparkles } from "lucide-react";
 import GradientIcon from "./GradientIcon";
 import { motion } from "framer-motion";
 import MarkdownRenderer from "./MarkdownRenderer";
+import GuidedTour, { TourStep } from "./GuidedTour";
 
 export default function SalaryNegotiator() {
   const [jobTitle, setJobTitle] = useState("");
@@ -13,6 +14,30 @@ export default function SalaryNegotiator() {
   const [location, setLocation] = useState("");
   const [script, setScript] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const tourSteps: TourStep[] = [
+    {
+      id: "step-1",
+      title: "Step 1: Enter Job Details",
+      description: "Fill in your job title, current offer, experience level, and location. The more details you provide, the more personalized your negotiation script will be. Only Job Title and Offer Amount are required.",
+      target: "salary-inputs",
+      position: "bottom",
+    },
+    {
+      id: "step-2",
+      title: "Step 2: Generate Your Script",
+      description: "Click this button to generate a personalized salary negotiation script powered by AI. It will provide professional talking points, market data references, and help you confidently ask for $5K-20K more.",
+      target: "generate-button",
+      position: "bottom",
+    },
+    {
+      id: "step-3",
+      title: "Step 3: Practice Your Script",
+      description: "Your personalized negotiation script appears here. Read it carefully, practice out loud 3-5 times, and customize it to match your style. Remember: be confident, collaborative, and know your worth!",
+      target: "results-section",
+      position: "top",
+    },
+  ];
 
   const generateScript = async () => {
     if (!jobTitle || !currentOffer) {
@@ -57,17 +82,24 @@ export default function SalaryNegotiator() {
       transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
       className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-emerald-500/50 transition-all duration-300"
     >
-        <div className="flex items-center gap-4 mb-6">
-          <GradientIcon icon={DollarSign} gradient="from-emerald-400 to-green-500" />
-          <div>
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
-              AI Salary Negotiation Coach
-            </h2>
-            <p className="text-sm text-gray-400">Get personalized scripts to negotiate $5K-20K more</p>
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            <GradientIcon icon={DollarSign} gradient="from-emerald-400 to-green-500" />
+            <div>
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
+                AI Salary Negotiation Coach
+              </h2>
+              <p className="text-sm text-gray-400">Get personalized scripts to negotiate $5K-20K more</p>
+            </div>
           </div>
+          <GuidedTour
+            steps={tourSteps}
+            storageKey="salary-negotiator-tour"
+            autoShowOnFirstVisit={true}
+          />
         </div>
 
-      <div className="grid md:grid-cols-2 gap-4 mb-6">
+      <div data-tour-target="salary-inputs" className="grid md:grid-cols-2 gap-4 mb-6">
         <div>
           <label className="block text-sm font-medium text-gray-300 mb-2">
             Job Title *
@@ -122,6 +154,7 @@ export default function SalaryNegotiator() {
       </div>
 
       <button
+        data-tour-target="generate-button"
         onClick={generateScript}
         disabled={isLoading}
         className="w-full px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
@@ -139,15 +172,23 @@ export default function SalaryNegotiator() {
         )}
       </button>
 
-      {script && (
-        <div className="mt-6 p-6 bg-slate-800 border border-green-700 rounded-lg">
-          <h3 className="text-lg font-bold text-green-400 mb-4 flex items-center gap-2">
-            <DollarSign className="w-5 h-5" />
-            Your Personalized Negotiation Script
-          </h3>
-          <MarkdownRenderer content={script} />
-        </div>
-      )}
+      {/* Results section - always rendered for tour */}
+      <div
+        data-tour-target="results-section"
+        className={script ? "mt-6 p-6 bg-slate-800 border border-green-700 rounded-lg" : "mt-6 min-h-[100px] flex items-center justify-center text-gray-500 text-sm border border-dashed border-slate-700 rounded-lg"}
+      >
+        {script ? (
+          <>
+            <h3 className="text-lg font-bold text-green-400 mb-4 flex items-center gap-2">
+              <DollarSign className="w-5 h-5" />
+              Your Personalized Negotiation Script
+            </h3>
+            <MarkdownRenderer content={script} />
+          </>
+        ) : (
+          <p>Your personalized negotiation script will appear here</p>
+        )}
+      </div>
 
       <div className="mt-6 bg-green-900/20 border border-green-800/50 rounded-lg p-4">
         <h3 className="text-sm font-bold text-green-300 mb-2">💡 Pro Tips:</h3>

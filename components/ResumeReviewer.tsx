@@ -5,10 +5,35 @@ import { FileText, Upload, Sparkles, CheckCircle, XCircle } from "lucide-react";
 import GradientIcon from "./GradientIcon";
 import { motion } from "framer-motion";
 import MarkdownRenderer from "./MarkdownRenderer";
+import GuidedTour, { TourStep } from "./GuidedTour";
 export default function ResumeReviewer() {
   const [resumeText, setResumeText] = useState("");
   const [feedback, setFeedback] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const tourSteps: TourStep[] = [
+    {
+      id: "step-1",
+      title: "Step 1: Paste Your Resume",
+      description: "Copy and paste your resume text here. Include all sections: contact info, experience, education, and skills. The more complete your resume, the better feedback you'll receive.",
+      target: "resume-input",
+      position: "bottom",
+    },
+    {
+      id: "step-2",
+      title: "Step 2: Analyze Your Resume",
+      description: "Click this button to get instant AI-powered feedback. Our system will review your resume for formatting, content quality, keyword optimization, and ATS compatibility.",
+      target: "analyze-button",
+      position: "bottom",
+    },
+    {
+      id: "step-3",
+      title: "Step 3: Review Your Feedback",
+      description: "Your personalized feedback appears here with strengths, areas for improvement, and actionable recommendations to help you land more interviews.",
+      target: "results-section",
+      position: "top",
+    },
+  ];
 
   const handleAnalyze = async () => {
     if (!resumeText.trim()) {
@@ -65,18 +90,25 @@ export default function ResumeReviewer() {
       transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
       className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-cyan-500/50 transition-all duration-300"
     >
-        <div className="flex items-center gap-4 mb-6">
-          <GradientIcon icon={FileText} gradient="from-cyan-400 to-blue-500" />
-          <div>
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              AI Resume Reviewer
-            </h2>
-            <p className="text-sm text-gray-400">Get instant feedback on your resume from AI</p>
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            <GradientIcon icon={FileText} gradient="from-cyan-400 to-blue-500" />
+            <div>
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                AI Resume Reviewer
+              </h2>
+              <p className="text-sm text-gray-400">Get instant feedback on your resume from AI</p>
+            </div>
           </div>
+          <GuidedTour
+            steps={tourSteps}
+            storageKey="resume-reviewer-tour"
+            autoShowOnFirstVisit={true}
+          />
         </div>
 
       <div className="space-y-4">
-        <div>
+        <div data-tour-target="resume-input">
           <label className="block text-sm font-medium text-gray-300 mb-2">
             Paste your resume text below:
           </label>
@@ -89,6 +121,7 @@ export default function ResumeReviewer() {
         </div>
 
         <button
+          data-tour-target="analyze-button"
           onClick={handleAnalyze}
           disabled={isLoading || !resumeText.trim()}
           className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
@@ -106,50 +139,58 @@ export default function ResumeReviewer() {
           )}
         </button>
 
-        {feedback && (
-          <div className="mt-6 p-6 bg-slate-800 border border-slate-700 rounded-lg">
-            <h3 className="text-lg font-semibold text-blue-300 mb-4 flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
-              AI Feedback
-            </h3>
-            
-            {feedback.error ? (
-              <p className="text-red-400">{feedback.error}</p>
-            ) : (
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-green-400 mb-2 flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4" />
-                    Strengths
-                  </h4>
-                  <MarkdownRenderer content={feedback.strengths} className="prose-sm" />
-                </div>
+        {/* Results section - always rendered for tour but conditionally visible */}
+        <div
+          data-tour-target="results-section"
+          className={feedback ? "mt-6 p-6 bg-slate-800 border border-slate-700 rounded-lg" : "mt-6 min-h-[100px] flex items-center justify-center text-gray-500 text-sm border border-dashed border-slate-700 rounded-lg"}
+        >
+          {feedback ? (
+            <>
+              <h3 className="text-lg font-semibold text-blue-300 mb-4 flex items-center gap-2">
+                <CheckCircle className="w-5 h-5" />
+                AI Feedback
+              </h3>
+              
+              {feedback.error ? (
+                <p className="text-red-400">{feedback.error}</p>
+              ) : (
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-green-400 mb-2 flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4" />
+                      Strengths
+                    </h4>
+                    <MarkdownRenderer content={feedback.strengths} className="prose-sm" />
+                  </div>
 
-                <div>
-                  <h4 className="font-semibold text-yellow-400 mb-2 flex items-center gap-2">
-                    <XCircle className="w-4 h-4" />
-                    Areas for Improvement
-                  </h4>
-                  <MarkdownRenderer content={feedback.improvements} className="prose-sm" />
-                </div>
+                  <div>
+                    <h4 className="font-semibold text-yellow-400 mb-2 flex items-center gap-2">
+                      <XCircle className="w-4 h-4" />
+                      Areas for Improvement
+                    </h4>
+                    <MarkdownRenderer content={feedback.improvements} className="prose-sm" />
+                  </div>
 
-                <div>
-                  <h4 className="font-semibold text-blue-400 mb-2 flex items-center gap-2">
-                    <Sparkles className="w-4 h-4" />
-                    Specific Recommendations
-                  </h4>
-                  <MarkdownRenderer content={feedback.recommendations} className="prose-sm" />
-                </div>
+                  <div>
+                    <h4 className="font-semibold text-blue-400 mb-2 flex items-center gap-2">
+                      <Sparkles className="w-4 h-4" />
+                      Specific Recommendations
+                    </h4>
+                    <MarkdownRenderer content={feedback.recommendations} className="prose-sm" />
+                  </div>
 
-                <div className="pt-4 border-t border-slate-700">
-                  <p className="text-sm text-gray-400 italic">
-                    💡 Pro tip: Tailor your resume for each job application using keywords from the job description!
-                  </p>
+                  <div className="pt-4 border-t border-slate-700">
+                    <p className="text-sm text-gray-400 italic">
+                      💡 Pro tip: Tailor your resume for each job application using keywords from the job description!
+                    </p>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        )}
+              )}
+            </>
+          ) : (
+            <p>Your AI feedback will appear here after analysis</p>
+          )}
+        </div>
       </div>
 
       <div className="mt-6 p-4 bg-slate-800/50 border border-slate-700 rounded-lg">

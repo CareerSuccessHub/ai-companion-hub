@@ -15,6 +15,30 @@ export default function ResumeReviewer() {
   const [isLoading, setIsLoading] = useState(false);
   const [showQuotaModal, setShowQuotaModal] = useState(false);
 
+  const sampleResume = `JANE DOE
+Software Engineer
+janedoe@email.com | (555) 123-4567 | LinkedIn: linkedin.com/in/janedoe
+
+PROFESSIONAL SUMMARY
+Software Engineer with 3+ years of experience building scalable web applications. Proficient in React, Node.js, and cloud technologies.
+
+EXPERIENCE
+Software Engineer | Tech Company Inc. | 2021-Present
+- Developed responsive web applications using React and TypeScript
+- Collaborated with cross-functional teams to deliver features on time
+- Improved application performance by 40% through optimization
+
+EDUCATION
+B.S. Computer Science | State University | 2021
+GPA: 3.8/4.0
+
+SKILLS
+JavaScript, React, Node.js, TypeScript, Git, AWS, Agile`;
+
+  const loadSampleData = () => {
+    setResumeText(sampleResume);
+  };
+
   const tourSteps: TourStep[] = [
     {
       id: "step-1",
@@ -134,9 +158,19 @@ export default function ResumeReviewer() {
 
       <div className="space-y-4">
         <div data-tour-target="resume-input">
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Paste your resume text below:
-          </label>
+          <div className="flex items-center justify-between mb-2">
+            <label className="block text-sm font-medium text-gray-300">
+              Paste your resume text below:
+            </label>
+            <button
+              onClick={loadSampleData}
+              className="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1 px-2 py-1 rounded hover:bg-slate-800 transition-colors"
+              aria-label="Load sample resume"
+            >
+              <Sparkles className="w-3 h-3" />
+              Try Sample
+            </button>
+          </div>
           <textarea
             value={resumeText}
             onChange={(e) => setResumeText(e.target.value)}

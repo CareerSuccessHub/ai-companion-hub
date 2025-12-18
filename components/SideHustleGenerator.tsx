@@ -14,6 +14,10 @@ export default function SideHustleGenerator() {
   const [isLoading, setIsLoading] = useState(false);
   const [showQuotaModal, setShowQuotaModal] = useState(false);
 
+  const loadSampleData = () => {
+    setSkills("graphic design, social media, photography");
+  };
+
   const tourSteps: TourStep[] = [
     {
       id: "step-1",
@@ -123,7 +127,17 @@ export default function SideHustleGenerator() {
 
       <div className="space-y-4 mb-6">
         <div data-tour-target="skills-input">
-          <label className="block text-sm font-medium mb-2">Your Skills or Interests</label>
+          <div className="flex items-center justify-between mb-2">
+            <label className="block text-sm font-medium">Your Skills or Interests</label>
+            <button
+              onClick={loadSampleData}
+              className="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1 px-2 py-1 rounded hover:bg-slate-800 transition-colors"
+              aria-label="Load sample skills"
+            >
+              <Sparkles className="w-3 h-3" />
+              Try Sample
+            </button>
+          </div>
           <input
             type="text"
             value={skills}

@@ -18,6 +18,13 @@ export default function SalaryNegotiator() {
   const [isLoading, setIsLoading] = useState(false);
   const [showQuotaModal, setShowQuotaModal] = useState(false);
 
+  const loadSampleData = () => {
+    setJobTitle("Software Engineer");
+    setCurrentOffer("$95,000");
+    setExperience("3 years");
+    setLocation("San Francisco, CA");
+  };
+
   const tourSteps: TourStep[] = [
     {
       id: "step-1",
@@ -121,6 +128,18 @@ export default function SalaryNegotiator() {
           "Provide legal or financial advice on contracts"
         ]}
       />
+
+      <div className="mb-4 flex items-center justify-between">
+        <p className="text-xs text-gray-500">Fill in your job details below:</p>
+        <button
+          onClick={loadSampleData}
+          className="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1 px-2 py-1 rounded hover:bg-slate-800 transition-colors"
+          aria-label="Load sample data"
+        >
+          <Sparkles className="w-3 h-3" />
+          Try Sample Data
+        </button>
+      </div>
 
       <div data-tour-target="salary-inputs" className="grid md:grid-cols-2 gap-4 mb-6">
         <div>

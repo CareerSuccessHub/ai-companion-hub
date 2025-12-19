@@ -108,6 +108,14 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error('Chat API Error:', error);
     
+    // Check for quota/rate limit errors
+    if (error?.error?.code === 429 || error.message?.includes('quota') || error.message?.includes('limit')) {
+      return NextResponse.json({ 
+        error: 'quota_exceeded',
+        message: "Hey there! 😅 Our AI tools have hit the daily limit (we share the same quota to keep everything free). I'll be back tomorrow at 4 PM Philippine Time. Thanks for understanding! 💙"
+      }, { status: 429 });
+    }
+    
     // User-friendly error message for 503 overload
     const errorMessage = error?.error?.code === 503 || error.message?.includes('503')
       ? "The AI is experiencing high traffic. Please try again in a moment."

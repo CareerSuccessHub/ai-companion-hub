@@ -8,6 +8,35 @@ export const metadata: Metadata = {
 
 const updates = [
   {
+    version: "1.3.0",
+    date: "December 19, 2025",
+    icon: Sparkles,
+    iconGradient: "from-purple-400 to-pink-500",
+    title: "UX Enhancements & User Experience Improvements",
+    changes: [
+      {
+        type: "New",
+        items: [
+          "Added AI chat greeting pop-up for better discoverability of the Career Mentor",
+          "Added tool scope and limits sections to all AI tools - clear visibility of what each tool can and can't do",
+          "Added API quota notice modals when daily limits are reached",
+          "Added inline privacy reassurance messages near all sensitive input fields",
+          "Added 'Try Sample Data' buttons to Resume Reviewer, Salary Negotiator, and Side Hustle Generator for easier testing",
+          "Implemented modal-like tooltips for tool onboarding and guided tours",
+        ],
+      },
+      {
+        type: "Improved",
+        items: [
+          "Enhanced hero section design and messaging",
+          "Fixed mobile responsiveness of guided tour modals",
+          "Updated 'Updates' page icon for better visual consistency",
+          "Improved user trust with explicit privacy messaging on all forms",
+        ],
+      },
+    ],
+  },
+  {
     version: "1.2.0",
     date: "December 16, 2025",
     icon: Globe,

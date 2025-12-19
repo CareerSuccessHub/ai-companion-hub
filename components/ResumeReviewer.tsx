@@ -5,10 +5,63 @@ import { FileText, Upload, Sparkles, CheckCircle, XCircle } from "lucide-react";
 import GradientIcon from "./GradientIcon";
 import { motion } from "framer-motion";
 import MarkdownRenderer from "./MarkdownRenderer";
+import GuidedTour, { TourStep } from "./GuidedTour";
+import ToolCapabilities from "./ToolCapabilities";
+import ApiQuotaModal from "./ApiQuotaModal";
+
 export default function ResumeReviewer() {
   const [resumeText, setResumeText] = useState("");
   const [feedback, setFeedback] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showQuotaModal, setShowQuotaModal] = useState(false);
+
+  const sampleResume = `JANE DOE
+Software Engineer
+janedoe@email.com | (555) 123-4567 | LinkedIn: linkedin.com/in/janedoe
+
+PROFESSIONAL SUMMARY
+Software Engineer with 3+ years of experience building scalable web applications. Proficient in React, Node.js, and cloud technologies.
+
+EXPERIENCE
+Software Engineer | Tech Company Inc. | 2021-Present
+- Developed responsive web applications using React and TypeScript
+- Collaborated with cross-functional teams to deliver features on time
+- Improved application performance by 40% through optimization
+
+EDUCATION
+B.S. Computer Science | State University | 2021
+GPA: 3.8/4.0
+
+SKILLS
+JavaScript, React, Node.js, TypeScript, Git, AWS, Agile`;
+
+  const loadSampleData = () => {
+    setResumeText(sampleResume);
+  };
+
+  const tourSteps: TourStep[] = [
+    {
+      id: "step-1",
+      title: "Step 1: Paste Your Resume",
+      description: "Copy and paste your resume text here. Include all sections: contact info, experience, education, and skills. The more complete your resume, the better feedback you'll receive.",
+      target: "resume-input",
+      position: "bottom",
+    },
+    {
+      id: "step-2",
+      title: "Step 2: Analyze Your Resume",
+      description: "Click this button to get instant AI-powered feedback. Our system will review your resume for formatting, content quality, keyword optimization, and ATS compatibility.",
+      target: "analyze-button",
+      position: "bottom",
+    },
+    {
+      id: "step-3",
+      title: "Step 3: Review Your Feedback",
+      description: "Your personalized feedback appears here with strengths, areas for improvement, and actionable recommendations to help you land more interviews.",
+      target: "results-section",
+      position: "top",
+    },
+  ];
 
   const handleAnalyze = async () => {
     if (!resumeText.trim()) {
@@ -33,6 +86,13 @@ export default function ResumeReviewer() {
       if (!response.ok) {
         const errorData = await response.json();
         console.error('API error response:', errorData);
+        
+        // Check if it's a quota error (429 or specific error message)
+        if (response.status === 429 || errorData.error?.includes('quota') || errorData.error?.includes('limit')) {
+          setShowQuotaModal(true);
+          return;
+        }
+        
         throw new Error(errorData.error || 'Failed to analyze resume');
       }
       
@@ -65,30 +125,66 @@ export default function ResumeReviewer() {
       transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
       className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-cyan-500/50 transition-all duration-300"
     >
-        <div className="flex items-center gap-4 mb-6">
-          <GradientIcon icon={FileText} gradient="from-cyan-400 to-blue-500" />
-          <div>
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              AI Resume Reviewer
-            </h2>
-            <p className="text-sm text-gray-400">Get instant feedback on your resume from AI</p>
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            <GradientIcon icon={FileText} gradient="from-cyan-400 to-blue-500" />
+            <div>
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                AI Resume Reviewer
+              </h2>
+              <p className="text-sm text-gray-400">Get instant feedback on your resume from AI</p>
+            </div>
           </div>
+          <GuidedTour
+            steps={tourSteps}
+            storageKey="resume-reviewer-tour"
+            autoShowOnFirstVisit={true}
+          />
         </div>
 
+      <ToolCapabilities
+        canDo={[
+          "Analyze resume format, content, and ATS compatibility",
+          "Identify missing keywords and suggest improvements",
+          "Provide specific recommendations to stand out",
+          "Give feedback on strengths and areas to improve"
+        ]}
+        cantDo={[
+          "Guarantee you'll get the job or interview",
+          "Replace professional resume writers or career coaches",
+          "Provide legal advice on employment contracts"
+        ]}
+      />
+
       <div className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            Paste your resume text below:
-          </label>
+        <div data-tour-target="resume-input">
+          <div className="flex items-center justify-between mb-2">
+            <label className="block text-sm font-medium text-gray-300">
+              Paste your resume text below:
+            </label>
+            <button
+              onClick={loadSampleData}
+              className="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1 px-2 py-1 rounded hover:bg-slate-800 transition-colors"
+              aria-label="Load sample resume"
+            >
+              <Sparkles className="w-3 h-3" />
+              Try Sample
+            </button>
+          </div>
           <textarea
             value={resumeText}
             onChange={(e) => setResumeText(e.target.value)}
             placeholder="Copy and paste your resume content here..."
             className="w-full h-48 px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
           />
+          <p className="mt-1.5 text-xs text-gray-500 flex items-center gap-1">
+            <span>🔒</span>
+            <span>We don&apos;t store your resume or personal data — your info stays private!</span>
+          </p>
         </div>
 
         <button
+          data-tour-target="analyze-button"
           onClick={handleAnalyze}
           disabled={isLoading || !resumeText.trim()}
           className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
@@ -106,50 +202,58 @@ export default function ResumeReviewer() {
           )}
         </button>
 
-        {feedback && (
-          <div className="mt-6 p-6 bg-slate-800 border border-slate-700 rounded-lg">
-            <h3 className="text-lg font-semibold text-blue-300 mb-4 flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
-              AI Feedback
-            </h3>
-            
-            {feedback.error ? (
-              <p className="text-red-400">{feedback.error}</p>
-            ) : (
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-green-400 mb-2 flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4" />
-                    Strengths
-                  </h4>
-                  <MarkdownRenderer content={feedback.strengths} className="prose-sm" />
-                </div>
+        {/* Results section - always rendered for tour but conditionally visible */}
+        <div
+          data-tour-target="results-section"
+          className={feedback ? "mt-6 p-6 bg-slate-800 border border-slate-700 rounded-lg" : "mt-6 min-h-[100px] flex items-center justify-center text-gray-500 text-sm border border-dashed border-slate-700 rounded-lg"}
+        >
+          {feedback ? (
+            <>
+              <h3 className="text-lg font-semibold text-blue-300 mb-4 flex items-center gap-2">
+                <CheckCircle className="w-5 h-5" />
+                AI Feedback
+              </h3>
+              
+              {feedback.error ? (
+                <p className="text-red-400">{feedback.error}</p>
+              ) : (
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-green-400 mb-2 flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4" />
+                      Strengths
+                    </h4>
+                    <MarkdownRenderer content={feedback.strengths} className="prose-sm" />
+                  </div>
 
-                <div>
-                  <h4 className="font-semibold text-yellow-400 mb-2 flex items-center gap-2">
-                    <XCircle className="w-4 h-4" />
-                    Areas for Improvement
-                  </h4>
-                  <MarkdownRenderer content={feedback.improvements} className="prose-sm" />
-                </div>
+                  <div>
+                    <h4 className="font-semibold text-yellow-400 mb-2 flex items-center gap-2">
+                      <XCircle className="w-4 h-4" />
+                      Areas for Improvement
+                    </h4>
+                    <MarkdownRenderer content={feedback.improvements} className="prose-sm" />
+                  </div>
 
-                <div>
-                  <h4 className="font-semibold text-blue-400 mb-2 flex items-center gap-2">
-                    <Sparkles className="w-4 h-4" />
-                    Specific Recommendations
-                  </h4>
-                  <MarkdownRenderer content={feedback.recommendations} className="prose-sm" />
-                </div>
+                  <div>
+                    <h4 className="font-semibold text-blue-400 mb-2 flex items-center gap-2">
+                      <Sparkles className="w-4 h-4" />
+                      Specific Recommendations
+                    </h4>
+                    <MarkdownRenderer content={feedback.recommendations} className="prose-sm" />
+                  </div>
 
-                <div className="pt-4 border-t border-slate-700">
-                  <p className="text-sm text-gray-400 italic">
-                    💡 Pro tip: Tailor your resume for each job application using keywords from the job description!
-                  </p>
+                  <div className="pt-4 border-t border-slate-700">
+                    <p className="text-sm text-gray-400 italic">
+                      💡 Pro tip: Tailor your resume for each job application using keywords from the job description!
+                    </p>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        )}
+              )}
+            </>
+          ) : (
+            <p>Your AI feedback will appear here after analysis</p>
+          )}
+        </div>
       </div>
 
       <div className="mt-6 p-4 bg-slate-800/50 border border-slate-700 rounded-lg">
@@ -158,6 +262,12 @@ export default function ResumeReviewer() {
           Our AI will analyze formatting, content, keywords, and ATS compatibility to help you land more interviews.
         </p>
       </div>
+
+      <ApiQuotaModal
+        isOpen={showQuotaModal}
+        onClose={() => setShowQuotaModal(false)}
+        toolName="Resume Reviewer"
+      />
     </motion.div>
   );
 }

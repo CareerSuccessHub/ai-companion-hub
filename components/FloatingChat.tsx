@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MessageCircle, X, Send, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";import MarkdownRenderer from "./MarkdownRenderer";
 interface Message {
@@ -14,6 +14,26 @@ export default function FloatingChat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showGreeting, setShowGreeting] = useState(false);
+
+  // Show greeting pop-up after a delay (only once per session)
+  useEffect(() => {
+    const hasSeenGreeting = sessionStorage.getItem('chat-greeting-shown');
+    
+    if (!hasSeenGreeting) {
+      const timer = setTimeout(() => {
+        setShowGreeting(true);
+        sessionStorage.setItem('chat-greeting-shown', 'true');
+        
+        // Auto-hide greeting after 10 seconds
+        setTimeout(() => {
+          setShowGreeting(false);
+        }, 10000);
+      }, 2000); // Show after 2 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, []); // Empty dependency array - runs once per component mount
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -37,6 +57,18 @@ export default function FloatingChat() {
 
       const data = await response.json();
       
+      // Handle quota error with friendly message
+      if (!response.ok && (response.status === 429 || data.error === 'quota_exceeded')) {
+        const quotaMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          role: 'assistant',
+          content: data.message || "Hey there! 😅 Our AI tools have hit the daily limit (we share the same quota to keep everything free). I'll be back tomorrow at 4 PM Philippine Time. Thanks for understanding! 💙",
+        };
+        setMessages(prev => [...prev, quotaMessage]);
+        setIsLoading(false);
+        return;
+      }
+      
       if (data.reply) {
         const aiMessage: Message = {
           id: (Date.now() + 1).toString(),
@@ -44,9 +76,23 @@ export default function FloatingChat() {
           content: data.reply,
         };
         setMessages(prev => [...prev, aiMessage]);
+      } else if (data.error) {
+        // Handle other errors
+        const errorMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          role: 'assistant',
+          content: `Oops! ${data.error} 🤔`,
+        };
+        setMessages(prev => [...prev, errorMessage]);
       }
     } catch (err) {
       console.error('Chat error:', err);
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: "Sorry, something went wrong! Please try again. 🙏",
+      };
+      setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
@@ -54,6 +100,64 @@ export default function FloatingChat() {
 
   return (
     <>
+      {/* Greeting Pop-up */}
+      <AnimatePresence>
+        {showGreeting && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            transition={{ type: "spring", damping: 20 }}
+            className="fixed bottom-24 right-6 z-50 w-80 bg-slate-800 border-2 border-blue-500/50 rounded-lg shadow-2xl overflow-hidden"
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setShowGreeting(false)}
+              className="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-slate-700"
+              aria-label="Close greeting"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            {/* Greeting Header */}
+            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-4">
+              <div className="flex items-center gap-2">
+                <motion.div
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                >
+                  <Sparkles className="w-5 h-5 text-white" />
+                </motion.div>
+                <h3 className="text-white font-bold">AI Career Mentor</h3>
+              </div>
+            </div>
+
+            {/* Greeting Message */}
+            <div className="p-4">
+              <p className="text-gray-300 text-sm leading-relaxed">
+                👋 Hey there! I&apos;m your AI Career Mentor.
+              </p>
+              <p className="text-gray-300 text-sm leading-relaxed mt-2">
+                I can help you polish your resume, give tips on salary, plan your career, and find the right jobs.
+              </p>
+              <p className="text-gray-300 text-sm leading-relaxed mt-2">
+                Think of me as your career buddy — just tap me anytime you need a hand! 😊
+              </p>
+              <button
+                onClick={() => {
+                  setShowGreeting(false);
+                  setIsOpen(true);
+                }}
+                className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Start Chatting
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Floating Button */}
       <motion.button
         whileHover={{ scale: 1.1 }}
@@ -150,7 +254,7 @@ export default function FloatingChat() {
 
             {/* Input */}
             <div className="p-4 border-t border-slate-800">
-              <div className="flex gap-2">
+              <div className="flex gap-2 mb-1.5">
                 <input
                   type="text"
                   value={input}
@@ -167,6 +271,10 @@ export default function FloatingChat() {
                   <Send size={20} />
                 </button>
               </div>
+              <p className="text-xs text-gray-500 flex items-center gap-1">
+                <span>🔒</span>
+                <span>Your conversations stay private!</span>
+              </p>
             </div>
           </motion.div>
         )}

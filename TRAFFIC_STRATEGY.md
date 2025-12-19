@@ -1,9 +1,15 @@
 # Traffic Generation Strategy - AI Career Success Hub
 
-**Updated:** December 15, 2025  
+**Updated:** December 20, 2025  
 **Team:** 3 members (all involved in QA, 1 marketing specialist for traffic)  
-**Goal:** 1,000 monthly visitors by December 31, 2025  
-**Reality Check:** Marketing NOT STARTED yet (as of Dec 15)
+**Primary Goal:** Implement affiliate CTAs & start traffic campaigns  
+**Traffic Goal:** 500-1,000 monthly visitors by January 31, 2026 (extended from Dec 31)  
+**Revenue Goal:** First affiliate conversions + AdSense approval
+
+**Strategic Shift (Dec 16-20):**
+- Affiliate implementation prioritized over pure traffic volume
+- Quality affiliate integrations > rushing to 1K visitors
+- Jan 31 extended deadline allows proper CTA testing & optimization
 
 **Current Metrics (Dec 9-15):**
 - Active users: 33 (27 Philippines, 2 India, 1 Indonesia, 1 USA)

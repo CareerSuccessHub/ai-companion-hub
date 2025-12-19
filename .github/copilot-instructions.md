@@ -1,28 +1,34 @@
 # AI Career Success Hub - Development Guidelines
 
 ## Project Overview
-**Current State:** Live production platform at ai-companion-hub-self.vercel.app  
+**Current State:** Live production platform at ai-career-hub.com  
 **Launch Date:** December 9, 2025  
+**Current Version:** v1.3.0 (UX improvements deployed Dec 20, 2025)  
 **Team:** 3 members (2 developers, 1 marketing specialist)  
 **Tech Stack:** Next.js 14, TypeScript, Tailwind CSS, Gemini AI (gemini-2.5-flash)
 
-## Platform Features (Phase 1-4 Complete)
-- ✅ AI Career Mentor (floating chat interface)
-- ✅ Resume Reviewer (AI-powered feedback)
-- ✅ Salary Negotiation Script Generator
-- ✅ Side Hustle Generator (7+ categories)
-- ✅ Scholarship Finder (10+ scholarships, $200K+ value, auto-updates monthly)
-- ✅ Blog System (manual + auto-generated posts via GitHub Actions)
+## Platform Features (Phase 1-5 In Progress)
+- ✅ AI Career Mentor (floating chat interface with session greeting)
+- ✅ Resume Reviewer (AI-powered feedback + guided tour)
+- ✅ Salary Negotiation Script Generator (guided tour)
+- ✅ Side Hustle Generator (7+ categories + guided tour)
+- ✅ Scholarship Finder (20+ scholarships, $320K+ value, auto-updates monthly)
+- ✅ Blog System (15+ posts: manual + auto-generated via GitHub Actions)
 - ✅ SEO optimized (sitemap, robots.txt, meta tags, schema markup)
 - ✅ Analytics (Google Analytics 4 - G-1W1HNJGT2G)
-- ✅ Monetization hooks (Ko-fi, AdSense-ready, affiliate disclosure)
+- ✅ UX Enhancements (sample data buttons, privacy notes, API quota modals)
+- ⏳ Affiliate Integrations (implementing CTAs - see AFFILIATE_IMPLEMENTATION_CHECKLIST.md)
 
-## Current Phase (Phase 5 - Dec 11-31, 2025)
-**Focus:** Traffic Generation - Goal of 1,000 monthly visitors by Dec 31  
+## Current Phase (Phase 5 - Dec 11 - Jan 31, 2026)
+**Focus:** Affiliate Implementation + Traffic Generation  
+**Primary Goal:** Implement affiliate CTAs & start marketing campaigns  
+**Traffic Goal:** 500-1,000 monthly visitors by January 31, 2026 (extended from Dec 31)  
+**Revenue Goal:** First affiliate conversions + AdSense approval
+
 **Team Priorities:**
-- Developer 1: Bug fixes, performance monitoring, scholarship curation
-- Developer 2: Content creation (3 blog posts/week), email capture, SEO
-- Marketing Specialist: Reddit, LinkedIn, Quora, social media engagement
+- Developer 1: Affiliate CTA implementation, bug fixes, performance monitoring
+- Developer 2: Affiliate blog posts, SEO optimization, email capture
+- Marketing Specialist: Affiliate applications, Reddit/LinkedIn marketing (starts Dec 23)
 
 ## Code Standards
 - **Framework:** Next.js 14 App Router (no Pages Router)
@@ -51,18 +57,21 @@
 - **Auto-deploy:** GitHub main branch → Vercel (takes 2-3 minutes)
 - **Environment variables:** GEMINI_API_KEY (secret), NEXT_PUBLIC_BASE_URL
 - **Build command:** npm run build
-- **Production URL:** https://ai-companion-hub-self.vercel.app
+- **Production URL:** https://ai-career-hub.com (custom domain active since Dec 16, 2025)
 
 ## Future Expansion (Phase 6-8 Planned for 2026)
-- Phase 6: Writing Tools (paraphrasing, citation generator)
-- Phase 7: Finance Tools (loan calculator, budget planner)
-- Phase 8: Productivity Suite (study planner, Pomodoro timer)
+- Phase 6: Affiliate optimization & traffic scaling (Feb-Mar 2026)
+- Phase 7: Writing Tools (paraphrasing, citation generator)
+- Phase 8: Finance Tools (loan calculator, budget planner)
+- Phase 9: Productivity Suite (study planner, Pomodoro timer)
 
-## Documentation Files (Updated Dec 11, 2025)
-- **PROJECT_ROADMAP.md** - Complete roadmap with phases, team assignments, metrics
-- **MARKET_TRENDS_2025.md** - Market research, expansion strategy, revenue projections
+## Documentation Files (Updated Dec 20, 2025)
+- **PROJECT_ROADMAP.md** - Complete roadmap with phases, team assignments, updated milestones
+- **AFFILIATE_STRATEGY.md** - Detailed affiliate program info & revenue model (PRIMARY)
+- **AFFILIATE_IMPLEMENTATION_CHECKLIST.md** - Step-by-step affiliate CTA implementation
 - **TRAFFIC_STRATEGY.md** - Team-based traffic plan with weekly tasks
-- **MONETIZATION_GUIDE.md** - Revenue streams, affiliate programs, AdSense setup
+- **MONETIZATION_GUIDE.md** - Revenue streams overview & action items
+- **MARKET_TRENDS_2025.md** - Market research, expansion strategy
 - **README.md** - Project overview, tech stack, setup instructions
 
 ## Common Tasks

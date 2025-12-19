@@ -1,13 +1,15 @@
 # Monetization Setup Guide - Affiliate + AdSense Model
 
-**Last Updated:** December 16, 2025  
+**Last Updated:** December 20, 2025  
 **Business Model:** 100% FREE platform monetized via affiliates + AdSense  
-**Strategic Pivot:** Dropped freemium model (Dec 16) - focusing on affiliate conversions  
 **Current Revenue:** $0 (setup phase)  
 **Custom Domain:** ✅ ai-career-hub.com  
 **Google Analytics:** ✅ GA4 active (G-1W1HNJGT2G)
 
-**See detailed affiliate strategy:** [AFFILIATE_STRATEGY.md](./AFFILIATE_STRATEGY.md)
+**Key Documentation:**
+- **[AFFILIATE_STRATEGY.md](./AFFILIATE_STRATEGY.md)** - Detailed affiliate program info & revenue model
+- **[AFFILIATE_IMPLEMENTATION_CHECKLIST.md](./AFFILIATE_IMPLEMENTATION_CHECKLIST.md)** - Step-by-step implementation guide
+- **[TRAFFIC_STRATEGY.md](./TRAFFIC_STRATEGY.md)** - Marketing & traffic generation plan
 
 ---
 
@@ -15,105 +17,54 @@
 
 ### 1. Affiliate Marketing (PRIMARY FOCUS)
 
-**Programs to Apply:**
-- **Resume Builders:** Resume.io ($30-100/sale), Zety, NovoResume
-- **Courses:** Udemy (20-45%), Coursera, Skillshare (PENDING)
-- **Tools:** Grammarly ($20-25/signup), LinkedIn Premium
-- **Freelance:** Fiverr (REJECTED - reapply Feb 2026), Upwork (direct links)
-
-**Current Status (Dec 16):**
-- ❌ Fiverr: Rejected (need 500 visitors, reapply Feb 2026)
+**Current Implementation Status (Dec 20):**
+- ❌ Fiverr: Rejected (reapply Feb 2026)
 - ⏳ Skillshare: Pending approval
-- ⏳ Others: Not applied yet (applying this week)
+- ⏳ Resume.io, Zety, Udemy, Grammarly, Coursera: Ready to apply
+- ⏳ Affiliate CTAs: Being implemented in tools (see AFFILIATE_IMPLEMENTATION_CHECKLIST.md)
 
-**Action This Week:**
-1. Apply to Resume.io, Zety, Udemy, Grammarly, Coursera
-2. Write "Best Resume Builders 2025" affiliate blog post
-3. Add affiliate CTAs to Resume Reviewer tool
-4. Track clicks with GA4 events
+**This Week's Actions:**
+1. Implement affiliate CTAs in Resume Reviewer, Salary Negotiator, Side Hustle Generator
+2. Apply to Resume.io, Zety, Grammarly, Udemy, Coursera
+3. Write "Best Resume Builders 2025" blog post
+4. Set up GA4 event tracking for affiliate clicks
 
-**Earnings Potential:** $200-800/mo at 1K visitors/day (see AFFILIATE_STRATEGY.md)
+**Detailed affiliate program info:** See [AFFILIATE_STRATEGY.md](./AFFILIATE_STRATEGY.md)  
+**Implementation guide:** See [AFFILIATE_IMPLEMENTATION_CHECKLIST.md](./AFFILIATE_IMPLEMENTATION_CHECKLIST.md)
+
+**Earnings Potential:** $200-800/mo at 1K visitors/day (conservative 2% conversion)
 
 ---
 
 ### 2. Google AdSense (READY TO APPLY - JAN 2026)
 
-**Current Status (as of Dec 16):**
-- **Fiverr:** ❌ REJECTED (Dec 12, 2025)
-  - Reason: "Site too new, not enough traffic"
-  - Reapply: February 2026 (after 60-day wait + 500+ visitors/month)
-  - Links: Using direct Fiverr links (no commission) as placeholders
-- **Skillshare:** ⏳ PENDING (applied Dec 9, no response after 7 days)
-- **Upwork:** ⚠️ No affiliate program (direct links only)
-- **Google AdSense:** ✅ READY TO APPLY (custom domain added Dec 16, waiting for 300-500 visitors)
-- **Others:** ❌ NOT APPLIED YET (waiting for traffic validation)
-
-**Action Required:**
-1. **Fiverr:** Keep direct links until Feb 2026 reapplication
-2. **Skillshare:** Wait for approval email (check spam folder)
-3. **Other programs:** Apply AFTER hitting 500+ monthly visitors
-
-#### Affiliate Programs to Apply (Philippines-Friendly):
-- **Skillshare:** https://skillshare.com/affiliates (40% commission, PENDING)
-- **Coursera:** https://www.coursera.org/about/partners/affiliates (₱1,500-6,000/month potential)
-- **Grammarly:** https://www.grammarly.com/affiliates (₱800-4,000/month potential)
-- **Shopee Affiliate:** https://shopee.ph/m/shopee-affiliate (Local, ₱500-10,000/month potential)
-- **Lazada Affiliate:** https://www.lazada.com.ph/helpcenter/affiliate (Local e-commerce)
-- **GCash Partnership:** https://www.gcash.com/partners (Fintech referrals)
-- **Canva Affiliate:** https://www.canva.com/affiliates (₱600-5,000/month potential)
-
-**Reality Check:**
-- Need 500-1K visitors/month before most programs approve
-- Current traffic: 33 users total (not enough for approvals)
-- Strategy: Focus on traffic first, then reapply to affiliates
-
-**Earnings Potential:** $0 now, $50-500/month with 1K+ traffic
-
-**Note:** Most affiliate programs pay in USD. Shopee/Lazada pay in PHP.
-
----
-
-### 3. Google AdSense (✅ READY TO APPLY)
-
-**Status:** ✅ CAN APPLY (custom domain ai-career-hub.com added Dec 16, 2025)
+**Status:** ✅ CAN APPLY (custom domain ai-career-hub.com active since Dec 16, 2025)
 
 **Requirements Checklist:**
 - ✅ **Custom Domain** (ai-career-hub.com via Namecheap $12/year)
-- ✅ Quality content (10+ blog posts, 20 scholarships, 4 tools = 30+ pages)
-- ⚠️ Traffic (34 users as of Dec 16, need ~300-500 visitors/month for approval)
+- ✅ Quality content (15+ blog posts, 20+ scholarships, 4 tools = 35+ pages)
+- ⚠️ **Traffic** (need ~300-500 visitors/month for approval - Est. late Jan 2026)
 - ✅ Original content (all AI-generated + original tools)
 - ✅ 18+ years old
 
 **Next Steps:**
-1. Wait for traffic to reach 300-500 visitors/month (Est: late Dec/early Jan)
-2. Apply at adsense.google.com with ai-career-hub.com
-3. Wait 1-2 weeks for approval
-4. Add ad units to site
+1. Implement affiliate CTAs in tools (Dec 20-25)
+2. Apply to affiliate programs (Dec 20-25)
+3. Grow traffic to 300-500 visitors/month (Jan 2026)
+4. Apply at adsense.google.com with ai-career-hub.com
+5. Wait 1-2 weeks for approval
+6. Add ad units to site (replace `AdPlaceholder` components)
 
 **Timeline:**
-- Jan 2026: Grow traffic to 500-1K organic visitors (prove market fit)
-- Feb 2026: Buy domain after validation
-- Mar 2026: Apply for AdSense
-- Apr 2026: First revenue
-
-**How to apply (FUTURE):**
-1. Go to https://www.google.com/adsense
-2. Sign up with your Gmail
-3. Add your CUSTOM domain URL (not Vercel subdomain)
-4. Add AdSense code to your site (replace `AdPlaceholder` components)
-5. Wait for approval (1-2 weeks)
-
-**Ad Placements (already coded - ready for AdSense):**
-- Top banner (728x90 or responsive)
-- 2x sidebar squares (300x250)
-- Auto ads (Google places automatically)
-
-**Note:** AdSense pays in USD, converted to PHP for Philippine bank accounts.
+- **Dec 2025:** Affiliate CTAs live, start affiliate applications
+- **Jan 2026:** Grow traffic to 300-500 visitors, apply for AdSense
+- **Feb 2026:** AdSense approved + first affiliate conversions
+- **Mar 2026:** Multi-stream revenue established
 
 **Earnings Potential:** 
-- $0 now (not applied)
-- ₱500-2,000/month with 1K visitors
-- ₱5,000-50,000/month with 10K-50K visitors
+- $0 now (not applied, waiting for traffic)
+- $90-150/month at 1K visitors/day
+- $450-750/month at 5K visitors/day
 
 ---
 
@@ -187,17 +138,51 @@
 
 ---
 
-## ✅ Immediate Action Items - STATUS UPDATED (Dec 16, 2025)
+## ✅ Current Action Items (Dec 20-31, 2025)
 
-1. **Setup Ko-fi:** ✅ COMPLETE
-   - [x] Create Ko-fi account (ko-fi.com/studentsuccesshub)
-   - [x] Customize page
-   - [x] Update `KofiButton.tsx` with username
-   - [x] Test donation flow
-   - **Status:** Live, $0 donations (waiting for more traffic)
+### Priority 1: Affiliate Implementation (This Week)
+- [ ] Implement affiliate CTAs in tools (see AFFILIATE_IMPLEMENTATION_CHECKLIST.md)
+  - [ ] Resume Reviewer: Resume.io, Zety CTAs
+  - [ ] Salary Negotiator: Grammarly CTA
+  - [ ] Side Hustle Generator: Fiverr, Upwork links
+- [ ] Apply to affiliate programs:
+  - [ ] Resume.io (https://www.partnerstack.com/partner/resume-io)
+  - [ ] Zety (https://zety.com/affiliate-program)
+  - [ ] Grammarly (https://www.grammarly.com/affiliates)
+  - [ ] Udemy (https://www.udemy.com/affiliate/)
+  - [ ] Coursera (https://www.coursera.org/about/partners/affiliates)
+- [ ] Write "Best Resume Builders 2025" affiliate blog post
+- [ ] Set up GA4 event tracking for affiliate link clicks
 
-2. **Get Affiliate Links:** ⚠️ PARTIAL
-   - [x] Sign up for Fiverr Affiliates → REJECTED Dec 12 (reapply Feb 2026)
+### Priority 2: Traffic Generation (Starting Dec 23)
+- [ ] Start Reddit marketing (3 posts/week - see TRAFFIC_STRATEGY.md)
+- [ ] LinkedIn daily posts (career tips + tool screenshots)
+- [ ] Write 3 SEO-optimized blog posts/week
+- [ ] Goal: 300-500 visitors/month by Jan 31
+
+### Priority 3: AdSense Preparation (January 2026)
+- [ ] Monitor traffic daily (GA4 dashboard)
+- [ ] When traffic hits 300-500 visitors/month, apply for AdSense
+- [ ] Prepare ad placements code
+
+**See detailed implementation guide:** [AFFILIATE_IMPLEMENTATION_CHECKLIST.md](./AFFILIATE_IMPLEMENTATION_CHECKLIST.md)
+
+---
+
+## 📈 Traffic & Revenue Tracking
+
+**Monitor Weekly (Marketing Specialist Reports):**
+- Total visitors (goal: 30+/day by Jan 15, 50+/day by Jan 31)
+- Affiliate link clicks (track in GA4 events)
+- Tool usage rates (resume reviews, AI chats, scholarship searches)
+- Top traffic sources (optimize what works)
+
+**Revenue Milestones:**
+- **Jan 2026:** First affiliate conversions ($50-100 target)
+- **Feb 2026:** AdSense approved + Fiverr reapplied ($200-400 target)
+- **Mar 2026:** Multi-stream revenue established ($300-500 target)
+
+---
    - [x] Sign up for Skillshare Affiliates → PENDING (7 days, no response)
    - [ ] Update side-hustle API with real links (using placeholders)
 

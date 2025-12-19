@@ -5,46 +5,44 @@ Build a **100% free** AI-powered career platform for students. Monetize through 
 
 **Team:** 3 members (2 developers, 1 marketing specialist)  
 **Business Model:** Affiliate Marketing + Google AdSense (pure traffic monetization)  
-**Strategic Pivot:** Dropped freemium model Dec 16 - free AI can't compete with paid AI subscriptions  
 **Current Audience:** College students seeking career growth  
 **Expansion Plan:** Young professionals, freelancers (2026)  
 **Current Status:** ✅ LIVE at ai-career-hub.com  
 **Launch Date:** December 9, 2025  
-**Last Updated:** December 16, 2025
+**Last Updated:** December 20, 2025
 
-**See monetization details:** [AFFILIATE_STRATEGY.md](./AFFILIATE_STRATEGY.md)
+**Key Documentation:**
+- [AFFILIATE_STRATEGY.md](./AFFILIATE_STRATEGY.md) - Revenue strategy & affiliate programs
+- [AFFILIATE_IMPLEMENTATION_CHECKLIST.md](./AFFILIATE_IMPLEMENTATION_CHECKLIST.md) - Implementation guide
+- [TRAFFIC_STRATEGY.md](./TRAFFIC_STRATEGY.md) - Marketing & traffic generation
+- [MONETIZATION_GUIDE.md](./MONETIZATION_GUIDE.md) - Revenue streams overview
 
 ---
 
-## 📊 CURRENT METRICS (as of Dec 15, 2025)
+## 📊 CURRENT METRICS (as of Dec 20, 2025)
 
-**Google Analytics (Dec 9-15):**
-- **Active Users:** 33 total (27 Philippines, 2 India, 1 Indonesia, 1 USA)
-- **Total Sessions:** 87
-- **Page Views:** 844
-- **Top Pages:**
-  - Homepage: 700 views
-  - Salary Negotiation Blog: 16 views
-  - Side Hustles Blog: 15 views
-  - Scholarship Finder: 14 views
-  - Blog Index: 12 views
-- **Traffic Sources:**
-  - Direct: 39 sessions (45%)
-  - Referral: 23 sessions (26%)
-  - Organic Search: 14 sessions (16%)
-  - Organic Social: 11 sessions (13%)
+**Platform Status:**
+- **Domain:** ✅ ai-career-hub.com (custom domain active)
+- **Version:** v1.3.0 (UX improvements deployed)
+- **Tools:** 4 live (AI Mentor, Resume Reviewer, Salary Negotiator, Side Hustle Generator)
+- **Blog Posts:** 15+ (auto-generated + manual)
+- **Scholarships:** 20+ active ($320K+ total value)
 
 **Revenue Status:**
-- Ko-fi Donations: $0 (button active, no donations yet)
-- Fiverr Affiliate: REJECTED (Dec 12, reapply Feb 2026)
-- Skillshare Affiliate: PENDING (no update yet)
-- Google AdSense: NOT APPLIED (requires custom domain)
+- **Ko-fi:** Active, $0 donations
+- **Fiverr Affiliate:** REJECTED (Dec 12, reapply Feb 2026)
+- **Skillshare Affiliate:** PENDING
+- **Google AdSense:** Ready to apply (waiting for 300-500 visitors/month)
+- **Resume.io, Zety, Grammarly, Udemy:** Not applied yet
 - **Total Revenue:** $0
 
-**Content Status:**
-- Blog posts: 8 live (5 auto-generated, 3 manual)
-- Scholarships: 20 active ($320K+ total value)
-- Tools: 4 live (AI Mentor, Resume Reviewer, Salary Negotiator, Side Hustle Generator)
+**Latest Updates (v1.3.0 - Dec 20):**
+- ✅ Guided tour modals for all tools
+- ✅ Sample data buttons (lower friction)
+- ✅ API quota modals (transparency)
+- ✅ Privacy reassurance notes
+- ✅ Improved hero section
+- ✅ Session-only greeting popup
 
 ---
 
@@ -166,9 +164,13 @@ Build a **100% free** AI-powered career platform for students. Monetize through 
 
 ---
 
-## 📊 Phase 5: Traffic Generation (CURRENT FOCUS 🎯) - Dec 11-31, 2025
-**Goal:** 1,000 visitors by December 31 to qualify for AdSense  
+## 📊 Phase 5: Traffic Generation + Affiliate Setup (CURRENT FOCUS 🎯) - Dec 11 - Jan 31, 2026
+**Primary Goal:** Implement affiliate integrations & start traffic campaigns  
+**Traffic Goal:** 500-1,000 monthly visitors by January 31, 2026  
+**Revenue Goal:** First affiliate conversions + AdSense approval  
 **Team:** 3 members (2 devs + 1 marketing specialist)
+
+**Note:** Dec 31 goal extended to Jan 31 - focus shifted to quality affiliate setup before aggressive marketing push
 
 **Content Production (Actual as of Dec 15):**
 - Automated blogs: 3-4 posts/week via GitHub Actions (Mon/Tue/Thu/Sat with 25% skip)
@@ -393,11 +395,12 @@ Build a **100% free** AI-powered career platform for students. Monetize through 
 | Avg Session Duration | - | - | - | - | 2:30+ |
 | Bounce Rate | - | - | - | - | <65% |
 
-### 90-Day Revenue Projections:
-| Month | Visitors | Revenue | Breakdown |
-|-------|----------|---------|-----------|
-| Dec 2025 | 500-1,000 | $10-30 | Ko-fi donations only |
-| Jan 2026 | 2,000-3,000 | $100-200 | AdSense ($50), Affiliates ($30), Ko-fi ($20) |
+### Revenue Milestones (See MONETIZATION_GUIDE.md for details):
+| Month | Visitors | Revenue | Key Milestone |
+|-------|----------|---------|---------------|
+| Dec 2025 | 100-300 | $0-20 | Ko-fi live, affiliates pending |
+| Jan 2026 | 500-1,000 | $50-100 | Affiliate CTAs live, AdSense pending |
+| Feb 2026 | 2,000-3,000 | $200-400 | AdSense approved, Fiverr reapplied |
 | Feb 2026 | 5,000-8,000 | $300-500 | AdSense ($200), Affiliates ($80), Ko-fi ($50) |
 | Mar 2026 | 10,000+ | $500-800 | AdSense ($400), Affiliates ($150), Ko-fi ($100) |
 

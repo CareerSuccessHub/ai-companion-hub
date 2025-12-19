@@ -196,7 +196,7 @@ export default function SalaryNegotiator() {
       </div>
       <p className="text-xs text-gray-500 flex items-center gap-1 -mt-2 mb-6">
         <span>🔒</span>
-        <span>Your info stays private — we don't store your personal data!</span>
+        <span>Your info stays private — we don&apos;t store your personal data!</span>
       </p>
 
       <button

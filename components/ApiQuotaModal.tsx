@@ -94,7 +94,7 @@ export default function ApiQuotaModal({ isOpen, onClose, toolName }: ApiQuotaMod
               </button>
 
               <p className="text-xs text-gray-500 text-center mt-3">
-                💡 We're working hard to keep everything free. Thanks for understanding!
+                💡 We&apos;re working hard to keep everything free. Thanks for understanding!
               </p>
             </div>
           </motion.div>

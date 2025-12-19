@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { X, ChevronRight, ChevronLeft, SkipForward, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -188,6 +188,38 @@ export default function GuidedTour({
     };
   }, [isActive, currentStep, currentStepData, isMobile]);
 
+  // Handler functions (defined before useEffect that uses them)
+  const handleStart = () => {
+    setIsActive(true);
+    setCurrentStep(0);
+  };
+
+  const handleNext = useCallback(() => {
+    if (!isLastStep) {
+      setCurrentStep((prev) => prev + 1);
+    }
+  }, [isLastStep]);
+
+  const handlePrevious = useCallback(() => {
+    if (!isFirstStep) {
+      setCurrentStep((prev) => prev - 1);
+    }
+  }, [isFirstStep]);
+
+  const handleSkip = () => {
+    setIsActive(false);
+    localStorage.setItem(storageKey, "skipped");
+  };
+
+  const handleComplete = useCallback(() => {
+    setIsActive(false);
+    localStorage.setItem(storageKey, "completed");
+  }, [storageKey]);
+
+  const handleClose = () => {
+    setIsActive(false);
+  };
+
   // Keyboard navigation
   useEffect(() => {
     if (!isActive) return;
@@ -210,38 +242,7 @@ export default function GuidedTour({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isActive, currentStep, isFirstStep, isLastStep]);
-
-  const handleStart = () => {
-    setIsActive(true);
-    setCurrentStep(0);
-  };
-
-  const handleNext = () => {
-    if (!isLastStep) {
-      setCurrentStep((prev) => prev + 1);
-    }
-  };
-
-  const handlePrevious = () => {
-    if (!isFirstStep) {
-      setCurrentStep((prev) => prev - 1);
-    }
-  };
-
-  const handleSkip = () => {
-    setIsActive(false);
-    localStorage.setItem(storageKey, "skipped");
-  };
-
-  const handleComplete = () => {
-    setIsActive(false);
-    localStorage.setItem(storageKey, "completed");
-  };
-
-  const handleClose = () => {
-    setIsActive(false);
-  };
+  }, [isActive, currentStep, isFirstStep, isLastStep, handleNext, handlePrevious, handleComplete]);
 
   // Get arrow styles
   const renderArrow = () => {

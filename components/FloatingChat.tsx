@@ -135,7 +135,7 @@ export default function FloatingChat() {
             {/* Greeting Message */}
             <div className="p-4">
               <p className="text-gray-300 text-sm leading-relaxed">
-                👋 Hey there! I'm your AI Career Mentor.
+                👋 Hey there! I&apos;m your AI Career Mentor.
               </p>
               <p className="text-gray-300 text-sm leading-relaxed mt-2">
                 I can help you polish your resume, give tips on salary, plan your career, and find the right jobs.

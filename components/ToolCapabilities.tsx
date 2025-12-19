@@ -27,7 +27,7 @@ export default function ToolCapabilities({ canDo, cantDo }: ToolCapabilitiesProp
         {/* Can't Do */}
         <div>
           <h4 className="font-semibold text-red-400 mb-1.5 flex items-center gap-1">
-            <span className="text-[10px]">✗</span> Can't Do
+            <span className="text-[10px]">✗</span> Can&apos;t Do
           </h4>
           <ul className="space-y-1 text-gray-400">
             {cantDo.map((item, index) => (

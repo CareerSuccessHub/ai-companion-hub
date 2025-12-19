@@ -179,7 +179,7 @@ JavaScript, React, Node.js, TypeScript, Git, AWS, Agile`;
           />
           <p className="mt-1.5 text-xs text-gray-500 flex items-center gap-1">
             <span>🔒</span>
-            <span>We don't store your resume or personal data — your info stays private!</span>
+            <span>We don&apos;t store your resume or personal data — your info stays private!</span>
           </p>
         </div>
 

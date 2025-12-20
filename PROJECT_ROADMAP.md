@@ -28,12 +28,17 @@ Build a **100% free** AI-powered career platform for students. Monetize through 
 - **Blog Posts:** 15+ (auto-generated + manual)
 - **Scholarships:** 20+ active ($320K+ total value)
 
-**Revenue Status:**
+**Revenue Status (Dec 20, 2025):**
 - **Ko-fi:** Active, $0 donations
-- **Fiverr Affiliate:** REJECTED (Dec 12, reapply Feb 2026)
-- **Skillshare Affiliate:** PENDING
-- **Google AdSense:** Ready to apply (waiting for 300-500 visitors/month)
-- **Resume.io, Zety, Grammarly, Udemy:** Not applied yet
+- **Fiverr Affiliate:** REJECTED Dec 12 (reapply Feb 2026)
+- **Coursera:** PENDING (applied Dec 20)
+- **Udemy:** PENDING (applied Dec 20)
+- **Grammarly:** PENDING (applied Dec 20)
+- **Skillshare:** PENDING (applied Dec 9, 11 days waiting)
+- **PartnerStack Network:** PENDING (applied Dec 20)
+- **Resume.io:** BLOCKED (requires Impact + TIN/business registration)
+- **Zety:** BLOCKED (requires corporation)
+- **Google AdSense:** Ready to apply Jan 2026 (need 300-500 visitors/month)
 - **Total Revenue:** $0
 
 **Latest Updates (v1.3.0 - Dec 20):**

@@ -18,16 +18,22 @@
 ### 1. Affiliate Marketing (PRIMARY FOCUS)
 
 **Current Implementation Status (Dec 20):**
-- ❌ Fiverr: Rejected (reapply Feb 2026)
-- ⏳ Skillshare: Pending approval
-- ⏳ Resume.io, Zety, Udemy, Grammarly, Coursera: Ready to apply
-- ⏳ Affiliate CTAs: Being implemented in tools (see AFFILIATE_IMPLEMENTATION_CHECKLIST.md)
+- ❌ Fiverr: REJECTED (reapply Feb 2026)
+- ⏳ Coursera: PENDING (applied Dec 20)
+- ⏳ Udemy: PENDING (applied Dec 20)
+- ⏳ Grammarly: PENDING (applied Dec 20)
+- ⏳ Skillshare: PENDING (applied Dec 9, 11 days waiting)
+- ⏳ PartnerStack Network: PENDING (applied Dec 20)
+- ❌ Resume.io: BLOCKED (requires TIN/business registration)
+- ❌ Zety: BLOCKED (requires corporation)
+- ⏳ Affiliate CTAs: Ready to implement after approvals
 
 **This Week's Actions:**
-1. Implement affiliate CTAs in Resume Reviewer, Salary Negotiator, Side Hustle Generator
-2. Apply to Resume.io, Zety, Grammarly, Udemy, Coursera
-3. Write "Best Resume Builders 2025" blog post
+1. Wait for affiliate approvals (check emails daily)
+2. Write "Best Online Learning Platforms 2025" blog post (Coursera vs Udemy vs Skillshare)
+3. Prepare affiliate CTAs for tools (implement after getting affiliate links)
 4. Set up GA4 event tracking for affiliate clicks
+5. Consider getting personal TIN or registering DTI business for Impact access later
 
 **Detailed affiliate program info:** See [AFFILIATE_STRATEGY.md](./AFFILIATE_STRATEGY.md)  
 **Implementation guide:** See [AFFILIATE_IMPLEMENTATION_CHECKLIST.md](./AFFILIATE_IMPLEMENTATION_CHECKLIST.md)

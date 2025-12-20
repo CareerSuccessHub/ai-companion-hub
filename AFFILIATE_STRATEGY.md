@@ -28,58 +28,64 @@
 
 ### Priority 1: High-Commission Programs
 
-#### 1. Fiverr Affiliate (REJECTED - Reapply Feb 2026)
+#### 1. Online Learning Platforms (PENDING - Applied Dec 20)
+**Status:** ⏳ Coursera, Udemy, Grammarly, Skillshare all pending approval  
+**Timeline:** Approvals expected Dec 21-27  
+**Commission:** 10-45% per course sale (Coursera/Udemy), $7-10 per trial (Skillshare)  
+**Priority:** HIGH - This is your primary focus now
+
+**Programs:**
+- **Coursera:** 10-45% commission, applied Dec 20
+- **Udemy:** 15-20% commission, applied Dec 20 (may be auto-approved)
+- **Skillshare:** $7-10 per trial, applied Dec 9 (11 days pending)
+- **Grammarly:** $20-25 per signup + $0.20/click, applied Dec 20
+
+**Integration Plan:**
+- Chat Mentor: "Want structured learning? Check these courses" CTA
+- Blog post: "Best Online Learning Platforms 2025" (Coursera vs Udemy vs Skillshare)
+- Resume Reviewer: "Polish your resume with Grammarly" CTA
+- Salary Negotiator: "Edit your email with Grammarly Premium" CTA
+- Category-specific course recommendations ("Top 10 Python Courses on Udemy")
+
+**Expected Revenue:** $50-200/mo at 500 visitors, $200-500/mo at 1,000 visitors
+
+#### 2. PartnerStack Network (PENDING - Applied Dec 20)
+**Status:** ⏳ Network approval pending (3-7 days)  
+**What it unlocks:** Access to 100+ SaaS affiliate programs  
+**Commission:** Varies by program (typically 20-40% recurring)  
+**Next step:** After network approval, apply to individual programs
+
+**Integration Plan (After Approval):**
+- Explore available programs in HR/EdTech category
+- Apply to relevant SaaS tools students use
+- Blog posts comparing SaaS tools
+
+#### 3. Fiverr (REJECTED - Reapply Feb 2026)
 **Status:** ❌ Rejected Dec 12 ("site too new")  
 **Commission:** $15-150 per signup  
-**Requirements:** 500+ monthly visitors, 60-day wait  
-**Reapplication:** February 2026
+**Requirements:** 500+ monthly visitors, 60-day wait after rejection  
+**Reapplication:** February 1-15, 2026
 
 **Integration Plan (When Approved):**
 - Side Hustle Tool: "Find gigs on Fiverr" CTA
-- Blog post: "Best Freelance Platforms 2025" (already exists)
-- Resume tool: "Hire a pro resume writer on Fiverr"
+- Blog post: "Best Freelance Platforms 2025" (update existing post)
 
-#### 2. Resume.io / Zety / NovoResume
-**Status:** ⏳ Not applied yet  
-**Commission:** $30-100 per sale  
-**Approval:** Usually automatic
+#### 4. Resume Builders (BLOCKED - Business Registration Required)
+**Status:** ❌ Cannot apply without TIN or DTI business registration  
+**Blocked Programs:**
+- **Resume.io:** Requires Impact network (needs TIN)
+- **Zety:** Requires corporation/LLC
+- **Impact Network:** Requires TIN or business registration
 
-**Apply Here:**
-- Resume.io: https://www.partnerstack.com/partner/resume-io
-- Zety: https://zety.com/affiliate-program  
-- NovoResume: https://novoresume.com/affiliate-program
+**Commission (if you register):** $30-100 per sale  
+**Cost to unlock:** ₱500-1,000 for DTI registration OR use personal TIN if you have one
 
-**Integration Plan:**
-- Resume Reviewer: "Need a professional template? Try Resume.io" banner
-- Blog post: "Best Resume Builders 2025" (CREATE THIS WEEK)
-- Comparison table in post
+**Decision:** Postpone until you have revenue to justify registration costs. Focus on course affiliates first.
 
-#### 3. Udemy / Coursera / Skillshare
-**Status:** ⏳ Skillshare pending (applied Dec 9)  
-**Commission:** 20-45% per course sale  
-**Approval:** Skillshare pending, Udemy auto-approve
-
-**Apply Here:**
-- Udemy: https://www.udemy.com/affiliate/  
-- Coursera: https://www.coursera.org/about/partners/affiliates  
-- Skillshare: PENDING
-
-**Integration Plan:**
-- Chat Mentor: "Want structured learning? Check these courses"
-- Blog posts: "Best Career Courses 2025" by role (software engineer, marketing, etc.)
-- Category pages: "Top 10 Python Courses" affiliate links
-
-#### 4. Grammarly
-**Status:** ⏳ Not applied  
-**Commission:** $20-25 per signup  
-**Approval:** Instant
-
-**Apply:** https://www.grammarly.com/affiliates
-
-**Integration Plan:**
-- Resume Reviewer: "Polish your resume with Grammarly" CTA
-- Salary Negotiator: "Edit your email with Grammarly Premium"
-- Blog sidebar widget
+**Alternative (No Registration Needed):**
+- **Canva Pro:** Has affiliate program, might accept individuals
+- **Google Workspace:** Affiliate program via impact (same TIN issue)
+- Write "Best Free Resume Templates" post with no affiliates (pure SEO traffic)
 
 ---
 
@@ -105,27 +111,28 @@
 
 ### High-Priority Blog Posts (Write These First)
 
-#### Week 1:
-1. **"Best Resume Builders 2025: Free vs Paid Comparison"**
-   - Target: "best resume builder" (27K monthly searches)
-   - Affiliates: Resume.io, Zety, NovoResume
-   - Expected: 5-10 conversions/mo = $150-500
+#### Week 1 (Dec 20-27) - Focus on PENDING Programs:
+1. **"Best Online Learning Platforms 2025: Coursera vs Udemy vs Skillshare"** ⭐ PRIORITY
+   - Target: "best online learning platform" (35K monthly searches)
+   - Affiliates: Coursera, Udemy, Skillshare (all pending)
+   - Expected: 5-15 conversions/mo = $100-300
+   - **Write while waiting for approvals, add affiliate links when approved**
 
-2. **"Fiverr vs Upwork vs Freelancer: Which is Best in 2025?"** (ALREADY EXISTS)
-   - Update with affiliate links when Fiverr approved
-   - Add comparison table
-   - Expected: 10-20 clicks/mo
+2. **"Top 10 Online Courses for Career Changers in 2025"**
+   - Target: "career change courses" (8K searches)
+   - Affiliates: Udemy, Coursera, Skillshare
+   - Expected: 3-8 conversions/mo = $60-240
 
 3. **"How to Negotiate Salary: Email Templates + Scripts"**
    - Target: "salary negotiation email" (18K searches)
    - CTA: Use our free Salary Negotiator tool
-   - Monetize: Grammarly affiliate for editing
+   - Monetize: Grammarly affiliate for editing (pending)
 
-#### Week 2:
-4. **"Top 10 Online Courses for Career Changers in 2025"**
-   - Target: "career change courses" (8K searches)
-   - Affiliates: Udemy, Coursera, Skillshare
-   - Expected: 3-8 conversions/mo = $60-240
+#### Week 2 (Dec 28 - Jan 3):
+4. **"Fiverr vs Upwork vs Freelancer: Which is Best in 2025?"** (ALREADY EXISTS)
+   - Update with affiliate links when Fiverr approved (Feb 2026)
+   - Add comparison table
+   - Expected: 10-20 clicks/mo (no revenue until Fiverr approved)
 
 5. **"Resume Keywords That Get You Hired in 2025"** (ALREADY EXISTS)
    - Add affiliate CTAs to resume builders

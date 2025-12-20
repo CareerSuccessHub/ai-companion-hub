@@ -24,15 +24,15 @@
 **Add after AI feedback section (around line 200-250):**
 
 ```tsx
-{/* Affiliate CTA - Resume Builder */}
+{/* Affiliate CTA - Grammarly for Resume Polish */}
 {feedback && (
-  <div className="mt-8 p-6 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-xl">
+  <div className="mt-8 p-6 bg-gradient-to-br from-emerald-500/10 to-green-500/10 border border-emerald-500/30 rounded-xl">
     <div className="flex items-start gap-4">
-      <div className="p-3 bg-blue-500/20 rounded-lg">
-        <FileText className="w-6 h-6 text-blue-400" />
+      <div className="p-3 bg-emerald-500/20 rounded-lg">
+        <FileText className="w-6 h-6 text-emerald-400" />
       </div>
       <div className="flex-1">
-        <h3 className="text-lg font-semibold text-blue-400 mb-2">
+        <h3 className="text-lg font-semibold text-emerald-400 mb-2">
           Want a Professional Template?
         </h3>
         <p className="text-gray-300 mb-4">
@@ -229,9 +229,12 @@ import { GraduationCap } from "lucide-react";
 
 ## 📋 Phase 2: Create Affiliate Blog Posts (Week 1-2)
 
-### 2.1 "Best Resume Builders 2025" Blog Post
+### 2.1 "Best Online Learning Platforms 2025: Coursera vs Udemy vs Skillshare" Blog Post
 
-**File to create:** `app/blog/best-resume-builders-2025/page.tsx`
+**Priority:** HIGH - Write this while waiting for affiliate approvals  
+**File to create:** `app/blog/best-online-learning-platforms-2025/page.tsx`
+
+**Why this instead of resume builders:** Resume.io/Zety blocked by business registration requirements. Focus on programs you've already applied to (Coursera, Udemy, Skillshare).
 
 **Full blog post template (copy-paste ready):**
 
@@ -502,37 +505,49 @@ Promotional Methods:
 Expected Monthly Conversions: 5-15 signups/purchases in Month 1, scaling to 30-50/month by Month 3
 ```
 
-#### 1. Resume.io
-**Apply:** https://www.partnerstack.com/partner/resume-io  
-**Commission:** $30-100 per sale  
-**Approval:** Usually instant  
-**Link Format:** `https://resume.io/?ref=YOUR_ID`
-
-#### 2. Zety
-**Apply:** https://zety.com/affiliate-program  
-**Commission:** $30-50 per sale  
-**Approval:** 1-3 days  
-**Link Format:** `https://zety.com/?ref=YOUR_ID`
-
-#### 3. Udemy
-**Apply:** https://www.udemy.com/affiliate/  
-**Commission:** 20-45% per course sale  
-**Approval:** Instant  
-**Link Format:** `https://www.udemy.com/course/[course]/?ref=YOUR_ID`
-
-#### 4. Grammarly
-**Apply:** https://www.grammarly.com/affiliates  
-**Commission:** $20-25 per signup  
-**Approval:** 1-2 weeks  
-**Link Format:** Custom affiliate link provided
-
-#### 5. Coursera
+#### 1. Coursera ⏳ PENDING (Applied Dec 20, 2025)
 **Apply:** https://www.coursera.org/about/partners/affiliates  
-**Commission:** Varies (typically 20-45%)  
+**Commission:** 10-45% per course sale  
 **Approval:** 1-2 weeks  
-**Link Format:** Custom links via Impact Radius
+**Link Format:** Custom links via Impact or direct  
+**Status:** Waiting for approval email
 
-#### 6. Fiverr (Reapply Feb 2026)
+#### 2. Udemy ⏳ PENDING (Applied Dec 20, 2025)
+**Apply:** https://www.udemy.com/affiliate/  
+**Commission:** 15-20% per course sale  
+**Approval:** Usually instant (check email)  
+**Link Format:** `https://www.udemy.com/course/[course]/?ref=YOUR_ID`  
+**Status:** May already be approved - check Udemy affiliate dashboard
+
+#### 3. Grammarly ⏳ PENDING (Applied Dec 20, 2025)
+**Apply:** https://www.grammarly.com/affiliates  
+**Commission:** $20-25 per signup, $0.20 per click  
+**Approval:** 1-2 weeks  
+**Link Format:** Custom affiliate link provided  
+**Status:** Waiting for approval email
+
+#### 4. Skillshare ⏳ PENDING (Applied Dec 9, 2025)
+**Apply:** Already applied  
+**Commission:** $7-10 per trial signup  
+**Approval:** 7-14 days  
+**Link Format:** Custom link via Impact  
+**Status:** 11 days pending, follow up if no response by Dec 23
+
+#### 5. PartnerStack Network ⏳ PENDING (Applied Dec 20, 2025)
+**Programs:** Access to multiple SaaS affiliate programs  
+**Commission:** Varies by program  
+**Approval:** 3-7 days for network, then apply to individual programs  
+**Status:** Profile submitted, waiting for network approval
+
+#### ❌ BLOCKED - Require Business Registration:
+
+**Resume.io** - Requires Impact network which needs TIN/business registration  
+**Zety** - Requires corporation/LLC  
+**Impact Network** - Requires TIN number (get personal TIN or register DTI business)  
+
+*Note: Come back to these after registering DTI business name (₱500-1,000) or if you have personal TIN*
+
+#### 6. Fiverr ❌ REJECTED (Reapply Feb 2026)
 **Status:** REJECTED Dec 12, 2025  
 **Reason:** Site too new, not enough traffic  
 **Reapply:** February 2026 (after 60-day wait + 500+ monthly visitors)  
@@ -584,20 +599,24 @@ Expected Monthly Conversions: 5-15 signups/purchases in Month 1, scaling to 30-5
 
 ## 📊 Expected Timeline
 
-### Week 1 (Dec 16-22):
-- [ ] Add affiliate CTAs to all 4 tools (Phase 1)
-- [ ] Create "Best Resume Builders 2025" blog post (Phase 2.1)
-- [ ] Update existing freelance blog with disclosure (Phase 2.2)
-- [ ] Test all CTAs locally (npm run dev)
-- [ ] Deploy to production (merge branch to main)
+### Week 1 (Dec 20-27) - CURRENT:
+- [x] Apply to Coursera (DONE Dec 20)
+- [x] Apply to Udemy (DONE Dec 20)
+- [x] Apply to Grammarly (DONE Dec 20)
+- [x] Apply to Skillshare (DONE Dec 9)
+- [x] Apply to PartnerStack (DONE Dec 20)
+- [ ] Check emails daily for affiliate approvals
+- [ ] Write "Best Online Learning Platforms 2025" blog post (draft without affiliate links)
+- [ ] Prepare GA4 event tracking code for affiliate clicks
+- [ ] Design affiliate CTA components (ready to implement after approvals)
 
-### Week 2 (Dec 23-29):
-- [ ] Apply to Resume.io affiliate program
-- [ ] Apply to Zety affiliate program
-- [ ] Apply to Udemy affiliate program
-- [ ] Apply to Grammarly affiliate program
-- [ ] Apply to Coursera affiliate program
-- [ ] Set up GA4 event tracking for clicks
+### Week 2 (Dec 28 - Jan 3):
+- [ ] Follow up on Skillshare (if no response by Dec 28 = 19 days)
+- [ ] Implement affiliate CTAs in tools (use approved links)
+- [ ] Update blog post with real affiliate links
+- [ ] Test affiliate link tracking in GA4
+- [ ] Write "Top 10 Career Courses 2025" blog post
+- [ ] Deploy affiliate integrations to production
 
 ### Week 3-4 (Dec 30 - Jan 12):
 - [ ] Get affiliate approvals (check emails daily)
@@ -618,24 +637,27 @@ Expected Monthly Conversions: 5-15 signups/purchases in Month 1, scaling to 30-5
 
 ## 🎯 Success Criteria
 
-### Month 1 Goals:
-- ✅ All 4 tools have affiliate CTAs
-- ✅ 1-2 affiliate blog posts published
-- ✅ 3+ affiliate programs approved
-- ✅ GA4 tracking affiliate clicks
-- 🎯 Target: 10+ affiliate link clicks
+### Month 1 Goals (Dec 2025):
+- ✅ Applied to 5 affiliate programs (Coursera, Udemy, Grammarly, Skillshare, PartnerStack)
+- 🎯 Get 2-3 affiliate programs approved
+- 🎯 1-2 affiliate blog posts published (courses focus)
+- 🎯 GA4 tracking affiliate clicks
+- 🎯 Target: 5-10 affiliate link clicks (low traffic still)
 
-### Month 2 Goals:
-- ✅ 500+ monthly visitors
-- ✅ AdSense approved
-- ✅ 5 affiliate blog posts live
-- 🎯 Target: 5-10 conversions, $50-200 revenue
+### Month 2 Goals (Jan 2026):
+- 🎯 300-500+ monthly visitors
+- 🎯 Apply to Google AdSense
+- 🎯 Get first 1-3 affiliate conversions (courses/Grammarly)
+- 🎯 3-5 affiliate blog posts live
+- 🎯 Target: $20-100 revenue (conservative, course sales take time)
 
-### Month 3 Goals:
-- ✅ 1,000+ monthly visitors
-- ✅ Reapply to Fiverr (after Feb 1)
-- ✅ 10+ blog posts published
-- 🎯 Target: 20-40 conversions, $200-500 revenue
+### Month 3 Goals (Feb 2026):
+- 🎯 500-1,000+ monthly visitors
+- 🎯 AdSense approved + first revenue
+- 🎯 Reapply to Fiverr (after Feb 1)
+- 🎯 Consider DTI registration if revenue justifies it (unlock Resume.io/Impact)
+- 🎯 8-10 blog posts published
+- 🎯 Target: 5-15 conversions, $100-300 revenue (AdSense + courses)
 
 ---
 

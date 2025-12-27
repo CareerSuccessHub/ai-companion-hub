@@ -434,10 +434,55 @@ function selectUniqueTopics(count, source = 'fallback') {
 }
 
 /**
- * Determine if should skip this run (random 25% chance for 3-4 posts/week variety)
+ * Determine if should skip this run (smart skip based on weekly post count)
+ * - 0 posts this week: never skip (guarantee at least 1)
+ * - 1 post this week: 40% skip (aim for 2-3 posts/week)
+ * - 2+ posts this week: 70% skip (cap at ~3 posts/week)
  */
 function shouldSkipRun() {
-  return Math.random() < 0.25; // 25% chance to skip
+  try {
+    const blogDir = path.join(__dirname, '../app/blog');
+    const files = fs.readdirSync(blogDir);
+    
+    // Get start of current week (Monday)
+    const now = new Date();
+    const dayOfWeek = now.getDay();
+    const diff = (dayOfWeek === 0 ? -6 : 1) - dayOfWeek; // Monday = 1
+    const weekStart = new Date(now);
+    weekStart.setDate(now.getDate() + diff);
+    weekStart.setHours(0, 0, 0, 0);
+    
+    // Count posts created this week
+    const postsThisWeek = files.filter(file => {
+      if (!file.endsWith('.mdx')) return false;
+      
+      // Extract date from filename (YYYY-MM-DD-title.mdx)
+      const dateMatch = file.match(/^(\d{4}-\d{2}-\d{2})/);
+      if (!dateMatch) return false;
+      
+      const fileDate = new Date(dateMatch[1]);
+      return fileDate >= weekStart;
+    }).length;
+    
+    console.log(`   📊 Posts this week: ${postsThisWeek}`);
+    
+    // Smart skip logic
+    if (postsThisWeek === 0) {
+      console.log('   ✅ First post of the week - never skip');
+      return false; // Never skip if no posts yet
+    } else if (postsThisWeek === 1) {
+      const skip = Math.random() < 0.40;
+      console.log(`   🎲 1 post exists - 40% skip chance: ${skip ? 'SKIP' : 'POST'}`);
+      return skip;
+    } else {
+      const skip = Math.random() < 0.70;
+      console.log(`   🎲 ${postsThisWeek} posts exist - 70% skip chance: ${skip ? 'SKIP' : 'POST'}`);
+      return skip;
+    }
+  } catch (error) {
+    console.warn('⚠️  Could not check weekly posts, defaulting to post');
+    return false; // If error, default to posting
+  }
 }
 
 /**

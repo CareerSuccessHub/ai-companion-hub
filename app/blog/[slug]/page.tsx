@@ -6,6 +6,7 @@ import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 export async function generateStaticParams() {
   const posts = getAllBlogPosts();
@@ -106,6 +107,9 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
               Ad Space (728x90)
             </div>
           </div>
+
+          {/* Newsletter Signup */}
+          <NewsletterSignup variant="inline" className="mb-8" />
 
           <div className="mt-12 pt-8 border-t border-slate-800">
             <Link href="/blog" className="text-blue-400 hover:underline">← Back to Blog</Link>

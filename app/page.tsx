@@ -6,6 +6,7 @@ import { getAllBlogPosts } from "@/lib/blog";
 import LatestBlogPosts from "@/components/LatestBlogPosts";
 import FadeInSection from "@/components/FadeInSection";
 import FeatureAnnouncement from "@/components/FeatureAnnouncement";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export default function Home() {
   const allPosts = getAllBlogPosts();
@@ -73,9 +74,15 @@ export default function Home() {
             </div>
           </FadeInSection>
 
+          {/* Newsletter Signup */}
+          <FadeInSection delay={0.4}>
+            <NewsletterSignup className="mb-12" />
+          </FadeInSection>
+
           {/* Footer */}
           <footer className="pt-8 border-t border-slate-800 text-center text-gray-500">
             <div className="flex flex-wrap justify-center gap-6 mb-4">
+              <Link href="/contact" className="hover:text-gray-300 transition-colors">Contact</Link>
               <Link href="/privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
               <Link href="/about" className="hover:text-gray-300 transition-colors">About</Link>

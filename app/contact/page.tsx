@@ -51,7 +51,7 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            We're here to help! Choose the best way to reach our team based on your needs.
+            We&apos;re here to help! Choose the best way to reach our team based on your needs.
           </p>
         </div>
 

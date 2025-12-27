@@ -1,12 +1,39 @@
-import { Rocket, Sparkles, Globe, Zap, TrendingUp } from "lucide-react";
+import { Rocket, Sparkles, Globe, Zap, TrendingUp, Mail } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "What's New - AI Career Success Hub Updates",
+  title: "What&apos;s New - AI Career Success Hub Updates",
   description: "Latest features, improvements, and updates to AI Career Success Hub - your all-in-one platform for career success.",
 };
 
 const updates = [
+  {
+    version: "1.4.0",
+    date: "December 28, 2025",
+    icon: Mail,
+    iconGradient: "from-blue-400 to-cyan-500",
+    title: "Contact Page & Newsletter Launch",
+    changes: [
+      {
+        type: "New",
+        items: [
+          "Added dedicated Contact page with 5 professional email addresses (contact@, partnerships@, support@, hello@, superadmin@)",
+          "Launched weekly newsletter signup via Google Forms - get career tips, side hustles, scholarships & blog posts in your inbox",
+          "Newsletter signup now available on homepage, all blog posts, and contact page",
+          "Added Google AdSense code for future monetization",
+          "Contact link moved to footer for better UX (following web conventions)",
+        ],
+      },
+      {
+        type: "Improved",
+        items: [
+          "Fixed auto-blog workflow to guarantee at least 1-2 posts per week (was randomly skipping all runs)",
+          "Enhanced weekly content consistency with smart skip logic",
+          "Better professional presentation for affiliate/partnership applications",
+        ],
+      },
+    ],
+  },
   {
     version: "1.3.0",
     date: "December 19, 2025",
@@ -18,10 +45,10 @@ const updates = [
         type: "New",
         items: [
           "Added AI chat greeting pop-up for better discoverability of the Career Mentor",
-          "Added tool scope and limits sections to all AI tools - clear visibility of what each tool can and can't do",
+          "Added tool scope and limits sections to all AI tools - clear visibility of what each tool can and can&apos;t do",
           "Added API quota notice modals when daily limits are reached",
           "Added inline privacy reassurance messages near all sensitive input fields",
-          "Added 'Try Sample Data' buttons to Resume Reviewer, Salary Negotiator, and Side Hustle Generator for easier testing",
+          "Added &apos;Try Sample Data&apos; buttons to Resume Reviewer, Salary Negotiator, and Side Hustle Generator for easier testing",
           "Implemented modal-like tooltips for tool onboarding and guided tours",
         ],
       },
@@ -30,7 +57,7 @@ const updates = [
         items: [
           "Enhanced hero section design and messaging",
           "Fixed mobile responsiveness of guided tour modals",
-          "Updated 'Updates' page icon for better visual consistency",
+          "Updated &apos;Updates&apos; page icon for better visual consistency",
           "Improved user trust with explicit privacy messaging on all forms",
         ],
       },

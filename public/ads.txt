@@ -1,0 +1,14 @@
+# ads.txt file for ai-career-hub.com
+# This will be updated with actual publisher ID after AdSense approval
+
+# Placeholder - Google AdSense
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+
+# Instructions:
+# 1. After AdSense approves your site, they'll give you a Publisher ID (looks like pub-1234567890123456)
+# 2. Replace the pub-0000000000000000 above with your actual Publisher ID
+# 3. Uncomment the line (remove the # at the start)
+# 4. Deploy to production
+
+# Note: This file fixes the "ads.txt not found" error
+# The "Low value content" issue requires manual blog posts or alternative monetization (Gumroad/Ko-fi)

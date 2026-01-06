@@ -93,10 +93,10 @@ export default function Home() {
 
         {/* Feature Announcement for returning users */}
         <FeatureAnnouncement
-          announcementId="v1.2.0-december-2025"
-          title="🌍 New: Global Scholarships + Smarter Side Hustles"
-          description="We've added international scholarships from 160+ countries and completely redesigned the Side Hustle Generator with AI-powered personalization!"
-          ctaText="See what's new"
+          announcementId="v1.4.0-contact-newsletter"
+          title="📬 New: Contact Page + Weekly Newsletter!"
+          description="We've added a contact page with 5 email addresses and launched our weekly newsletter. Get career tips, side hustles & scholarships in your inbox!"
+          ctaText="See What's New"
           ctaHref="/updates"
         />
       </main>

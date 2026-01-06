@@ -310,11 +310,13 @@ async function generateOriginalContent(topic) {
 Topic: ${topic}
 
 Requirements:
-- 800-1200 words
-- Practical, actionable advice with specific examples
-- Include numbers, templates, step-by-step instructions
+- 1000-1500 words (comprehensive, not thin content)
+- Practical, actionable advice with SPECIFIC real-world examples
+- Include numbers, data points, templates, step-by-step instructions
+- Personal anecdotes or hypothetical scenarios to illustrate points
 - Casual, engaging tone (conversational but professional)
-- Focus on income/career growth
+- Focus on income/career growth with unique insights
+- Avoid generic advice - provide fresh perspectives or overlooked strategies
 
 FORMATTING REQUIREMENTS (CRITICAL):
 - Use ## for main section headings (4-6 sections)
@@ -347,11 +349,13 @@ Original Title: ${title}
 Original Content: ${originalContent}
 
 Requirements:
-- 800-1200 words
+- 1000-1500 words (comprehensive, not thin content)
 - Completely unique (avoid plagiarism)
-- Add actionable steps and specific examples
+- Add NEW actionable steps and specific examples NOT in original
+- Include personal anecdotes or case studies to add unique value
 - Casual, engaging tone (conversational but professional)
-- Include year 2025 in title if relevant
+- Include year 2025-2026 context where relevant
+- Provide fresh insights beyond the original source
 
 FORMATTING REQUIREMENTS (CRITICAL):
 - Use ## for main section headings (4-6 sections)
@@ -509,17 +513,7 @@ ${metadata.takeaways?.map(t => `- ${t}`).join('\n') || ''}
 
 ---
 
-## Recommended Resources
-
-Looking to level up your career? Check out these helpful resources:
-
-- **[LinkedIn Learning](https://linkedin-learning.pxf.io/c/your-id)** - Professional development courses (Free trial)
-- **[Coursera Career Certificates](https://coursera.pxf.io/c/your-id)** - Industry-recognized credentials
-- **[Grammarly](https://grammarly.go2cloud.org/aff_c?offer_id=3)** - Perfect your resume and cover letters (Affiliate link)
-
-*This article was researched and curated by our AI team. For personalized career advice, [chat with our AI Career Mentor](/).*
-
-*Disclosure: Some links above are affiliate links. We may earn a commission at no cost to you if you make a purchase.*
+*Written by the AI Career Hub Team. Need personalized guidance? [Chat with our AI Career Mentor](/) for free advice tailored to your situation.*
 `;
 
   fs.writeFileSync(filepath, frontmatter);

@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 interface AnimatedSectionProps {
   children: ReactNode;
@@ -14,15 +13,34 @@ export default function AnimatedSection({
   delay = 0, 
   className = "" 
 }: AnimatedSectionProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-100px" }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, ease: "easeOut", delay }}
-      className={className}
+    <div
+      ref={sectionRef}
+      style={{ animationDelay: `${delay}s`, opacity: isVisible ? 1 : 0 }}
+      className={`${isVisible ? 'animate-fadeInUp' : ''} ${className}`}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

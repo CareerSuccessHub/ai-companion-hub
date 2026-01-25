@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { MessageCircle, X, Send, Sparkles } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";import MarkdownRenderer from "./MarkdownRenderer";
+import MarkdownRenderer from "./MarkdownRenderer";
 interface Message {
   id: string;
   role: 'user' | 'assistant';
@@ -101,118 +101,81 @@ export default function FloatingChat() {
   return (
     <>
       {/* Greeting Pop-up */}
-      <AnimatePresence>
-        {showGreeting && !isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ type: "spring", damping: 20 }}
-            className="fixed bottom-24 right-6 z-50 w-80 bg-slate-800 border-2 border-blue-500/50 rounded-lg shadow-2xl overflow-hidden"
+      {showGreeting && !isOpen && (
+        <div
+          className="fixed bottom-24 right-6 z-50 w-80 bg-slate-800 border-2 border-blue-500/50 rounded-lg shadow-2xl overflow-hidden animate-scaleIn"
+        >
+          {/* Close button */}
+          <button
+            onClick={() => setShowGreeting(false)}
+            className="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-slate-700"
+            aria-label="Close greeting"
           >
-            {/* Close button */}
-            <button
-              onClick={() => setShowGreeting(false)}
-              className="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-slate-700"
-              aria-label="Close greeting"
-            >
-              <X className="w-4 h-4" />
-            </button>
+            <X className="w-4 h-4" />
+          </button>
 
-            {/* Greeting Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-4">
-              <div className="flex items-center gap-2">
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                >
-                  <Sparkles className="w-5 h-5 text-white" />
-                </motion.div>
-                <h3 className="text-white font-bold">AI Career Mentor</h3>
+          {/* Greeting Header */}
+          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-4">
+            <div className="flex items-center gap-2">
+              <div className="animate-spin-slow">
+                <Sparkles className="w-5 h-5 text-white" />
               </div>
+              <h3 className="text-white font-bold">AI Career Mentor</h3>
             </div>
+          </div>
 
-            {/* Greeting Message */}
-            <div className="p-4">
-              <p className="text-gray-300 text-sm leading-relaxed">
-                👋 Hey there! I&apos;m your AI Career Mentor.
-              </p>
-              <p className="text-gray-300 text-sm leading-relaxed mt-2">
-                I can help you polish your resume, give tips on salary, plan your career, and find the right jobs.
-              </p>
-              <p className="text-gray-300 text-sm leading-relaxed mt-2">
-                Think of me as your career buddy — just tap me anytime you need a hand! 😊
-              </p>
-              <button
-                onClick={() => {
-                  setShowGreeting(false);
-                  setIsOpen(true);
-                }}
-                className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
-              >
-                <MessageCircle className="w-4 h-4" />
-                Start Chatting
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          {/* Greeting Message */}
+          <div className="p-4">
+            <p className="text-gray-300 text-sm leading-relaxed">
+              👋 Hey there! I&apos;m your AI Career Mentor.
+            </p>
+            <p className="text-gray-300 text-sm leading-relaxed mt-2">
+              I can help you polish your resume, give tips on salary, plan your career, and find the right jobs.
+            </p>
+            <p className="text-gray-300 text-sm leading-relaxed mt-2">
+              Think of me as your career buddy — just tap me anytime you need a hand! 😊
+            </p>
+            <button
+              onClick={() => {
+                setShowGreeting(false);
+                setIsOpen(true);
+              }}
+              className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Start Chatting
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Floating Button */}
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-4 rounded-full shadow-2xl hover:shadow-blue-500/50 transition-shadow"
+        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-4 rounded-full shadow-2xl hover:shadow-blue-500/50 transition-all hover:scale-110 active:scale-90"
       >
-        <AnimatePresence mode="wait">
-          {isOpen ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <X className="w-6 h-6" />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="sparkles"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Sparkles className="w-6 h-6" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.button>
+        {isOpen ? (
+          <X className="w-6 h-6 transition-transform" />
+        ) : (
+          <Sparkles className="w-6 h-6 transition-transform" />
+        )}
+      </button>
 
       {/* Chat Box */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 100, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 100, scale: 0.8 }}
-            transition={{ type: "spring", damping: 25 }}
-            className="fixed bottom-24 right-6 z-50 w-96 h-[500px] bg-slate-900 border border-slate-800 rounded-lg shadow-2xl flex flex-col overflow-hidden"
-          >
-            {/* Header */}
-            <div className="p-4 border-b border-slate-800 bg-gradient-to-r from-blue-600 to-cyan-600">
-              <div className="flex items-center gap-2">
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                >
-                  <Sparkles className="w-5 h-5 text-white" />
-                </motion.div>
-                <h3 className="text-white font-bold">AI Career Mentor</h3>
+      {isOpen && (
+        <div
+          className="fixed bottom-24 right-6 z-50 w-96 h-[500px] bg-slate-900 border border-slate-800 rounded-lg shadow-2xl flex flex-col overflow-hidden animate-slideInUp"
+        >
+          {/* Header */}
+          <div className="p-4 border-b border-slate-800 bg-gradient-to-r from-blue-600 to-cyan-600">
+            <div className="flex items-center gap-2">
+              <div className="animate-spin-slow">
+                <Sparkles className="w-5 h-5 text-white" />
               </div>
-              <p className="text-blue-100 text-sm mt-1">Ask me anything about your career!</p>
+              <h3 className="text-white font-bold">AI Career Mentor</h3>
             </div>
+            <p className="text-blue-100 text-sm mt-1">Ask me anything about your career!</p>
+          </div>
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -276,9 +239,8 @@ export default function FloatingChat() {
                 <span>Your conversations stay private!</span>
               </p>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </>
   );
 }

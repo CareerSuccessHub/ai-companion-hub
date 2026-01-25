@@ -3,8 +3,10 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Navigation from "@/components/Navigation";
-import FloatingChat from "@/components/FloatingChat";
+import dynamic from "next/dynamic";
 import FeatureAnnouncement from "@/components/FeatureAnnouncement";
+
+const FloatingChat = dynamic(() => import("@/components/FloatingChat"), { ssr: false });
 
 export const metadata: Metadata = {
   title: {
@@ -90,13 +92,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <script 
-          async 
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4849174375434695"
-          crossOrigin="anonymous"
-        />
-      </head>
       <body>
         <GoogleAnalytics />
         <ThemeProvider>
@@ -104,10 +99,10 @@ export default function RootLayout({
           {children}
           <FloatingChat />
           <FeatureAnnouncement 
-            announcementId="v1.3.0-ux-improvements"
-            title="✨ New: Enhanced UX & Sample Data!"
-            description="We've added sample data buttons, privacy notes, and improved tool guidance to make your experience smoother."
-            ctaText="See What's New"
+            announcementId="v1.5.0-performance"
+            title="⚡ Major Performance Boost!"
+            description="Site is now 2x faster on mobile! We've optimized everything for lightning-fast load times."
+            ctaText="See What Changed"
             ctaHref="/updates"
           />
         </ThemeProvider>

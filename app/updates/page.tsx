@@ -2,7 +2,7 @@ import { Rocket, Sparkles, Globe, Zap, TrendingUp, Mail } from "lucide-react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "What&apos;s New - AI Career Success Hub Updates",
+  title: "What's New - AI Career Success Hub Updates",
   description: "Latest features, improvements, and updates to AI Career Success Hub - your all-in-one platform for career success.",
 };
 
@@ -17,20 +17,19 @@ const updates = [
       {
         type: "Performance",
         items: [
-          "70KB bundle size reduction with optimized animations",
+          "Significant bundle size reduction with optimized animations",
           "Lazy-loaded components for faster initial page render",
           "Mobile experience 2x faster - improved load times across all devices",
           "Desktop performance significantly enhanced",
           "Smoother animations with pure CSS implementation",
-          "First Load JS reduced to 87.1KB for quicker startup",
         ],
       },
       {
         type: "New",
         items: [
-          "Career development course recommendations in tool results",
-          "Enhanced feedback with actionable next steps",
+          "Enhanced tool feedback with actionable next steps",
           "Improved user experience with faster tool interactions",
+          "Better resource recommendations for career growth",
         ],
       },
       {
@@ -57,16 +56,15 @@ const updates = [
           "Added dedicated Contact page with 5 professional email addresses (contact@, partnerships@, support@, hello@, superadmin@)",
           "Launched weekly newsletter signup via Google Forms - get career tips, side hustles, scholarships & blog posts in your inbox",
           "Newsletter signup now available on homepage, all blog posts, and contact page",
-          "Enhanced monetization infrastructure for sustainable growth",
           "Contact link moved to footer for better UX (following web conventions)",
         ],
       },
       {
         type: "Improved",
         items: [
-          "Fixed auto-blog workflow to guarantee at least 1-2 posts per week (was randomly skipping all runs)",
-          "Enhanced weekly content consistency with smart skip logic",
-          "Better professional presentation for affiliate/partnership applications",
+          "Enhanced content publishing schedule for consistent weekly updates",
+          "Improved content quality and consistency",
+          "Better professional presentation for partnership applications",
         ],
       },
     ],
@@ -81,11 +79,11 @@ const updates = [
       {
         type: "New",
         items: [
-          "Added AI chat greeting pop-up for better discoverability of the Career Mentor",
-          "Added tool scope and limits sections to all AI tools - clear visibility of what each tool can and can&apos;t do",
-          "Added API quota notice modals when daily limits are reached",
+          "Added chat greeting pop-up for better discoverability of the Career Mentor",
+          "Added tool scope and limits sections - clear visibility of what each tool can and can't do",
+          "Added usage notice modals when daily limits are reached",
           "Added inline privacy reassurance messages near all sensitive input fields",
-          "Added &apos;Try Sample Data&apos; buttons to Resume Reviewer, Salary Negotiator, and Side Hustle Generator for easier testing",
+          "Added 'Try Sample Data' buttons to Resume Reviewer, Salary Negotiator, and Side Hustle Generator for easier testing",
           "Implemented modal-like tooltips for tool onboarding and guided tours",
         ],
       },
@@ -94,7 +92,7 @@ const updates = [
         items: [
           "Enhanced hero section design and messaging",
           "Fixed mobile responsiveness of guided tour modals",
-          "Updated &apos;Updates&apos; page icon for better visual consistency",
+          "Updated 'Updates' page icon for better visual consistency",
           "Improved user trust with explicit privacy messaging on all forms",
         ],
       },
@@ -113,7 +111,7 @@ const updates = [
           "Added 11 international scholarships covering 160+ countries (Fulbright, Chevening, DAAD, Erasmus Mundus, Australia Awards, Commonwealth, Swedish Institute, New Zealand, Japan MEXT, Korea GKS, Singapore SINGA)",
           "Added 4 Filipino scholarships (DOST, CHED, SM Foundation, Ayala Young Leaders) specifically for PH students",
           "Country/Region filter - easily find scholarships by target destination (Philippines, USA, UK, Germany, Japan, Korea, etc.)",
-          "Completely redesigned Side Hustle Generator with AI-powered dynamic suggestions - get personalized, specific ideas instead of generic categories",
+          "Completely redesigned Side Hustle Generator with dynamic personalized suggestions - get specific ideas tailored to your skills",
           "Added Quick Start steps to each side hustle suggestion for immediate action",
         ],
       },
@@ -121,8 +119,8 @@ const updates = [
         type: "Improved",
         items: [
           "Side hustle suggestions are now tailored to your exact skills (e.g., drone pilot → drone-specific opportunities, not generic video editing)",
-          "Removed useless time availability field - AI generates flexible suggestions automatically",
-          "Fixed AI parsing errors for more reliable side hustle generation",
+          "Simplified input process - flexible suggestions generated automatically",
+          "Enhanced reliability for more consistent side hustle generation",
           "Better platform recommendations with real, actionable URLs",
           "Enhanced UI with hover effects and better visual hierarchy",
         ],
@@ -150,7 +148,7 @@ const updates = [
         items: [
           "Scholarship deadline tracking with urgency badges",
           "Replaced misleading scholarship statistics with accurate data",
-          "Blog post automation optimization (3-4 posts per week)",
+          "Enhanced content scheduling for consistent updates",
           "Sitemap updates for better SEO",
         ],
       },
@@ -166,15 +164,14 @@ const updates = [
       {
         type: "New",
         items: [
-          "AI Career Mentor - floating chat interface powered by Gemini 2.5 Flash",
-          "Resume Reviewer - get instant AI-powered feedback on your resume",
+          "AI Career Mentor - floating chat interface for career guidance",
+          "Resume Reviewer - get instant feedback on your resume",
           "Salary Negotiation Script Generator - prepare for your next raise",
           "Side Hustle Generator - discover income opportunities based on your skills",
           "Scholarship Finder - 10+ curated scholarships worth $200K+",
-          "Blog system with AI-generated content (3-4 posts per week)",
-          "Google Analytics 4 integration",
+          "Blog system with career-focused content",
+          "Google Analytics integration for site improvements",
           "SEO optimization (sitemap, robots.txt, meta tags, schema markup)",
-          "Monetization ready (Ko-fi donations, AdSense placeholders)",
         ],
       },
     ],

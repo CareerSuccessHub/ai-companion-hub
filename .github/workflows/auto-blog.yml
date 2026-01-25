@@ -1,15 +1,17 @@
 name: Auto Blog Posts (Multi-Schedule)
 
 on:
-  schedule:
-    # Monday 8:30 AM UTC (4:30 PM Philippines) - after API reset
-    - cron: '30 8 * * 1'
-    # Tuesday 11:00 AM UTC (7:00 PM Philippines)
-    - cron: '0 11 * * 2'
-    # Thursday 2:30 PM UTC (10:30 PM Philippines)
-    - cron: '30 14 * * 4'
-    # Saturday 10:00 AM UTC (6:00 PM Philippines)
-    - cron: '0 10 * * 6'
+  # Disabled automatic blog generation - AI content rejected by AdSense
+  # Re-enable when switching to human-authored content strategy
+  # schedule:
+  #   # Monday 8:30 AM UTC (4:30 PM Philippines) - after API reset
+  #   - cron: '30 8 * * 1'
+  #   # Tuesday 11:00 AM UTC (7:00 PM Philippines)
+  #   - cron: '0 11 * * 2'
+  #   # Thursday 2:30 PM UTC (10:30 PM Philippines)
+  #   - cron: '30 14 * * 4'
+  #   # Saturday 10:00 AM UTC (6:00 PM Philippines)
+  #   - cron: '0 10 * * 6'
   workflow_dispatch: # Allow manual trigger
 
 permissions:

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
 interface NewBadgeProps {
@@ -32,14 +31,11 @@ export default function NewBadge({
     : "text-xs px-2 py-1 gap-1";
 
   return (
-    <motion.span
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.3 }}
-      className={`inline-flex items-center ${sizeClasses} bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-400/40 rounded-full font-semibold text-pink-300`}
+    <span
+      className={`inline-flex items-center ${sizeClasses} bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-400/40 rounded-full font-semibold text-pink-300 animate-scaleIn`}
     >
       <Sparkles size={size === "sm" ? 10 : 12} className="text-pink-400" />
       NEW
-    </motion.span>
+    </span>
   );
 }

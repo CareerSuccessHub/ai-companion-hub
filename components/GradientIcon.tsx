@@ -1,7 +1,6 @@
 "use client"
 
 import { LucideIcon } from "lucide-react"
-import { motion } from "framer-motion"
 
 interface GradientIconProps {
   icon: LucideIcon
@@ -16,8 +15,8 @@ export default function GradientIcon({
   size = 24,
   animate = true
 }: GradientIconProps) {
-  const iconElement = (
-    <div className="relative inline-flex">
+  return (
+    <div className={`relative inline-flex ${animate ? 'transition-transform hover:scale-110 active:scale-95' : ''}`}>
       {/* Glow effect */}
       <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-30 blur-lg rounded-full`} />
       
@@ -26,17 +25,5 @@ export default function GradientIcon({
         <Icon className="w-6 h-6 text-white" style={{ width: size, height: size }} />
       </div>
     </div>
-  )
-
-  if (!animate) return iconElement
-
-  return (
-    <motion.div
-      whileHover={{ scale: 1.1, rotate: 5 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-    >
-      {iconElement}
-    </motion.div>
   )
 }

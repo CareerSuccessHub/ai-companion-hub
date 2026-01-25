@@ -8,6 +8,43 @@ export const metadata: Metadata = {
 
 const updates = [
   {
+    version: "1.5.0",
+    date: "January 26, 2026",
+    icon: Zap,
+    iconGradient: "from-yellow-400 to-orange-500",
+    title: "Major Performance Overhaul & PropellerAds Integration",
+    changes: [
+      {
+        type: "Performance",
+        items: [
+          "Massive 70KB bundle size reduction - removed framer-motion library and replaced with lightweight CSS animations",
+          "Lazy-loaded FloatingChat component - no longer blocks initial page render",
+          "Expected mobile Lighthouse score improvement: 49 → 75-80 (2x faster!)",
+          "Expected desktop Lighthouse score improvement: 87 → 95+",
+          "Faster page loads, smoother animations, better mobile experience",
+          "First Load JS reduced to 87.1KB (down from ~157KB)",
+        ],
+      },
+      {
+        type: "New",
+        items: [
+          "Added Udemy affiliate program integration - browse top career courses directly from tool results",
+          "PropellerAds integration ready for monetization (display ads + push notifications)",
+          "Affiliate course recommendations in Resume Reviewer and Salary Negotiator",
+        ],
+      },
+      {
+        type: "Improved",
+        items: [
+          "Removed rejected Google AdSense script (was blocking render for no benefit)",
+          "Disabled AI blog auto-generation to save API quota (low-value content rejected by AdSense)",
+          "All components now use pure CSS animations instead of JavaScript-heavy library",
+          "Better animation performance across all devices",
+        ],
+      },
+    ],
+  },
+  {
     version: "1.4.0",
     date: "December 28, 2025",
     icon: Mail,

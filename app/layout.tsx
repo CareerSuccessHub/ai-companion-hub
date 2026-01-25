@@ -93,6 +93,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <script dangerouslySetInnerHTML={{
+          __html: `(function(s){s.dataset.zone='10518253',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`
+        }} />
         <GoogleAnalytics />
         <ThemeProvider>
           <Navigation />

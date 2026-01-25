@@ -7,6 +7,7 @@ import MarkdownRenderer from "./MarkdownRenderer";
 import GuidedTour, { TourStep } from "./GuidedTour";
 import ToolCapabilities from "./ToolCapabilities";
 import ApiQuotaModal from "./ApiQuotaModal";
+import { getRecommendedCourse } from "@/lib/courseRecommendations";
 
 export default function ResumeReviewer() {
   const [resumeText, setResumeText] = useState("");
@@ -244,25 +245,32 @@ JavaScript, React, Node.js, TypeScript, Git, AWS, Agile`;
               )}
 
               {/* Udemy Affiliate CTA */}
-              {!feedback.error && (
-                <div className="mt-6 p-4 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 rounded-lg">
-                  <h4 className="font-semibold text-purple-400 mb-2 flex items-center gap-2">
-                    <Sparkles className="w-4 h-4" />
-                    📚 Want to Upskill?
-                  </h4>
-                  <p className="text-sm text-gray-300 mb-3">
-                    Top Udemy courses to boost your resume and land better jobs.
-                  </p>
-                  <a
-                    href="https://trk.udemy.com/2anXvD"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm font-medium"
-                  >
-                    Browse Career Courses →
-                  </a>
-                </div>
-              )}
+              {!feedback.error && (() => {
+                const fullContent = `${feedback.strengths} ${feedback.improvements} ${feedback.recommendations}`;
+                const course = getRecommendedCourse(fullContent);
+                
+                return course ? (
+                  <div className="mt-6 p-4 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 rounded-lg">
+                    <h4 className="font-semibold text-purple-400 mb-2 flex items-center gap-2">
+                      <Sparkles className="w-4 h-4" />
+                      💡 Recommended for You
+                    </h4>
+                    <div className="mb-3">
+                      <p className="text-sm font-semibold text-white mb-1">{course.title}</p>
+                      <p className="text-xs text-gray-400 mb-2">{course.description}</p>
+                      <p className="text-xs text-green-400 italic">✨ {course.reason}</p>
+                    </div>
+                    <a
+                      href={course.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm font-medium"
+                    >
+                      View Course →
+                    </a>
+                  </div>
+                ) : null;
+              })()}
             </>
           ) : (
             <p>Your AI feedback will appear here after analysis</p>

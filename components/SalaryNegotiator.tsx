@@ -7,6 +7,7 @@ import MarkdownRenderer from "./MarkdownRenderer";
 import GuidedTour, { TourStep } from "./GuidedTour";
 import ToolCapabilities from "./ToolCapabilities";
 import ApiQuotaModal from "./ApiQuotaModal";
+import { getCourseForRole } from "@/lib/courseRecommendations";
 
 export default function SalaryNegotiator() {
   const [jobTitle, setJobTitle] = useState("");
@@ -224,24 +225,29 @@ export default function SalaryNegotiator() {
             </h3>
             <MarkdownRenderer content={script} />
 
-            {/* Udemy Affiliate CTA */}
-            <div className="mt-6 p-4 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 rounded-lg">
-              <h4 className="font-semibold text-purple-400 mb-2 flex items-center gap-2">
-                <Sparkles className="w-4 h-4" />
-                📚 Want to Increase Your Value?
-              </h4>
-              <p className="text-sm text-gray-300 mb-3">
-                Learn high-demand skills to justify higher salaries with top Udemy courses.
-              </p>
-              <a
-                href="https://trk.udemy.com/2anXvD"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm font-medium"
-              >
-                Browse Career Courses →
-              </a>
-            </div>
+            {/* Smart Udemy Course Recommendation */}
+            {(() => {
+              const course = getCourseForRole(jobTitle);
+              return (
+                <div className="mt-6 p-4 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 rounded-lg">
+                  <h4 className="font-semibold text-purple-400 mb-2 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4" />
+                    📚 Want to Increase Your Value?
+                  </h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    {course.reason}
+                  </p>
+                  <a
+                    href="https://trk.udemy.com/2anXvD"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm font-medium"
+                  >
+                    View {course.title} →
+                  </a>
+                </div>
+              );
+            })()}
           </>
         ) : (
           <p>Your personalized negotiation script will appear here</p>

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { FileText, Upload, Sparkles, CheckCircle, XCircle } from "lucide-react";
 import GradientIcon from "./GradientIcon";
-import { motion } from "framer-motion";
 import MarkdownRenderer from "./MarkdownRenderer";
 import GuidedTour, { TourStep } from "./GuidedTour";
 import ToolCapabilities from "./ToolCapabilities";
@@ -118,13 +117,7 @@ JavaScript, React, Node.js, TypeScript, Git, AWS, Agile`;
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-      className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-cyan-500/50 transition-all duration-300"
-    >
+    <div className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-cyan-500/50 transition-all duration-300">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <GradientIcon icon={FileText} gradient="from-cyan-400 to-blue-500" />
@@ -249,6 +242,27 @@ JavaScript, React, Node.js, TypeScript, Git, AWS, Agile`;
                   </div>
                 </div>
               )}
+
+              {/* Udemy Affiliate CTA */}
+              {!feedback.error && (
+                <div className="mt-6 p-4 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 rounded-lg">
+                  <h4 className="font-semibold text-purple-400 mb-2 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4" />
+                    📚 Want to Upskill?
+                  </h4>
+                  <p className="text-sm text-gray-300 mb-3">
+                    Top Udemy courses to boost your resume and land better jobs.
+                  </p>
+                  <a
+                    href="https://trk.udemy.com/2anXvD"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm font-medium"
+                  >
+                    Browse Career Courses →
+                  </a>
+                </div>
+              )}
             </>
           ) : (
             <p>Your AI feedback will appear here after analysis</p>
@@ -268,6 +282,6 @@ JavaScript, React, Node.js, TypeScript, Git, AWS, Agile`;
         onClose={() => setShowQuotaModal(false)}
         toolName="Resume Reviewer"
       />
-    </motion.div>
+    </div>
   );
 }

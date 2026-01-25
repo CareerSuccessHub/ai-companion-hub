@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Sparkles, TrendingUp, DollarSign, Rocket } from "lucide-react";
 import GradientIcon from "./GradientIcon";
-import { motion } from "framer-motion";
 import GuidedTour, { TourStep } from "./GuidedTour";
 import ToolCapabilities from "./ToolCapabilities";
 import ApiQuotaModal from "./ApiQuotaModal";
@@ -85,13 +84,7 @@ export default function SideHustleGenerator() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-      className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-pink-500/50 transition-all duration-300"
-    >
+    <div className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-pink-500/50 transition-all duration-300">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4">
             <GradientIcon icon={Rocket} gradient="from-pink-400 to-rose-500" />
@@ -228,6 +221,6 @@ export default function SideHustleGenerator() {
         onClose={() => setShowQuotaModal(false)}
         toolName="Side Hustle Generator"
       />
-    </motion.div>
+    </div>
   );
 }

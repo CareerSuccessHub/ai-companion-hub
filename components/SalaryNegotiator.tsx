@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { DollarSign, TrendingUp, Sparkles } from "lucide-react";
 import GradientIcon from "./GradientIcon";
-import { motion } from "framer-motion";
 import MarkdownRenderer from "./MarkdownRenderer";
 import GuidedTour, { TourStep } from "./GuidedTour";
 import ToolCapabilities from "./ToolCapabilities";
@@ -91,13 +90,7 @@ export default function SalaryNegotiator() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-      className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-emerald-500/50 transition-all duration-300"
-    >
+    <div className="bg-slate-900 rounded-lg border border-slate-800 p-6 hover:border-emerald-500/50 transition-all duration-300">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <GradientIcon icon={DollarSign} gradient="from-emerald-400 to-green-500" />
@@ -230,6 +223,25 @@ export default function SalaryNegotiator() {
               Your Personalized Negotiation Script
             </h3>
             <MarkdownRenderer content={script} />
+
+            {/* Udemy Affiliate CTA */}
+            <div className="mt-6 p-4 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 rounded-lg">
+              <h4 className="font-semibold text-purple-400 mb-2 flex items-center gap-2">
+                <Sparkles className="w-4 h-4" />
+                📚 Want to Increase Your Value?
+              </h4>
+              <p className="text-sm text-gray-300 mb-3">
+                Learn high-demand skills to justify higher salaries with top Udemy courses.
+              </p>
+              <a
+                href="https://trk.udemy.com/2anXvD"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm font-medium"
+              >
+                Browse Career Courses →
+              </a>
+            </div>
           </>
         ) : (
           <p>Your personalized negotiation script will appear here</p>
@@ -252,6 +264,6 @@ export default function SalaryNegotiator() {
         onClose={() => setShowQuotaModal(false)}
         toolName="Salary Negotiation Coach"
       />
-    </motion.div>
+    </div>
   );
 }

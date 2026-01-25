@@ -1,7 +1,6 @@
 "use client";
 
 import ResumeReviewer from "@/components/ResumeReviewer";
-import AdPlaceholder from "@/components/AdPlaceholder";
 import Link from "next/link";
 
 export default function ResumeReviewerPage() {
@@ -15,23 +14,8 @@ export default function ResumeReviewerPage() {
           <span className="text-gray-300">Resume Reviewer</span>
         </div>
 
-        {/* Top Ad */}
-        <div className="mb-6">
-          <AdPlaceholder size="banner" />
-        </div>
-
         {/* Main Content */}
-        <div className="grid lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
-            <ResumeReviewer />
-          </div>
-          
-          {/* Sidebar Ads */}
-          <div className="space-y-6">
-            <AdPlaceholder size="square" label="Sponsored" />
-            <AdPlaceholder size="square" label="Sponsored" />
-          </div>
-        </div>
+        <ResumeReviewer />
       </div>
     </main>
   );

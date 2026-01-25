@@ -1,7 +1,6 @@
 "use client";
 
 import SalaryNegotiator from "@/components/SalaryNegotiator";
-import AdPlaceholder from "@/components/AdPlaceholder";
 import Link from "next/link";
 
 // SEO metadata is in metadata.ts for this route
@@ -19,23 +18,8 @@ export default function SalaryNegotiatorPage() {
           <span className="text-gray-300">Salary Negotiator</span>
         </div>
 
-        {/* Top Ad */}
-        <div className="mb-6">
-          <AdPlaceholder size="banner" />
-        </div>
-
         {/* Main Content */}
-        <div className="grid lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
-            <SalaryNegotiator />
-          </div>
-          
-          {/* Sidebar Ads */}
-          <div className="space-y-6">
-            <AdPlaceholder size="square" label="Sponsored" />
-            <AdPlaceholder size="square" label="Sponsored" />
-          </div>
-        </div>
+        <SalaryNegotiator />
       </div>
     </main>
   );
